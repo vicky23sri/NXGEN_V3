@@ -1,0 +1,1592 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NXGEN INVENTORS</title>
+    <link href="./dist/output.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.10.2/dist/cdn.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.2/min/tiny-slider.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.2/tiny-slider.css">
+    <!-- AOS CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    
+    <!-- AOS JS -->
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <style>
+        @font-face {
+            font-family: 'Glimser';
+            src: url('path/to/glimser-regular.woff2') format('woff2'),
+                url('path/to/glimser-regular.woff') format('woff');
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Glimser';
+            src: url('path/to/glimser-bold.woff2') format('woff2'),
+                url('path/to/glimser-bold.woff') format('woff');
+            font-weight: 700;
+            font-style: normal;
+        }
+
+        body {
+            font-family: 'Glimser', sans-serif;
+        }
+
+        .pri-menu {
+            position: relative;
+        }
+
+        .sec-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 200px;
+            background-color: white;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        .pri-menu:hover .sec-menu {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        @keyframes progress {
+            from {
+                width: 0;
+            }
+
+            to {
+                width: 100%;
+            }
+        }
+
+        .text-indicator.active .loading-bar {
+            animation: progress 8s linear;
+        }
+
+        .text-indicator .loading-bar {
+            width: 0;
+            transition: width 8s linear;
+        }
+
+        .text-indicator.active {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .flip-card {
+            perspective: 1000px;
+        }
+        .flip-card-inner {
+            transition: transform 0.8s;
+            transform-style: preserve-3d;
+        }
+        .flip-card:hover .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+        .flip-card-front, .flip-card-back {
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+        }
+        .flip-card-back {
+            transform: rotateY(180deg);
+        }
+
+        /* our project  */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .project-card {
+            animation: fadeIn 1s ease-out forwards;
+        }
+
+        /* patners */
+        .logos-container {
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .logos-container::before,
+        .logos-container::after {
+            position: absolute;
+            top: 0;
+            width: 250px;
+            height: 100%;
+            content: "";
+            z-index: 2;
+        }
+
+        .logos-container::before {
+            left: 0;
+        }
+
+        .logos-container::after {
+            right: 0;
+        }
+
+        .logos-scroll {
+            display: flex;
+            animation: scroll 30s linear infinite;
+            width: fit-content;
+        }
+
+        .logo-item {
+            flex: 0 0 auto;
+            margin: 0 20px;
+        }
+
+        .logo-item img {
+            height: 60px;
+            width: auto;
+            transition: transform 0.3s ease;
+        }
+
+        .logo-item img:hover {
+            transform: scale(1.1);
+        }
+
+        @keyframes scroll {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        /* why choose us  */
+        
+        .bg-tech-pattern {
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%231b263b' fill-opacity='0.12'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .text-stroke {
+            -webkit-text-stroke: 1px #fca311;
+            color: transparent;
+        }
+
+        .card-glow:hover {
+            box-shadow: 0 0 15px #fca311, 0 0 30px #fca311;
+        }
+
+        .hexagon {
+            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+            transition: all 0.3s ease;
+        }
+
+        .hexagon:hover {
+            transform: scale(1.1);
+        }
+
+        .feature-card, .stat-card {
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover, .stat-card:hover {
+            transform: translateY(-10px);
+            x-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+    </style>
+</head>
+
+<body class="bg-gray-100">
+    <header x-data="{ isMenuOpen: false }">
+        <div class="mx-auto mt-5 py-5 px-16">
+            <div class="flex flex-wrap justify-between items-center mx-auto">
+                <section class="logo">
+                    <a href="/index.html"><img class="w-[180px]" src="./src/images/logo-green-s.svg" alt="Logo"></a>
+                </section>
+                <button @click="isMenuOpen = !isMenuOpen"
+                    class="menu-toggle md:hidden flex items-center justify-center w-10 h-10 rounded focus:outline-none focus:ring-2 focus:ring-green-600"
+                    :class="{ 'open': isMenuOpen }">
+                    <span class="sr-only">Open main menu</span>
+                    <!-- Hamburger Icon -->
+                    <div class="space-y-1">
+                        <span
+                            :class="{'transform rotate-45 translate-y-2': isMenuOpen, 'transform duration-300': true }"
+                            class="block w-6 h-0.5 bg-gray-800"></span>
+                        <span :class="{'opacity-0': isMenuOpen, 'transform duration-300': true }"
+                            class="block w-6 h-0.5 bg-gray-800"></span>
+                        <span
+                            :class="{'transform -rotate-45 -translate-y-2': isMenuOpen, 'transform duration-300': true }"
+                            class="block w-6 h-0.5 bg-gray-800"></span>
+                    </div>
+                </button>
+                <div class="items-center justify-between w-full md:flex md:w-auto md:order-1"
+                    :class="{ 'block': isMenuOpen, 'hidden': !isMenuOpen }">
+                    <ul
+                        class="flex flex-col flex-wrap md:items-center mt-4 font-medium md:flex-row md:space-x-8 md:mt-0">
+                        <li class="relative pri-menu z-30">
+                            <button
+                                class="flex items-center justify-between w-full py-2 pl-3 pr-4 font-bold text-gray-500 border-b md:w-auto md:border-0 font-sans">
+                                Company
+                                <svg class="w-2.5 h-2.5 ml-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                    fill="none" viewBox="0 0 10 6">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                        stroke-width="2" d="m1 1 4 4 4-4" />
+                                </svg>
+                            </button>
+                            <div
+                                class="sec-menu z-10 font-normal bg-white divide-y divide-gray-100 rounded-lg md:shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
+                                <ul class="py-2 text-md text-gray-700 dark:text-gray-400"
+                                    aria-labelledby="dropdownLargeButton">
+                                    <li><a href="/about-us.html" class="block px-4 py-2">About Us</a></li>
+                                    <li><a href="/about-us.html" class="block px-4 py-2">Careers</a></li>
+                                    <li><a href="/our-people.html" class="block px-4 py-2">Leadership</a></li>
+                                    <li><a href="/clients.html" class="block px-4 py-2">Clients</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <div class="pri-menu relative z-30">
+                            <button
+                                class="flex items-center justify-between w-full py-2 pl-3 pr-4 text-gray-500 font-bold border-b md:w-auto md:border-0 font-sans">
+                                Industry
+                                <svg class="w-2.5 h-2.5 ml-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                    fill="none" viewBox="0 0 10 6">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                        stroke-width="2" d="m1 1 4 4 4-4" />
+                                </svg>
+                            </button>
+
+                            <div
+                                class="sec-menu z-10 font-normal bg-white divide-y divide-gray-100 rounded-lg md:shadow w-44 dark:bg-gray-700 dark:divide-gray-600 origin-top-left transform opacity-0 scale-95 transition-all duration-300 ease-in-out">
+                                <ul class="py-2 text-md text-gray-700 dark:text-gray-400"
+                                    aria-labelledby="dropdownLargeButton">
+                                    <li>
+                                        <a href="/products/iot-platform.html"
+                                            class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+                                            Automative
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/products/realty-app.html"
+                                            class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+                                            Mining and Metals
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/products/downloads.html"
+                                            class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+                                            Transportation
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/products/iot-platform.html"
+                                            class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+                                            Renewable Energy
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/products/realty-app.html"
+                                            class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+                                            Medical
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/products/downloads.html"
+                                            class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+                                            Fintech
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/products/iot-platform.html"
+                                            class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+                                            Real Estate & Property Management
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <li class="relative pri-menu z-30">
+                            <button
+                                class="flex items-center justify-between w-full py-2 pl-3 pr-4 font-bold border-b text-gray-500 md:w-auto md:border-0 font-sans">
+                                Engineering
+                                <svg class="w-2.5 h-2.5 ml-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                    fill="none" viewBox="0 0 10 6">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                        stroke-width="2" d="m1 1 4 4 4-4" />
+                                </svg>
+                            </button>
+                            <div
+                                class="sec-menu z-10 font-normal bg-white divide-y divide-gray-100 rounded-lg md:shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
+                                <ul class="py-2 text-md text-gray-700 dark:text-gray-400"
+                                    aria-labelledby="dropdownLargeButton">
+                                    <li>
+                                        <a href="/services/staffing-solutions/index.html" class="block px-4 py-2">
+                                            Electronics
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/services/staffing-solutions/index.html#direct-hire"
+                                            class="block px-4 py-2">
+                                            Mechanical
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/services/staffing-solutions/index.html#temporary-to-permanent"
+                                            class="block px-4 py-2">
+                                            PCB & CAD
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/services/staffing-solutions/index.html#training"
+                                            class="block px-4 py-2">
+                                            IoT Products
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/services/staffing-solutions/index.html#training"
+                                            class="block px-4 py-2">
+                                            Manufacturing
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="relative pri-menu z-30">
+                            <button
+                                class="flex items-center justify-between w-full py-2 pl-3 pr-4 font-bold border-b text-gray-500 md:w-auto md:border-0 font-sans">
+                                Software
+                                <svg class="w-2.5 h-2.5 ml-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                    fill="none" viewBox="0 0 10 6">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                        stroke-width="2" d="m1 1 4 4 4-4" />
+                                </svg>
+                            </button>
+                            <div
+                                class="sec-menu z-10 font-normal bg-white divide-y divide-gray-100 rounded-lg md:shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
+                                <ul class="py-2 text-md text-gray-700 dark:text-gray-400"
+                                    aria-labelledby="dropdownLargeButton">
+                                    <li>
+                                        <a href="/services/staffing-solutions/index.html" class="block px-4 py-2">
+                                            Software
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="relative pri-menu z-30">
+                            <button
+                                class="flex items-center justify-between w-full py-2 pl-3 pr-4 font-bold border-b text-gray-500 md:w-auto md:border-0 font-sans">
+                                Staffing
+                            </button>
+                        </li>
+                        <li class="relative pri-menu z-30">
+                            <button
+                                class="flex items-center justify-between w-full py-2 pl-3 pr-4 font-bold border-b text-gray-500 md:w-auto md:border-0 font-sans">
+                                Training
+                            </button>
+                        </li>
+                        <li class="text-center mt-4 md:mt-0">
+                            <div class="flex flex-col items-start space-y-2">
+
+                                <a href="tel:+918042183021"
+                                    class="flex items-center space-x-3 text-gray-500 hover:text-gray-900  transition duration-300">
+                                    <span class="rounded-full px-3 py-2">
+                                        <i class="fa-solid fa-phone text-green-600 text-xl"></i>
+                                    </span>
+                                    <span class="text-lg font-semibold"
+                                        style="font-family: Arial, Helvetica, sans-serif;">+91-80 4218 3021</span>
+                                </a>
+
+                                <a href="mailto:support@nxgeninventors.com"
+                                    class="flex items-center space-x-3 text-gray-500 hover:text-gray-900 transition duration-300">
+                                    <span class="rounded-full px-3 py-2">
+                                        <i class="fa-solid fa-envelope text-green-600 text-xl"></i>
+                                    </span>
+                                    <span class="text-lg font-semibold"
+                                        style="font-family: Arial, Helvetica, sans-serif;">support@nxgeninventors.com</span>
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- Banner -->
+    <section class="banner relative w-full h-[60vh] overflow-hidden">
+        <div class="carousel absolute top-0 left-0 w-full h-full">
+            <div class="slide absolute w-full h-full transition-all duration-700 ease-in-out opacity-0">
+                <div class="bg-cover bg-center w-full h-full"
+                    style="background-image: url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');">
+                    <div class="absolute inset-0 bg-gradient-to-r from-black/70 to-transparent"></div>
+                    <div class="container mx-auto px-8 h-full flex items-center">
+                        <div class="w-full text-white z-10" data-aos="fade-up" data-aos-delay="200" data-aos-duration="1500" data-aos-easing="ease-in-out">
+                            <h1 class="mb-4 font-bold text-4xl md:text-5xl lg:text-6xl leading-tight">Cutting-Edge
+                                Technology</h1>
+                            <p class="text-xl lg:text-2xl leading-relaxed mb-8">Empowering businesses with the latest
+                                technological advancements.</p>
+                            <a href="/contact.html"
+                                class="group relative inline-flex items-center overflow-hidden rounded-full bg-slate-900 px-8 py-3 text-white focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2">
+                                <span
+                                    class="absolute left-0 top-1/2 h-32 w-32 -translate-y-1/2 transform rounded-full bg-white transition-all duration-300 ease-out group-hover:scale-150 group-hover:opacity-50"></span>
+                                <span class="relative mr-4 text-lg font-semibold text-black">Learn More</span>
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                    class="relative h-5 w-5 transition-transform duration-300 ease-in-out group-hover:translate-x-1"
+                                    fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="slide absolute w-full h-full transition-all duration-700 ease-in-out opacity-100">
+                <div class="bg-cover bg-center w-full h-full"
+                    style="background-image: url('https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');">
+                    <div class="absolute inset-0 bg-gradient-to-r from-black/70 to-transparent"></div>
+                    <div class="container mx-auto px-8 h-full flex items-center">
+                        <div class="w-full text-white z-10" data-aos="fade-up" data-aos-delay="200" data-aos-duration="1500" data-aos-easing="ease-in-out">
+                            <h1 class="mb-4 font-bold text-4xl md:text-5xl lg:text-6xl leading-tight">Engineering
+                                Excellence</h1>
+                            <p class="text-xl lg:text-2xl leading-relaxed mb-8">Transforming ideas into reality through
+                                expert engineering.</p>
+                            <a href="/contact.html"
+                                class="group relative inline-flex items-center overflow-hidden rounded-full bg-slate-900 px-8 py-3 text-white focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2">
+                                <span
+                                    class="absolute left-0 top-1/2 h-32 w-32 -translate-y-1/2 transform rounded-full bg-white transition-all duration-300 ease-out group-hover:scale-150 group-hover:opacity-50"></span>
+                                <span class="relative mr-4 text-lg font-semibold text-black">Learn More</span>
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                    class="relative h-5 w-5 transition-transform duration-300 ease-in-out group-hover:translate-x-1"
+                                    fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="slide absolute w-full h-full transition-all duration-700 ease-in-out opacity-0">
+                <div class="bg-cover bg-center w-full h-full"
+                    style="background-image: url('https://images.unsplash.com/photo-1531482615713-2afd69097998?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');">
+                    <div class="absolute inset-0 bg-gradient-to-r from-black/70 to-transparent"></div>
+                    <div class="container mx-auto px-8 h-full flex items-center">
+                        <div class="w-full text-white z-10" data-aos="fade-up" data-aos-delay="200" data-aos-duration="1500" data-aos-easing="ease-in-out">
+                            <h1 class="mb-4 font-bold text-4xl md:text-5xl lg:text-6xl leading-tight">Innovative
+                                Software Solutions</h1>
+                            <p class="text-xl lg:text-2xl leading-relaxed mb-8">Elevate your business with our
+                                cutting-edge software development expertise.</p>
+                            <a href="/contact.html"
+                                class="group relative inline-flex items-center overflow-hidden rounded-full bg-slate-900 px-8 py-3 text-white focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2">
+                                <span
+                                    class="absolute left-0 top-1/2 h-32 w-32 -translate-y-1/2 transform rounded-full bg-white transition-all duration-300 ease-out group-hover:scale-150 group-hover:opacity-50"></span>
+                                <span class="relative mr-4 text-lg font-semibold text-black">Learn More</span>
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                    class="relative h-5 w-5 transition-transform duration-300 ease-in-out group-hover:translate-x-1"
+                                    fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="slide absolute w-full h-full transition-all duration-700 ease-in-out opacity-0">
+                <div class="bg-cover bg-center w-full h-full"
+                    style="background-image: url('https://img.freepik.com/free-photo/automotive-assembly-line-precision-automation_91128-4349.jpg?t=st=1724673782~exp=1724677382~hmac=bb8c3a89e4bc177161b23e64c1f0461b3cd2b78212a023f1638f6a3f26065bfd&w=1800');">
+                    <div class="absolute inset-0 bg-gradient-to-r from-black/70 to-transparent"></div>
+                    <div class="container mx-auto px-8 h-full flex items-center">
+                        <div class="w-full lg:w-1/ text-white z-10" data-aos="fade-up" data-aos-delay="200" data-aos-duration="1500" data-aos-easing="ease-in-out">
+                            <h1 class="mb-4 font-bold text-4xl md:text-5xl lg:text-6xl leading-tight">Precision
+                                Manufacturing</h1>
+                            <p class="text-xl lg:text-2xl leading-relaxed mb-8">Delivering quality products with
+                                cutting-edge manufacturing processes.</p>
+                            <a href="/contact.html"
+                                class="group relative inline-flex items-center overflow-hidden rounded-full bg-slate-900 px-8 py-3 text-white focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2">
+                                <span
+                                    class="absolute left-0 top-1/2 h-32 w-32 -translate-y-1/2 transform rounded-full bg-white transition-all duration-300 ease-out group-hover:scale-150 group-hover:opacity-50"></span>
+                                <span class="relative mr-4 text-lg font-semibold text-black">Learn More</span>
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                    class="relative h-5 w-5 transition-transform duration-300 ease-in-out group-hover:translate-x-1"
+                                    fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <button
+            class="hidden absolute top-1/2 left-4 transform -translate-y-1/2 bg-white/20 hover:bg-white/40 p-3 rounded-full text-white text-2xl transition-all duration-300 z-20"
+            id="prevBtn">
+            &#8249;
+        </button>
+        <button
+            class="hidden absolute top-1/2 right-4 transform -translate-y-1/2 bg-white/20 hover:bg-white/40 p-3 rounded-full text-white text-2xl transition-all duration-300 z-20"
+            id="nextBtn">
+            &#8250;
+        </button>
+
+        <div class="absolute bottom-0 left-0 right-0 w-full flex justify-center items-center z-20">
+            <div id="sliderIndicators"
+                class="bg-black bg-opacity-70 backdrop-blur-sm w-full flex flex-wrap items-center justify-between">
+                <div class="text-indicator relative cursor-pointer group flex-1 min-w-[15%]">
+                    <div class="loading-bar absolute top-0 left-0 right-0 h-1 bg-green-500"></div>
+                    <span
+                        class="text-white text-xs sm:text-sm md:text-base font-bold uppercase px-2 sm:px-4 md:px-6 py-2 sm:py-3 block transition-all duration-300 group-hover:bg-white group-hover:text-black text-center">Technology</span>
+                </div>
+                <div class="hidden sm:block w-px h-8 bg-white/30"></div>
+                <div class="text-indicator relative cursor-pointer group flex-1 min-w-[15%]">
+                    <div class="loading-bar absolute top-0 left-0 right-0 h-1 bg-green-500"></div>
+                    <span
+                        class="text-white text-xs sm:text-sm md:text-base font-bold uppercase px-2 sm:px-4 md:px-6 py-2 sm:py-3 block transition-all duration-300 group-hover:bg-white group-hover:text-black text-center">Engineering</span>
+                </div>
+                <div class="hidden sm:block w-px h-8 bg-white/30"></div>
+                <div class="text-indicator relative cursor-pointer group flex-1 min-w-[15%]">
+                    <div class="loading-bar absolute top-0 left-0 right-0 h-1 bg-green-500"></div>
+                    <span
+                        class="text-white text-xs sm:text-sm md:text-base font-bold uppercase px-2 sm:px-4 md:px-6 py-2 sm:py-3 block transition-all duration-300 group-hover:bg-white group-hover:text-black text-center">Software</span>
+                </div>
+                <div class="hidden sm:block w-px h-8 bg-white/30"></div>
+                <div class="text-indicator relative cursor-pointer group flex-1 min-w-[15%]">
+                    <div class="loading-bar absolute top-0 left-0 right-0 h-1 bg-green-500"></div>
+                    <span
+                        class="text-white text-xs sm:text-sm md:text-base font-bold uppercase px-2 sm:px-4 md:px-6 py-2 sm:py-3 block transition-all duration-300 group-hover:bg-white group-hover:text-black text-center">Manufacturing</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Banner End -->
+
+    <!-- why choose us -->
+    <section class="relative py-20 overflow-hidden" data-aos="fade-up">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-20">
+                <h2 class="text-6xl font-bold mb-4">
+                    <span class="text-fca311 ">Why Choose</span>
+                    <span class="text-stroke">NXGEN INVENTORS</span>
+                </h2>
+                <p class="text-xl text-gray-400 max-w-3xl mx-auto">Pioneering the future of technology with unparalleled expertise, innovation, and a commitment to excellence.</p>
+            </div>
+    
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mb-20">
+                <div class="feature-card bg-gradient-to-br from-001d3d to-003566 p-8 rounded-lg border border-fca311 card-glow" data-aos="flip-left" data-aos-delay="200">
+                    <div class="text-4xl text-fca311 mb-6"><i class="fas fa-microchip"></i></div>
+                    <h3 class="text-2xl font-semibold mb-4">Cutting-Edge Technology</h3>
+                    <p class="text-gray-300">Leveraging the latest advancements in AI, IoT, and blockchain to deliver revolutionary solutions.</p>
+                </div>
+                <div class="feature-card bg-gradient-to-br from-001d3d to-003566 p-8 rounded-lg border border-fca311 card-glow" data-aos="flip-left" data-aos-delay="300">
+                    <div class="text-4xl text-fca311 mb-6"><i class="fas fa-users-cog"></i></div>
+                    <h3 class="text-2xl font-semibold mb-4">Expert Team</h3>
+                    <p class="text-gray-300">A diverse group of industry veterans and innovative minds working together to solve complex challenges.</p>
+                </div>
+                <div class="feature-card bg-gradient-to-br from-001d3d to-003566 p-8 rounded-lg border border-fca311 card-glow" data-aos="flip-left" data-aos-delay="400">
+                    <div class="text-4xl text-fca311 mb-6"><i class="fas fa-rocket"></i></div>
+                    <h3 class="text-2xl font-semibold mb-4">Rapid Innovation</h3>
+                    <p class="text-gray-300">Agile methodologies and state-of-the-art tools enabling fast, efficient development and deployment.</p>
+                </div>
+            </div>
+    
+            <div class="text-center mb-20" data-aos="fade-up" data-aos-delay="500">
+                <h3 class="text-4xl font-bold mb-10 text-glow">Our Impact in Numbers</h3>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                    <div class="stat-card bg-gradient-to-br from-001d3d to-003566 p-6 rounded-lg card-glow" data-aos="zoom-in" data-aos-delay="600">
+                        <div class="text-4xl font-bold text-fca311 mb-2" id="clientsServed">0</div>
+                        <div class="text-sm uppercase tracking-wide">Clients Served</div>
+                    </div>
+                    <div class="stat-card bg-gradient-to-br from-001d3d to-003566 p-6 rounded-lg card-glow" data-aos="zoom-in" data-aos-delay="700">
+                        <div class="text-4xl font-bold text-fca311 mb-2" id="projectsCompleted">0</div>
+                        <div class="text-sm uppercase tracking-wide">Projects Completed</div>
+                    </div>
+                    <div class="stat-card bg-gradient-to-br from-001d3d to-003566 p-6 rounded-lg card-glow" data-aos="zoom-in" data-aos-delay="800">
+                        <div class="text-4xl font-bold text-fca311 mb-2" id="teamMembers">0</div>
+                        <div class="text-sm uppercase tracking-wide">Team Members</div>
+                    </div>
+                    <div class="stat-card bg-gradient-to-br from-001d3d to-003566 p-6 rounded-lg card-glow" data-aos="zoom-in" data-aos-delay="900">
+                        <div class="text-4xl font-bold text-fca311 mb-2" id="globalOffices">0</div>
+                        <div class="text-sm uppercase tracking-wide">Global Offices</div>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="bg-gradient-to-br from-003566 to-001d3d p-10 rounded-xl shadow-2xl mb-20" data-aos="fade-up" data-aos-delay="600">
+                <h3 class="text-3xl font-bold mb-10 text-center text-glow">Our Technological Expertise</h3>
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+                    <div class="hexagon bg-gradient-to-br from-001d3d to-003566 p-4 flex items-center justify-center" data-aos="flip-left" data-aos-delay="700">
+                        <span class="text-fca311 font-semibold">AI & ML</span>
+                    </div>
+                    <div class="hexagon bg-gradient-to-br from-001d3d to-003566 p-4 flex items-center justify-center" data-aos="flip-left" data-aos-delay="800">
+                        <span class="text-fca311 font-semibold">IoT</span>
+                    </div>
+                    <div class="hexagon bg-gradient-to-br from-001d3d to-003566 p-4 flex items-center justify-center" data-aos="flip-left" data-aos-delay="900">
+                        <span class="text-fca311 font-semibold">Blockchain</span>
+                    </div>
+                    <div class="hexagon bg-gradient-to-br from-001d3d to-003566 p-4 flex items-center justify-center" data-aos="flip-left" data-aos-delay="700">
+                        <span class="text-fca311 font-semibold">Cloud Computing</span>
+                    </div>
+                    <div class="hexagon bg-gradient-to-br from-001d3d to-003566 p-4 flex items-center justify-center" data-aos="flip-left" data-aos-delay="800">
+                        <span class="text-fca311 font-semibold">Cybersecurity</span>
+                    </div>
+                    <div class="hexagon bg-gradient-to-br from-001d3d to-003566 p-4 flex items-center justify-center" data-aos="flip-left" data-aos-delay="900">
+                        <span class="text-fca311 font-semibold">Big Data</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+
+    <!-- our services -->
+    <section class="py-24 bg-white" x-data="carouselData()" data-aos="fade-up" data-aos-duration="1500">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col items-center mb-10" data-aos="fade-up" data-aos-delay="100">
+                <h2 class="relative text-3xl font-bold text-gray-800 mb-2">
+                    Our Services
+                </h2>
+                <div class="w-24 h-1 bg-green-500 rounded-full"></div>
+            </div>
+            <div class="relative">
+                <div class="overflow-hidden" data-aos="fade-left" data-aos-delay="200">
+                    <div class="flex transition-transform duration-500 ease-in-out" 
+                        :style="{ transform: `translateX(-${currentIndex * (100 / visibleCards)}%)` }"
+                        @mouseenter="pauseAutoScroll"
+                        @mouseleave="resumeAutoScroll">
+                        <template x-for="(service, index) in services" :key="index">
+                            <div class="w-full sm:w-1/2 lg:w-1/3 flex-shrink-0 px-4 mb-8" 
+                                 :style="`flex: 0 0 ${100 / visibleCards}%`" 
+                                 data-aos="fade-up" data-aos-delay="300">
+                                <div class="flip-card h-96">
+                                    <div class="flip-card-inner relative w-full h-full">
+                                        <div class="flip-card-front absolute w-full h-full rounded-2xl shadow-2xl overflow-hidden">
+                                            <div class="absolute inset-0 bg-cover bg-center" 
+                                                 :style="`background-image: url('${service.image}')`"></div>
+                                            <div class="absolute inset-x-0 bottom-0 p-4 bg-black bg-opacity-50">
+                                                <h3 x-text="service.title" class="text-3xl text-center font-bold mb-2 text-white tracking-wide"></h3>
+                                                <p x-text="service.shortDesc" class="text-green-100 text-center text-lg"></p>
+                                            </div>
+                                        </div>
+                                        <div class="flip-card-back absolute w-full h-full bg-white rounded-2xl shadow-2xl p-8">
+                                            <div class="h-full flex flex-col justify-between">
+                                                <div>
+                                                    <h3 x-text="service.title" class="text-3xl font-bold mb-3 text-center text-blue-800 border-b-2 border-blue-300 pb-2"></h3>
+                                                    <ul class="space-y-3 mb-6 text-gray-700">
+                                                        <template x-for="feature in service.features">
+                                                            <li class="flex items-center">
+                                                                <svg class="w-5 h-5 mr-2 text-blue-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                                                </svg>
+                                                                <span x-text="feature"></span>
+                                                            </li>
+                                                        </template>
+                                                    </ul>
+                                                    <p x-text="service.description" class="mb-6 text-gray-600 italic"></p>
+                                                </div>
+                                                <div class="flex flex-col items-center mt-auto">
+                                                    <a href="#" class="inline-flex items-center relative px-6 py-3 rounded-lg font-bold text-sm uppercase tracking-wider bg-gradient-to-r from-green-500 via-green-600 to-green-700 text-white overflow-hidden transition-transform transform hover:scale-105 hover:shadow-lg hover:shadow-green-500/50">
+                                                        <span class="relative z-10">View More</span>
+                                                        <i class="fas fa-arrow-right ml-2 relative z-10 transition-transform duration-300 ease-in-out hover:translate-x-2"></i>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </template>
+                    </div>
+                </div>
+                <button @click="prev" class="absolute top-1/2 left-4 transform -translate-y-1/2 bg-white text-blue-600 rounded-full w-12 h-12 shadow-lg hover:shadow-xl transition duration-300 flex items-center justify-center">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                </button>
+                <button @click="next" class="absolute top-1/2 right-4 transform -translate-y-1/2 bg-white text-blue-600 rounded-full w-12 h-12 shadow-lg hover:shadow-xl transition duration-300 flex items-center justify-center">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                </button>
+            </div>
+        </div>
+    </section>
+    
+
+    <!-- our projects -->
+    <section class="py-16 px-4 sm:px-6 lg:px-8" x-data="projectCarousel()" x-init="startAutoScroll">
+        <div class="container mx-auto">
+    
+            <div class="container mx-auto px-4 md:px-8">
+                <!-- Animated heading section -->
+                <div class="flex flex-col items-center" data-aos="fade-up" data-aos-delay="200" data-aos-duration="1500" data-aos-easing="ease-in-out">
+                    <div class="bg-green-500 text-white text-sm font-semibold px-4 py-2 rounded-xl mb-6">
+                        See How We've Helped Businesses Succeed Online
+                    </div>
+                    <h2 class="relative text-3xl font-bold text-gray-800 mb-2">
+                        Our Projects
+                    </h2>
+                    <div class="w-24 h-1 bg-green-500 rounded-full"></div>
+                </div>
+    
+                <!-- Animated paragraph section -->
+                <div class="max-w-4xl mx-auto text-center mb-10 mt-4" data-aos="fade-in" data-aos-delay="300" data-aos-duration="1500" data-aos-easing="ease-in-out">
+                    <p class="text-lg text-gray-600 mb-8 leading-relaxed">
+                        At <span class="font-bold">NXGEN INVENTORS</span>, we take pride in the websites and development projects we've crafted for our clients. From sleek e-commerce platforms to bespoke CMS solutions, our team combines expertise and creativity to deliver unique digital experiences that drive success.
+                    </p>
+                </div>
+            </div>
+    
+            <!-- Animated Filter Buttons -->
+            <div class="flex flex-wrap justify-center gap-4 mb-16" data-aos="fade-right" data-aos-delay="200" data-aos-duration="1500" data-aos-easing="ease-in-out">
+                <template x-for="category in [ 'all',  'Engineering', 'Software', 'Manufacturing']" :key="category">
+                    <button @click="filterByCategory(category)" 
+                            :class="{ 'bg-green-600 text-white': currentFilter === category, 'bg-white text-green-600': currentFilter !== category }" 
+                            class="px-8 py-3 rounded-xl shadow-lg hover:shadow-xl transition duration-300 ease-in-out border-2 border-green-600 font-bold text-sm uppercase tracking-wider">
+                        <span x-text="category"></span>
+                    </button>
+                </template>
+            </div>
+    
+            <!-- Carousel Section with AOS -->
+            <div class="relative overflow-hidden" @mouseenter="handleMouseEnter" @mouseleave="handleMouseLeave">
+                <div class="flex transition-transform duration-500 ease-in-out" :style="{ transform: `translateX(-${currentIndex * (100 / cardsPerPage)}%)` }">
+                    <template x-for="(project, index) in filteredProjects" :key="project.id">
+                        <div class="w-full sm:w-1/2 lg:w-1/3 flex-shrink-0 px-4 mb-8" data-aos="fade-up" data-aos-delay="300" data-aos-duration="1500" data-aos-easing="ease-in-out">
+                            <div class="project-card bg-white rounded-2xl shadow-xl overflow-hidden transition duration-300 hover:shadow-2xl transform hover:scale-105 flex flex-col h-full">
+                                <div class="relative h-72">
+                                    <img :src="project.image" :alt="project.title" class="w-full h-full object-cover" data-aos="zoom-in">
+                                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+                                    <div class="absolute top-3 right-5">
+                                        <span class="bg-green-600 text-white rounded-xl px-4 py-1 text-xs font-bold uppercase tracking-wider mb-2 inline-block">
+                                            <span x-text="project.category"></span>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="p-6 flex flex-col flex-grow items-center text-center">
+                                    <h3 class="text-2xl font-bold mb-2 text-black" x-text="project.title"></h3>
+                                    <p class="text-gray-600 mb-6 text-lg leading-relaxed flex-grow overflow-hidden" x-text="project.description"></p>
+                                    <div class="flex flex-col items-center mt-auto">
+                                        <a href="#" class="inline-flex items-center relative px-6 py-3 rounded-lg font-bold text-sm uppercase tracking-wider bg-gradient-to-r from-green-500 via-green-600 to-green-700 text-white overflow-hidden transition-transform transform hover:scale-105 hover:shadow-lg">
+                                            <span class="relative z-10">View More</span>
+                                            <i class="fas fa-arrow-right ml-2 relative z-10 transition-transform duration-300 ease-in-out hover:translate-x-2"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </template>
+                </div>
+    
+                <!-- Navigation Arrows -->
+                <button @click="prev" class="absolute top-1/2 -left-4 transform -translate-y-1/2 bg-white text-green-600 rounded-full w-12 h-12 shadow-lg hover:shadow-xl transition duration-300 ease-in-out flex items-center justify-center">
+                    <i class="fas fa-chevron-left text-xl"></i>
+                </button>
+                <button @click="next" class="absolute top-1/2 -right-4 transform -translate-y-1/2 bg-white text-green-600 rounded-full w-12 h-12 shadow-lg hover:shadow-xl transition duration-300 ease-in-out flex items-center justify-center">
+                    <i class="fas fa-chevron-right text-xl"></i>
+                </button>
+            </div>
+    
+            <!-- Carousel Indicators -->
+            <div class="flex justify-center mt-8" data-aos="zoom-in" data-aos-delay="400">
+                <template x-for="(_, index) in Array(Math.ceil(filteredProjects.length / cardsPerPage))" :key="index">
+                    <button @click="goToSlide(index * cardsPerPage)" class="mx-1 w-4 h-4 rounded-full transition-all duration-300 ease-in-out" :class="Math.floor(currentIndex / cardsPerPage) === index ? 'bg-green-600 w-8' : 'bg-gray-300'"></button>
+                </template>
+            </div>
+        </div>
+    </section>
+    
+    <!-- <section class="py-16 px-4 sm:px-6 lg:px-8" x-data="projectData()">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-4xl font-extrabold text-center mb-12 text-gray-900">
+                <span class="bg-clip-text text-transparent bg-gradient-to-r from-green-500 to-teal-400">
+                    Our Projects
+                </span>
+            </h2>
+            
+            <div class="mb-8 flex flex-col sm:flex-row justify-between items-center">
+                <div class="w-full sm:w-1/3 mb-4 sm:mb-0">
+                    <input 
+                        type="text" 
+                        x-model="searchQuery" 
+                        @input="filterProjects"
+                        placeholder="Search projects..." 
+                        class="w-full px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-green-500 focus:border-green-500"
+                    >
+                </div>
+                <div class="w-full sm:w-1/3 flex justify-end">
+                    <select 
+                        x-model="sortOption" 
+                        @change="sortProjects"
+                        class="px-4 py-2 rounded-lg border border-gray-300 focus:ring-2 focus:ring-green-500 focus:border-green-500"
+                    >
+                        <option value="nameAsc">Name (A-Z)</option>
+                        <option value="nameDesc">Name (Z-A)</option>
+                        <option value="categoryAsc">Category (A-Z)</option>
+                        <option value="categoryDesc">Category (Z-A)</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="flex flex-wrap justify-center gap-4 mb-12">
+                <template x-for="category in ['all', ...new Set(projects.map(p => p.category))]">
+                    <button @click="filterByCategory(category)" 
+                            :class="{ 'bg-green-600 text-white': currentFilter === category, 'bg-white text-green-600': currentFilter !== category }" 
+                            class="px-6 py-2 rounded-full shadow-md hover:shadow-lg transition duration-300 ease-in-out border-2 border-green-600 font-semibold text-sm uppercase tracking-wider">
+                        <span x-text="category"></span>
+                    </button>
+                </template>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <template x-for="project in paginatedProjects" :key="project.id">
+                    <div class="project-card bg-white rounded-xl shadow-lg overflow-hidden transform transition duration-500 hover:scale-105 hover:shadow-2xl">
+                        <div class="relative">
+                            <img :src="project.image" :alt="project.title" class="w-full h-64 object-cover">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                            <span class="absolute top-4 right-4 bg-green-600 text-white rounded-full px-3 py-1 text-sm font-semibold uppercase tracking-wider">
+                                <span x-text="project.category"></span>
+                            </span>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-2xl font-bold mb-3 text-gray-900" x-text="project.title"></h3>
+                            <p class="text-gray-600 mb-4" x-text="project.description"></p>
+                            <button class="w-full bg-gradient-to-r from-green-500 to-teal-400 text-white px-6 py-3 rounded-lg font-semibold text-sm uppercase tracking-wider shadow-md hover:shadow-lg transition duration-300 ease-in-out transform hover:-translate-y-1">
+                                View Project
+                            </button>
+                        </div>
+                    </div>
+                </template>
+            </div>
+
+            <div class="mt-12 flex justify-center">
+                <nav class="relative z-0 inline-flex rounded-md shadow-sm -space-x-px" aria-label="Pagination">
+                    <button @click="prevPage" :disabled="currentPage === 1" class="relative inline-flex items-center px-2 py-2 rounded-l-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50">
+                        <span class="sr-only">Previous</span>
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <template x-for="page in totalPages" :key="page">
+                        <button @click="goToPage(page)" :class="{ 'bg-green-50 border-green-500 text-green-600': currentPage === page, 'bg-white border-gray-300 text-gray-500 hover:bg-gray-50': currentPage !== page }" class="relative inline-flex items-center px-4 py-2 border text-sm font-medium">
+                            <span x-text="page"></span>
+                        </button>
+                    </template>
+                    <button @click="nextPage" :disabled="currentPage === totalPages" class="relative inline-flex items-center px-2 py-2 rounded-r-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50">
+                        <span class="sr-only">Next</span>
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </nav>
+            </div>
+        </div>
+    </section> -->
+
+    <!-- patners -->
+    <div class="mx-auto bg-white py-10">
+        <div class="flex justify-center">
+            <h2 class="relative pb-2 mb-12 text-3xl font-bold text-gray-800">
+                Our Partners
+                <span class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-1/2 h-1 bg-green-500"></span>
+            </h2>            
+        </div> 
+        <div class="logos-container p-4" data-aos="fade-up">
+            <div class="logos-scroll">
+                <div class="logo-item" data-aos="fade-right"><img src="https://1000logos.net/wp-content/uploads/2020/04/TomTom-Logo-1.png" alt="Company 1"></div>
+                <div class="logo-item" data-aos="fade-right" data-aos-delay="100"><img src="https://1000logos.net/wp-content/uploads/2021/05/Wipro-logo.png" alt="Company 2"></div>
+                <div class="logo-item" data-aos="fade-right" data-aos-delay="100"><img src="https://1000logos.net/wp-content/uploads/2016/10/Apple-Logo.png" alt="Company 3"></div>
+                <div class="logo-item" data-aos="fade-right" data-aos-delay="100"><img src="https://1000logos.net/wp-content/uploads/2016/10/Amazon-Logo.png" alt="Company 4"></div>
+                <div class="logo-item" data-aos="fade-right" data-aos-delay="100"><img src="https://1000logos.net/wp-content/uploads/2024/04/Apogee-Electronics-Logo.png" alt="Company 5"></div>
+                <div class="logo-item" data-aos="fade-right" data-aos-delay="100"><img src="https://1000logos.net/wp-content/uploads/2020/08/TCL-Logo-500x313.png" alt="Company 6"></div>
+                <div class="logo-item" data-aos="fade-right" data-aos-delay="100"><img src="https://1000logos.net/wp-content/uploads/2016/10/Bosch-Logo.png" alt="Company 7"></div>
+                <div class="logo-item" data-aos="fade-right" data-aos-delay="100"><img src="https://1000logos.net/wp-content/uploads/2017/04/Oracle-Logo-1-500x281.png" alt="Company 8"></div>
+                <div class="logo-item" data-aos="fade-right" data-aos-delay="100"><img src="https://1000logos.net/wp-content/uploads/2023/07/SAP-Logo-500x281.png" alt="Company 9"></div>
+                <div class="logo-item" data-aos="fade-right" data-aos-delay="100"><img src="https://1000logos.net/wp-content/uploads/2022/08/Myntra-Logo.png" alt="Company 10"></div>
+                <!-- Duplicate logos for seamless loop -->
+                <div class="logo-item" data-aos="fade-right"><img src="https://1000logos.net/wp-content/uploads/2020/04/TomTom-Logo-1.png" alt="Company 1"></div>
+                <div class="logo-item" data-aos="fade-right" data-aos-delay="100"><img src="https://1000logos.net/wp-content/uploads/2021/05/Wipro-logo.png" alt="Company 2"></div>
+                <div class="logo-item" data-aos="fade-right" data-aos-delay="100"><img src="https://1000logos.net/wp-content/uploads/2016/10/Apple-Logo.png" alt="Company 3"></div>
+                <div class="logo-item" data-aos="fade-right" data-aos-delay="100"><img src="https://1000logos.net/wp-content/uploads/2016/10/Amazon-Logo.png" alt="Company 4"></div>
+                <div class="logo-item" data-aos="fade-right" data-aos-delay="100"><img src="https://1000logos.net/wp-content/uploads/2024/04/Apogee-Electronics-Logo.png" alt="Company 5"></div>
+                <div class="logo-item" data-aos="fade-right" data-aos-delay="100"><img src="https://1000logos.net/wp-content/uploads/2020/08/TCL-Logo-500x313.png" alt="Company 6"></div>
+                <div class="logo-item" data-aos="fade-right" data-aos-delay="100"><img src="https://1000logos.net/wp-content/uploads/2016/10/Bosch-Logo.png" alt="Company 7"></div>
+                <div class="logo-item" data-aos="fade-right" data-aos-delay="100"><img src="https://1000logos.net/wp-content/uploads/2017/04/Oracle-Logo-1-500x281.png" alt="Company 8"></div>
+                <div class="logo-item" data-aos="fade-right" data-aos-delay="100"><img src="https://1000logos.net/wp-content/uploads/2023/07/SAP-Logo-500x281.png" alt="Company 9"></div>
+                <div class="logo-item" data-aos="fade-right" data-aos-delay="100"><img src="https://1000logos.net/wp-content/uploads/2022/08/Myntra-Logo.png" alt="Company 10"></div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-[#00353E] text-white pt-16 pb-8">
+        <div class="container mx-auto px-4" data-aos="fade-up">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+                <div class="space-y-8" data-aos="fade-right">
+                    <h2 class="text-2xl font-semibold border-b-2 border-teal-400 pb-2 inline-block">Browse</h2>
+                    <ul class="space-y-3" data-aos="fade-up">
+                        <li><a href="/about-us.html" class="hover:text-teal-400 transition duration-300">About us</a></li>
+                        <li><a href="/careers.html" class="hover:text-teal-400 transition duration-300">Careers</a></li>
+                        <li><a href="/our-people.html" class="hover:text-teal-400 transition duration-300">Our
+                                People</a></li>
+                        <li><a href="/products/iot-platform.html"
+                                class="hover:text-teal-400 transition duration-300">IoT Platform</a></li>
+                        <li><a href="/products/realty-app.html"
+                                class="hover:text-teal-400 transition duration-300">Realty App</a></li>
+                    </ul>
+                </div>
+                <div class="space-y-8" data-aos="fade-right">
+                    <h2 class="text-2xl font-semibold border-b-2 border-teal-400 pb-2 inline-block">Our Services</h2>
+                    <ul class="space-y-3">
+                        <li><a href="/" class="hover:text-teal-400 transition duration-300">Software Solutions</a></li>
+                        <li><a href="/services/engineering/"
+                                class="hover:text-teal-400 transition duration-300">Engineering Services</a></li>
+                        <li><a href="/services/manufacturing/"
+                                class="hover:text-teal-400 transition duration-300">Manufacturing Services</a></li>
+                        <li><a href="/services/staffing-solutions/"
+                                class="hover:text-teal-400 transition duration-300">Staffing Solutions</a></li>
+                        <li><a href="/services/staffing-solutions/"
+                                class="hover:text-teal-400 transition duration-300">Training</a></li>
+                    </ul>
+                </div>
+                <div class="space-y-8" data-aos="fade-right">
+                    <h2 class="text-2xl font-semibold border-b-2 border-teal-400 inline-block">Locate Us</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-1 gap-6">
+                        <div class="space-y-4">
+                            <img src="/src/images/footer-logo/temple.svg" alt="Temple" class="h-12">
+                            <div class="flex items-center space-x-2">
+                                <img src="/src/images/footer-logo/india-flag.svg" alt="India Flag" class="w-6">
+                                <h3 class="text-xl font-semibold">INDIA</h3>
+                            </div>
+                            <div class="text-sm space-y-1">
+                                <!-- Address Section -->
+                                <div class="space-y-1">
+                                    <p>P-69, Brindavana Layout,</p>
+                                    <p>Basavanapura, K.R.Puram,</p>
+                                    <p>Bangalore-560049, KA.</p>
+                                </div>
+
+                                <!-- Phone Section -->
+                                <div class="font-semibold">
+                                    <p>PH:</p>
+                                    <div class="ml-4 space-y-1">
+                                        <p>+91-89258 58615</p>
+                                        <p>+91 080 4218 3021</p>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="flex items-center">
+                                <div class="flex-grow border-t border-gray-400"></div>
+                                <div class="mx-4 text-gray-400">•</div>
+                                <div class="flex-grow border-t border-gray-400"></div>
+                            </div>
+                            <div class="space-y-2 text-sm">
+                                <p>MIG-171, New housing board,</p>
+                                <p>Krishnagiri - 635 001, TN</p>
+                                <p class="font-semibold">PH: +91 89258 58614</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="space-y-3">
+                    <h2 class="text-2xl text-white font-bold uppercase">NX GEN Inventors</h2>
+                    <!-- <div class="flex flex-wrap justify-left gap-4">
+                        <a href="#" class="flex items-center justify-center text-white hover:text-green-600 transition-colors duration-300">
+                            <div class="bg-white rounded-full p-3 sm:p-4 hover:bg-green-600 flex items-center justify-center w-12 h-12 sm:w-10 sm:h-10 md:w-10 md:h-10 transform hover:scale-110 transition-transform duration-300">
+                                <i class="fab fa-facebook-f text-xl text-black hover:text-white"></i>
+                            </div>
+                        </a>
+                        <a href="#" class="flex items-center justify-center text-black hover:text-green-400 transition-colors duration-300">
+                            <div class="bg-white rounded-full p-3 sm:p-4 hover:bg-green-600 flex items-center justify-center w-12 h-12 sm:w-10 sm:h-10 md:w-10 md:h-10 transform hover:scale-110 transition-transform duration-300">
+                                <i class="fab fa-twitter text-xl text-black hover:text-white"></i>
+                            </div>
+                        </a>
+                        <a href="#" class="flex items-center justify-center text-black hover:text-pink-500 transition-colors duration-300">
+                            <div class="bg-white rounded-full p-3 sm:p-4 hover:bg-red-600 flex items-center justify-center w-12 h-12 sm:w-10 sm:h-10 md:w-10 md:h-10 transform hover:scale-110 transition-transform duration-300">
+                                <i class="fab fa-instagram text-xl text-black hover:text-white"></i>
+                            </div>
+                        </a>
+                        <a href="#" class="flex items-center justify-center text-black hover:text-pink-500 transition-colors duration-300">
+                            <div class="bg-white rounded-full p-3 sm:p-4 hover:bg-gray-900 flex items-center justify-center w-12 h-12 sm:w-10 sm:h-10 md:w-10 md:h-10 transform hover:scale-110 transition-transform duration-300">
+                                <i class="fab fa-github text-xl text-black hover:text-white"></i>
+                            </div>
+                        </a>
+                        <a href="#" class="flex items-center justify-center text-black hover:text-green-600 transition-colors duration-300">
+                            <div class="bg-white rounded-full p-3 sm:p-4 hover:bg-green-600 flex items-center justify-center w-12 h-12 sm:w-10 sm:h-10 md:w-10 md:h-10 transform hover:scale-110 transition-transform duration-300">
+                                <i class="fab fa-linkedin-in text-xl text-black hover:text-white"></i>
+                            </div>
+                        </a>
+                    </div> -->
+                    <div class="w-full md:w-auto">
+                        <div class="flex space-x-4">
+                            <a href="#"
+                                class="w-12 h-12 bg-gray-800 rounded-full flex items-center justify-center hover:bg-green-500 transition duration-300">
+                                <svg class="h-6 w-6 text-white" fill="currentColor" viewBox="0 0 24 24"
+                                    aria-hidden="true">
+                                    <path fill-rule="evenodd"
+                                        d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"
+                                        clip-rule="evenodd" />
+                                </svg>
+                            </a>
+                            <a href="#"
+                                class="w-12 h-12 bg-gray-800 rounded-full flex items-center justify-center hover:bg-green-500 transition duration-300">
+                                <svg class="h-6 w-6 text-white" fill="currentColor" viewBox="0 0 24 24"
+                                    aria-hidden="true">
+                                    <path
+                                        d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" />
+                                </svg>
+                            </a>
+                            <a href="#"
+                                class="w-12 h-12 bg-gray-800 rounded-full flex items-center justify-center hover:bg-pink-500 transition duration-300">
+                                <i class="fa-brands fa-instagram text-white text-2xl"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-teal-700 pt-8 mt-8">
+                <div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+                    <div class="text-sm text-gray-300">
+                        © 2022 <a href="https://nxgeninventors.com/"
+                            class="hover:text-white transition-colors duration-300">Nx Gen Inventors™</a>. All Rights
+                        Reserved.
+                    </div>
+                    <div class="flex space-x-4 text-sm text-gray-300">
+                        <a href="#" class="hover:text-white transition-colors duration-300">Terms & Conditions</a>
+                        <a href="#" class="hover:text-white transition-colors duration-300">Privacy Policy</a>
+                        <a href="#" class="hover:text-white transition-colors duration-300">Cookie Policy</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </footer>
+
+    <script>
+        const carousel = document.querySelector('.carousel-slide');
+        const slides = document.querySelectorAll('.carousel-slide .service-card');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+        let currentIndex = 1;  
+        const totalSlides = slides.length;
+
+        const firstClone = slides[0].cloneNode(true);
+        const lastClone = slides[slides.length - 1].cloneNode(true);
+
+        carousel.appendChild(firstClone);
+        carousel.prepend(lastClone);
+
+        const updatedTotalSlides = totalSlides + 2;
+
+        function getVisibleSlides() {
+            if (window.innerWidth >= 1024) return 3;
+            if (window.innerWidth >= 768) return 2;
+            return 1;
+        }
+
+        function updateCarousel() {
+            const visibleSlides = getVisibleSlides();
+            const offset = (currentIndex * (100 / visibleSlides)); 
+            carousel.style.transition = 'transform 0.5s ease-in-out';
+            carousel.style.transform = `translateX(-${offset}%)`;
+        }
+
+        function nextSlide() {
+            if (currentIndex >= totalSlides) {
+                currentIndex = 1;
+                carousel.style.transition = 'none';  
+                setTimeout(() => {
+                    carousel.style.transition = 'transform 0.5s ease-in-out'; 
+                    currentIndex++;
+                    updateCarousel();
+                }, 10);
+            } else {
+                currentIndex++;
+                updateCarousel();
+            }
+        }
+
+        function prevSlide() {
+            if (currentIndex <= 0) {
+                currentIndex = totalSlides;
+                carousel.style.transition = 'none'; 
+                updateCarousel();
+                setTimeout(() => {
+                    carousel.style.transition = 'transform 0.5s ease-in-out'; 
+                    currentIndex--;
+                    updateCarousel();
+                }, 10);
+            } else {
+                currentIndex--;
+                updateCarousel();
+            }
+        }
+
+        nextBtn.addEventListener('click', nextSlide);
+        prevBtn.addEventListener('click', prevSlide);
+        window.addEventListener('resize', updateCarousel);
+
+        // Auto-carousel every 10 seconds
+        setInterval(nextSlide, 10000);
+
+        // Initial update to set the position
+        updateCarousel();
+    </script>
+
+    <script>
+        document.querySelector('#mobile-menu-toggler').addEventListener('click', () => {
+            document.querySelector('#mega-menu').classList.toggle('hidden');
+        });
+
+        document.querySelectorAll('.pri-menu button').forEach(btn => {
+            btn.addEventListener('click', () => {
+                btn.classList.toggle('open');
+                btn.nextElementSibling.classList.toggle('hidden');
+            });
+        });
+    </script>
+
+    <!-- slides -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const slides = document.querySelectorAll('.slide');
+            const indicators = document.querySelectorAll('.text-indicator');
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            const sliderIndicators = document.getElementById('sliderIndicators');
+            let currentSlide = 0;
+            let interval;
+
+            function showSlide(index) {
+                slides.forEach((slide, i) => {
+                    slide.style.opacity = i === index ? '1' : '0';
+                    slide.style.zIndex = i === index ? '1' : '0';
+                });
+                indicators.forEach((indicator, i) => {
+                    if (i === index) {
+                        indicator.classList.add('active');
+                        indicator.querySelector('.loading-bar').style.width = '0';
+                        setTimeout(() => {
+                            indicator.querySelector('.loading-bar').style.width = '100%';
+                        }, 50);
+                    } else {
+                        indicator.classList.remove('active');
+                        indicator.querySelector('.loading-bar').style.width = '0';
+                    }
+                });
+            }
+
+            function resetProgressBar() {
+                indicators.forEach(indicator => {
+                    indicator.querySelector('.loading-bar').style.width = '0';
+                });
+            }
+
+            function nextSlide() {
+                currentSlide = (currentSlide + 1) % slides.length;
+                showSlide(currentSlide);
+            }
+
+            function prevSlide() {
+                currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+                showSlide(currentSlide);
+            }
+
+            function startAutoSlide() {
+                interval = setInterval(nextSlide, 8000);
+            }
+
+            function stopAutoSlide() {
+                clearInterval(interval);
+            }
+
+            nextBtn.addEventListener('click', () => {
+                stopAutoSlide();
+                nextSlide();
+                startAutoSlide();
+            });
+
+            prevBtn.addEventListener('click', () => {
+                stopAutoSlide();
+                prevSlide();
+                startAutoSlide();
+            });
+
+            indicators.forEach((indicator, index) => {
+                indicator.addEventListener('click', () => {
+                    stopAutoSlide();
+                    currentSlide = index;
+                    showSlide(currentSlide);
+                    startAutoSlide();
+                });
+            });
+
+            showSlide(currentSlide);
+            startAutoSlide();
+        });
+    </script>
+
+    <!-- our projects  -->
+    <script>
+        function projectCarousel() {
+            return {
+                projects: [
+                    { id: 1, title: "Smart Factory Automation", description: "Revolutionary IoT-based system for streamlining manufacturing processes.", category: "Manufacturing", image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" },
+                    { id: 2, title: "AI-Powered Predictive Maintenance", description: "Machine learning algorithms to predict and prevent equipment failures.", category: "Engineering", image: "https://images.unsplash.com/photo-1581092334651-ddf26d9a09d0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" },
+                    { id: 3, title: "Cloud-Based ERP Solution", description: "Scalable and integrated enterprise resource planning software.", category: "Software", image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1472&q=80" },
+                    { id: 4, title: "Robotic Process Automation", description: "Automating repetitive tasks to increase efficiency and reduce errors.", category: "Engineering", image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" },
+                    { id: 5, title: "Advanced Analytics Dashboard", description: "Real-time data visualization for informed decision-making.", category: "Software", image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" },
+                    { id: 6, title: "Manufacturing Solutions", description: "Real-time data visualization for informed decision-making.", category: "Manufacturing", image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" },
+                    { id: 7, title: "3D Printing Innovation", description: "Cutting-edge additive manufacturing for rapid prototyping.", category: "Engineering", image: "https://images.unsplash.com/photo-1581092160607-ee22621dd758?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" },
+                    { id: 8, title: "Cybersecurity Framework", description: "Comprehensive security solutions for industrial control systems.", category: "Software", image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" },
+                    { id: 9, title: "Lean Manufacturing Implementation", description: "Optimizing production processes to eliminate waste and improve efficiency.", category: "Manufacturing", image: "https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" },
+                ],
+                currentFilter: 'all',
+                currentIndex: 0,
+                autoScrollInterval: null,
+                isHovered: false,
+                get filteredProjects() {
+                    return this.currentFilter === 'all' 
+                        ? this.projects 
+                        : this.projects.filter(p => p.category.toLowerCase() === this.currentFilter.toLowerCase());
+                },
+                get cardsPerPage() {
+                    return window.innerWidth >= 1024 ? 3 : window.innerWidth >= 640 ? 2 : 1;
+                },
+                filterByCategory(category) {
+                    this.currentFilter = category;
+                    this.currentIndex = 0;
+                },
+                next() {
+                    if (this.currentIndex < this.filteredProjects.length - this.cardsPerPage) {
+                        this.currentIndex += this.cardsPerPage;
+                    } else {
+                        this.currentIndex = 0;
+                    }
+                },
+                prev() {
+                    if (this.currentIndex > 0) {
+                        this.currentIndex -= this.cardsPerPage;
+                    } else {
+                        this.currentIndex = Math.max(0, this.filteredProjects.length - this.cardsPerPage);
+                    }
+                },
+                goToSlide(index) {
+                    this.currentIndex = index;
+                },
+                startAutoScroll() {
+                    this.stopAutoScroll(); // Clear any existing interval
+                    if (!this.isHovered) {
+                        this.autoScrollInterval = setInterval(() => {
+                            if (!this.isHovered) {
+                                this.next();
+                            }
+                        }, 5000);
+                    }
+                },
+                stopAutoScroll() {
+                    if (this.autoScrollInterval) {
+                        clearInterval(this.autoScrollInterval);
+                        this.autoScrollInterval = null;
+                    }
+                },
+                handleMouseEnter() {
+                    this.isHovered = true;
+                    this.stopAutoScroll();
+                },
+                handleMouseLeave() {
+                    this.isHovered = false;
+                    this.startAutoScroll();
+                },
+                init() {
+                    this.startAutoScroll();
+                    window.addEventListener('resize', () => {
+                        this.currentIndex = Math.floor(this.currentIndex / this.cardsPerPage) * this.cardsPerPage;
+                    });
+                }
+                }
+                }
+    </script>
+    <!-- <script>
+        function projectData() {
+            return {
+                projects: [...Array(50)].map((_, i) => ({
+                    id: i + 1,
+                    title: `Project ${i + 1}`,
+                    description: `Description for Project ${i + 1}. This is a sample project showcasing our capabilities.`,
+                    category: ['Engineering', 'Software', 'Manufacturing'][Math.floor(Math.random() * 3)],
+                    image: `https://source.unsplash.com/random/800x600?sig=${i}`
+                })),
+                currentFilter: 'all',
+                searchQuery: '',
+                sortOption: 'nameAsc',
+                currentPage: 1,
+                itemsPerPage: 9,
+                filteredProjects: [],
+                init() {
+                    this.filterProjects();
+                },
+                get paginatedProjects() {
+                    const start = (this.currentPage - 1) * this.itemsPerPage;
+                    const end = start + this.itemsPerPage;
+                    return this.filteredProjects.slice(start, end);
+                },
+                get totalPages() {
+                    return Math.ceil(this.filteredProjects.length / this.itemsPerPage);
+                },
+                filterProjects() {
+                    this.filteredProjects = this.projects.filter(project => {
+                        const matchesFilter = this.currentFilter === 'all' || project.category.toLowerCase() === this.currentFilter.toLowerCase();
+                        const matchesSearch = project.title.toLowerCase().includes(this.searchQuery.toLowerCase()) ||
+                                              project.description.toLowerCase().includes(this.searchQuery.toLowerCase()) ||
+                                              project.category.toLowerCase().includes(this.searchQuery.toLowerCase());
+                        return matchesFilter && matchesSearch;
+                    });
+                    this.sortProjects();
+                    this.currentPage = 1;
+                },
+                filterByCategory(category) {
+                    this.currentFilter = category;
+                    this.filterProjects();
+                },
+                sortProjects() {
+                    const sortFunctions = {
+                        nameAsc: (a, b) => a.title.localeCompare(b.title),
+                        nameDesc: (a, b) => b.title.localeCompare(a.title),
+                        categoryAsc: (a, b) => a.category.localeCompare(b.category),
+                        categoryDesc: (a, b) => b.category.localeCompare(a.category)
+                    };
+                    this.filteredProjects.sort(sortFunctions[this.sortOption]);
+                },
+                prevPage() {
+                    if (this.currentPage > 1) {
+                        this.currentPage--;
+                    }
+                },
+                nextPage() {
+                    if (this.currentPage < this.totalPages) {
+                        this.currentPage++;
+                    }
+                },
+                goToPage(page) {
+                    this.currentPage = page;
+                }
+            }
+        }
+    </script> -->
+
+    <!-- services -->
+    <script>
+        function carouselData() {
+            return {
+                currentIndex: 0,
+                visibleCards: 3,
+                autoScrollInterval: null,
+                isHovered: false,
+                services: [
+                    {
+                        title: "Software Services",
+                        shortDesc: "Innovate. Create. Elevate.",
+                        description: "Expert software solutions that ensure scalability and drive your business forward.",
+                        image: "https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                        features: [
+                            "Custom software solutions",
+                            "Web and mobile app development",
+                            "Cloud-based applications",
+                            "API integration services"
+                        ]
+                    },
+                    {
+                        title: "Engineering Services",
+                        shortDesc: "Design. Build. Optimize.",
+                        description: "Expert engineering that drives innovation from concept to production",
+                        image: "https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                        features: [
+                            "Product design and prototyping",
+                            "3D modeling and simulation",
+                            "Structural analysis",
+                            "Automation solutions"
+                        ]
+                    },
+                    {
+                        title: "Manufacturing Services",
+                        shortDesc: "Produce. Refine. Deliver.",
+                        description: "We bring your ideas to life with cutting-edge manufacturing techniques and quality control processes.",
+                        image: "https://img.freepik.com/free-photo/flat-lay-circuit-board-close-up_23-2149174363.jpg?ga=GA1.1.415415411.1725936376&semt=ais_hybrid",
+                        features: [
+                            "Precision manufacturing",
+                            "Assembly and packaging",
+                            "Quality control",
+                            "Supply chain management"
+                        ]
+                    },
+                    {
+                        title: "Training Solutions",
+                        shortDesc: "Learn. Grow. Excel.",
+                        description: "Empower your team with our comprehensive training programs, tailored to your industry needs.",
+                        image: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                        features: [
+                            "Technical skills development",
+                            "Leadership training",
+                            "Customized workshops",
+                            "E-learning platforms"
+                        ]
+                    },
+                    {
+                        title: "Staffing Solutions",
+                        shortDesc: "Connect. Empower. Achieve.",
+                        description: "Find the right talent to drive your business forward with our expert staffing services.",
+                        image: "https://images.unsplash.com/photo-1521737711867-e3b97375f902?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+                        features: [
+                            "IT and engineering recruitment",
+                            "Contract-to-hire options",
+                            "Executive search",
+                            "Skill assessment and matching"
+                        ]
+                    }
+                ],
+                init() {
+                    this.updateVisibleCards();
+                    window.addEventListener('resize', this.updateVisibleCards.bind(this));
+                    this.startAutoScroll();
+                },
+                startAutoScroll() {
+                    if (!this.isHovered) {
+                        this.autoScrollInterval = setInterval(() => {
+                            this.next();
+                        }, 5000);
+                    }
+                },
+                stopAutoScroll() {
+                    clearInterval(this.autoScrollInterval);
+                },
+                pauseAutoScroll() {
+                    this.isHovered = true;
+                    this.stopAutoScroll();
+                },
+                resumeAutoScroll() {
+                    this.isHovered = false;
+                    this.startAutoScroll();
+                },
+                next() {
+                    this.currentIndex = (this.currentIndex + 1) % (this.services.length - this.visibleCards + 1);
+                    this.resetAutoScroll();
+                },
+                prev() {
+                    this.currentIndex = (this.currentIndex - 1 + (this.services.length - this.visibleCards + 1)) % (this.services.length - this.visibleCards + 1);
+                    this.resetAutoScroll();
+                },
+                resetAutoScroll() {
+                    this.stopAutoScroll();
+                    this.startAutoScroll();
+                },
+                updateVisibleCards() {
+                    if (window.innerWidth < 640) {
+                        this.visibleCards = 1;
+                    } else if (window.innerWidth < 1024) {
+                        this.visibleCards = 2;
+                    } else {
+                        this.visibleCards = 3;
+                    }
+                }
+            };
+        }
+    </script>
+
+    <!-- patners -->
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            const logos = document.querySelectorAll('.logos-slide img');
+            logos.forEach(logo => {
+                logo.addEventListener('mouseenter', () => {
+                    logo.style.transform = 'scale(1.1)';
+                    logo.style.transition = 'transform 1s ease';
+                });
+                logo.addEventListener('mouseleave', () => {
+                    logo.style.transform = 'scale(1)';
+                });
+            });
+        });
+    </script>
+
+    <script>
+        AOS.init({
+        duration: 1500,   // Animation duration in milliseconds
+        once: false,      // Allow animations to happen every time the section comes into view
+        easing: 'ease-in-out', // Use smooth easing effect
+        delay: 200,       // Add a slight delay to stagger animations
+        offset: 200       // Offset before the animation starts
+        });
+    </script>
+
+    <script>
+          function animateValue(obj, start, end, duration) {
+            let startTimestamp = null;
+            const step = (timestamp) => {
+                if (!startTimestamp) startTimestamp = timestamp;
+                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                obj.innerHTML = Math.floor(progress * (end - start) + start);
+                if (progress < 1) {
+                    window.requestAnimationFrame(step);
+                }
+            };
+            window.requestAnimationFrame(step);
+        }
+
+        function isElementInViewport(el) {
+            const rect = el.getBoundingClientRect();
+            return (
+                rect.top >= 0 &&
+                rect.left >= 0 &&
+                rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+                rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+            );
+        }
+
+        const statCards = document.querySelectorAll('.stat-card');
+        let animated = false;
+
+        function checkScroll() {
+            if (isElementInViewport(statCards[0]) && !animated) {
+                animated = true;
+                statCards.forEach((card) => {
+                    const numberElement = card.querySelector('[id]');
+                    const id = numberElement.id;
+                    let endValue;
+                    switch(id) {
+                        case 'clientsServed':
+                            endValue = 500;
+                            break;
+                        case 'projectsCompleted':
+                            endValue = 1000;
+                            break;
+                        case 'teamMembers':
+                            endValue = 250;
+                            break;
+                        case 'globalOffices':
+                            endValue = 20;
+                            break;
+                    }
+                    animateValue(numberElement, 0, endValue, 2000);
+                });
+            }
+        }
+
+        window.addEventListener('scroll', checkScroll);
+        window.addEventListener('resize', checkScroll);
+        checkScroll();
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+  
+</body>
+
+</html>
