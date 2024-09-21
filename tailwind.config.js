@@ -4,21 +4,22 @@ module.exports = {
   purge: ['./src/**/*.{js,jsx,ts,tsx,html}'],
   theme: {
     extend: {
-      animation: {
-        'spin-slow': 'spin 3s linear infinite',
-        'bounce-slow': 'bounce 3s infinite',
+      colors: {
+        primary: '#FC7632',
+        secondary: '#3f444b',
       },
-      keyframes: {
-        'loop-scroll': {
-          from: { transform: 'translateX(0)' },
-          to: { transform: 'translateX(-100%)' },
-        }
-      } 
-    },
-    colors: {
-      'blue-500': '#3B82F6',
-      'pink-500': '#EC4899',
-      'gray-800': '#1F2937',
+      screens: {
+        'custom': '1440px',
+      },
+      fontFamily: {
+          'glimser': ['Glimser', 'sans-serif'],
+      },
+      height: {
+        '60': '240px',
+      },
+      width: {
+          '125': '500px',
+      },
     },
   },
   plugins: [],

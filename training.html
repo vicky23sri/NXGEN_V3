@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NX GEN INVENTORS</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    screens: {
+                        'custom': '1440px',
+                    },
+                    fontFamily: {
+                        'glimser': ['Glimser', 'sans-serif'],
+                    },
+                },
+            },
+        }
+    </script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.2/min/tiny-slider.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.2/tiny-slider.css">
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="/src/css/index.css">
+    <link rel="stylesheet" href="/src/css/traing.css">
+</head>
+<body class="font-glimser">
+    <header x-data="{ 
+        isMenuOpen: false,
+        activeSubmenu: null,
+        toggleMenu() { this.isMenuOpen = !this.isMenuOpen; },
+        toggleSubmenu(index) { this.activeSubmenu = this.activeSubmenu === index ? null : index; }
+    }">
+        <div class="mx-auto bg-white shadow-xl py-3 px-4 sm:px-6 custom:px-20">
+            <div class="flex justify-between items-center">
+                <div class="logo">
+                    <a href="/index.html">
+                        <img class="w-[180px]" src="./src/images/logo-green-s.svg" alt="Logo">
+                    </a>
+                </div>
+                <button @click="toggleMenu" 
+                        class="custom:hidden z-50 relative focus:outline-none w-10 h-10 flex items-center justify-center"
+                        aria-label="Toggle menu">
+                    <span class="sr-only">Open main menu</span>
+                    <div class="w-5 h-5 flex items-center justify-center relative">
+                        <span class="block absolute h-0.5 w-5 bg-gray-600 transform transition duration-500 ease-in-out"
+                            :class="{'rotate-45': isMenuOpen, '-translate-y-1.5': !isMenuOpen }"></span>
+                        <span class="block absolute h-0.5 w-5 bg-gray-600 transform transition duration-500 ease-in-out"
+                            :class="{'opacity-0': isMenuOpen }"></span>
+                        <span class="block absolute h-0.5 w-5 bg-gray-600 transform transition duration-500 ease-in-out"
+                            :class="{'-rotate-45': isMenuOpen, 'translate-y-1.5': !isMenuOpen}"></span>
+                    </div>
+                </button>
+                <div class="hidden custom:flex items-center space-x-14"> 
+                    <nav class="flex space-x-14"> 
+                        <template x-for="(item, index) in [
+                            { title: 'Company', link: '#', submenu: [
+                                { title: 'About Us', link: '/about-us.html' },
+                                { title: 'Careers', link: '/careers.html' },
+                                { title: 'Leadership', link: '/leadership.html' },
+                                { title: 'Clients', link: '/clients.html' }
+                            ]},
+                            { title: 'Industry', link: '#', submenu: [
+                                { title: 'Automotive', link: '/industry/automotive.html' },
+                                { title: 'Mining and Metals', link: '/industry/mining.html' },
+                                { title: 'Transportation', link: '/industry/transportation.html' },
+                                { title: 'Renewable Energy', link: '/industry/renewable-energy.html' },
+                                { title: 'Medical', link: '/industry/medical.html' },
+                                { title: 'Fintech', link: '/industry/fintech.html' },
+                                { title: 'Real Estate & Property Management', link: '/industry/real-estate.html' }
+                            ]},
+                            { title: 'Engineering', link: '#', submenu: [
+                                { title: 'Electronics', link: '/engineering/electronics.html' },
+                                { title: 'Mechanical', link: '/engineering/mechanical.html' },
+                                { title: 'PCB & CAD', link: '/engineering/pcb-cad.html' },
+                                { title: 'IoT Products', link: '/engineering/iot-products.html' },
+                                { title: 'Manufacturing', link: '/engineering/manufacturing.html' }
+                            ]},
+                            { title: 'Software', link: '/software.html', submenu: [] },
+                            { title: 'Staffing', link: '/staffing.html', submenu: [] },
+                            { title: 'Training', link: '/training.html', submenu: [] }
+                        ]">
+                            <div class="relative group" 
+                                    @mouseenter="activeSubmenu = index" 
+                                    @mouseleave="activeSubmenu = null">
+                                <a :href="item.link" class="text-gray-500 group-hover:text-gray-900 font-bold flex items-center">
+                                    <span x-text="item.title"></span>
+                                    <svg x-show="item.submenu.length > 0" class="w-2.5 h-2.5 ml-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4" />
+                                    </svg>
+                                </a>
+                                <div x-show="item.submenu.length > 0 && activeSubmenu === index" 
+                                        x-transition:enter="transition ease-out duration-200"
+                                        x-transition:enter-start="opacity-0 transform scale-95"
+                                        x-transition:enter-end="opacity-100 transform scale-100"
+                                        x-transition:leave="transition ease-in duration-150"
+                                        x-transition:leave-start="opacity-100 transform scale-100"
+                                        x-transition:leave-end="opacity-0 transform scale-95"
+                                        class="absolute left-0 mt-[26px] w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none z-50"
+                                        role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
+                                    <div class="py-1" role="none">
+                                        <template x-for="subItem in item.submenu">
+                                            <a :href="subItem.link" 
+                                                class="block px-4 py-2 text-sm text-gray-700 hover:bg-green-600 hover:text-white"
+                                                role="menuitem" 
+                                                tabindex="-1"
+                                                x-text="subItem.title"></a>
+                                        </template>
+                                    </div>
+                                </div>
+                            </div>
+                        </template>
+                    </nav>
+                    <div class="flex flex-col space-y-2"> 
+                        <a href="tel:+918042183021" class="flex items-center text-gray-500 hover:text-gray-900 font-bold">
+                            <i class="fas fa-phone text-green-600 text-xl mr-3"></i>
+                            <span>+91-80 4218 3021</span>
+                        </a>
+                        <a href="mailto:support@nxgeninventors.com" class="flex items-center text-gray-500 hover:text-gray-900 font-bold">
+                            <i class="fas fa-envelope text-green-600 text-xl mr-3"></i>
+                            <span>support@nxgeninventors.com</span>
+                        </a>
+                    </div>                    
+                </div>
+            </div>
+        </div>
+    
+
+        <!-- Mobile side menu -->
+        <div class="custom:hidden">
+            <!-- Background Overlay -->
+            <div class="fixed inset-0 bg-gray-800 bg-opacity-75 z-40 transition-opacity duration-300 ease-in-out"
+                 :class="{'opacity-100': isMenuOpen, 'opacity-0 pointer-events-none': !isMenuOpen}"
+                 @click="isMenuOpen = false">
+            </div>
+            <!-- Mobile Menu -->
+            <div class="fixed inset-y-0 right-0 max-w-lg w-full bg-white shadow-xl z-50 overflow-y-auto transform transition-transform duration-300 ease-in-out"
+                 :class="{'translate-x-0': isMenuOpen, 'translate-x-full': !isMenuOpen}">
+                <!-- Close Button at the Top Right -->
+                <div class="flex justify-end p-4">
+                    <button @click="isMenuOpen = false" class="text-gray-600 hover:text-gray-900 focus:outline-none">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                    </button>
+                </div>
+                <div class="p-6">
+                    <div class="space-y-6">
+                        <template x-for="(item, index) in [
+                            { title: 'Company', submenu: ['About Us', 'Careers', 'Leadership', 'Clients'] },
+                            { title: 'Industry', submenu: ['Automotive', 'Mining and Metals', 'Transportation', 'Renewable Energy', 'Medical', 'Fintech', 'Real Estate & Property Management'] },
+                            { title: 'Engineering', submenu: ['Electronics', 'Mechanical', 'PCB & CAD', 'IoT Products', 'Manufacturing'] },
+                            { title: 'Software', submenu: ['Software'] },
+                            { title: 'Staffing', submenu: [] },
+                            { title: 'Training', submenu: [] }
+                        ]">
+                            <div>
+                                <button @click="toggleSubmenu(index)"
+                                        class="w-full text-left text-gray-900 font-bold flex justify-between items-center">
+                                    <span x-text="item.title"></span>
+                                    <svg x-show="item.submenu.length > 0" class="w-4 h-4 transform transition-transform duration-200" 
+                                         :class="{'rotate-180': activeSubmenu === index}"
+                                         xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                    </svg>
+                                </button>
+                                <div x-show="activeSubmenu === index" 
+                                     x-transition:enter="transition ease-out duration-100"
+                                     x-transition:enter-start="transform opacity-0 scale-95"
+                                     x-transition:enter-end="transform opacity-100 scale-100"
+                                     x-transition:leave="transition ease-in duration-75"
+                                     x-transition:leave-start="transform opacity-100 scale-100"
+                                     x-transition:leave-end="transform opacity-0 scale-95"
+                                     class="mt-2 space-y-2 z-1000">
+                                    <template x-for="subItem in item.submenu">
+                                        <a href="#" class="block pl-4 py-2 text-sm text-gray-600 hover:text-gray-900" x-text="subItem"></a>
+                                    </template>
+                                </div>
+                            </div>
+                        </template>
+                    </div>
+                    <div class="mt-8 space-y-4">
+                        <a href="tel:+918042183021" class="flex items-center text-gray-600 hover:text-gray-900">
+                            <i class="fas fa-phone text-green-600 text-xl mr-3"></i>
+                            <span>+91-80 4218 3021</span>
+                        </a>
+                        <a href="mailto:support@nxgeninventors.com" class="flex items-center text-gray-600 hover:text-gray-900">
+                            <i class="fas fa-envelope text-green-600 text-xl mr-3"></i>
+                            <span>support@nxgeninventors.com</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Banner -->
+    <section class="relative h-[70vh] flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <video class="object-cover w-full h-full" autoplay loop muted>
+                <source src="https://assets.mixkit.co/videos/preview/mixkit-set-of-plateaus-seen-from-the-heights-in-a-sunset-26070-large.mp4" type="video/mp4">
+            </video>
+            <div class="absolute inset-0 bg-green-900 opacity-60"></div>
+        </div>
+        <div class="relative z-10 text-center text-white px-4" data-aos="fade-up">
+            <h1 class="text-5xl md:text-7xl font-bold mb-6">Elevate Your Skills</h1>
+            <p class="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">Unlock your potential with our cutting-edge professional training programs designed for the future of work.</p>
+            <a href="#courses" class="bg-white text-green-700 px-8 py-3 rounded-full text-lg font-semibold hover:bg-green-100 transition duration-300 inline-flex items-center">
+                Explore Courses
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                </svg>
+            </a>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="py-24 bg-gray-50" id="features">
+        <div class="container mx-auto px-4">
+          <h2 class="text-4xl font-bold text-center mb-16 text-gray-900">Why Choose Our Training?</h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div class="bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300 hover:shadow-lg group" data-aos="fade-up" data-aos-delay="100">
+              <div class="p-8 flex flex-col h-full">
+                <div class="mb-6">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-blue-600 group-hover:text-blue-700 transition-colors duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                  </svg>
+                </div>
+                <h3 class="text-xl font-semibold mb-4 text-gray-800">Interactive Learning</h3>
+                <p class="text-gray-600 mb-6 flex-grow">Engage with expert instructors through live sessions and hands-on projects. Our interactive approach ensures better retention and practical application of skills.</p>
+                <a href="#" class="text-blue-600 hover:text-blue-700 font-medium transition-colors duration-300 group-hover:underline">Learn more →</a>
+              </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300 hover:shadow-lg group" data-aos="fade-up" data-aos-delay="200">
+              <div class="p-8 flex flex-col h-full">
+                <div class="mb-6">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-blue-600 group-hover:text-blue-700 transition-colors duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                  </svg>
+                </div>
+                <h3 class="text-xl font-semibold mb-4 text-gray-800">Industry Partnerships</h3>
+                <p class="text-gray-600 mb-6 flex-grow">Learn from curriculum developed in collaboration with leading companies. Stay ahead with cutting-edge industry practices and technologies.</p>
+                <a href="#" class="text-blue-600 hover:text-blue-700 font-medium transition-colors duration-300 group-hover:underline">Explore partners →</a>
+              </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300 hover:shadow-lg group" data-aos="fade-up" data-aos-delay="300">
+              <div class="p-8 flex flex-col h-full">
+                <div class="mb-6">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-blue-600 group-hover:text-blue-700 transition-colors duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+                  </svg>
+                </div>
+                <h3 class="text-xl font-semibold mb-4 text-gray-800">Certified Programs</h3>
+                <p class="text-gray-600 mb-6 flex-grow">Earn industry-recognized certifications to boost your career prospects. Our programs are designed to meet global standards and employer needs.</p>
+                <a href="#" class="text-blue-600 hover:text-blue-700 font-medium transition-colors duration-300 group-hover:underline">View certifications →</a>
+              </div>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300 hover:shadow-lg group" data-aos="fade-up" data-aos-delay="400">
+              <div class="p-8 flex flex-col h-full">
+                <div class="mb-6">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-blue-600 group-hover:text-blue-700 transition-colors duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                  </svg>
+                </div>
+                <h3 class="text-xl font-semibold mb-4 text-gray-800">Flexible Learning</h3>
+                <p class="text-gray-600 mb-6 flex-grow">Choose from a variety of learning formats including self-paced, live online, and hybrid options. Tailor your learning experience to fit your schedule and preferences.</p>
+                <a href="#" class="text-blue-600 hover:text-blue-700 font-medium transition-colors duration-300 group-hover:underline">Explore options →</a>
+              </div>
+            </div>
+          </div>
+        </div>
+    </section>  
+    <!-- Banner End -->
+
+    <section class="min-h-screen flex items-center justify-center p-4">
+        <div class="container max-w-4xl p-8 bg-white shadow-xl rounded-xl">
+            <div class="text-center mb-8">
+                <h1 class="text-4xl font-bold mb-4">Embark on Your Learning Journey</h1>
+                <p class="text-xl">Unlock your potential with our cutting-edge training programs</p>
+            </div>
+    
+            <div class="step-indicators-container mb-8" data-aos="fade-up">
+                <div class="step-indicator active" data-step="1">
+                    <span class="step-number">1</span>
+                    <span class="step-title">Personal Info</span>
+                </div>
+                <div class="step-indicator" data-step="2">
+                    <span class="step-number">2</span>
+                    <span class="step-title">Education</span>
+                </div>
+                <div class="step-indicator" data-step="3">
+                    <span class="step-number">3</span>
+                    <span class="step-title">Course</span>
+                </div>
+                <div class="step-indicator" data-step="4">
+                    <span class="step-number">4</span>
+                    <span class="step-title">Details</span>
+                </div>
+                <div class="step-connector">
+                    <div class="step-connector-progress"></div>
+                </div>
+            </div>
+    
+            <div class="mb-6">
+                <div class="flex justify-between text-sm mb-1" data-aos="fade-up">
+                    <span>Step <span id="currentStep">1</span> of 4</span>
+                    <span id="stepTitle">Personal Information</span>
+                </div>
+                <div class="w-full bg-gray-300 rounded-full h-2" data-aos="fade-up">
+                    <div id="progressBar" class="bg-blue-500 h-2 rounded-full progress-bar" style="width: 25%"></div>
+                </div>
+            </div>
+    
+            <form id="multiStepForm" class="space-y-6" data-aos="fade-up">
+                <!-- Step 1 -->
+                <div id="step1" class="space-y-4">
+                    <div>
+                        <label for="name" class="block text-sm font-medium mb-2">Name <span class="text-red-500">*</span></label>
+                        <input type="text" id="name" name="name" placeholder="Name" class="form-input w-full p-3 border rounded-lg" required>
+                        <div class="error-message" data-error="name"></div>
+                    </div>
+                    <div class="grid gap-4 md:grid-cols-2">
+                        <div>
+                            <label for="email" class="block text-sm font-medium mb-2">Email <span class="text-red-500">*</span></label>
+                            <input type="email" id="email" name="email" placeholder="Email" class="form-input w-full p-3 border rounded-lg" required>
+                            <div class="error-message" data-error="email"></div>
+                        </div>
+                        <div>
+                            <label for="phone" class="block text-sm font-medium mb-2">Phone Number (optional)</label>
+                            <input type="tel" id="phone" name="phone" placeholder="Phone Number (optional)" class="form-input w-full p-3 border rounded-lg">
+                        </div>
+                    </div>
+                    <div>
+                        <label for="address" class="block text-sm font-medium mb-2">Address (optional)</label>
+                        <input type="text" id="address" name="address" placeholder="Address (optional)" class="form-input w-full p-3 border rounded-lg">
+                    </div>
+                    <div class="grid gap-4 md:grid-cols-2">
+                        <div>
+                            <label for="city" class="block text-sm font-medium mb-2">City/Town (optional)</label>
+                            <input type="text" id="city" name="city" placeholder="City/Town (optional)" class="form-input w-full p-3 border rounded-lg">
+                        </div>
+                        <div>
+                            <label for="zipcode" class="block text-sm font-medium mb-2">Zipcode (optional)</label>
+                            <input type="text" id="zipcode" name="zipcode" placeholder="Zipcode (optional)" class="form-input w-full p-3 border rounded-lg">
+                        </div>
+                    </div>
+                </div>
+                
+    
+                <!-- Step 2 -->
+                <div id="step2" class="space-y-4 hidden">
+                    <div>
+                        <label for="name" class="block text-sm font-medium mb-2">Qualification <span class="text-red-500">*</span></label>
+                        <select name="degree" class="form-input w-full p-3 border rounded-lg" required>
+                            <option value="" disabled selected>Select Degree</option>
+                            <option value="bachelors">Bachelors</option>
+                            <option value="masters">Masters</option>
+                            <option value="others">Others</option>
+                        </select>
+                        <div class="error-message" data-error="degree"></div>
+                    </div>
+                    <input type="text" name="otherDegree" placeholder="Specify Other Degree" class="form-input w-full p-3 border rounded-lg hidden">
+                    <div>
+                        <label for="name" class="block text-sm font-medium mb-2">Courses <span class="text-red-500">*</span></label>
+                        <select name="course" class="form-input w-full p-3 border rounded-lg" required>
+                            <option value="" disabled selected>Select Course</option>
+                            <option value="computer">Computer Science</option>
+                            <option value="electrical">Electrical/Electronics</option>
+                            <option value="mechanical">Mechanical</option>
+                            <option value="others">Others</option>
+                        </select>
+                        <div class="error-message" data-error="course"></div>
+                    </div>
+                    <input type="text" name="otherCourse" placeholder="Specify Other Course" class="form-input w-full p-3 border rounded-lg hidden">
+                </div>
+    
+                <!-- Step 3 -->
+                <div id="step3" class="space-y-4 hidden">
+                    <div>
+                        <label for="name" class="block text-sm font-medium mb-2">Engineering <span class="text-red-500">*</span></label>
+                        <select name="engineeringSubject" class="form-input w-full p-3 border rounded-lg" required>
+                            <option value="" disabled selected>Select Engineering Subject</option>
+                            <option value="embedded">Embedded Systems and IoT</option>
+                            <option value="rpa">Robotic Process Automation</option>
+                            <option value="ai-embedded">AI in Embedded Systems</option>
+                            <option value="electrical-cad">Electrical - CAD (Sch & PCB)</option>
+                            <option value="others">Others</option>
+                        </select>
+                        <div class="error-message" data-error="engineeringSubject"></div>
+                    </div>
+                    <input type="text" name="otherEngineeringSubject" placeholder="Specify Other Engineering Subject" class="form-input w-full p-3 border rounded-lg hidden">
+                    <div>
+                        <label for="name" class="block text-sm font-medium mb-2">Software <span class="text-red-500">*</span></label>
+                        <select name="softwareSubject" class="form-input w-full p-3 border rounded-lg" required>
+                            <option value="" disabled selected>Select Software Subject</option>
+                            <option value="data-science">Data Science & Big Data Analytics</option>
+                            <option value="ai-ml">AI & Machine Learning</option>
+                            <option value="devops">DevOps</option>
+                            <option value="cloud">Cloud Computing</option>
+                            <option value="web-dev">Full-Stack Web Development</option>
+                            <option value="sap">SAP Modules</option>
+                            <option value="others">Others</option>
+                        </select>
+                        <div class="error-message" data-error="softwareSubject"></div>
+                    </div>
+                    <input type="text" name="otherSoftwareSubject" placeholder="Specify Other Software Subject" class="form-input w-full p-3 border rounded-lg hidden">
+                </div>
+    
+                <!-- Step 4 -->
+                <div id="step4" class="space-y-4 hidden">
+                    <div class="grid gap-4 md:grid-cols-2">
+                        <div>
+                            <select name="referralSource" class="form-input w-full p-3 border rounded">
+                                <option value="">How Did You Hear About Us?</option>
+                                <option value="search">Search Engine</option>
+                                <option value="social">Social Media</option>
+                                <option value="friend">Friend/Colleague</option>
+                                <option value="advertisement">Advertisement</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div>
+                            <select name="preferredFormat" class="form-input w-full p-3 border rounded-lg" required>
+                                <option value="" disabled selected>Preferred Training Format</option>
+                                <option value="in-person">In-Person</option>
+                                <option value="online-live">Online (Live)</option>
+                                <option value="self-paced">Self-Paced (Recorded)</option>
+                            </select>
+                        </div>
+                    </div>
+                    <label class="block text-sm font-medium mb-2">Preferred Start Date (Optional)</label>
+                    <input type="date" name="startDate" class="form-input w-full p-3 border rounded-lg">
+                    <label class="block text-sm font-medium mb-2">Goals/Objectives</label>
+                    <div class="mb-4">
+                        <label for="goals" class="block text-sm font-medium text-gray-700">Training Goals</label>
+                        <textarea 
+                            id="goals" 
+                            name="goals" 
+                            placeholder="What do you aim to achieve from this training? Please provide specific objectives and any relevant details."
+                            class="form-input w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:ring-blue-500 focus:border-blue-500 resize-none h-32"
+                            required
+                        ></textarea>
+                        <div class="error-message text-red-500 mt-1" data-error="goals"></div>
+                    </div>
+                    
+                </div>
+    
+                <div class="flex justify-between mt-6">
+                    <button id="prevBtn" type="button" class="hidden bg-gray-600 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded transition duration-300 ease-in-out transform hover:-translate-y-1">Previous</button>
+                    <button id="nextBtn" type="button" class="next-button bg-blue-500 text-white font-bold py-2 px-4 rounded transition duration-300 ease-in-out transform hover:-translate-y-1" disabled>Next</button>
+                    <button id="submitBtn" type="submit" class="hidden bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded transition duration-300 ease-in-out transform hover:-translate-y-1">Submit</button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 bg-green-600 text-white">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-4xl font-bold mb-8" data-aos="fade-up">Ready to Transform Your Career?</h2>
+            <p class="text-xl mb-12 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="100">Join thousands of professionals who have accelerated their careers with our training programs.</p>
+            <a href="#" class="bg-white text-green-600 px-8 py-3 rounded-full text-lg font-semibold hover:bg-green-100 transition duration-300 inline-flex items-center" data-aos="fade-up" data-aos-delay="200">
+                Get Started Today
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                </svg>
+            </a>
+        </div>
+    </section>
+
+    <!-- footer -->
+    <footer class="bg-[#00353E] text-white pt-16">
+        <div class="container mx-auto px-4" data-aos="fade-up">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+                <div class="space-y-8" data-aos="fade-right">
+                    <h2 class="text-2xl font-semibold border-b-2 border-teal-400 pb-2 inline-block">Browse</h2>
+                    <ul class="space-y-3" data-aos="fade-up">
+                        <li><a href="/about-us.html" class="hover:text-teal-400 transition duration-300">About us</a></li>
+                        <li><a href="/careers.html" class="hover:text-teal-400 transition duration-300">Careers</a></li>
+                        <li><a href="/our-people.html" class="hover:text-teal-400 transition duration-300">Our
+                                People</a></li>
+                        <li><a href="/products/iot-platform.html"
+                                class="hover:text-teal-400 transition duration-300">IoT Platform</a></li>
+                        <li><a href="/products/realty-app.html"
+                                class="hover:text-teal-400 transition duration-300">Realty App</a></li>
+                    </ul>
+                </div>
+                <div class="space-y-8" data-aos="fade-right">
+                    <h2 class="text-2xl font-semibold border-b-2 border-teal-400 pb-2 inline-block">Our Services</h2>
+                    <ul class="space-y-3">
+                        <li><a href="/" class="hover:text-teal-400 transition duration-300">Software Solutions</a></li>
+                        <li><a href="/services/engineering/"
+                                class="hover:text-teal-400 transition duration-300">Engineering Services</a></li>
+                        <li><a href="/services/manufacturing/"
+                                class="hover:text-teal-400 transition duration-300">Manufacturing Services</a></li>
+                        <li><a href="/services/staffing-solutions/"
+                                class="hover:text-teal-400 transition duration-300">Staffing Solutions</a></li>
+                        <li><a href="/services/staffing-solutions/"
+                                class="hover:text-teal-400 transition duration-300">Training</a></li>
+                    </ul>
+                </div>
+                <div class="space-y-8" data-aos="fade-right">
+                    <h2 class="text-2xl font-semibold border-b-2 border-teal-400 inline-block">Locate Us</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-1 gap-6">
+                        <div class="space-y-4">
+                            <img src="/src/images/footer-logo/temple.svg" alt="Temple" class="h-12">
+                            <div class="flex items-center space-x-2">
+                                <img src="/src/images/footer-logo/india-flag.svg" alt="India Flag" class="w-6">
+                                <h3 class="text-xl font-semibold">INDIA</h3>
+                            </div>
+                            <div class="text-sm space-y-1">
+                                <!-- Address Section -->
+                                <div class="space-y-1">
+                                    <p>P-69, Brindavana Layout,</p>
+                                    <p>Basavanapura, K.R.Puram,</p>
+                                    <p>Bangalore-560049, KA.</p>
+                                </div>
+
+                                <!-- Phone Section -->
+                                <div class="font-semibold">
+                                    <p>PH:</p>
+                                    <div class="ml-4 space-y-1">
+                                        <p>+91-89258 58615</p>
+                                        <p>+91 080 4218 3021</p>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="flex items-center">
+                                <div class="flex-grow border-t border-gray-400"></div>
+                                <div class="mx-4 text-gray-400">•</div>
+                                <div class="flex-grow border-t border-gray-400"></div>
+                            </div>
+                            <div class="space-y-2 text-sm">
+                                <p>MIG-171, New housing board,</p>
+                                <p>Krishnagiri - 635 001, TN</p>
+                                <p class="font-semibold">PH: +91 89258 58614</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="space-y-3">
+                    <h2 class="text-2xl text-white font-bold uppercase">NX GEN Inventors</h2>
+                    <!-- <div class="flex flex-wrap justify-left gap-4">
+                        <a href="#" class="flex items-center justify-center text-white hover:text-green-600 transition-colors duration-300">
+                            <div class="bg-white rounded-full p-3 sm:p-4 hover:bg-green-600 flex items-center justify-center w-12 h-12 sm:w-10 sm:h-10 md:w-10 md:h-10 transform hover:scale-110 transition-transform duration-300">
+                                <i class="fab fa-facebook-f text-xl text-black hover:text-white"></i>
+                            </div>
+                        </a>
+                        <a href="#" class="flex items-center justify-center text-black hover:text-green-400 transition-colors duration-300">
+                            <div class="bg-white rounded-full p-3 sm:p-4 hover:bg-green-600 flex items-center justify-center w-12 h-12 sm:w-10 sm:h-10 md:w-10 md:h-10 transform hover:scale-110 transition-transform duration-300">
+                                <i class="fab fa-twitter text-xl text-black hover:text-white"></i>
+                            </div>
+                        </a>
+                        <a href="#" class="flex items-center justify-center text-black hover:text-pink-500 transition-colors duration-300">
+                            <div class="bg-white rounded-full p-3 sm:p-4 hover:bg-red-600 flex items-center justify-center w-12 h-12 sm:w-10 sm:h-10 md:w-10 md:h-10 transform hover:scale-110 transition-transform duration-300">
+                                <i class="fab fa-instagram text-xl text-black hover:text-white"></i>
+                            </div>
+                        </a>
+                        <a href="#" class="flex items-center justify-center text-black hover:text-pink-500 transition-colors duration-300">
+                            <div class="bg-white rounded-full p-3 sm:p-4 hover:bg-gray-900 flex items-center justify-center w-12 h-12 sm:w-10 sm:h-10 md:w-10 md:h-10 transform hover:scale-110 transition-transform duration-300">
+                                <i class="fab fa-github text-xl text-black hover:text-white"></i>
+                            </div>
+                        </a>
+                        <a href="#" class="flex items-center justify-center text-black hover:text-green-600 transition-colors duration-300">
+                            <div class="bg-white rounded-full p-3 sm:p-4 hover:bg-green-600 flex items-center justify-center w-12 h-12 sm:w-10 sm:h-10 md:w-10 md:h-10 transform hover:scale-110 transition-transform duration-300">
+                                <i class="fab fa-linkedin-in text-xl text-black hover:text-white"></i>
+                            </div>
+                        </a>
+                    </div> -->
+                    <div class="w-full md:w-auto">
+                        <div class="flex space-x-4">
+                            <a href="#"
+                                class="w-12 h-12 bg-gray-800 rounded-full flex items-center justify-center hover:bg-green-500 transition duration-300">
+                                <svg class="h-6 w-6 text-white" fill="currentColor" viewBox="0 0 24 24"
+                                    aria-hidden="true">
+                                    <path fill-rule="evenodd"
+                                        d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"
+                                        clip-rule="evenodd" />
+                                </svg>
+                            </a>
+                            <a href="#"
+                                class="w-12 h-12 bg-gray-800 rounded-full flex items-center justify-center hover:bg-green-500 transition duration-300">
+                                <svg class="h-6 w-6 text-white" fill="currentColor" viewBox="0 0 24 24"
+                                    aria-hidden="true">
+                                    <path
+                                        d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" />
+                                </svg>
+                            </a>
+                            <a href="#"
+                                class="w-12 h-12 bg-gray-800 rounded-full flex items-center justify-center hover:bg-pink-500 transition duration-300">
+                                <i class="fa-brands fa-instagram text-white text-2xl"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-teal-700 pt-8 mt-8">
+                <div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+                    <div class="text-sm text-gray-300">
+                        © 2022 <a href="https://nxgeninventors.com/"
+                            class="hover:text-white transition-colors duration-300">Nx Gen Inventors™</a>. All Rights
+                        Reserved.
+                    </div>
+                    <div class="flex space-x-4 text-sm text-gray-300">
+                        <a href="#" class="hover:text-white transition-colors duration-300">Terms & Conditions</a>
+                        <a href="#" class="hover:text-white transition-colors duration-300">Privacy Policy</a>
+                        <a href="#" class="hover:text-white transition-colors duration-300">Cookie Policy</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script src="/src/js/aos-init.js"></script>
+    <script src="/src/js/navbar.js"></script>
+    <script src="/src/js/training.js"></script>
+</body>
+</html>
