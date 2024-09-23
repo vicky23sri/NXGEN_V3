@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NX GEN INVENTORS</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    screens: {
+                        'custom': '1440px',
+                    },
+                    fontFamily: {
+                        'glimser': ['Glimser', 'sans-serif'],
+                    },
+                },
+            },
+        }
+    </script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.2/min/tiny-slider.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.2/tiny-slider.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="/src/css/index.css">
+    <link rel="stylesheet" href="/src/css/traing.css">
+    <style>
+        .content-section {
+            display: none;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .content-section.active {
+            display: block;
+        }
+        
+        .tab-button::before {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            border-width: 0;
+            border-style: solid;
+            border-color: #059669 transparent transparent transparent;
+            transition: all 0.3s ease;
+        }
+
+        .tab-button.active::before {
+            border-width: 10px;
+        }
+    </style>
+</head>
+<body class="font-glimser">
+    <header x-data="{ 
+        isMenuOpen: false,
+        activeSubmenu: null,
+        toggleMenu() { this.isMenuOpen = !this.isMenuOpen; },
+        toggleSubmenu(index) { this.activeSubmenu = this.activeSubmenu === index ? null : index; }
+    }">
+        <div class="mx-auto bg-white shadow-xl py-3 px-4 sm:px-6 custom:px-20">
+            <div class="flex justify-between items-center">
+                <div class="logo">
+                    <a href="/index.html">
+                        <img class="w-[180px]" src="./src/images/logo-green-s.svg" alt="Logo">
+                    </a>
+                </div>
+                <button @click="toggleMenu" 
+                        class="custom:hidden z-50 relative focus:outline-none w-10 h-10 flex items-center justify-center"
+                        aria-label="Toggle menu">
+                    <span class="sr-only">Open main menu</span>
+                    <div class="w-5 h-5 flex items-center justify-center relative">
+                        <span class="block absolute h-0.5 w-5 bg-gray-600 transform transition duration-500 ease-in-out"
+                            :class="{'rotate-45': isMenuOpen, '-translate-y-1.5': !isMenuOpen }"></span>
+                        <span class="block absolute h-0.5 w-5 bg-gray-600 transform transition duration-500 ease-in-out"
+                            :class="{'opacity-0': isMenuOpen }"></span>
+                        <span class="block absolute h-0.5 w-5 bg-gray-600 transform transition duration-500 ease-in-out"
+                            :class="{'-rotate-45': isMenuOpen, 'translate-y-1.5': !isMenuOpen}"></span>
+                    </div>
+                </button>
+                <div class="hidden custom:flex items-center space-x-14"> 
+                    <nav class="flex space-x-14">
+                        <a href="/index.html" 
+                           class="text-gray-500 group-hover:text-gray-900 font-bold flex items-center h-16 px-4" 
+                           x-show="!window.location.pathname.includes('index.html')">
+                            Home
+                        </a>
+                    
+                        <template x-for="(item, index) in [
+                            { title: 'Company', link: '#', submenu: [
+                                { title: 'About Us', link: '/about-us.html', icon: 'fa-solid fa-info-circle' },
+                                { title: 'Careers', link: '/careers.html', icon: 'fa-solid fa-briefcase' },
+                                { title: 'Leadership', link: '/leadership.html', icon: 'fa-solid fa-user-tie' },
+                                { title: 'Clients', link: '/clients.html', icon: 'fa-solid fa-users' }
+                            ]},
+                            { title: 'Industry', link: '#', submenu: [
+                                { title: 'Automotive', link: '/industry/automotive.html', icon: 'fa-solid fa-car' },
+                                { title: 'Mining and Metals', link: '/industry/mining.html', icon: 'fa-solid fa-gem' },
+                                { title: 'Transportation', link: '/industry/transportation.html', icon: 'fa-solid fa-truck' },
+                                { title: 'Renewable Energy', link: '/industry/renewable-energy.html', icon: 'fa-solid fa-solar-panel' },
+                                { title: 'Medical', link: '/industry/medical.html', icon: 'fa-solid fa-stethoscope' },
+                                { title: 'Fintech', link: '/industry/fintech.html', icon: 'fa-solid fa-chart-line' },
+                                { title: 'Real Estate & Property Management', link: '/industry/real-estate.html', icon: 'fa-solid fa-building' }
+                            ]},
+                            { title: 'Engineering', link: '#', submenu: [
+                                { title: 'Electronics', link: '/engineering/electronics.html', icon: 'fa-solid fa-microchip' },
+                                { title: 'Mechanical', link: '/engineering/mechanical.html', icon: 'fa-solid fa-cogs' },
+                                { title: 'PCB & CAD', link: '/engineering/pcb-cad.html', icon: 'fa-solid fa-drafting-compass' },
+                                { title: 'IoT Products', link: '/engineering/iot-products.html', icon: 'fa-solid fa-network-wired' },
+                                { title: 'Manufacturing', link: '/engineering/manufacturing.html', icon: 'fa-solid fa-industry' }
+                            ]},
+                            { title: 'Software', link: '/software.html', submenu: [] },
+                            { title: 'Staffing', link: '/staffing.html', submenu: [] },
+                            { title: 'Training', link: '/training.html', submenu: [] }
+                        ]">
+                            <div class="relative group" 
+                                 @mouseenter="activeSubmenu = index" 
+                                 @mouseleave="activeSubmenu = null">
+                                <a :href="item.link" 
+                                   class="text-gray-500 group-hover:text-gray-900 font-bold flex items-center h-16 px-4">
+                                    <span x-text="item.title"></span>
+                                    <svg x-show="item.submenu.length > 0" 
+                                         class="w-2.5 h-2.5 ml-2.5" 
+                                         aria-hidden="true" 
+                                         xmlns="http://www.w3.org/2000/svg" 
+                                         fill="none" 
+                                         viewBox="0 0 10 6">
+                                        <path stroke="currentColor" 
+                                              stroke-linecap="round" 
+                                              stroke-linejoin="round" 
+                                              stroke-width="2" 
+                                              d="m1 1 4 4 4-4" />
+                                    </svg>
+                                </a>
+                                <div x-show="item.submenu.length > 0 && activeSubmenu === index" 
+                                     x-transition:enter="transition ease-out duration-200"
+                                     x-transition:enter-start="opacity-0 transform scale-95"
+                                     x-transition:enter-end="opacity-100 transform scale-100"
+                                     x-transition:leave="transition ease-in duration-150"
+                                     x-transition:leave-start="opacity-100 transform scale-100"
+                                     x-transition:leave-end="opacity-0 transform scale-95"
+                                     class="absolute left-0 mt-[10px] w-64 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none z-50"
+                                     role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
+                                    <div class="py-1" role="none">
+                                        <template x-for="subItem in item.submenu">
+                                            <a :href="subItem.link" 
+                                               class="flex items-center px-4 py-3 text-sm font-bold text-gray-700 hover:bg-green-600 hover:text-white transition-all duration-300 ease-in-out"
+                                               role="menuitem" 
+                                               tabindex="-1">
+                                                <i :class="subItem.icon" class="mr-2 text-lg"></i>
+                                                <span x-text="subItem.title"></span>
+                                            </a>
+                                        </template>
+                                    </div>
+                                </div>
+                            </div>
+                        </template>
+                    </nav>
+                    <div class="flex flex-col space-y-2"> 
+                        <a href="/index.html" 
+                            class="text-gray-500 hover:text-gray-900 font-bold"
+                            x-show="isHomePage()">
+                            Home
+                        </a>
+                        <a href="tel:+918042183021" class="flex items-center text-gray-500 hover:text-gray-900 font-bold">
+                            <i class="fas fa-phone text-green-600 text-xl mr-3"></i>
+                            <span>+91-80 4218 3021</span>
+                        </a>
+                        <a href="mailto:support@nxgeninventors.com" class="flex items-center text-gray-500 hover:text-gray-900 font-bold">
+                            <i class="fas fa-envelope text-green-600 text-xl mr-3"></i>
+                            <span>support@nxgeninventors.com</span>
+                        </a>
+                    </div>                    
+                </div>
+            </div>
+        </div>
+    
+
+        <!-- Mobile side menu -->
+        <div class="custom:hidden">
+            <!-- Background Overlay -->
+            <div class="fixed inset-0 bg-gray-800 bg-opacity-75 z-40 transition-opacity duration-300 ease-in-out"
+                 :class="{'opacity-100': isMenuOpen, 'opacity-0 pointer-events-none': !isMenuOpen}"
+                 @click="isMenuOpen = false">
+            </div>
+            <!-- Mobile Menu -->
+            <div class="fixed inset-y-0 right-0 max-w-lg w-full bg-white shadow-xl z-50 overflow-y-auto transform transition-transform duration-300 ease-in-out"
+                 :class="{'translate-x-0': isMenuOpen, 'translate-x-full': !isMenuOpen}">
+                <!-- Close Button at the Top Right -->
+                <div class="flex justify-end p-4">
+                    <button @click="isMenuOpen = false" class="text-gray-600 hover:text-gray-900 focus:outline-none">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                    </button>
+                </div>
+                <div class="p-6">
+                    <div class="space-y-6">
+                        <template x-for="(item, index) in [
+                            { title: 'Company', submenu: ['About Us', 'Careers', 'Leadership', 'Clients'] },
+                            { title: 'Industry', submenu: ['Automotive', 'Mining and Metals', 'Transportation', 'Renewable Energy', 'Medical', 'Fintech', 'Real Estate & Property Management'] },
+                            { title: 'Engineering', submenu: ['Electronics', 'Mechanical', 'PCB & CAD', 'IoT Products', 'Manufacturing'] },
+                            { title: 'Software', submenu: ['Software'] },
+                            { title: 'Staffing', submenu: [] },
+                            { title: 'Training', submenu: [] }
+                        ]">
+                            <div>
+                                <button @click="toggleSubmenu(index)"
+                                        class="w-full text-left text-gray-900 font-bold flex justify-between items-center">
+                                    <span x-text="item.title"></span>
+                                    <svg x-show="item.submenu.length > 0" class="w-4 h-4 transform transition-transform duration-200" 
+                                         :class="{'rotate-180': activeSubmenu === index}"
+                                         xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                    </svg>
+                                </button>
+                                <div x-show="activeSubmenu === index" 
+                                     x-transition:enter="transition ease-out duration-100"
+                                     x-transition:enter-start="transform opacity-0 scale-95"
+                                     x-transition:enter-end="transform opacity-100 scale-100"
+                                     x-transition:leave="transition ease-in duration-75"
+                                     x-transition:leave-start="transform opacity-100 scale-100"
+                                     x-transition:leave-end="transform opacity-0 scale-95"
+                                     class="mt-2 space-y-2">
+                                    <template x-for="subItem in item.submenu">
+                                        <a href="#" class="block pl-4 py-2 text-sm text-gray-600 hover:text-gray-900" x-text="subItem"></a>
+                                    </template>
+                                </div>
+                            </div>
+                        </template>
+                    </div>
+                    
+                    <div class="mt-8 space-y-4">
+                        <a href="tel:+918042183021" class="flex items-center text-gray-600 hover:text-gray-900">
+                            <i class="fas fa-phone text-green-600 text-xl mr-3"></i>
+                            <span>+91-80 4218 3021</span>
+                        </a>
+                        <a href="mailto:support@nxgeninventors.com" class="flex items-center text-gray-600 hover:text-gray-900">
+                            <i class="fas fa-envelope text-green-600 text-xl mr-3"></i>
+                            <span>support@nxgeninventors.com</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Banner -->
+    <section class="relative h-[70vh] flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <video class="object-cover w-full h-full" autoplay loop muted>
+                <source src="https://assets.mixkit.co/videos/preview/mixkit-set-of-plateaus-seen-from-the-heights-in-a-sunset-26070-large.mp4" type="video/mp4">
+            </video>
+            <div class="absolute inset-0 bg-green-900 opacity-60"></div>
+        </div>
+        <div class="relative z-10 text-center text-white px-4" data-aos="fade-up">
+            <h1 class="text-5xl md:text-7xl font-bold mb-6">About NX GEN Inventors</h1>
+            <p class="text-xl md:text-2xl mb-8 max-w-5xl mx-auto">
+                NX GEN Inventors is at the forefront of software manufacturing and engineering excellence. We craft cutting-edge solutions that power the future, blending innovation with precision to drive technological advancement. Our mission is to engineer possibilities that transform industries and elevate your success.
+            </p>
+            <a href="#vision" class="bg-white text-green-700 px-8 py-3 rounded-full text-lg font-semibold hover:bg-green-100 transition duration-300 inline-flex items-center">
+                Discover Our Innovations
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                </svg>
+            </a>
+        </div>
+    </section>    
+
+
+    <!-- Tabbed Section -->
+    <section class="py-20">
+        <div class="container mx-auto overflow-hidden">
+            <div class="flex flex-col items-center mb-10" data-aos="fade-up" data-aos-delay="100">
+                <h2 class="relative text-3xl font-bold text-gray-800 mb-2">
+                    About NX GEN INVENTORS
+                </h2>
+                <div class="w-32 h-1 bg-green-500 rounded-full"></div>
+            </div>
+            
+            <div class="p-8">
+                <!-- Tab buttons -->
+                <div class="flex justify-center mb-16">
+                    <div class="inline-flex rounded-xl p-1 w-full max-w-3xl bg-green-50 shadow-md">
+                        <button class="tab-button active relative flex-1 px-8 py-4 rounded-xl text-green-900 font-semibold text-lg transition-all duration-300 hover:bg-green-300 hover:text-green-900 focus:outline-none focus:ring-2 focus:ring-green-500" data-tab="vision">
+                            Vision
+                        </button>
+                        <button class="tab-button relative flex-1 px-8 py-4 rounded-xl text-green-900 font-semibold text-lg transition-all duration-300 hover:bg-green-300 hover:text-green-900 focus:outline-none focus:ring-2 focus:ring-green-500" data-tab="mission">
+                            Mission
+                        </button>
+                        <button class="tab-button relative flex-1 px-8 py-4 rounded-xl text-green-900 font-semibold text-lg transition-all duration-300 hover:bg-green-300 hover:text-green-900 focus:outline-none focus:ring-2 focus:ring-green-500" data-tab="values">
+                            Values
+                        </button>
+                    </div>
+                </div>
+                
+    
+                <!-- Content sections -->
+                <div id="content-container" class="relative">
+                    <div id="vision" class="content-section active">
+                        <div class="flex flex-col md:flex-row items-center gap-8 bg-white rounded-lg shadow-lg overflow-hidden">
+                            <div class="md:w-1/2">
+                                <img src="https://img.freepik.com/free-photo/vision-mission-planning-aspirations-process-concept_53876-139704.jpg?ga=GA1.1.415415411.1725936376&semt=ais_hybrid" alt="Futuristic Tech Vision" class="w-full h-full object-cover">
+                            </div>
+                            <div class="md:w-1/2 p-8">
+                                <h2 class="text-3xl font-bold text-green-700 mb-6">Our Vision</h2>
+                                <p class="text-gray-700 mb-6 leading-relaxed">At TechCraft Solutions, we envision a future where advanced technology seamlessly integrates with business processes, driving unprecedented efficiency and innovation across industries.</p>
+                                <p class="text-gray-700 leading-relaxed">We aim to be the catalyst for digital transformation, empowering organizations to harness the full potential of emerging technologies such as AI, IoT, and cloud computing.</p>
+                            </div>
+                        </div>
+                    </div>
+            
+                    <div id="mission" class="content-section hidden">
+                        <div class="flex flex-col md:flex-row-reverse items-center gap-8 bg-white rounded-lg shadow-lg overflow-hidden">
+                            <div class="md:w-1/2">
+                                <img src="https://img.freepik.com/free-photo/business-hands-joined-together-teamwork_53876-30575.jpg?ga=GA1.1.415415411.1725936376&semt=ais_hybrid" alt="Tech Mission" class="w-full h-full object-cover">
+                            </div>
+                            <div class="md:w-1/2 p-8">
+                                <h2 class="text-3xl font-bold text-green-700 mb-6">Our Mission</h2>
+                                <p class="text-gray-700 mb-6 leading-relaxed">TechCraft Solutions is committed to delivering cutting-edge, scalable, and secure technological solutions that address the complex challenges of the modern business landscape.</p>
+                                <p class="text-gray-700 mb-4">We strive to:</p>
+                                <ul class="space-y-3">
+                                    <li class="flex items-start">
+                                        <i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
+                                        <span>Develop innovative software and AI-driven systems that streamline operations and enhance decision-making processes.</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
+                                        <span>Provide comprehensive cybersecurity solutions to safeguard our clients' digital assets and maintain data integrity.</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
+                                        <span>Offer expert consultation to guide businesses through their digital transformation journey.</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <div id="values" class="content-section hidden">
+                        <div class="flex flex-col md:flex-row items-stretch gap-8 bg-white rounded-lg shadow-lg overflow-hidden">
+                            <div class="md:w-1/2">
+                                <img src="https://img.freepik.com/free-photo/business-concept-grungy-grey-table-side-view-hand-holding-wooden-blocks-with-icons_176474-9350.jpg?ga=GA1.1.415415411.1725936376&semt=ais_hybrid" alt="Our Core Values - IoT Illustration" class="w-full h-full object-cover">
+                            </div>
+                            <div class="md:w-1/2 p-8 flex flex-col justify-center">
+                                <h2 class="text-3xl font-bold text-green-700 mb-6">Our Core Values</h2>
+                                <div class="space-y-6">
+                                    <div class="flex items-start">
+                                        <div class="flex-shrink-0 w-8 h-8 bg-green-500 rounded-full flex items-center justify-center mr-4 mt-1">
+                                            <i class="fas fa-check text-white"></i>
+                                        </div>
+                                        <div>
+                                            <h3 class="text-xl font-semibold text-green-700 mb-2">Innovation Excellence</h3>
+                                            <p class="text-gray-700">We persistently push the boundaries of what's possible in technology, fostering a culture of creativity and forward-thinking.</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-start">
+                                        <div class="flex-shrink-0 w-8 h-8 bg-green-500 rounded-full flex items-center justify-center mr-4 mt-1">
+                                            <i class="fas fa-check text-white"></i>
+                                        </div>
+                                        <div>
+                                            <h3 class="text-xl font-semibold text-green-700 mb-2">Client-Centric Approach</h3>
+                                            <p class="text-gray-700">We prioritize understanding and meeting our clients' unique needs, ensuring our solutions drive tangible business value.</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-start">
+                                        <div class="flex-shrink-0 w-8 h-8 bg-green-500 rounded-full flex items-center justify-center mr-4 mt-1">
+                                            <i class="fas fa-check text-white"></i>
+                                        </div>
+                                        <div>
+                                            <h3 class="text-xl font-semibold text-green-700 mb-2">Integrity and Trust</h3>
+                                            <p class="text-gray-700">We uphold the highest standards of ethical conduct, ensuring transparency and building lasting relationships with our clients and partners.</p>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-start">
+                                        <div class="flex-shrink-0 w-8 h-8 bg-green-500 rounded-full flex items-center justify-center mr-4 mt-1">
+                                            <i class="fas fa-check text-white"></i>
+                                        </div>
+                                        <div>
+                                            <h3 class="text-xl font-semibold text-green-700 mb-2">Continuous Learning</h3>
+                                            <p class="text-gray-700">We are committed to ongoing education and skill development, staying at the forefront of technological advancements.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Software Engineering Section -->
+    <section class="py-24 bg-gray-100">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div class="relative" data-aos="fade-right" data-aos-duration="1000">
+                    <img src="/api/placeholder/800/600" alt="Software Engineering" class="rounded-lg shadow-2xl">
+                    <div class="absolute -bottom-4 -right-4 bg-primary text-white py-2 px-4 rounded-md text-sm font-semibold">
+                        Innovative Solutions
+                    </div>
+                </div>
+                <div data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
+                    <h2 class="text-4xl font-bold mb-6 text-secondary">Software Engineering</h2>
+                    <p class="text-lg mb-6 text-gray-700 leading-relaxed">Our software engineering team excels in creating robust, scalable, and innovative solutions that drive digital transformation across industries.</p>
+                    <p class="text-lg mb-6 text-gray-700 leading-relaxed">From AI-powered applications to cloud-native architectures, we leverage cutting-edge technologies to build software that solves complex problems and delivers exceptional user experiences.</p>
+                    <p class="text-lg text-gray-700 leading-relaxed">Our expertise spans various domains, including:</p>
+                    <ul class="mt-4 space-y-4">
+                        <li class="flex items-center space-x-3">
+                            <div class="flex-shrink-0 w-6 h-6 bg-green-500 rounded-full flex items-center justify-center">
+                                <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            </div>
+                            <span class="text-gray-700">Full-stack web development</span>
+                        </li>
+                        <li class="flex items-center space-x-3">
+                            <div class="flex-shrink-0 w-6 h-6 bg-green-500 rounded-full flex items-center justify-center">
+                                <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            </div>
+                            <span class="text-gray-700">Mobile app development</span>
+                        </li>
+                        <li class="flex items-center space-x-3">
+                            <div class="flex-shrink-0 w-6 h-6 bg-green-500 rounded-full flex items-center justify-center">
+                                <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            </div>
+                            <span class="text-gray-700">Enterprise software solutions</span>
+                        </li>
+                        <li class="flex items-center space-x-3">
+                            <div class="flex-shrink-0 w-6 h-6 bg-green-500 rounded-full flex items-center justify-center">
+                                <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            </div>
+                            <span class="text-gray-700">Big data and analytics platforms</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Manufacturing Section -->
+    <section class="py-24 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div data-aos="fade-right" data-aos-duration="1000">
+                    <h2 class="text-4xl font-bold mb-6 text-secondary">Advanced Enginnering</h2>
+                    <p class="text-lg mb-6 text-gray-700 leading-relaxed">TechCraft Solutions is revolutionizing the manufacturing industry with our state-of-the-art processes and technologies.</p>
+                    <p class="text-lg mb-6 text-gray-700 leading-relaxed">We integrate IoT, AI, and robotics to create smart factories that are more efficient, sustainable, and adaptable to the ever-changing market demands.</p>
+                    <p class="text-lg text-gray-700 leading-relaxed">Our advanced manufacturing solutions include:</p>
+                    <ul class="mt-4 space-y-4">
+                        <li class="flex items-center space-x-3">
+                            <div class="flex-shrink-0 w-6 h-6 bg-green-500 rounded-full flex items-center justify-center">
+                                <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            </div>
+                            <span class="text-gray-700">Industry 4.0 implementation</span>
+                        </li>
+                        <li class="flex items-center space-x-3">
+                            <div class="flex-shrink-0 w-6 h-6 bg-green-500 rounded-full flex items-center justify-center">
+                                <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            </div>
+                            <span class="text-gray-700">Predictive maintenance systems</span>
+                        </li>
+                        <li class="flex items-center space-x-3">
+                            <div class="flex-shrink-0 w-6 h-6 bg-green-500 rounded-full flex items-center justify-center">
+                                <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            </div>
+                            <span class="text-gray-700">Supply chain optimization</span>
+                        </li>
+                        <li class="flex items-center space-x-3">
+                            <div class="flex-shrink-0 w-6 h-6 bg-green-500 rounded-full flex items-center justify-center">
+                                <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            </div>
+                            <span class="text-gray-700">Quality control automation</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="relative" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
+                    <img src="/api/placeholder/800/600" alt="Advanced Manufacturing" class="rounded-lg shadow-2xl">
+                    <div class="absolute -bottom-4 -left-4 bg-primary text-white py-2 px-4 rounded-md text-sm font-semibold">
+                        Smart Factories
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cybersecurity Section -->
+    <section class="py-24 bg-gray-100">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-16 items-center">
+                <div class="relative" data-aos="fade-right" data-aos-duration="1000">
+                    <img src="/api/placeholder/800/600" alt="Cybersecurity" class="rounded-lg shadow-2xl">
+                    <div class="absolute -bottom-4 -right-4 bg-primary text-white py-2 px-4 rounded-md text-sm font-semibold">
+                        Secure Solutions
+                    </div>
+                </div>
+                <div data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
+                    <h2 class="text-4xl font-bold mb-6 text-secondary">Manufacturing</h2>
+                    <p class="text-lg mb-6 text-gray-700 leading-relaxed">In today's digital landscape, robust cybersecurity is crucial. Our team of experts designs and implements comprehensive security solutions to protect your digital assets and maintain data integrity.</p>
+                    <p class="text-lg mb-6 text-gray-700 leading-relaxed">We employ a multi-layered approach to cybersecurity, combining cutting-edge technology with best practices to create a robust defense against evolving threats.</p>
+                    <p class="text-lg text-gray-700 leading-relaxed">Our cybersecurity services include:</p>
+                    <ul class="mt-4 space-y-4">
+                        <li class="flex items-center space-x-3">
+                            <div class="flex-shrink-0 w-6 h-6 bg-green-500 rounded-full flex items-center justify-center">
+                                <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            </div>
+                            <span class="text-gray-700">Threat detection and response</span>
+                        </li>
+                        <li class="flex items-center space-x-3">
+                            <div class="flex-shrink-0 w-6 h-6 bg-green-500 rounded-full flex items-center justify-center">
+                                <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            </div>
+                            <span class="text-gray-700">Vulnerability assessment and penetration testing</span>
+                        </li>
+                        <li class="flex items-center space-x-3">
+                            <div class="flex-shrink-0 w-6 h-6 bg-green-500 rounded-full flex items-center justify-center">
+                                <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            </div>
+                            <span class="text-gray-700">Security information and event management (SIEM)</span>
+                        </li>
+                        <li class="flex items-center space-x-3">
+                            <div class="flex-shrink-0 w-6 h-6 bg-green-500 rounded-full flex items-center justify-center">
+                                <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            </div>
+                            <span class="text-gray-700">Employee security awareness training</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 bg-green-600 text-white">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-4xl font-bold mb-8" data-aos="fade-up">Ready to Transform Your Ideas into Reality?</h2>
+            <p class="text-xl mb-12 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="100">Join us on the cutting edge of technology. Let's create innovative solutions that will shape the future of your industry.</p>
+            <a href="#" class="bg-white text-green-600 px-8 py-3 rounded-full text-lg font-semibold hover:bg-green-100 transition duration-300 inline-flex items-center" data-aos="fade-up" data-aos-delay="200">
+                Get Started Today
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                </svg>
+            </a>
+        </div>
+    </section>
+
+    <!-- footer -->
+    <footer class="bg-[#00353E] text-white pt-16">
+        <div class="container mx-auto px-4" data-aos="fade-up">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+                <div class="space-y-8" data-aos="fade-right">
+                    <h2 class="text-2xl font-semibold border-b-2 border-teal-400 pb-2 inline-block">Browse</h2>
+                    <ul class="space-y-3" data-aos="fade-up">
+                        <li><a href="/about-us.html" class="hover:text-teal-400 transition duration-300">About us</a></li>
+                        <li><a href="/careers.html" class="hover:text-teal-400 transition duration-300">Careers</a></li>
+                        <li><a href="/our-people.html" class="hover:text-teal-400 transition duration-300">Our
+                                People</a></li>
+                        <li><a href="/products/iot-platform.html"
+                                class="hover:text-teal-400 transition duration-300">IoT Platform</a></li>
+                        <li><a href="/products/realty-app.html"
+                                class="hover:text-teal-400 transition duration-300">Realty App</a></li>
+                    </ul>
+                </div>
+                <div class="space-y-8" data-aos="fade-right">
+                    <h2 class="text-2xl font-semibold border-b-2 border-teal-400 pb-2 inline-block">Our Services</h2>
+                    <ul class="space-y-3">
+                        <li><a href="/" class="hover:text-teal-400 transition duration-300">Software Solutions</a></li>
+                        <li><a href="/services/engineering/"
+                                class="hover:text-teal-400 transition duration-300">Engineering Services</a></li>
+                        <li><a href="/services/manufacturing/"
+                                class="hover:text-teal-400 transition duration-300">Manufacturing Services</a></li>
+                        <li><a href="/services/staffing-solutions/"
+                                class="hover:text-teal-400 transition duration-300">Staffing Solutions</a></li>
+                        <li><a href="/services/staffing-solutions/"
+                                class="hover:text-teal-400 transition duration-300">Training</a></li>
+                    </ul>
+                </div>
+                <div class="space-y-8" data-aos="fade-right">
+                    <h2 class="text-2xl font-semibold border-b-2 border-teal-400 inline-block">Locate Us</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-1 gap-6">
+                        <div class="space-y-4">
+                            <img src="/src/images/footer-logo/temple.svg" alt="Temple" class="h-12">
+                            <div class="flex items-center space-x-2">
+                                <img src="/src/images/footer-logo/india-flag.svg" alt="India Flag" class="w-6">
+                                <h3 class="text-xl font-semibold">INDIA</h3>
+                            </div>
+                            <div class="text-sm space-y-1">
+                                <!-- Address Section -->
+                                <div class="space-y-1">
+                                    <p>P-69, Brindavana Layout,</p>
+                                    <p>Basavanapura, K.R.Puram,</p>
+                                    <p>Bangalore-560049, KA.</p>
+                                </div>
+
+                                <!-- Phone Section -->
+                                <div class="font-semibold">
+                                    <p>PH:</p>
+                                    <div class="ml-4 space-y-1">
+                                        <p>+91-89258 58615</p>
+                                        <p>+91 080 4218 3021</p>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="flex items-center">
+                                <div class="flex-grow border-t border-gray-400"></div>
+                                <div class="mx-4 text-gray-400">•</div>
+                                <div class="flex-grow border-t border-gray-400"></div>
+                            </div>
+                            <div class="space-y-2 text-sm">
+                                <p>MIG-171, New housing board,</p>
+                                <p>Krishnagiri - 635 001, TN</p>
+                                <p class="font-semibold">PH: +91 89258 58614</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="space-y-3">
+                    <h2 class="text-2xl text-white font-bold uppercase">NX GEN Inventors</h2>
+                    <!-- <div class="flex flex-wrap justify-left gap-4">
+                        <a href="#" class="flex items-center justify-center text-white hover:text-green-600 transition-colors duration-300">
+                            <div class="bg-white rounded-full p-3 sm:p-4 hover:bg-green-600 flex items-center justify-center w-12 h-12 sm:w-10 sm:h-10 md:w-10 md:h-10 transform hover:scale-110 transition-transform duration-300">
+                                <i class="fab fa-facebook-f text-xl text-black hover:text-white"></i>
+                            </div>
+                        </a>
+                        <a href="#" class="flex items-center justify-center text-black hover:text-green-400 transition-colors duration-300">
+                            <div class="bg-white rounded-full p-3 sm:p-4 hover:bg-green-600 flex items-center justify-center w-12 h-12 sm:w-10 sm:h-10 md:w-10 md:h-10 transform hover:scale-110 transition-transform duration-300">
+                                <i class="fab fa-twitter text-xl text-black hover:text-white"></i>
+                            </div>
+                        </a>
+                        <a href="#" class="flex items-center justify-center text-black hover:text-pink-500 transition-colors duration-300">
+                            <div class="bg-white rounded-full p-3 sm:p-4 hover:bg-red-600 flex items-center justify-center w-12 h-12 sm:w-10 sm:h-10 md:w-10 md:h-10 transform hover:scale-110 transition-transform duration-300">
+                                <i class="fab fa-instagram text-xl text-black hover:text-white"></i>
+                            </div>
+                        </a>
+                        <a href="#" class="flex items-center justify-center text-black hover:text-pink-500 transition-colors duration-300">
+                            <div class="bg-white rounded-full p-3 sm:p-4 hover:bg-gray-900 flex items-center justify-center w-12 h-12 sm:w-10 sm:h-10 md:w-10 md:h-10 transform hover:scale-110 transition-transform duration-300">
+                                <i class="fab fa-github text-xl text-black hover:text-white"></i>
+                            </div>
+                        </a>
+                        <a href="#" class="flex items-center justify-center text-black hover:text-green-600 transition-colors duration-300">
+                            <div class="bg-white rounded-full p-3 sm:p-4 hover:bg-green-600 flex items-center justify-center w-12 h-12 sm:w-10 sm:h-10 md:w-10 md:h-10 transform hover:scale-110 transition-transform duration-300">
+                                <i class="fab fa-linkedin-in text-xl text-black hover:text-white"></i>
+                            </div>
+                        </a>
+                    </div> -->
+                    <div class="w-full md:w-auto">
+                        <div class="flex space-x-4">
+                            <a href="#"
+                                class="w-12 h-12 bg-gray-800 rounded-full flex items-center justify-center hover:bg-green-500 transition duration-300">
+                                <svg class="h-6 w-6 text-white" fill="currentColor" viewBox="0 0 24 24"
+                                    aria-hidden="true">
+                                    <path fill-rule="evenodd"
+                                        d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"
+                                        clip-rule="evenodd" />
+                                </svg>
+                            </a>
+                            <a href="#"
+                                class="w-12 h-12 bg-gray-800 rounded-full flex items-center justify-center hover:bg-green-500 transition duration-300">
+                                <svg class="h-6 w-6 text-white" fill="currentColor" viewBox="0 0 24 24"
+                                    aria-hidden="true">
+                                    <path
+                                        d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" />
+                                </svg>
+                            </a>
+                            <a href="#"
+                                class="w-12 h-12 bg-gray-800 rounded-full flex items-center justify-center hover:bg-pink-500 transition duration-300">
+                                <i class="fa-brands fa-instagram text-white text-2xl"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-teal-700 pt-8 mt-8 pb-2">
+                <div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+                    <div class="text-sm text-gray-300">
+                        © 2022 <a href="https://nxgeninventors.com/"
+                            class="hover:text-white transition-colors duration-300">Nx Gen Inventors™</a>. All Rights
+                        Reserved.
+                    </div>
+                    <div class="flex space-x-4 text-sm text-gray-300">
+                        <a href="#" class="hover:text-white transition-colors duration-300">Terms & Conditions</a>
+                        <a href="#" class="hover:text-white transition-colors duration-300">Privacy Policy</a>
+                        <a href="#" class="hover:text-white transition-colors duration-300">Cookie Policy</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script src="/src/js/aos-init.js"></script>
+    <script src="/src/js/training.js"></script>
+
+    <script>
+        function setActiveTab(tab) {
+            gsap.to('.content-section.active', {opacity: 0, y: 20, duration: 0.3, onComplete: () => {
+                document.querySelectorAll('.content-section').forEach(section => {
+                    section.classList.remove('active');
+                });
+                const activeSection = document.getElementById(tab);
+                activeSection.classList.add('active');
+                gsap.to(activeSection, {opacity: 1, y: 0, duration: 0.5});
+            }});
+
+            document.querySelectorAll('.tab-button').forEach(button => {
+                if (button.dataset.tab === tab) {
+                    button.classList.add('active', 'bg-green-500', 'text-white');
+                    button.classList.remove('text-green-800');
+                } else {
+                    button.classList.remove('active', 'bg-green-500', 'text-white');
+                    button.classList.add('text-green-800');
+                }
+            });
+        }
+
+        document.querySelectorAll('.tab-button').forEach(button => {
+            button.addEventListener('click', () => setActiveTab(button.dataset.tab));
+        });
+
+        // Initialize
+        setActiveTab('vision');
+    </script>
+</body>
+</html>

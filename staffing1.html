@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elite Staffing Solutions - Elevating Careers, Empowering Businesses</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .animate-float {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+
+            100% {
+                transform: translateY(0px);
+            }
+        }
+
+        .card-hover:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg fixed w-full z-50">
+        <div class="container mx-auto px-6 py-3">
+            <div class="flex justify-between items-center">
+                <a href="#" class="text-2xl font-bold text-blue-900">Elite Staffing Solutions</a>
+                <div class="hidden md:flex space-x-6">
+                    <a href="#services" class="text-gray-700 hover:text-blue-900">Services</a>
+                    <a href="#process" class="text-gray-700 hover:text-blue-900">Our Process</a>
+                    <a href="#testimonials" class="text-gray-700 hover:text-blue-900">Testimonials</a>
+                    <a href="#contact" class="text-gray-700 hover:text-blue-900">Contact</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative h-screen flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <div class="video-carousel">
+                <video autoplay loop muted playsinline class="object-cover w-full h-full">
+                    <source
+                        src="https://player.vimeo.com/external/496798426.sd.mp4?s=6a0871b77090e5a2e8e117f8389fa689c76094e4&profile_id=164&oauth2_token_id=57447761"
+                        type="video/mp4">
+                </video>
+                <video autoplay loop muted playsinline class="object-cover w-full h-full hidden">
+                    <source
+                        src="https://player.vimeo.com/external/420215595.sd.mp4?s=a3f2c3f0c2fa2bc270c03e27f3fbb8fe87853d29&profile_id=164&oauth2_token_id=57447761"
+                        type="video/mp4">
+                </video>
+                <video autoplay loop muted playsinline class="object-cover w-full h-full hidden">
+                    <source
+                        src="https://player.vimeo.com/external/459389137.sd.mp4?s=f4de32de720aaf96be3e6efcaf93ba12ad7bd01e&profile_id=164&oauth2_token_id=57447761"
+                        type="video/mp4">
+                </video>
+                <video autoplay loop muted playsinline class="object-cover w-full h-full hidden">
+                    <source
+                        src="https://player.vimeo.com/external/454172770.sd.mp4?s=c4c3c033a2c8d73c97a6d7a4c2f5ee9c36e66c36&profile_id=164&oauth2_token_id=57447761"
+                        type="video/mp4">
+                </video>
+            </div>
+        </div>
+        <div class="absolute inset-0 bg-black opacity-50 z-10"></div>
+        <div class="relative z-20 text-center text-white">
+            <h1 class="text-6xl font-bold mb-4 shadow-text">Elite Staffing Solutions</h1>
+            <p class="text-2xl mb-8 shadow-text">Elevating Careers, Empowering Businesses</p>
+            <a href="#contact"
+                class="bg-white text-blue-900 py-3 px-8 rounded-full font-semibold hover:bg-blue-100 transition duration-300 shadow-lg">Transform
+                Your Workforce</a>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-5xl font-bold text-center mb-16">Our Premium Services</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+                <div class="bg-white rounded-lg shadow-xl p-8 transition duration-300 card-hover">
+                    <img src="/api/placeholder/64/64" alt="Executive Search" class="w-16 h-16 mb-6 animate-float">
+                    <h3 class="text-2xl font-semibold mb-4 text-blue-900">Executive Search</h3>
+                    <p class="mb-4 text-gray-700">Discover visionary leaders who will drive your organization to new
+                        heights.</p>
+                    <a href="#" class="text-blue-600 hover:text-blue-800 font-semibold">Learn More →</a>
+                </div>
+                <div class="bg-white rounded-lg shadow-xl p-8 transition duration-300 card-hover">
+                    <img src="/api/placeholder/64/64" alt="Specialized Recruitment"
+                        class="w-16 h-16 mb-6 animate-float">
+                    <h3 class="text-2xl font-semibold mb-4 text-blue-900">Specialized Recruitment</h3>
+                    <p class="mb-4 text-gray-700">Access top-tier talent in niche industries and cutting-edge
+                        technologies.</p>
+                    <a href="#" class="text-blue-600 hover:text-blue-800 font-semibold">Learn More →</a>
+                </div>
+                <div class="bg-white rounded-lg shadow-xl p-8 transition duration-300 card-hover">
+                    <img src="/api/placeholder/64/64" alt="Workforce Solutions" class="w-16 h-16 mb-6 animate-float">
+                    <h3 class="text-2xl font-semibold mb-4 text-blue-900">Workforce Solutions</h3>
+                    <p class="mb-4 text-gray-700">Optimize your team with flexible staffing models and innovative HR
+                        strategies.</p>
+                    <a href="#" class="text-blue-600 hover:text-blue-800 font-semibold">Learn More →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section class="py-20 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <h2 class="text-5xl font-bold text-center mb-16">Why Choose Elite Staffing Solutions?</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <div class="bg-white rounded-lg shadow-xl p-8 transition duration-300 card-hover">
+                    <h3 class="text-2xl font-semibold mb-4 text-blue-900">Unparalleled Expertise</h3>
+                    <p class="text-gray-700">Our team of seasoned professionals brings decades of industry experience to
+                        every placement.</p>
+                </div>
+                <div class="bg-white rounded-lg shadow-xl p-8 transition duration-300 card-hover">
+                    <h3 class="text-2xl font-semibold mb-4 text-blue-900">Global Network</h3>
+                    <p class="text-gray-700">Access a vast pool of talent from around the world, ensuring the perfect
+                        fit for your organization.</p>
+                </div>
+                <div class="bg-white rounded-lg shadow-xl p-8 transition duration-300 card-hover">
+                    <h3 class="text-2xl font-semibold mb-4 text-blue-900">Cutting-edge Technology</h3>
+                    <p class="text-gray-700">Leverage our proprietary AI-driven matching algorithms for optimal
+                        candidate selection.</p>
+                </div>
+                <div class="bg-white rounded-lg shadow-xl p-8 transition duration-300 card-hover">
+                    <h3 class="text-2xl font-semibold mb-4 text-blue-900">Personalized Approach</h3>
+                    <p class="text-gray-700">We tailor our services to your unique needs, ensuring a perfect cultural
+                        and skillset match.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section id="process" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-5xl font-bold text-center mb-16">Our Elite Process</h2>
+            <div class="relative">
+                <div class="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-blue-500"></div>
+                <div class="relative z-10">
+                    <div class="flex items-center mb-12">
+                        <div class="w-1/2 pr-8 text-right">
+                            <h3 class="text-2xl font-semibold mb-2 text-blue-900">1. Understand</h3>
+                            <p class="text-gray-700">We dive deep into your company culture and needs.</p>
+                        </div>
+                        <div
+                            class="w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold">
+                            1</div>
+                        <div class="w-1/2 pl-8"></div>
+                    </div>
+                    <div class="flex items-center mb-12">
+                        <div class="w-1/2 pr-8"></div>
+                        <div
+                            class="w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold">
+                            2</div>
+                        <div class="w-1/2 pl-8">
+                            <h3 class="text-2xl font-semibold mb-2 text-blue-900">2. Source</h3>
+                            <p class="text-gray-700">Leverage our vast network to find perfect candidates.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center mb-12">
+                        <div class="w-1/2 pr-8 text-right">
+                            <h3 class="text-2xl font-semibold mb-2 text-blue-900">3. Evaluate</h3>
+                            <p class="text-gray-700">Rigorous screening to ensure only the best fit.</p>
+                        </div>
+                        <div
+                            class="w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold">
+                            3</div>
+                        <div class="w-1/2 pl-8"></div>
+                    </div>
+                    <div class="flex items-center">
+                        <div class="w-1/2 pr-8"></div>
+                        <div
+                            class="w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold">
+                            4</div>
+                        <div class="w-1/2 pl-8">
+                            <h3 class="text-2xl font-semibold mb-2 text-blue-900">4. Integrate</h3>
+                            <p class="text-gray-700">Smooth onboarding for long-term success.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-20 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <h2 class="text-5xl font-bold text-center mb-16">Client Success Stories</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+                <div class="bg-white p-8 rounded-lg shadow-xl transition duration-300 card-hover">
+                    <div class="flex items-center mb-4">
+                        <img src="/api/placeholder/64/64" alt="Client" class="w-16 h-16 rounded-full mr-4">
+                        <div>
+                            <h3 class="text-xl font-semibold text-blue-900">Sarah Johnson</h3>
+                            <p class="text-gray-600">CEO, TechInnovate</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700">"Elite Staffing Solutions transformed our hiring process. Their attention
+                        to detail and understanding of our unique needs led to a 40% increase in employee retention."
+                    </p>
+                </div>
+                <div class="bg-white p-8 rounded-lg shadow-xl transition duration-300 card-hover">
+                    <div class="flex items-center mb-4">
+                        <img src="/api/placeholder/64/64" alt="Client" class="w-16 h-16 rounded-full mr-4">
+                        <div>
+                            <h3 class="text-xl font-semibold text-blue-900">Michael Chen</h3>
+                            <p class="text-gray-600">HR Director, GlobalCorp</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700">"The quality of candidates provided by Elite Staffing Solutions is
+                        unmatched. They've become an indispensable partner in our global expansion strategy."</p>
+                </div>
+                <div class="bg-white p-8 rounded-lg shadow-xl transition duration-300 card-hover">
+                    <div class="flex items-center mb-4">
+                        <img src="/api/placeholder/64/64" alt="Client" class="w-16 h-16 rounded-full mr-4">
+                        <div>
+                            <h3 class="text-xl font-semibold text-blue-900">Emily Rodriguez</h3>
+                            <p class="text-gray-600">COO, FutureTech</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700">"Elite Staffing Solutions' innovative approach to talent acquisition has
+                        been a game-changer for our company. We've seen a significant boost in productivity and team
+                        morale."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Statistics Section -->
+    <section class="py-20 bg-blue-900 text-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-5xl font-bold text-center mb-16">Our Impact in Numbers</h2>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 text-center">
+                <div>
+                    <h3 class="text-4xl font-bold mb-2">500+</h3>
+                    <p class="text-xl">Companies Served</p>
+                </div>
+                <div>
+                    <h3 class="text-4xl font-bold mb-2">10,000+</h3>
+                    <p class="text-xl">Successful Placements</p>
+                </div>
+                <div>
+                    <h3 class="text-4xl font-bold mb-2">95%</h3>
+                    <p class="text-xl">Client Satisfaction</p>
+                </div>
+                <div>
+                    <h3 class="text-4xl font-bold mb-2">20+</h3>
+                    <p class="text-xl">Years of Experience</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-5xl font-bold text-center mb-16">Elevate Your Team</h2>
+            <div class="max-w-4xl mx-auto bg-blue-100 p-12 rounded-lg shadow-2xl">
+                <form class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div>
+                        <label for="name" class="block text-sm font-medium text-gray-700 mb-2">Your Name</label>
+                        <input type="text" id="name" name="name"
+                            class="w-full p-3 rounded-lg border-2 border-blue-300 focus:border-blue-500 focus:ring focus:ring-blue-200 transition duration-200">
+                    </div>
+                    <div>
+                        <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Your Email</label>
+                        <input type="email" id="email" name="email"
+                            class="w-full p-3 rounded-lg border-2 border-blue-300 focus:border-blue-500 focus:ring focus:ring-blue-200 transition duration-200">
+                    </div>
+                    <div>
+                        <label for="company" class="block text-sm font-medium text-gray-700 mb-2">Company Name</label>
+                        <input type="text" id="company" name="company"
+                            class="w-full p-3 rounded-lg border-2 border-blue-300 focus:border-blue-500 focus:ring focus:ring-blue-200 transition duration-200">
+                    </div>
+                    <div>
+                        <label for="phone" class="block text-sm font-medium text-gray-700 mb-2">Phone Number</label>
+                        <input type="tel" id="phone" name="phone"
+                            class="w-full p-3 rounded-lg border-2 border-blue-300 focus:border-blue-500 focus:ring focus:ring-blue-200 transition duration-200">
+                    </div>
+                    <div class="md:col-span-2">
+                        <label for="service" class="block text-sm font-medium text-gray-700 mb-2">Service Interested
+                            In</label>
+                        <select id="service" name="service"
+                            class="w-full p-3 rounded-lg border-2 border-blue-300 focus:border-blue-500 focus:ring focus:ring-blue-200 transition duration-200">
+                            <option value="">Select a service</option>
+                            <option value="executive-search">Executive Search</option>
+                            <option value="specialized-recruitment">Specialized Recruitment</option>
+                            <option value="workforce-solutions">Workforce Solutions</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="md:col-span-2">
+                        <label for="message" class="block text-sm font-medium text-gray-700 mb-2">Your Message</label>
+                        <textarea id="message" name="message" rows="4"
+                            class="w-full p-3 rounded-lg border-2 border-blue-300 focus:border-blue-500 focus:ring focus:ring-blue-200 transition duration-200"></textarea>
+                    </div>
+                    <div class="md:col-span-2 text-center">
+                        <button type="submit"
+                            class="bg-blue-600 text-white py-3 px-8 rounded-full font-semibold hover:bg-blue-700 transition duration-300 shadow-lg text-lg">Transform
+                            Your Workforce</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Initialize GSAP ScrollTrigger
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Animate sections on scroll
+        gsap.utils.toArray('section').forEach((section, i) => {
+            gsap.from(section, {
+                opacity: 0,
+                y: 50,
+                duration: 1,
+                scrollTrigger: {
+                    trigger: section,
+                    start: "top 80%",
+                    end: "bottom 20%",
+                    toggleActions: "play none none reverse"
+                }
+            });
+        });
+
+        // Animate cards with stagger effect
+        gsap.utils.toArray('.card-hover').forEach((card, i) => {
+            gsap.from(card, {
+                opacity: 0,
+                y: 50,
+                duration: 0.8,
+                delay: i * 0.2,
+                scrollTrigger: {
+                    trigger: card,
+                    start: "top 90%",
+                    end: "bottom 10%",
+                    toggleActions: "play none none reverse"
+                }
+            });
+        });
+
+        // Animate statistics counters
+        const stats = document.querySelectorAll('.text-4xl.font-bold');
+        stats.forEach(stat => {
+            const target = parseInt(stat.textContent);
+            let count = 0;
+            const duration = 2000; // 2 seconds
+            const increment = target / (duration / 16); // 60 fps
+
+            const counter = setInterval(() => {
+                count += increment;
+                if (count >= target) {
+                    clearInterval(counter);
+                    stat.textContent = target;
+                } else {
+                    stat.textContent = Math.round(count);
+                }
+            }, 16);
+
+            ScrollTrigger.create({
+                trigger: stat,
+                start: "top 80%",
+                onEnter: () => counter,
+                once: true
+            });
+        });
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            const videos = document.querySelectorAll('.video-carousel video');
+            let currentVideoIndex = 0;
+
+            function showNextVideo() {
+                videos[currentVideoIndex].classList.add('hidden');
+                currentVideoIndex = (currentVideoIndex + 1) % videos.length;
+                videos[currentVideoIndex].classList.remove('hidden');
+            }
+
+            setInterval(showNextVideo, 8000); // Change video every 8 seconds
+
+            // Ensure videos play on iOS devices
+            videos.forEach(video => {
+                video.play().catch(error => {
+                    console.log("Autoplay was prevented. This is normal on some devices.", error);
+                });
+            });
+        });
+    </script>

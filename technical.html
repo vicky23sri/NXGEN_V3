@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech Ecosystem Grid</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>card:hover { transform: translateY(-5px); }
+    </style>
+</head>
+<body class="bg-gray-100 min-h-screen py-12">
+    <div x-data="techEcosystem()" class="container mx-auto px-4">
+        <h1 class="text-5xl font-bold text-center text-gray-800 mb-12">Our Technological Ecosystem</h1>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <template x-for="category in categories" :key="category">
+                <div class="space-y-6">
+                    <h2 class="text-3xl font-semibold text-gray-700 border-b-2 border-blue-500 pb-2" x-text="category"></h2>
+                    <div class="space-y-4">
+                        <template x-for="tech in technologies[category]" :key="tech.title">
+                            <div 
+                                class="tech-card bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg"
+                                :class="{
+                                    'border-l-4 border-blue-500': category === 'Software',
+                                    'border-l-4 border-green-500': category === 'Manufacturing',
+                                    'border-l-4 border-purple-500': category === 'Hardware'
+                                }"
+                            >
+                                <div class="p-6">
+                                    <div class="flex items-center justify-between mb-4">
+                                        <span class="text-3xl" x-text="tech.emoji"></span>
+                                        <span 
+                                            class="text-xs font-semibold px-2 py-1 rounded-full"
+                                            :class="{
+                                                'bg-blue-100 text-blue-800': category === 'Software',
+                                                'bg-green-100 text-green-800': category === 'Manufacturing',
+                                                'bg-purple-100 text-purple-800': category === 'Hardware'
+                                            }"
+                                            x-text="category"
+                                        ></span>
+                                    </div>
+                                    <h3 class="text-xl font-semibold mb-2 text-gray-800" x-text="tech.title"></h3>
+                                    <p class="text-gray-600 text-sm mb-4" x-text="tech.description"></p>
+                                    <button 
+                                        class="text-sm font-semibold px-4 py-2 rounded-full transition-colors duration-300"
+                                        :class="{
+                                            'bg-blue-500 text-white hover:bg-blue-600': category === 'Software',
+                                            'bg-green-500 text-white hover:bg-green-600': category === 'Manufacturing',
+                                            'bg-purple-500 text-white hover:bg-purple-600': category === 'Hardware'
+                                        }"
+                                    >Learn More</button>
+                                </div>
+                            </div>
+                        </template>
+                    </div>
+                </div>
+            </template>
+        </div>
+    </div>
+
+    <script>
+        function techEcosystem() {
+            return {
+                categories: ['Software', 'Manufacturing', 'Hardware'],
+                technologies: {
+                    'Software': [
+                        { emoji: "🧠", title: "AI & Machine Learning", description: "Cutting-edge algorithms for intelligent decision-making and predictive analytics." },
+                        { emoji: "🌐", title: "Cloud Computing", description: "Scalable and flexible cloud infrastructure solutions for businesses of all sizes." },
+                        { emoji: "🔒", title: "Cybersecurity", description: "Advanced protection systems to safeguard digital assets and sensitive data." },
+                        { emoji: "📊", title: "Big Data Analytics", description: "Transforming vast data sets into actionable insights for informed decision-making." },
+                        { emoji: "🔗", title: "Blockchain", description: "Decentralized and secure transaction systems for various industries." }
+                    ],
+                    'Manufacturing': [
+                        { emoji: "🏭", title: "Smart Factories", description: "IoT-enabled manufacturing processes for increased efficiency and productivity." },
+                        { emoji: "🤖", title: "Robotic Assembly", description: "Precision automation systems ensuring consistent product quality." },
+                        { emoji: "📈", title: "Lean Manufacturing", description: "Optimized processes to minimize waste and maximize value in production." },
+                        { emoji: "🔬", title: "Quality Control Systems", description: "Advanced testing and inspection technologies for superior product quality." },
+                        { emoji: "♻️", title: "Sustainable Production", description: "Eco-friendly manufacturing practices and materials for a greener future." }
+                    ],
+                    'Hardware': [
+                        { emoji: "💻", title: "Custom PCB Design", description: "Tailored circuit boards designed for specific applications and industries." },
+                        { emoji: "🔌", title: "Power Electronics", description: "Efficient power conversion and control systems for various devices." },
+                        { emoji: "📡", title: "RF/Wireless Systems", description: "High-performance wireless communication solutions for seamless connectivity." },
+                        { emoji: "🔧", title: "FPGA Development", description: "Flexible and reconfigurable hardware solutions for complex computing tasks." },
+                        { emoji: "🔋", title: "Energy Storage", description: "Innovative battery and capacitor technologies for improved energy efficiency." }
+                    ]
+                }
+            }
+        }
+    </script>
+</body>
+</html>
