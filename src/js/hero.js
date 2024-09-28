@@ -9,24 +9,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const backgroundImages = [
         [
-            'https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80',
-            'https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80',
-            'https://images.unsplash.com/photo-1531297484001-80022131f5a1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80'
+            '/src/images/hero-section/tech/tech1.jpg',
+            '/src/images/hero-section/tech/tech2.jpg',
+            '/src/images/hero-section/tech/tech3.jpg'
         ],
         [
-            'https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80',
-            'https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80',
-            'https://images.unsplash.com/photo-1504615755583-2916b52192a3?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80'
+            '/src/images/hero-section/engineering/engi1.jpg',
+            '/src/images/hero-section/engineering/engi2.jpg',
+            '/src/images/hero-section/engineering/engi3.jpg'
         ],
         [
-            'https://images.unsplash.com/photo-1531482615713-2afd69097998?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80',
-            'https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80',
-            'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80'
+            '/src/images/hero-section/software/soft1.jpg',
+            '/src/images/hero-section/software/soft2.jpg',
+            '/src/images/hero-section/software/soft3.jpg'
         ],
         [
-            'https://images.unsplash.com/photo-1531088009183-5ff5b7c95f91?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80',
-            'https://images.unsplash.com/photo-1584132967334-10e028bd69f7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80',
-            'https://images.unsplash.com/photo-1563986768609-322da13575f3?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80'
+            '/src/images/hero-section/manufacturing/man1.jpg',
+            '/src/images/hero-section/manufacturing/man2.jpg',
+            '/src/images/hero-section/manufacturing/man3.jpg'
         ]
     ];
 
