@@ -30,6 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
         ]
     ];
 
+    
     function showSlide(index) {
         slides.forEach((slide, i) => {
             if (i === index) {
@@ -98,19 +99,18 @@ document.addEventListener('DOMContentLoaded', () => {
     function startBackgroundCycle(slideIndex) {
         let bgIndex = 0;
         const bgImages = backgroundImages[slideIndex];
-        const slide = slides[slideIndex];
-        const currentBg = slide.querySelector('.bg-cover');
-        const nextBg = slide.querySelector('.bg-cover:nth-child(2)') || document.createElement('div');
-        const thirdBg = slide.querySelector('.bg-cover:nth-child(3)') || document.createElement('div');
+        let currentBg = slides[slideIndex].querySelector('.bg-cover');
+        let nextBg = slides[slideIndex].querySelector('.bg-cover:nth-child(2)') || document.createElement('div');
+        let thirdBg = slides[slideIndex].querySelector('.bg-cover:nth-child(3)') || document.createElement('div');
         
-        if (!slide.querySelector('.bg-cover:nth-child(2)')) {
+        if (!slides[slideIndex].querySelector('.bg-cover:nth-child(2)')) {
             nextBg.className = 'bg-cover bg-center w-full h-full absolute top-0 left-0 transition-opacity duration-1000 opacity-0';
-            slide.insertBefore(nextBg, currentBg);
+            slides[slideIndex].insertBefore(nextBg, currentBg);
         }
 
-        if (!slide.querySelector('.bg-cover:nth-child(3)')) {
+        if (!slides[slideIndex].querySelector('.bg-cover:nth-child(3)')) {
             thirdBg.className = 'bg-cover bg-center w-full h-full absolute top-0 left-0 transition-opacity duration-1000 opacity-0';
-            slide.insertBefore(thirdBg, nextBg);
+            slides[slideIndex].insertBefore(thirdBg, nextBg);
         }
 
         clearInterval(bgInterval);
@@ -170,7 +170,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Initialize all slides
     slides.forEach((slide, index) => {
-        const currentBg = slide.querySelector('.bg-cover');
+        let currentBg = slide.querySelector('.bg-cover');
         if (currentBg) {
             currentBg.style.backgroundImage = `url('${backgroundImages[index][0]}')`;
         }
