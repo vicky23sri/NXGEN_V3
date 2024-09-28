@@ -111,8 +111,8 @@
                 <div class="hidden custom:flex items-center space-x-7"> 
                     <nav class="flex space-x-7">
                         <a href="/index.html" 
-                           class="text-gray-500 group-hover:text-gray-900 font-bold flex items-center h-16 px-4" 
-                           x-show="!window.location.pathname.includes('index.html')">
+                            class="text-gray-500 group-hover:text-gray-900 font-bold flex items-center h-16 px-4" 
+                            x-show="!window.location.pathname.includes('index.html')">
                             Home
                         </a>
                     
@@ -125,20 +125,28 @@
                             ]},
                             { title: 'Industry', link: '#', submenu: [
                                 { title: 'Automotive', link: '/industry/automotive.html', icon: 'fa-solid fa-car' },
-                                { title: 'Mining and Metals', link: '/industry/mining.html', icon: 'fa-solid fa-gem' },
                                 { title: 'Transportation', link: '/industry/transportation.html', icon: 'fa-solid fa-truck' },
+                                { title: 'Mining and Metals', link: '/industry/mining.html', icon: 'fa-solid fa-gem' },
                                 { title: 'Renewable Energy', link: '/industry/renewable-energy.html', icon: 'fa-solid fa-solar-panel' },
                                 { title: 'Medical', link: '/industry/medical.html', icon: 'fa-solid fa-stethoscope' },
                                 { title: 'Fintech', link: '/industry/fintech.html', icon: 'fa-solid fa-chart-line' },
                                 { title: 'Real Estate & Property Management', link: '/industry/real-estate.html', icon: 'fa-solid fa-building' }
                             ]},
-                            { title: 'Engineering', link: '#', submenu: [
-                                { title: 'Electronics', link: '/engineering/electronics.html', icon: 'fa-solid fa-microchip' },
-                                { title: 'Mechanical', link: '/engineering/mechanical.html', icon: 'fa-solid fa-cogs' },
-                                { title: 'PCB & CAD', link: '/engineering/pcb-cad.html', icon: 'fa-solid fa-drafting-compass' },
-                                { title: 'IoT Products', link: '/engineering/iot-products.html', icon: 'fa-solid fa-network-wired' },
-                                { title: 'Manufacturing', link: '/engineering/manufacturing.html', icon: 'fa-solid fa-industry' }
-                            ]},
+                            {
+                                title: 'Engineering',
+                                icon: 'fa-solid fa-gears',
+                                submenu: [
+                                    { title: 'Electronics Design', link: '/engineering/electronics-design.html', icon: 'fa-solid fa-diagram-project' },
+                                    { title: 'Custom IoT Solutions', link: '/engineering/custom-iot-solutions.html', icon: 'fa-solid fa-network-wired' },
+                                    { title: 'Prototyping & Production', link: '/engineering/prototyping-production.html', icon: 'fa-solid fa-industry' },
+                                    { title: 'Testing & Certifications', link: '/engineering/testing-certifications.html', icon: 'fa-solid fa-circle-check' },
+                                    { title: 'PCB Design & EDA Tools', link: '/engineering/pcb-design-eda-tools.html', icon: 'fa-solid fa-drafting-compass' },
+                                    { title: 'CAM Solutions', link: '/engineering/cam-solutions.html', icon: 'fa-solid fa-cog' },
+                                    { title: 'Mechanical Design', link: '/engineering/mechanical-design.html', icon: 'fa-solid fa-cog' },
+                                    { title: 'VLSI Design', link: '/engineering/vlsi-design.html', icon: 'fa-solid fa-diagram-project' },
+                                    { title: 'Product LifeCycle Management', link: '/engineering/product-lifecycle-management.html', icon: 'fa-solid fa-chart-line' }
+                                ]
+                            },
                             {title: 'Software', 
                                 link: '#', 
                                 submenu: [
@@ -156,40 +164,40 @@
                             { title: 'Training', link: '/training.html', submenu: [] }
                         ]">
                             <div class="relative group" 
-                                 @mouseenter="activeSubmenu = index" 
-                                 @mouseleave="activeSubmenu = null">
+                                    @mouseenter="activeSubmenu = index" 
+                                    @mouseleave="activeSubmenu = null">
                                 <a :href="item.link" 
-                                   class="text-gray-500 group-hover:text-gray-900 font-bold flex items-center h-16 px-4">
+                                    class="text-gray-500 group-hover:text-gray-900 font-bold flex items-center h-16 px-4">
                                     <span x-text="item.title"></span>
                                     <svg x-show="item.submenu.length > 0" 
-                                         class="w-2.5 h-2.5 ml-2.5" 
-                                         aria-hidden="true" 
-                                         xmlns="http://www.w3.org/2000/svg" 
-                                         fill="none" 
-                                         viewBox="0 0 10 6">
+                                        class="w-2.5 h-2.5 ml-2.5" 
+                                        aria-hidden="true" 
+                                        xmlns="http://www.w3.org/2000/svg" 
+                                        fill="none" 
+                                        viewBox="0 0 10 6">
                                         <path stroke="currentColor" 
-                                              stroke-linecap="round" 
-                                              stroke-linejoin="round" 
-                                              stroke-width="2" 
-                                              d="m1 1 4 4 4-4" />
+                                            stroke-linecap="round" 
+                                            stroke-linejoin="round" 
+                                            stroke-width="2" 
+                                            d="m1 1 4 4 4-4" />
                                     </svg>
                                 </a>
                                 <div x-show="item.submenu.length > 0 && activeSubmenu === index" 
-                                     x-transition:enter="transition ease-out duration-200"
-                                     x-transition:enter-start="opacity-0 transform scale-95"
-                                     x-transition:enter-end="opacity-100 transform scale-100"
-                                     x-transition:leave="transition ease-in duration-150"
-                                     x-transition:leave-start="opacity-100 transform scale-100"
-                                     x-transition:leave-end="opacity-0 transform scale-95"
-                                     class="absolute left-0 mt-[10px] w-64 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none z-50"
-                                     role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
+                                        x-transition:enter="transition ease-out duration-200"
+                                        x-transition:enter-start="opacity-0 transform scale-95"
+                                        x-transition:enter-end="opacity-100 transform scale-100"
+                                        x-transition:leave="transition ease-in duration-150"
+                                        x-transition:leave-start="opacity-100 transform scale-100"
+                                        x-transition:leave-end="opacity-0 transform scale-95"
+                                        class="absolute left-0 mt-[10px] w-64 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none z-50"
+                                        role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
                                     <div class="py-1" role="none">
                                         <template x-for="subItem in item.submenu">
                                             <a :href="subItem.link" 
-                                               class="flex items-center px-4 py-3 text-sm font-bold text-gray-700 hover:bg-green-600 hover:text-white transition-all duration-300 ease-in-out"
-                                               role="menuitem" 
-                                               tabindex="-1">
-                                                <i :class="subItem.icon" class="mr-2 text-lg"></i>
+                                                class="flex items-center px-4 py-3 text-sm font-bold text-gray-700 hover:bg-green-500 hover:text-white transition-all duration-300 ease-in-out"
+                                                role="menuitem" 
+                                                tabindex="-1">
+                                                <i :class="subItem.icon" class="mr-2 text-lg text-green-500 "></i>
                                                 <span x-text="subItem.title"></span>
                                             </a>
                                         </template>
@@ -198,9 +206,32 @@
                             </div>
                         </template>
                     </nav>
-                    <button @click="toggleSearch" class="text-gray-500 hover:text-gray-900 focus:outline-none">
-                        <i class="fas fa-search text-xl"></i>
-                    </button>
+                    <div class="relative group ml-3 mr-4">
+                        <div class="flex items-center bg-gray-100 rounded-full overflow-hidden transition-all duration-300 focus-within:ring-2 focus-within:ring-green-500"
+                            :class="{ 'w-64': isSearchOpen, 'w-10': !isSearchOpen }">
+                            <input 
+                                type="text" 
+                                placeholder="Search..." 
+                                class="bg-transparent px-4 py-2 w-full focus:outline-none"
+                                x-show="isSearchOpen"
+                                @focus="isSearchOpen = true"
+                                @blur="setTimeout(() => { isSearchOpen = false }, 200)"
+                                x-transition:enter="transition ease-out duration-300"
+                                x-transition:enter-start="opacity-0 scale-90"
+                                x-transition:enter-end="opacity-100 scale-100"
+                                x-transition:leave="transition ease-in duration-300"
+                                x-transition:leave-start="opacity-100 scale-100"
+                                x-transition:leave-end="opacity-0 scale-90"
+                            >
+                            <button 
+                                @click="isSearchOpen = !isSearchOpen" 
+                                class="flex-shrink-0 w-10 h-10 flex items-center justify-center text-gray-500 hover:text-green-600 focus:outline-none transition-colors duration-300"
+                            >
+                                <i class="fas fa-search text-lg"></i>
+                            </button>
+                        </div>
+                    </div>
+        
                     <!-- Search Bar -->
                     <div class="flex flex-col space-y-2"> 
                         <a href="/index.html" 
@@ -208,11 +239,11 @@
                             x-show="isHomePage()">
                             Home
                         </a>
-                        <a href="tel:+918042183021" class="flex items-center text-gray-500 hover:text-gray-900 font-bold">
+                        <a href="tel:+918042183021" class="flex items-center text-gray-500 text-bold hover:text-gray-900 font-bold">
                             <i class="fas fa-phone text-green-600 text-xl mr-3"></i>
                             <span>+91-80 4218 3021</span>
                         </a>
-                        <a href="mailto:support@nxgeninventors.com" class="flex items-center text-gray-500 hover:text-gray-900 font-bold">
+                        <a href="mailto:support@nxgeninventors.com" class="flex items-center text-bold text-gray-500 hover:text-gray-900 font-bold">
                             <i class="fas fa-envelope text-green-600 text-xl mr-3"></i>
                             <span>support@nxgeninventors.com</span>
                         </a>
@@ -221,35 +252,16 @@
             </div>
         </div>
 
-        <div x-show="isSearchOpen" 
-            x-transition:enter="transition ease-out duration-300"
-            x-transition:enter-start="opacity-0 transform -translate-y-2"
-            x-transition:enter-end="opacity-100 transform translate-y-0"
-            x-transition:leave="transition ease-in duration-300"
-            x-transition:leave-start="opacity-100 transform translate-y-0"
-            x-transition:leave-end="opacity-0 transform -translate-y-2"
-            class="absolute w-full z-50 bg-white shadow-md py-4 px-6">
-            <div class="container mx-auto relative">
-                <input type="text" placeholder="Search..." class="w-full px-4 py-2 rounded-full border-2 border-green-500 focus:outline-none focus:border-green-600">
-                <button class="absolute right-3 top-1/2 transform -translate-y-1/2 bg-green-500 text-white px-4 py-1 rounded-full hover:bg-green-600 transition duration-300">
-                    Search
-                </button>
-            </div>
-        </div>
-
-        
-    
-
         <!-- Mobile side menu -->
         <div class="custom:hidden">
             <!-- Background Overlay -->
             <div class="fixed inset-0 bg-gray-800 bg-opacity-75 z-40 transition-opacity duration-300 ease-in-out"
-                 :class="{'opacity-100': isMenuOpen, 'opacity-0 pointer-events-none': !isMenuOpen}"
-                 @click="isMenuOpen = false">
+                    :class="{'opacity-100': isMenuOpen, 'opacity-0 pointer-events-none': !isMenuOpen}"
+                    @click="isMenuOpen = false">
             </div>
             <!-- Mobile Menu -->
-            <div class="fixed inset-y-0 right-0 max-w-lg w-full bg-white shadow-xl z-50 overflow-y-auto transform transition-transform duration-300 ease-in-out"
-                 :class="{'translate-x-0': isMenuOpen, 'translate-x-full': !isMenuOpen}">
+                <div class="fixed inset-y-0 right-0 max-w-lg w-full bg-white shadow-xl z-50 overflow-y-auto transform transition-transform duration-300 ease-in-out"
+                    :class="{'translate-x-0': isMenuOpen, 'translate-x-full': !isMenuOpen}">
                 <!-- Close Button at the Top Right -->
                 <div class="flex justify-end mr-5 p-4">
                     <button @click="isMenuOpen = false" class="text-gray-600 font-bold hover:text-gray-900 focus:outline-none">
@@ -259,42 +271,56 @@
                     </button>
                 </div>
                 <div class="p-6">
-                    <div class="space-y-6">
+                    <div class="mb-2">
+                        <input type="text" x-model="searchQuery" placeholder="Search..."
+                            class="w-full px-4 py-2 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent">
+                    </div>
+                    <div class="flex flex-col space-y-10">
                         <template x-for="(item, index) in [
-                            { title: 'Company', icon: 'fa-building', submenu: [
-                                { title: 'About Us', icon: 'fa-info-circle' },
-                                { title: 'Careers', icon: 'fa-briefcase' },
-                                { title: 'Leadership', icon: 'fa-user-tie' },
-                                { title: 'Clients', icon: 'fa-users' }
+                            { title: 'Company', link: '#', submenu: [
+                                { title: 'About Us', link: '/about-us.html', icon: 'fa-solid fa-info-circle' },
+                                { title: 'Careers', link: '/careers.html', icon: 'fa-solid fa-briefcase' },
+                                { title: 'Leadership', link: '/leadership.html', icon: 'fa-solid fa-user-tie' },
+                                { title: 'Clients', link: '/clients.html', icon: 'fa-solid fa-users' }
                             ]},
-                            { title: 'Industry', icon: 'fa-industry', submenu: [
-                                { title: 'Automotive', icon: 'fa-car' },
-                                { title: 'Mining and Metals', icon: 'fa-gem' },
-                                { title: 'Transportation', icon: 'fa-truck' },
-                                { title: 'Renewable Energy', icon: 'fa-solar-panel' },
-                                { title: 'Medical', icon: 'fa-stethoscope' },
-                                { title: 'Fintech', icon: 'fa-chart-line' },
-                                { title: 'Real Estate & Property Management', icon: 'fa-building' }
+                            { title: 'Industry', link: '#', submenu: [
+                                { title: 'Automotive', link: '/industry/automotive.html', icon: 'fa-solid fa-car' },
+                                { title: 'Transportation', link: '/industry/transportation.html', icon: 'fa-solid fa-truck' },
+                                { title: 'Mining and Metals', link: '/industry/mining.html', icon: 'fa-solid fa-gem' },
+                                { title: 'Renewable Energy', link: '/industry/renewable-energy.html', icon: 'fa-solid fa-solar-panel' },
+                                { title: 'Medical', link: '/industry/medical.html', icon: 'fa-solid fa-stethoscope' },
+                                { title: 'Fintech', link: '/industry/fintech.html', icon: 'fa-solid fa-chart-line' },
+                                { title: 'Real Estate & Property Management', link: '/industry/real-estate.html', icon: 'fa-solid fa-building' }
                             ]},
-                            { title: 'Engineering', icon: 'fa-cogs', submenu: [
-                                { title: 'Electronics', icon: 'fa-microchip' },
-                                { title: 'Mechanical', icon: 'fa-cog' },
-                                { title: 'PCB & CAD', icon: 'fa-drafting-compass' },
-                                { title: 'IoT Products', icon: 'fa-network-wired' },
-                                { title: 'Manufacturing', icon: 'fa-industry' }
-                            ]},
-                            { title: 'Software', icon: 'fa-laptop-code', submenu: [
-                                { title: 'Web Development', icon: 'fa-code' },
-                                { title: 'Mobile Apps', icon: 'fa-mobile-alt' },
-                                { title: 'Cloud Solutions', icon: 'fa-cloud' },
-                                { title: 'AI & Machine Learning', icon: 'fa-brain' },
-                                { title: 'Data Analytics & Visualization', icon: 'fa-chart-pie' },
-                                { title: 'SAP Consulting Services', icon: 'fa-cogs' },
-                                { title: 'Infrastructure', icon: 'fa-server' },
-                                { title: 'Maintenance & Support', icon: 'fa-wrench' }
-                            ]},
-                            { title: 'Staffing', icon: 'fa-users', submenu: [] },
-                            { title: 'Training', icon: 'fa-chalkboard-teacher', submenu: [] }
+                            {
+                                title: 'Engineering',
+                                submenu: [
+                                    { title: 'Electronics Design', link: '/engineering/electronics-design.html', icon: 'fa-solid fa-diagram-project' },
+                                    { title: 'Custom IoT Solutions', link: '/engineering/custom-iot-solutions.html', icon: 'fa-solid fa-network-wired' },
+                                    { title: 'Prototyping & Production', link: '/engineering/prototyping-production.html', icon: 'fa-solid fa-industry' },
+                                    { title: 'Testing & Certifications', link: '/engineering/testing-certifications.html', icon: 'fa-solid fa-circle-check' },
+                                    { title: 'PCB Design & EDA Tools', link: '/engineering/pcb-design-eda-tools.html', icon: 'fa-solid fa-drafting-compass' },
+                                    { title: 'CAM Solutions', link: '/engineering/cam-solutions.html', icon: 'fa-solid fa-cog' },
+                                    { title: 'Mechanical Design', link: '/engineering/mechanical-design.html', icon: 'fa-solid fa-cog' },
+                                    { title: 'VLSI Design', link: '/engineering/vlsi-design.html', icon: 'fa-solid fa-diagram-project' },
+                                    { title: 'Product LifeCycle Management', link: '/engineering/product-lifecycle-management.html', icon: 'fa-solid fa-chart-line' }
+                                ]
+                            },
+                            {title: 'Software', 
+                                link: '#', 
+                                submenu: [
+                                    { title: 'Web Development', link: '/software/web-development.html', icon: 'fa-solid fa-code' },
+                                    { title: 'Mobile Apps', link: '/software/mobile-apps.html', icon: 'fa-solid fa-mobile-alt' },
+                                    { title: 'Cloud Solutions', link: '/software/cloud-solutions.html', icon: 'fa-solid fa-cloud' },
+                                    { title: 'AI & Machine Learning', link: '/software/ai-ml.html', icon: 'fa-solid fa-brain' },
+                                    { title: 'Data Analytics & Visualization', link: '/software/data-analytics.html', icon: 'fa-solid fa-chart-pie' },
+                                    { title: 'SAP Consulting Services', link: '/software/sap-consulting.html', icon: 'fa-solid fa-cogs' },
+                                    { title: 'Infrastructure', link: '/software/infrastructure.html', icon: 'fa-solid fa-server' },
+                                    { title: 'Maintenance & Support', link: '/software/maintenance-support.html', icon: 'fa-solid fa-wrench' }
+                                ] 
+                            },
+                            { title: 'Staffing', link: '/staffing.html', submenu: [] },
+                            { title: 'Training', link: '/training.html', submenu: [] }
                         ]">
                             <div>
                                 <button @click="toggleSubmenu(index)"
@@ -303,23 +329,23 @@
                                         <i :class="'fas ' + item.icon + ' mr-3 text-green-600'"></i>
                                         <span x-text="item.title"></span>
                                     </span>
-                                    <svg x-show="item.submenu.length > 0" class="w-6 h-6 mr-5 transform transition-transform duration-200" 
-                                         :class="{'rotate-180': activeSubmenu === index}"
-                                         xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                    <svg x-show="item.submenu.length > 0" class="w-6 h-6 transform transition-transform duration-200" 
+                                        :class="{'rotate-180': activeSubmenu === index}"
+                                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
                                         <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
                                     </svg>
                                 </button>
                                 <div x-show="activeSubmenu === index" 
-                                     x-transition:enter="transition ease-out duration-100"
-                                     x-transition:enter-start="transform opacity-0 scale-95"
-                                     x-transition:enter-end="transform opacity-100 scale-100"
-                                     x-transition:leave="transition ease-in duration-75"
-                                     x-transition:leave-start="transform opacity-100 scale-100"
-                                     x-transition:leave-end="transform opacity-0 scale-95"
-                                     class="mt-2 space-y-2">
+                                        x-transition:enter="transition ease-out duration-100"
+                                        x-transition:enter-start="transform opacity-0 scale-95"
+                                        x-transition:enter-end="transform opacity-100 scale-100"
+                                        x-transition:leave="transition ease-in duration-75"
+                                        x-transition:leave-start="transform opacity-100 scale-100"
+                                        x-transition:leave-end="transform opacity-0 scale-95"
+                                        class="mt-2 space-y-2 bg-gray-50 rounded-lg p-3">
                                     <template x-for="subItem in item.submenu">
-                                        <a href="#" class="flex items-center pl-4 mr-5 px-4 py-3 text-sm font-bold text-gray-700 rounded-xl hover:bg-green-600 hover:text-white transition-all duration-300 ease-in-out">
-                                            <i :class="'fas ' + subItem.icon + ' mr-3'"></i>
+                                        <a href="#" class="flex items-center pl-4 mr-5 px-4 py-3 text-sm font-bold text-gray-700 rounded-xl hover:bg-green-600 hover:text-white group-hover:text-white transition-all duration-300 ease-in-out">
+                                            <i :class="'fas ' + subItem.icon + ' mr-3 text-green-500 hover:text-white'"></i>
                                             <span x-text="subItem.title"></span>
                                         </a>
                                     </template>
@@ -327,12 +353,12 @@
                             </div>
                         </template>
                     </div>
-                    <div class="mt-8 space-y-4">
-                        <a href="tel:+918042183021" class="flex items-center text-gray-600 hover:text-gray-900">
+                    <div class="mt-8 space-y-8">
+                        <a href="tel:+918042183021" class="flex items-center text-gray-600 hover:text-gray-900 font-bold">
                             <i class="fas fa-phone text-green-600 text-xl mr-3"></i>
                             <span>+91-80 4218 3021</span>
                         </a>
-                        <a href="mailto:support@nxgeninventors.com" class="flex items-center text-gray-600 hover:text-gray-900">
+                        <a href="mailto:support@nxgeninventors.com" class="flex items-center text-gray-600 hover:text-gray-900 font-bold">
                             <i class="fas fa-envelope text-green-600 text-xl mr-3"></i>
                             <span>support@nxgeninventors.com</span>
                         </a>
@@ -342,57 +368,20 @@
         </div>
     </header>
     <!-- Banner -->
-    <section class="banner relative w-full h-[60vh] overflow-hidden">
+    <section class="banner relative w-full h-[70vh] overflow-hidden">
         <div class="carousel absolute top-0 left-0 w-full h-full">
             <div class="slide absolute w-full h-full transition-all duration-700 ease-in-out opacity-0">
-                <div class="bg-cover bg-center w-full h-full"
-                    style="background-image: url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');">
+                <div class="bg-cover bg-center w-full h-full transition-all duration-500 ease-in-out">
                     <div class="absolute inset-0 bg-gradient-to-r from-black/70 to-transparent"></div>
                     <div class="container mx-auto px-8 h-full flex items-center">
-                        <div class="w-full text-white z-10" data-aos="fade-up" data-aos-delay="200"
-                            data-aos-duration="1500" data-aos-easing="ease-in-out">
-                            <h1 class="mb-4 font-bold text-4xl md:text-5xl lg:text-6xl leading-tight">Cutting-Edge
-                                Technology</h1>
-                            <p class="text-xl lg:text-2xl leading-relaxed mb-8">Empowering businesses with the latest
-                                technological advancements.</p>
-                            <a href="/contact.html"
-                                class="group relative inline-flex items-center overflow-hidden rounded-full bg-slate-900 px-8 py-3 text-white focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2">
-                                <span
-                                    class="absolute left-0 top-1/2 h-32 w-32 -translate-y-1/2 transform rounded-full bg-white transition-all duration-300 ease-out group-hover:scale-150 group-hover:opacity-50"></span>
+                        <div class="w-full text-white z-10">
+                            <h1 class="mb-4 font-bold text-4xl md:text-5xl lg:text-6xl leading-tight">Cutting-Edge Technology</h1>
+                            <p class="text-xl lg:text-2xl leading-relaxed mb-8">Empowering businesses with the latest technological advancements.</p>
+                            <a href="/contact.html" class="group relative inline-flex items-center overflow-hidden rounded-full bg-slate-900 px-8 py-3 text-white focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2">
+                                <span class="absolute left-0 top-1/2 h-32 w-32 -translate-y-1/2 transform rounded-full bg-white transition-all duration-300 ease-out group-hover:scale-150 group-hover:opacity-50"></span>
                                 <span class="relative mr-4 text-lg font-semibold text-black">Learn More</span>
-                                <svg xmlns="http://www.w3.org/2000/svg"
-                                    class="relative h-5 w-5 transition-transform duration-300 ease-in-out group-hover:translate-x-1"
-                                    fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="slide absolute w-full h-full transition-all duration-700 ease-in-out opacity-100">
-                <div class="bg-cover bg-center w-full h-full"
-                    style="background-image: url('https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');">
-                    <div class="absolute inset-0 bg-gradient-to-r from-black/70 to-transparent"></div>
-                    <div class="container mx-auto px-8 h-full flex items-center">
-                        <div class="w-full text-white z-10" data-aos="fade-up" data-aos-delay="200"
-                            data-aos-duration="1500" data-aos-easing="ease-in-out">
-                            <h1 class="mb-4 font-bold text-4xl md:text-5xl lg:text-6xl leading-tight">Engineering
-                                Excellence</h1>
-                            <p class="text-xl lg:text-2xl leading-relaxed mb-8">Transforming ideas into reality through
-                                expert engineering.</p>
-                            <a href="/contact.html"
-                                class="group relative inline-flex items-center overflow-hidden rounded-full bg-slate-900 px-8 py-3 text-white focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2">
-                                <span
-                                    class="absolute left-0 top-1/2 h-32 w-32 -translate-y-1/2 transform rounded-full bg-white transition-all duration-300 ease-out group-hover:scale-150 group-hover:opacity-50"></span>
-                                <span class="relative mr-4 text-lg font-semibold text-black">Learn More</span>
-                                <svg xmlns="http://www.w3.org/2000/svg"
-                                    class="relative h-5 w-5 transition-transform duration-300 ease-in-out group-hover:translate-x-1"
-                                    fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                                <svg xmlns="http://www.w3.org/2000/svg" class="relative h-5 w-5 transition-transform duration-300 ease-in-out group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
                                 </svg>
                             </a>
                         </div>
@@ -401,26 +390,17 @@
             </div>
 
             <div class="slide absolute w-full h-full transition-all duration-700 ease-in-out opacity-0">
-                <div class="bg-cover bg-center w-full h-full"
-                    style="background-image: url('https://images.unsplash.com/photo-1531482615713-2afd69097998?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');">
+                <div class="bg-cover bg-center w-full h-full transition-all duration-500 ease-in-out">
                     <div class="absolute inset-0 bg-gradient-to-r from-black/70 to-transparent"></div>
                     <div class="container mx-auto px-8 h-full flex items-center">
-                        <div class="w-full text-white z-10" data-aos="fade-up" data-aos-delay="200"
-                            data-aos-duration="1500" data-aos-easing="ease-in-out">
-                            <h1 class="mb-4 font-bold text-4xl md:text-5xl lg:text-6xl leading-tight">Innovative
-                                Software Solutions</h1>
-                            <p class="text-xl lg:text-2xl leading-relaxed mb-8">Elevate your business with our
-                                cutting-edge software development expertise.</p>
-                            <a href="/contact.html"
-                                class="group relative inline-flex items-center overflow-hidden rounded-full bg-slate-900 px-8 py-3 text-white focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2">
-                                <span
-                                    class="absolute left-0 top-1/2 h-32 w-32 -translate-y-1/2 transform rounded-full bg-white transition-all duration-300 ease-out group-hover:scale-150 group-hover:opacity-50"></span>
+                        <div class="w-full text-white z-10">
+                            <h1 class="mb-4 font-bold text-4xl md:text-5xl lg:text-6xl leading-tight">Engineering Excellence</h1>
+                            <p class="text-xl lg:text-2xl leading-relaxed mb-8">Transforming ideas into reality through expert engineering.</p>
+                            <a href="/contact.html" class="group relative inline-flex items-center overflow-hidden rounded-full bg-slate-900 px-8 py-3 text-white focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2">
+                                <span class="absolute left-0 top-1/2 h-32 w-32 -translate-y-1/2 transform rounded-full bg-white transition-all duration-300 ease-out group-hover:scale-150 group-hover:opacity-50"></span>
                                 <span class="relative mr-4 text-lg font-semibold text-black">Learn More</span>
-                                <svg xmlns="http://www.w3.org/2000/svg"
-                                    class="relative h-5 w-5 transition-transform duration-300 ease-in-out group-hover:translate-x-1"
-                                    fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                                <svg xmlns="http://www.w3.org/2000/svg" class="relative h-5 w-5 transition-transform duration-300 ease-in-out group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
                                 </svg>
                             </a>
                         </div>
@@ -429,26 +409,36 @@
             </div>
 
             <div class="slide absolute w-full h-full transition-all duration-700 ease-in-out opacity-0">
-                <div class="bg-cover bg-center w-full h-full"
-                    style="background-image: url('https://img.freepik.com/free-photo/automotive-assembly-line-precision-automation_91128-4349.jpg?t=st=1724673782~exp=1724677382~hmac=bb8c3a89e4bc177161b23e64c1f0461b3cd2b78212a023f1638f6a3f26065bfd&w=1800');">
+                <div class="bg-cover bg-center w-full h-full transition-all duration-500 ease-in-out">
                     <div class="absolute inset-0 bg-gradient-to-r from-black/70 to-transparent"></div>
                     <div class="container mx-auto px-8 h-full flex items-center">
-                        <div class="w-full lg:w-1/ text-white z-10" data-aos="fade-up" data-aos-delay="200"
-                            data-aos-duration="1500" data-aos-easing="ease-in-out">
-                            <h1 class="mb-4 font-bold text-4xl md:text-5xl lg:text-6xl leading-tight">Precision
-                                Manufacturing</h1>
-                            <p class="text-xl lg:text-2xl leading-relaxed mb-8">Delivering quality products with
-                                cutting-edge manufacturing processes.</p>
-                            <a href="/contact.html"
-                                class="group relative inline-flex items-center overflow-hidden rounded-full bg-slate-900 px-8 py-3 text-white focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2">
-                                <span
-                                    class="absolute left-0 top-1/2 h-32 w-32 -translate-y-1/2 transform rounded-full bg-white transition-all duration-300 ease-out group-hover:scale-150 group-hover:opacity-50"></span>
+                        <div class="w-full text-white z-10">
+                            <h1 class="mb-4 font-bold text-4xl md:text-5xl lg:text-6xl leading-tight">Innovative Software Solutions</h1>
+                            <p class="text-xl lg:text-2xl leading-relaxed mb-8">Elevate your business with our cutting-edge software development expertise.</p>
+                            <a href="/contact.html" class="group relative inline-flex items-center overflow-hidden rounded-full bg-slate-900 px-8 py-3 text-white focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2">
+                                <span class="absolute left-0 top-1/2 h-32 w-32 -translate-y-1/2 transform rounded-full bg-white transition-all duration-300 ease-out group-hover:scale-150 group-hover:opacity-50"></span>
                                 <span class="relative mr-4 text-lg font-semibold text-black">Learn More</span>
-                                <svg xmlns="http://www.w3.org/2000/svg"
-                                    class="relative h-5 w-5 transition-transform duration-300 ease-in-out group-hover:translate-x-1"
-                                    fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                                <svg xmlns="http://www.w3.org/2000/svg" class="relative h-5 w-5 transition-transform duration-300 ease-in-out group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="slide absolute w-full h-full transition-all duration-700 ease-in-out opacity-0">
+                <div class="bg-cover bg-center w-full h-full transition-all duration-500 ease-in-out">
+                    <div class="absolute inset-0 bg-gradient-to-r from-black/70 to-transparent"></div>
+                    <div class="container mx-auto px-8 h-full flex items-center">
+                        <div class="w-full text-white z-10">
+                            <h1 class="mb-4 font-bold text-4xl md:text-5xl lg:text-6xl leading-tight">Precision Manufacturing</h1>
+                            <p class="text-xl lg:text-2xl leading-relaxed mb-8">Delivering quality products with cutting-edge manufacturing processes.</p>
+                            <a href="/contact.html" class="group relative inline-flex items-center overflow-hidden rounded-full bg-slate-900 px-8 py-3 text-white focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2">
+                                <span class="absolute left-0 top-1/2 h-32 w-32 -translate-y-1/2 transform rounded-full bg-white transition-all duration-300 ease-out group-hover:scale-150 group-hover:opacity-50"></span>
+                                <span class="relative mr-4 text-lg font-semibold text-black">Learn More</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" class="relative h-5 w-5 transition-transform duration-300 ease-in-out group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
                                 </svg>
                             </a>
                         </div>
@@ -457,50 +447,694 @@
             </div>
         </div>
 
-        <button
-            class="hidden absolute top-1/2 left-4 transform -translate-y-1/2 bg-white/20 hover:bg-white/40 p-3 rounded-full text-white text-2xl transition-all duration-300 z-20"
-            id="prevBtn">
+        <button class="hidden absolute top-1/2 left-4 transform -translate-y-1/2 bg-white/20 hover:bg-white/40 p-3 rounded-full text-white text-2xl transition-all duration-300 z-20" id="prevBtn">
             &#8249;
         </button>
-        <button
-            class="hidden absolute top-1/2 right-4 transform -translate-y-1/2 bg-white/20 hover:bg-white/40 p-3 rounded-full text-white text-2xl transition-all duration-300 z-20"
-            id="nextBtn">
+        <button class="hidden absolute top-1/2 right-4 transform -translate-y-1/2 bg-white/20 hover:bg-white/40 p-3 rounded-full text-white text-2xl transition-all duration-300 z-20" id="nextBtn">
             &#8250;
         </button>
 
         <div class="absolute bottom-0 left-0 right-0 w-full flex justify-center items-center z-20">
-            <div id="sliderIndicators"
-                class="bg-black bg-opacity-70 backdrop-blur-sm w-full flex flex-wrap items-center justify-between">
+            <div id="sliderIndicators" class="bg-black bg-opacity-70 backdrop-blur-sm w-full flex flex-wrap items-center justify-between">
                 <div class="text-indicator relative cursor-pointer group flex-1 min-w-[15%]">
                     <div class="loading-bar absolute top-0 left-0 right-0 h-1 bg-green-500"></div>
-                    <span
-                        class="text-white text-xs sm:text-sm md:text-base font-bold uppercase px-2 sm:px-4 md:px-6 py-2 sm:py-3 block transition-all duration-300 group-hover:bg-white group-hover:text-black text-center">Technology</span>
+                    <span class="text-white text-xs sm:text-sm md:text-base font-bold uppercase px-2 sm:px-4 md:px-6 py-2 sm:py-3 block transition-all duration-300 group-hover:bg-white group-hover:text-black text-center">Technology</span>
                 </div>
                 <div class="hidden sm:block w-px h-8 bg-white/30"></div>
                 <div class="text-indicator relative cursor-pointer group flex-1 min-w-[15%]">
                     <div class="loading-bar absolute top-0 left-0 right-0 h-1 bg-green-500"></div>
-                    <span
-                        class="text-white text-xs sm:text-sm md:text-base font-bold uppercase px-2 sm:px-4 md:px-6 py-2 sm:py-3 block transition-all duration-300 group-hover:bg-white group-hover:text-black text-center">Engineering</span>
+                    <span class="text-white text-xs sm:text-sm md:text-base font-bold uppercase px-2 sm:px-4 md:px-6 py-2 sm:py-3 block transition-all duration-300 group-hover:bg-white group-hover:text-black text-center">Engineering</span>
                 </div>
                 <div class="hidden sm:block w-px h-8 bg-white/30"></div>
                 <div class="text-indicator relative cursor-pointer group flex-1 min-w-[15%]">
                     <div class="loading-bar absolute top-0 left-0 right-0 h-1 bg-green-500"></div>
-                    <span
-                        class="text-white text-xs sm:text-sm md:text-base font-bold uppercase px-2 sm:px-4 md:px-6 py-2 sm:py-3 block transition-all duration-300 group-hover:bg-white group-hover:text-black text-center">Software</span>
+                    <span class="text-white text-xs sm:text-sm md:text-base font-bold uppercase px-2 sm:px-4 md:px-6 py-2 sm:py-3 block transition-all duration-300 group-hover:bg-white group-hover:text-black text-center">Software</span>
                 </div>
                 <div class="hidden sm:block w-px h-8 bg-white/30"></div>
                 <div class="text-indicator relative cursor-pointer group flex-1 min-w-[15%]">
                     <div class="loading-bar absolute top-0 left-0 right-0 h-1 bg-green-500"></div>
-                    <span
-                        class="text-white text-xs sm:text-sm md:text-base font-bold uppercase px-2 sm:px-4 md:px-6 py-2 sm:py-3 block transition-all duration-300 group-hover:bg-white group-hover:text-black text-center">Manufacturing</span>
+                    <span class="text-white text-xs sm:text-sm md:text-base font-bold uppercase px-2 sm:px-4 md:px-6 py-2 sm:py-3 block transition-all duration-300 group-hover:bg-white group-hover:text-black text-center">Manufacturing</span>
                 </div>
             </div>
         </div>
     </section>
     <!-- Banner End -->
+
+    <!-- software solution -->
+    <section class="py-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
+        <div class="container mx-auto">
+            <h2 class="text-4xl flex justify-center font-semibold text-start mb-12">
+                <span style="position: relative; display: inline-block; padding-bottom: 10px;">
+                    Our Services
+                    <span style="content: ''; position: absolute; width: 70%; height: 7px; bottom: 0; left: 0; background-color: #22c55e;"></span>
+                </span>
+            </h2>
+
+            <div class="flex flex-col items-start mb-10" data-aos="fade-up" data-aos-delay="200" data-aos-duration="1500" data-aos-easing="ease-in-out">
+                <h2 class="relative text-3xl font-bold text-gray-800 mb-2">
+                    Software Services
+                </h2>
+                <div class="w-24 h-1 bg-green-500 rounded-full"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16">
+                <!-- Card 1 -->
+                <div class="service-card group relative h-72 w-full max-w-125 mx-auto rounded-lg shadow-lg overflow-hidden" data-aos="fade-right" data-aos-delay="100">
+                    <img src="/src/images/software/img1.jpg" alt="Web & Mobile App Development" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black opacity-70 transition-opacity duration-500"></div>
+                    
+                    <h3 class="absolute bottom-4 left-4 px-6 text-white text-2xl font-semibold transition-all duration-500 group-hover:opacity-0">
+                        Web & Mobile App Development
+                    </h3>
     
+                    <div class="absolute inset-0 flex flex-col justify-end p-6 opacity-0 group-hover:opacity-100 transition-all duration-500 transform group-hover:translate-y-0 translate-y-8">
+                        <h3 class="text-white text-2xl font-semibold mb-2">Web & Mobile App Development</h3>
+                        <p class="text-gray-200 mb-4">Transform your digital vision into reality with our cutting-edge web and mobile app development solutions, tailored to your business needs.</p>
+                        <button class="group inline-flex items-center w-fit justify-center text-white font-semibold py-2 px-4  rounded-full transition-all duration-300 transform bg-green-500  hover:scale-105 shadow-lg hover:shadow-xl">
+                            <span class="mr-2 text-lg group-hover:text-white">Viw More</span>
+                            <span class="w-10 h-10 ml-6 rounded-full bg-transparent bg-green-500 flex items-center justify-center transition-all duration-300 transform group-hover:bg-white group-hover:scale-110">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 bg-gray text-black" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                </svg>
+                            </span>
+                        </button>
+                    </div>
+                </div>
+    
+                <!-- Card 2 -->
+                <div class="service-card group relative h-72 w-full max-w-125 mx-auto rounded-lg shadow-lg overflow-hidden" data-aos="fade-left" data-aos-delay="200">
+                    <img src="/src/images/software/img2.jpg" alt="Cloud Solutions" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black opacity-70 transition-opacity duration-500"></div>
+    
+                    <h3 class="absolute bottom-4 left-4 px-6 text-white text-2xl font-semibold transition-all duration-500 group-hover:opacity-0">
+                        AI & Machine Learning
+                    </h3>
+    
+                    <div class="absolute inset-0 flex flex-col justify-end p-6 opacity-0 group-hover:opacity-100 transition-all duration-500 transform group-hover:translate-y-0 translate-y-8">
+                        <h3 class="text-white text-2xl font-semibold mb-2">AI & Machine Learning</h3>
+                        <p class="text-gray-200 mb-4">Leverage the power of AI and machine learning to unlock insights, enhance efficiency, and drive innovation across your business operations.</p>
+                        <button class="group inline-flex items-center w-fit justify-center text-white font-semibold py-2 px-4  rounded-full transition-all duration-300 transform bg-green-500  hover:scale-105 shadow-lg hover:shadow-xl">
+                            <span class="mr-2 text-lg group-hover:text-white">Viw More</span>
+                            <span class="w-10 h-10 ml-6 rounded-full bg-transparent bg-green-500 flex items-center justify-center transition-all duration-300 transform group-hover:bg-white group-hover:scale-110">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 bg-gray text-black" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                </svg>
+                            </span>
+                        </button>
+                    </div>
+                </div>
+    
+                <!-- Card 3 -->
+                <div class="service-card group relative h-72 w-full max-w-125 mx-auto rounded-lg shadow-lg overflow-hidden" data-aos="fade-right" data-aos-delay="300">
+                    <img src="/src/images/software/img3.jpg" alt="AI & Machine Learning" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black opacity-70 transition-opacity duration-500"></div>
+    
+                    <h3 class="absolute bottom-4 left-4 px-6 text-white text-2xl font-semibold transition-all duration-500 group-hover:opacity-0">
+                        IoT Application Development
+                    </h3>
+    
+                    <div class="absolute inset-0 flex flex-col justify-end p-6 opacity-0 group-hover:opacity-100 transition-all duration-500 transform group-hover:translate-y-0 translate-y-8">
+                        <h3 class="text-white text-2xl font-semibold mb-2">IoT Application Development</h3>
+                        <p class="text-gray-200 mb-4">Connect and optimize your devices with our IoT application development services, creating seamless interactions and actionable insights for smarter solutions.</p>
+                        <button class="group inline-flex items-center w-fit justify-center text-white font-semibold py-2 px-4  rounded-full transition-all duration-300 transform bg-green-500  hover:scale-105 shadow-lg hover:shadow-xl">
+                            <span class="mr-2 text-lg group-hover:text-white">Viw More</span>
+                            <span class="w-10 h-10 ml-6 rounded-full bg-transparent bg-green-500 flex items-center justify-center transition-all duration-300 transform group-hover:bg-white group-hover:scale-110">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 bg-gray text-black" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                </svg>
+                            </span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="service-card group relative h-72 w-full max-w-125 mx-auto rounded-lg shadow-lg overflow-hidden" data-aos="fade-left" data-aos-delay="300">
+                    <img src="/src/images/software/img4.jpg" alt="AI & Machine Learning" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black opacity-70 transition-opacity duration-500"></div>
+    
+                    <h3 class="absolute bottom-4 left-4 px-6 text-white text-2xl font-semibold transition-all duration-500 group-hover:opacity-0">
+                        Cloud Computing Solutions
+                    </h3>
+    
+                    <div class="absolute inset-0 flex flex-col justify-end p-6 opacity-0 group-hover:opacity-100 transition-all duration-500 transform group-hover:translate-y-0 translate-y-8">
+                        <h3 class="text-white text-2xl font-semibold mb-2">Cloud Computing Solutions</h3>
+                        <p class="text-gray-200 mb-4">Transform your business with our cutting-edge cloud computing solutions, providing seamless integration, robust data management, and powerful analytics to drive innovation.</p>
+                        <button class="group inline-flex items-center w-fit justify-center text-white font-semibold py-2 px-4  rounded-full transition-all duration-300 transform bg-green-500  hover:scale-105 shadow-lg hover:shadow-xl">
+                            <span class="mr-2 text-lg group-hover:text-white">Viw More</span>
+                            <span class="w-10 h-10 ml-6 rounded-full bg-transparent bg-green-500 flex items-center justify-center transition-all duration-300 transform group-hover:bg-white group-hover:scale-110  ">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 bg-gray text-black" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                </svg>
+                            </span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="service-card group relative h-72 w-full max-w-125 mx-auto rounded-lg shadow-lg overflow-hidden" data-aos="fade-right" data-aos-delay="300">
+                    <img src="/src/images/software/img5.jpg" alt="AI & Machine Learning" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black opacity-70 transition-opacity duration-500"></div>
+    
+                    <h3 class="absolute bottom-4 left-4 px-6 text-white text-2xl font-semibold transition-all duration-500 group-hover:opacity-0">
+                        UI/UX Design Services
+                    </h3>
+    
+                    <div class="absolute inset-0 flex flex-col justify-end p-6 opacity-0 group-hover:opacity-100 transition-all duration-500 transform group-hover:translate-y-0 translate-y-8">
+                        <h3 class="text-white text-2xl font-semibold mb-2">UI/UX Design Services</h3>
+                        <p class="text-gray-200 mb-4">Transform your ideas into captivating designs with our expert UI/UX services, focusing on user-centric solutions that enhance usability and drive satisfaction.</p>
+                        <button class="group inline-flex items-center w-fit justify-center text-white font-semibold py-2 px-4  rounded-full transition-all duration-300 transform bg-green-500  hover:scale-105 shadow-lg hover:shadow-xl">
+                            <span class="mr-2 text-lg group-hover:text-white">Viw More</span>
+                            <span class="w-10 h-10 ml-6 rounded-full bg-transparent bg-green-500 flex items-center justify-center transition-all duration-300 transform group-hover:bg-white group-hover:scale-110  ">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 bg-gray text-black" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                </svg>
+                            </span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Engineering Services -->
+    <section class="py-20 px-4 sm:px-6 lg:px-8 overflow-hidden" style="background-image: url('https://www.avalontec.com/wp-content/uploads/2022/06/manfurt-bg-1.webp?id=10376'); background-repeat: no-repeat; background-size: cover; background-position: center center;">
+        <div class="container mx-auto">
+            <h2 class="text-4xl font-semibold text-start mb-12" data-aos="fade-down">
+                <span style="position: relative; display: inline-block; padding-bottom: 10px;">
+                    Engineering Services
+                    <span style="content: ''; position: absolute; width: 70%; height: 7px; bottom: 0; left: 0; background-color: #22c55e;"></span>
+                </span>
+            </h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16">
+                <!-- Card 1 -->
+                <div class="group relative h-72 w-full max-w-125 mx-auto rounded-lg cursor-pointer overflow-hidden shadow-lg transition-transform duration-300 ease-in-out hover:-translate-y-2" data-aos="fade-left" data-aos-delay="100">
+                    <img src="/src/images/enginnering/img1.jpg" alt="Precision Manufacturing" class="w-full h-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-110">
+                    <div class="absolute inset-0 bg-black bg-opacity-50 hover:bg-opacity-30 flex flex-col justify-between p-6">
+                        <h3 class="text-white text-xl bg-opacity-80 w-fit px-3 py-1 rounded-full font-semibold transition-all duration-300 group-hover:bg-green-500 group-hover:bg-opacity-100 group-hover:text-white transform group-hover:translate-x-2 group-hover:scale-105">
+                            Electronics Design
+                        </h3>
+                        <button class="self-end bg-white hover:bg-green-500 hover:text-white text-black px-4 py-2 rounded-full transition duration-300 ease-in-out transform hover:scale-110 hover:bg-opacity-80 animate-pulse-glow">
+                            Read More
+                        </button>
+                    </div>
+                </div>
+
+                <div class="group relative h-72 w-full max-w-125 mx-auto rounded-lg cursor-pointer overflow-hidden shadow-lg transition-transform duration-300 ease-in-out hover:-translate-y-2" data-aos="fade-right" data-aos-delay="100">
+                    <img src="/src/images/enginnering/img2.jpg" alt="Precision Manufacturing" class="w-full h-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-110">
+                    <div class="absolute inset-0 bg-black bg-opacity-50 hover:bg-opacity-30 flex flex-col justify-between p-6">
+                        <h3 class="text-white text-xl bg-opacity-80 w-fit px-3 py-1 rounded-full font-semibold transition-all duration-300 group-hover:bg-green-500 group-hover:bg-opacity-100 group-hover:text-white transform group-hover:translate-x-2 group-hover:scale-105">
+                            Mechanical Design
+                        </h3>
+                        <button class="self-end bg-white hover:bg-green-500 hover:text-white px-4 py-2 rounded-full transition duration-300 ease-in-out transform hover:scale-110 hover:bg-opacity-80 animate-pulse-glow">
+                            Read More
+                        </button>
+                    </div>
+                </div>
+
+                <div class="group relative h-72 w-full max-w-125 mx-auto rounded-lg cursor-pointer overflow-hidden shadow-lg transition-transform duration-300 ease-in-out hover:-translate-y-2" data-aos="fade-left" data-aos-delay="100">
+                    <img src="/src/images/enginnering/img3.jpg" alt="Precision Manufacturing" class="w-full h-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-110">
+                    <div class="absolute inset-0 bg-black bg-opacity-50 hover:bg-opacity-30 flex flex-col justify-between p-6">
+                        <h3 class="text-white text-xl bg-opacity-80  w-fit px-3 py-1 rounded-full font-semibold transition-all duration-300 group-hover:bg-green-500 group-hover:bg-opacity-100 group-hover:text-white transform group-hover:translate-x-2 group-hover:scale-105">
+                            Custom IoT Solutions
+                        </h3>
+                        <button class="self-end bg-white hover:bg-green-500 hover:text-white px-4 py-2 rounded-full transition duration-300 ease-in-out transform hover:scale-110 hover:bg-opacity-80 animate-pulse-glow">
+                            Read More
+                        </button>
+                    </div>
+                </div>
+
+                <div class="group relative h-72 w-full max-w-125 mx-auto rounded-lg cursor-pointer overflow-hidden shadow-lg transition-transform duration-300 ease-in-out hover:-translate-y-2" data-aos="fade-left" data-aos-delay="100">
+                    <img src="/src/images/enginnering/img4.jpg" alt="Precision Manufacturing" class="w-full h-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-110">
+                    <div class="absolute inset-0 bg-black bg-opacity-50 hover:bg-opacity-30 flex flex-col justify-between p-6">
+                        <h3 class="text-white text-xl bg-opacity-80 w-fit px-3 py-1 rounded-full font-semibold transition-all duration-300 group-hover:bg-green-500 group-hover:bg-opacity-100 group-hover:text-white transform group-hover:translate-x-2 group-hover:scale-105">
+                            Testing & Certification
+                        </h3>
+                        <button class="self-end bg-white hover:bg-green-500 hover:text-white px-4 py-2 rounded-full transition duration-300 ease-in-out transform hover:scale-110 hover:bg-opacity-80 animate-pulse-glow">
+                            Read More
+                        </button>
+                    </div>
+                </div>
+
+                <div class="group relative h-72 w-full max-w-125 mx-auto rounded-lg cursor-pointer overflow-hidden shadow-lg transition-transform duration-300 ease-in-out hover:-translate-y-2" data-aos="fade-right" data-aos-delay="100">
+                    <img src="/src/images/enginnering/img5.jpg" alt="Precision Manufacturing" class="w-full h-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-110">
+                    <div class="absolute inset-0 bg-black bg-opacity-50 hover:bg-opacity-30 flex flex-col justify-between p-6">
+                        <h3 class="text-white text-xl bg-opacity-80 w-fit px-3 py-1 rounded-full font-semibold transition-all duration-300 group-hover:bg-green-500 group-hover:bg-opacity-100 group-hover:text-white transform group-hover:translate-x-2 group-hover:scale-105">
+                            Prototyping & Production
+                        </h3>
+                        <button class="self-end bg-white hover:bg-green-500 hover:text-white px-4 py-2 rounded-full transition duration-300 ease-in-out transform hover:scale-110 hover:bg-opacity-80 animate-pulse-glow">
+                            Read More
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Manufacturing Services -->
+    <section class="py-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
+        <div class="container mx-auto">
+            <h2 class="text-4xl font-semibold text-start mb-12" data-aos="fade-down">
+                <span style="position: relative; display: inline-block; padding-bottom: 10px;">
+                    Manufacturing Services
+                    <span style="content: ''; position: absolute; width: 70%; height: 7px; bottom: 0; left: 0; background-color: #22c55e;"></span>
+                </span>
+            </h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16">
+                <!-- Card 1 -->
+                <div class="group relative h-72 w-full max-w-125 mx-auto rounded-lg cursor-pointer overflow-hidden shadow-lg transition-transform duration-300 ease-in-out hover:-translate-y-2" data-aos="fade-right" data-aos-delay="100">
+                    <img src="/src/images/manufacturing/img1.jpg" alt="Precision Manufacturing" class="w-full h-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-110">
+                    <div class="absolute inset-0 bg-black bg-opacity-50 hover:bg-opacity-30 flex flex-col justify-between p-6">
+                        <h3 class="text-white text-xl bg-opacity-80 w-fit px-3 py-1 rounded-full font-semibold transition-all duration-300 group-hover:bg-green-500 group-hover:bg-opacity-100 group-hover:text-white transform group-hover:translate-x-2 group-hover:scale-105">
+                            Rapid Prototyping
+                        </h3>
+                        <button class="self-end bg-white hover:bg-green-500 hover:text-white px-4 py-2 rounded-full transition duration-300 ease-in-out transform hover:scale-110 hover:bg-opacity-80 animate-pulse-glow">
+                            Read More
+                        </button>
+                    </div>
+                </div>
+
+                <div class="group relative h-72 w-full max-w-125 mx-auto rounded-lg cursor-pointer overflow-hidden shadow-lg transition-transform duration-300 ease-in-out hover:-translate-y-2" data-aos="fade-left" data-aos-delay="100">
+                    <img src="/src/images/manufacturing/img2.jpg" alt="Precision Manufacturing" class="w-full h-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-110">
+                    <div class="absolute inset-0 bg-black bg-opacity-50 hover:bg-opacity-30 flex flex-col justify-between p-6">
+                        <h3 class="text-white text-xl bg-opacity-80 w-fit px-3 py-1 rounded-full font-semibold transition-all duration-300 group-hover:bg-green-500 group-hover:bg-opacity-100 group-hover:text-white transform group-hover:translate-x-2 group-hover:scale-105">
+                            PCB Assembly & Fabrication
+                        </h3>
+                        <button class="self-end bg-white hover:bg-green-500 hover:text-white px-4 py-2 rounded-full transition duration-300 ease-in-out transform hover:scale-110 hover:bg-opacity-80 animate-pulse-glow">
+                            Read More
+                        </button>
+                    </div>
+                </div>
+
+                <div class="group relative h-72 w-full max-w-125 mx-auto rounded-lg cursor-pointer overflow-hidden shadow-lg transition-transform duration-300 ease-in-out hover:-translate-y-2" data-aos="fade-right" data-aos-delay="300">
+                    <img src="/src/images/manufacturing/img3.jpg" alt="Precision Manufacturing" class="w-full h-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-110">
+                    <div class="absolute inset-0 bg-black bg-opacity-50 hover:bg-opacity-30 flex flex-col justify-between p-6">
+                        <h3 class="text-white text-xl bg-opacity-80 w-fit px-3 py-1 rounded-full font-semibold transition-all duration-300 group-hover:bg-green-500 group-hover:bg-opacity-100 group-hover:text-white transform group-hover:translate-x-2 group-hover:scale-105">
+                            Custom Manufacturing Solutions
+                        </h3>
+                        <button class="self-end bg-white hover:bg-green-500 hover:text-white px-4 py-2 rounded-full transition duration-300 ease-in-out transform hover:scale-110 hover:bg-opacity-80 animate-pulse-glow">
+                            Read More
+                        </button>
+                    </div>
+                </div>
+
+                <div class="group relative h-72 w-full max-w-125 mx-auto rounded-lg cursor-pointer overflow-hidden shadow-lg transition-transform duration-300 ease-in-out hover:-translate-y-2" data-aos="fade-left" data-aos-delay="400">
+                    <img src="/src/images/manufacturing/img4.jpg" alt="Precision Manufacturing" class="w-full h-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-110">
+                    <div class="absolute inset-0 bg-black bg-opacity-50 hover:bg-opacity-30 flex flex-col justify-between p-6">
+                        <h3 class="text-white text-xl bg-opacity-80 w-fit px-3 py-1 rounded-full font-semibold transition-all duration-300 group-hover:bg-green-500 group-hover:bg-opacity-100 group-hover:text-white transform group-hover:translate-x-2 group-hover:scale-105">
+                            Quality Control & Testing
+                        </h3>
+                        <button class="self-end bg-white hover:bg-green-500 hover:text-white px-4 py-2 rounded-full transition duration-300 ease-in-out transform hover:scale-110 hover:bg-opacity-80 animate-pulse-glow">
+                            Read More
+                        </button>
+                    </div>
+                </div>
+
+                <div class="group relative h-72 w-full max-w-125 mx-auto rounded-lg cursor-pointer overflow-hidden shadow-lg transition-transform duration-300 ease-in-out hover:-translate-y-2" data-aos="fade-right" data-aos-delay="200">
+                    <img src="/src/images/manufacturing/img5.jpg" alt="Precision Manufacturing" class="w-full h-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-110">
+                    <div class="absolute inset-0 bg-black bg-opacity-50 hover:bg-opacity-30 flex flex-col justify-between p-6">
+                        <h3 class="text-white text-xl bg-opacity-80 w-fit px-3 py-1 rounded-full font-semibold transition-all duration-300 group-hover:bg-green-500 group-hover:bg-opacity-100 group-hover:text-white transform group-hover:translate-x-2 group-hover:scale-105">
+                            Supply Chain Management
+                        </h3>
+                        <button class="self-end bg-white hover:bg-green-500 hover:text-white px-4 py-2 rounded-full transition duration-300 ease-in-out transform hover:scale-110 hover:bg-opacity-80 animate-pulse-glow">
+                            Read More
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- our services -->
+    <!-- <section class="bg-gray-100 py-10" x-data="carouselData()" data-aos="fade-up" data-aos-duration="1500">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col items-center mb-10" data-aos="fade-up" data-aos-delay="100">
+                <h2 class="relative text-3xl font-bold text-gray-800 mb-2">
+                    Our Services
+                </h2>
+                <div class="w-24 h-1 bg-green-500 rounded-full"></div>
+            </div>
+            <div class="relative">
+                <div class="overflow-hidden" data-aos="fade-left" data-aos-delay="200">
+                    <div class="flex transition-transform duration-500 ease-in-out" 
+                        :style="{ transform: `translateX(-${currentIndex * (100 / visibleCards)}%)` }"
+                        @mouseenter="pauseAutoScroll"
+                        @mouseleave="resumeAutoScroll">
+                        <template x-for="(service, index) in services" :key="index">
+                            <div class="w-full sm:w-1/2 lg:w-1/3 flex-shrink-0 px-4 mb-8" 
+                                :style="`flex: 0 0 ${100 / visibleCards}%`" 
+                                data-aos="fade-up" data-aos-delay="300">
+                                <div class="flip-card h-96">
+                                    <div class="flip-card-inner relative w-full h-full">
+                                        <div class="flip-card-front absolute w-full h-full rounded-2xl shadow-2xl overflow-hidden">
+                                            <div class="absolute inset-0 bg-cover bg-center" 
+                                                :style="`background-image: url('${service.image}')`"></div>
+                                            <div class="absolute inset-x-0 bottom-0 p-4 bg-black bg-opacity-50">
+                                                <h3 x-text="service.title" class="text-3xl text-center font-bold mb-2 text-white tracking-wide"></h3>
+                                                <p x-text="service.shortDesc" class="text-green-100 text-center text-lg"></p>
+                                            </div>
+                                        </div>
+                                        <div class="flip-card-back absolute w-full h-full bg-white rounded-2xl shadow-2xl p-8">
+                                            <div class="h-full flex flex-col justify-between">
+                                                <div>
+                                                    <h3 x-text="service.title" class="text-3xl font-bold mb-3 text-center text-blue-800 border-b-2 border-blue-300 pb-2"></h3>
+                                                    <ul class="space-y-6 mb-6 text-gray-700">
+                                                        <template x-for="feature in service.features">
+                                                            <li class="flex items-center">
+                                                                <svg class="w-5 h-5 mr-2 text-blue-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                                                </svg>
+                                                                <span x-text="feature"></span>
+                                                            </li>
+                                                        </template>
+                                                    </ul>
+                                                </div>
+                                                <div class="flex flex-col items-center mt-auto">
+                                                    <a href="#" class="inline-flex items-center relative px-6 py-3 rounded-lg font-bold text-sm uppercase tracking-wider bg-gradient-to-r from-green-500 via-green-600 to-green-700 text-white overflow-hidden transition-transform transform hover:scale-105 hover:shadow-lg hover:shadow-green-500/50">
+                                                        <span class="relative z-10">View More</span>
+                                                        <i class="fas fa-arrow-right ml-2 relative z-10 transition-transform duration-300 ease-in-out hover:translate-x-2"></i>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </template>
+                    </div>
+                </div>
+                <button @click="prev" class="absolute top-1/2 left-4 transform -translate-y-1/2 bg-white text-blue-600 rounded-full w-12 h-12 shadow-lg hover:shadow-xl transition duration-300 flex items-center justify-center">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                </button>
+                <button @click="next" class="absolute top-1/2 right-4 transform -translate-y-1/2 bg-white text-blue-600 rounded-full w-12 h-12 shadow-lg hover:shadow-xl transition duration-300 flex items-center justify-center">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                </button>
+            </div>
+        </div>
+    </section> -->
+
+    <!-- <div x-data="{ 
+        activeCategory: 'Engineering',
+        categories: [
+            {
+                name: 'Engineering',
+                icon: 'fas fa-cog',
+                color: 'bg-green-500',
+                services: [
+                    {name: 'Electronics Design', icon: 'fas fa-microchip', description: ['Innovative electronic system design', 'Circuit optimization', 'Signal integrity analysis'], link: '/engineering/electronics-design.html'},
+                    {name: 'Custom IoT Solutions', icon: 'fas fa-network-wired', description: ['End-to-end IoT architecture', 'Sensor integration', 'Real-time data processing'], link: '/engineering/custom-iot-solutions.html'},
+                    {name: 'Prototyping & Production', icon: 'fas fa-cogs', description: ['Rapid prototyping', 'Production-ready designs', 'Manufacturing support'], link: '/engineering/prototyping-production.html'},
+                    {name: 'Testing & Certifications', icon: 'fas fa-check-circle', description: ['Compliance testing', 'Certification support', 'Quality assurance'], link: '/engineering/testing-certifications.html'},
+                    {name: 'PCB Design & EDA Tools', icon: 'fas fa-puzzle-piece', description: ['PCB layout design', 'EDA tool expertise', 'Design for manufacturability'], link: '/engineering/pcb-design-eda-tools.html'},
+                    {name: 'CAM Solutions', icon: 'fas fa-robot', description: ['Computer-aided manufacturing', 'Automated manufacturing processes', 'Manufacturing efficiency'], link: '/engineering/cam-solutions.html'},
+                    {name: 'Mechanical Design', icon: 'fas fa-drafting-compass', description: ['3D modeling and simulation', 'Structural analysis', 'Thermal management solutions'], link: '/engineering/mechanical-design.html'},
+                    {name: 'VLSI Design', icon: 'fas fa-atom', description: ['Custom IC design', 'Low-power architecture', 'Mixed-signal layout'], link: '/engineering/vlsi-design.html'},
+                    {name: 'Product LifeCycle Management', icon: 'fas fa-recycle', description: ['Concept to production support', 'Design for manufacturability', 'Continuous improvement strategies'], link: '/engineering/product-lifecycle-management.html'}
+                ]
+            },
+            {
+                name: 'Manufacturing',
+                icon: 'fas fa-industry',
+                color: 'bg-green-500',
+                services: [
+                    { 
+                        name: 'Prototyping Services', 
+                        icon: 'fas fa-cubes', 
+                        description: [
+                            'Rapid prototyping techniques',
+                            '3D printing services',
+                            'Iterative design process'
+                        ], 
+                        link: '/manufacturing/prototyping-services' 
+                    },
+                    { 
+                        name: 'PCB Assembly and Fabrication', 
+                        icon: 'fas fa-microchip', 
+                        description: [
+                            'High-precision SMT assembly',
+                            'Through-hole technology',
+                            'Quality control and testing'
+                        ], 
+                        link: '/manufacturing/pcb-assembly-fabrication' 
+                    },
+                    { 
+                        name: 'Electromechanical Assembly', 
+                        icon: 'fas fa-cogs', 
+                        description: [
+                            'Integration of electrical and mechanical components',
+                            'Assembly for optimal performance',
+                            'Precision alignment techniques'
+                        ], 
+                        link: '/manufacturing/electromechanical-assembly' 
+                    },
+                    { 
+                        name: 'Custom Manufacturing Solutions', 
+                        icon: 'fas fa-tools', 
+                        description: [
+                            'Tailored manufacturing processes',
+                            'Specialized tooling design',
+                            'Process optimization'
+                        ], 
+                        link: '/manufacturing/custom-manufacturing-solutions' 
+                    },
+                    { 
+                        name: 'Assembly and Integration', 
+                        icon: 'fas fa-sitemap', 
+                        description: [
+                            'Efficient assembly of components',
+                            'Final product integration',
+                            'Performance assurance'
+                        ], 
+                        link: '/manufacturing/assembly-integration' 
+                    },
+                    { 
+                        name: 'Quality Control and Testing', 
+                        icon: 'fas fa-clipboard-check', 
+                        description: [
+                            'Automated inspection systems',
+                            'Statistical process control',
+                            'Compliance with industry standards'
+                        ], 
+                        link: '/manufacturing/quality-control-testing' 
+                    },
+                    { 
+                        name: 'Reverse Engineering', 
+                        icon: 'fas fa-sync-alt', 
+                        description: [
+                            'Analysis and reconstruction of existing products',
+                            'Enhancing design and functionality',
+                            'Improvement of manufacturing processes'
+                        ], 
+                        link: '/manufacturing/reverse-engineering' 
+                    },
+                    { 
+                        name: 'Supply Chain Management', 
+                        icon: 'fas fa-link', 
+                        description: [
+                            'Vendor management',
+                            'Inventory optimization',
+                            'Just-in-time manufacturing support'
+                        ], 
+                        link: '/manufacturing/supply-chain-management' 
+        }
+                ]
+            },            
+            {
+                name: 'Software',
+                icon: 'fas fa-code',
+                color: 'bg-green-500',
+                services: [
+                    {name: 'Software Development', icon: 'fas fa-laptop-code', description: ['Custom application development', 'Agile methodologies', 'Cross-platform solutions'], link: '/software/software-development'},
+                    {name: 'SAP Consulting', icon: 'fas fa-chart-line', description: ['SAP implementation strategies', 'Business process optimization', 'Integration with existing systems'], link: '/software/sap-consulting'},
+                    {name: 'Data Analytics', icon: 'fas fa-database', description: ['Big data processing', 'Predictive analytics', 'Data visualization tools'], link: '/software/data-analytics'},
+                    {name: 'Cloud Infrastructure', icon: 'fas fa-cloud', description: ['Cloud migration services', 'Scalable architecture design', 'Multi-cloud strategies'], link: '/software/cloud-infrastructure'},
+                    {name: 'Cybersecurity', icon: 'fas fa-shield-alt', description: ['Threat detection and prevention', 'Compliance and risk management', 'Security audits and penetration testing'], link: '/software/cybersecurity'}
+                ]
+            }
+        ]
+    }" class="container mx-auto px-4 py-16">
+        <div class="flex flex-col items-center" data-aos="fade-up" data-aos-delay="200" data-aos-duration="1500" data-aos-easing="ease-in-out">
+            <div class="bg-green-500 text-white text-sm font-semibold px-4 py-2 rounded-xl mb-6">
+                Empowering Success with Tech Ecosystems.
+            </div>
+            <h2 class="relative text-3xl font-bold text-gray-800 mb-2">
+                Our Technological Ecosystem
+            </h2>
+            <div class="w-24 h-1 bg-green-500 rounded-full mb-10"></div>
+        </div>
+        
+        <div class="flex justify-center mb-16" data-aos="fade-up">
+            <div class="flex space-x-4">
+                <template x-for="category in categories" :key="category.name">
+                    <button 
+                        @click="activeCategory = category.name"
+                        :class="[
+                            'category-button px-6 py-3 rounded-xl text-white shadow-lg flex items-center space-x-2',
+                            activeCategory === category.name ? category.color : 'bg-gray-400 hover:bg-gray-500'
+                        ]"
+                    >
+                        <i :class="category.icon"></i>
+                        <span x-text="category.name" class="font-semibold"></span>
+                    </button>
+                </template>
+            </div>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <template x-for="category in categories" :key="category.name">
+                <template x-if="category.name === activeCategory">
+                    <template x-for="(service, index) in category.services" :key="service.name">
+                        <div class="service-card bg-white rounded-lg shadow-lg overflow-hidden" :data-aos="index % 2 === 0 ? 'fade-right' : 'fade-left'" :data-aos-delay="index * 100">
+                            <div :class="[category.color, 'p-4 flex justify-between items-center']">
+                                <h3 x-text="service.name" class="text-xl font-semibold text-white"></h3>
+                                <div class="hexagon bg-white w-12 h-12 flex items-center justify-center">
+                                    <i :class="[service.icon, category.color.replace('bg-', 'text-'), 'text-2xl']"></i>
+                                </div>
+                            </div>
+                            <div class="p-6">
+                                <ul class="space-y-2">
+                                    <template x-for="point in service.description" :key="point">
+                                        <li class="flex items-start">
+                                            <span :class="[category.color.replace('bg-', 'text-'), 'mr-2 mt-1']"><i class="fas fa-check-circle"></i></span>
+                                            <span x-text="point" class="text-gray-700"></span>
+                                        </li>
+                                    </template>
+                                </ul>
+                                <button :class="['learn-more-btn mt-6 px-6 py-3 rounded-xl text-white inline-flex items-center overflow-hidden', category.color]" @click="() => window.location.href = service.link">
+                                    <span class="btn-text">Learn More</span>
+                                    <span class="btn-arrow ml-2"><i class="fas fa-arrow-right"></i></span>
+                                </button>
+                            </div>
+                        </div>
+                    </template>
+                </template>
+            </template>
+        </div>
+    </div> -->
+
+    <!-- <div x-data="techEcosystem()" class="container mx-auto px-4">
+        <h1 class="text-5xl font-bold text-center text-gray-800 mb-12">Our Technological Ecosystem</h1>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <template x-for="category in categories" :key="category">
+                <div class="space-y-6">
+                    <h2 class="text-3xl font-semibold text-gray-700 border-b-2 border-blue-500 pb-2" x-text="category"></h2>
+                    <div class="space-y-4">
+                        <template x-for="tech in technologies[category]" :key="tech.title">
+                            <div 
+                                class="tech-card bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg"
+                                :class="{
+                                    'border-l-4 border-blue-500': category === 'Software',
+                                    'border-l-4 border-green-500': category === 'Manufacturing',
+                                    'border-l-4 border-purple-500': category === 'Hardware'
+                                }"
+                            >
+                                <div class="p-6">
+                                    <div class="flex items-center justify-between mb-4">
+                                        <span class="text-3xl" x-text="tech.emoji"></span>
+                                        <span 
+                                            class="text-xs font-semibold px-2 py-1 rounded-full"
+                                            :class="{
+                                                'bg-blue-100 text-blue-800': category === 'Software',
+                                                'bg-green-100 text-green-800': category === 'Manufacturing',
+                                                'bg-purple-100 text-purple-800': category === 'Hardware'
+                                            }"
+                                            x-text="category"
+                                        ></span>
+                                    </div>
+                                    <h3 class="text-xl font-semibold mb-2 text-gray-800" x-text="tech.title"></h3>
+                                    <p class="text-gray-600 text-sm mb-4" x-text="tech.description"></p>
+                                    <button 
+                                        class="text-sm font-semibold px-4 py-2 rounded-full transition-colors duration-300"
+                                        :class="{
+                                            'bg-blue-500 text-white hover:bg-blue-600': category === 'Software',
+                                            'bg-green-500 text-white hover:bg-green-600': category === 'Manufacturing',
+                                            'bg-purple-500 text-white hover:bg-purple-600': category === 'Hardware'
+                                        }"
+                                    >Learn More</button>
+                                </div>
+                            </div>
+                        </template>
+                    </div>
+                </div>
+            </template>
+        </div>
+    </div>      -->
+    
+
+    <!-- our projects -->
+    <section class="py-16 px-4 sm:px-6 lg:px-8 bg-gray-100" x-data="projectCarousel()" x-init="startAutoScroll">
+        <div class="container mx-auto">
+    
+            <div class="container mx-auto px-4 md:px-8">
+                <!-- Animated heading section -->
+                <div class="flex flex-col items-center" data-aos="fade-up" data-aos-delay="200" data-aos-duration="1500" data-aos-easing="ease-in-out">
+                    <!-- <div class="bg-green-500 text-white text-sm font-semibold px-4 py-2 rounded-xl mb-6">
+                        See How We've Helped Businesses Succeed Online
+                    </div> -->
+                    <h2 class="relative text-3xl font-bold text-gray-800 mb-2">
+                        Our Projects
+                    </h2>
+                    <div class="w-24 h-1 bg-green-500 rounded-full"></div>
+                </div>
+    
+                <!-- Animated paragraph section -->
+                <div class="max-w-4xl mx-auto text-center mb-10 mt-4" data-aos="fade-in" data-aos-delay="300" data-aos-duration="1500" data-aos-easing="ease-in-out">
+                    <p class="text-lg text-gray-600 mb-10 leading-relaxed">
+                        At <span class="font-bold">NX GEN INVENTORS</span>, we take pride in the websites and development projects we've crafted for our clients. From sleek e-commerce platforms to bespoke CMS solutions, our team combines expertise and creativity to deliver unique digital experiences that drive success.
+                    </p>
+                </div>
+            </div>
+    
+            <!-- Carousel Section with AOS -->
+            <div class="relative overflow-hidden mt-10" @mouseenter="handleMouseEnter" @mouseleave="handleMouseLeave">
+                <div class="flex transition-transform duration-500 ease-in-out" :style="{ transform: `translateX(-${currentIndex * (100 / cardsPerPage)}%)` }">
+                    <template x-for="(project, index) in filteredProjects" :key="project.id">
+                        <div class="w-full sm:w-1/2 lg:w-1/3 flex-shrink-0 px-4 mb-8" data-aos="fade-up" data-aos-delay="300" data-aos-duration="1500" data-aos-easing="ease-in-out">
+                            <div class="project-card bg-white rounded-2xl shadow-xl overflow-hidden transition duration-300 hover:shadow-2xl transform hover:scale-105 flex flex-col h-full">
+                                <div class="relative h-72">
+                                    <img :src="project.image" :alt="project.title" class="w-full h-full object-cover" data-aos="zoom-in">
+                                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+                                    <div class="absolute top-3 right-5">
+                                        <span class="bg-green-600 text-white rounded-xl px-4 py-1 text-xs font-bold uppercase tracking-wider mb-2 inline-block">
+                                            <span x-text="project.category"></span>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="p-6 flex flex-col flex-grow items-center text-center">
+                                    <h3 class="text-2xl font-bold mb-2 text-black" x-text="project.title"></h3>
+                                    <p class="text-gray-600 mb-6 text-lg leading-relaxed flex-grow overflow-hidden" x-text="project.description"></p>
+                                    <div class="flex flex-col items-center mt-auto">
+                                        <a href="#" class="inline-flex items-center relative px-6 py-3 rounded-lg font-bold text-sm uppercase tracking-wider bg-gradient-to-r from-green-500 via-green-600 to-green-700 text-white overflow-hidden transition-transform transform hover:scale-105 hover:shadow-lg">
+                                            <span class="relative z-10">View More</span>
+                                            <i class="fas fa-arrow-right ml-2 relative z-10 transition-transform duration-300 ease-in-out hover:translate-x-2"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </template>
+                </div>
+    
+                <!-- Navigation Arrows -->
+                <button @click="prev" class="absolute top-1/2 -left-4 transform -translate-y-1/2 bg-white text-green-600 rounded-full w-12 h-12 shadow-lg hover:shadow-xl transition duration-300 ease-in-out flex items-center justify-center">
+                    <i class="fas fa-chevron-left text-xl"></i>
+                </button>
+                <button @click="next" class="absolute top-1/2 -right-4 transform -translate-y-1/2 bg-white text-green-600 rounded-full w-12 h-12 shadow-lg hover:shadow-xl transition duration-300 ease-in-out flex items-center justify-center">
+                    <i class="fas fa-chevron-right text-xl"></i>
+                </button>
+            </div>
+    
+            <!-- Carousel Indicators -->
+            <div class="flex justify-center mt-8" data-aos="zoom-in" data-aos-delay="400">
+                <template x-for="(_, index) in Array(Math.ceil(filteredProjects.length / cardsPerPage))" :key="index">
+                    <button @click="goToSlide(index * cardsPerPage)" class="mx-1 w-4 h-4 rounded-full transition-all duration-300 ease-in-out" :class="Math.floor(currentIndex / cardsPerPage) === index ? 'bg-green-600 w-8' : 'bg-gray-300'"></button>
+                </template>
+            </div>
+        </div>
+    </section>
+
     <!-- why choose us -->
-    <section class="py-20">
+    <section class="py-20 bg-white">
         <div class="container mx-auto px-4">
             <h2 class="text-5xl font-bold text-center mb-10 text-green-800 relative" data-aos="fade-down" data-aos-duration="1000">
                 Why Choose Us
@@ -574,376 +1208,7 @@
     </section>
     <!-- whychoose End -->
 
-
-    <!-- our services -->
-    <section class="bg-gray-100 py-10" x-data="carouselData()" data-aos="fade-up" data-aos-duration="1500">
-        <div class="container mx-auto px-4">
-            <div class="flex flex-col items-center mb-10" data-aos="fade-up" data-aos-delay="100">
-                <h2 class="relative text-3xl font-bold text-gray-800 mb-2">
-                    Our Services
-                </h2>
-                <div class="w-24 h-1 bg-green-500 rounded-full"></div>
-            </div>
-            <div class="relative">
-                <div class="overflow-hidden" data-aos="fade-left" data-aos-delay="200">
-                    <div class="flex transition-transform duration-500 ease-in-out" 
-                        :style="{ transform: `translateX(-${currentIndex * (100 / visibleCards)}%)` }"
-                        @mouseenter="pauseAutoScroll"
-                        @mouseleave="resumeAutoScroll">
-                        <template x-for="(service, index) in services" :key="index">
-                            <div class="w-full sm:w-1/2 lg:w-1/3 flex-shrink-0 px-4 mb-8" 
-                                 :style="`flex: 0 0 ${100 / visibleCards}%`" 
-                                 data-aos="fade-up" data-aos-delay="300">
-                                <div class="flip-card h-96">
-                                    <div class="flip-card-inner relative w-full h-full">
-                                        <div class="flip-card-front absolute w-full h-full rounded-2xl shadow-2xl overflow-hidden">
-                                            <div class="absolute inset-0 bg-cover bg-center" 
-                                                 :style="`background-image: url('${service.image}')`"></div>
-                                            <div class="absolute inset-x-0 bottom-0 p-4 bg-black bg-opacity-50">
-                                                <h3 x-text="service.title" class="text-3xl text-center font-bold mb-2 text-white tracking-wide"></h3>
-                                                <p x-text="service.shortDesc" class="text-green-100 text-center text-lg"></p>
-                                            </div>
-                                        </div>
-                                        <div class="flip-card-back absolute w-full h-full bg-white rounded-2xl shadow-2xl p-8">
-                                            <div class="h-full flex flex-col justify-between">
-                                                <div>
-                                                    <h3 x-text="service.title" class="text-3xl font-bold mb-3 text-center text-blue-800 border-b-2 border-blue-300 pb-2"></h3>
-                                                    <ul class="space-y-6 mb-6 text-gray-700">
-                                                        <template x-for="feature in service.features">
-                                                            <li class="flex items-center">
-                                                                <svg class="w-5 h-5 mr-2 text-blue-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
-                                                                </svg>
-                                                                <span x-text="feature"></span>
-                                                            </li>
-                                                        </template>
-                                                    </ul>
-                                                </div>
-                                                <div class="flex flex-col items-center mt-auto">
-                                                    <a href="#" class="inline-flex items-center relative px-6 py-3 rounded-lg font-bold text-sm uppercase tracking-wider bg-gradient-to-r from-green-500 via-green-600 to-green-700 text-white overflow-hidden transition-transform transform hover:scale-105 hover:shadow-lg hover:shadow-green-500/50">
-                                                        <span class="relative z-10">View More</span>
-                                                        <i class="fas fa-arrow-right ml-2 relative z-10 transition-transform duration-300 ease-in-out hover:translate-x-2"></i>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </template>
-                    </div>
-                </div>
-                <button @click="prev" class="absolute top-1/2 left-4 transform -translate-y-1/2 bg-white text-blue-600 rounded-full w-12 h-12 shadow-lg hover:shadow-xl transition duration-300 flex items-center justify-center">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
-                </button>
-                <button @click="next" class="absolute top-1/2 right-4 transform -translate-y-1/2 bg-white text-blue-600 rounded-full w-12 h-12 shadow-lg hover:shadow-xl transition duration-300 flex items-center justify-center">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
-                </button>
-            </div>
-        </div>
-    </section>
-
-    <div x-data="{ 
-        activeCategory: 'Engineering',
-        categories: [
-            {
-                name: 'Engineering',
-                icon: 'fas fa-cog',
-                color: 'bg-green-500',
-                services: [
-                    {name: 'Electronics Design', icon: 'fas fa-microchip', description: ['Innovative electronic system design', 'Circuit optimization', 'Signal integrity analysis']},
-                    {name: 'IoT Solutions', icon: 'fas fa-network-wired', description: ['End-to-end IoT architecture', 'Sensor integration', 'Real-time data processing']},
-                    {name: 'Mechanical Design', icon: 'fas fa-drafting-compass', description: ['3D modeling and simulation', 'Structural analysis', 'Thermal management solutions']},
-                    {name: 'VLSI Design', icon: 'fas fa-atom', description: ['Custom IC design', 'Low-power architecture', 'Mixed-signal layout']},
-                    {name: 'Product Lifecycle', icon: 'fas fa-recycle', description: ['Concept to production support', 'Design for manufacturability', 'Continuous improvement strategies']}
-                ]
-            },
-            {
-                name: 'Manufacturing',
-                icon: 'fas fa-industry',
-                color: 'bg-green-500',
-                services: [
-                    { 
-                        name: 'Prototyping Services', 
-                        icon: 'fas fa-cubes', 
-                        description: [
-                            'Rapid prototyping techniques',
-                            '3D printing services',
-                            'Iterative design process'
-                        ] 
-                    },
-                    { 
-                        name: 'PCB Assembly and Fabrication', 
-                        icon: 'fas fa-microchip', 
-                        description: [
-                            'High-precision SMT assembly',
-                            'Through-hole technology',
-                            'Quality control and testing'
-                        ] 
-                    },
-                    { 
-                        name: 'Electromechanical Assembly', 
-                        icon: 'fas fa-cogs', 
-                        description: [
-                            'Integration of electrical and mechanical components',
-                            'Assembly for optimal performance',
-                            'Precision alignment techniques'
-                        ] 
-                    },
-                    { 
-                        name: 'Custom Manufacturing Solutions', 
-                        icon: 'fas fa-tools', 
-                        description: [
-                            'Tailored manufacturing processes',
-                            'Specialized tooling design',
-                            'Process optimization'
-                        ] 
-                    },
-                    { 
-                        name: 'Assembly and Integration', 
-                        icon: 'fas fa-sitemap', 
-                        description: [
-                            'Efficient assembly of components',
-                            'Final product integration',
-                            'Performance assurance'
-                        ] 
-                    },
-                    { 
-                        name: 'Quality Control and Testing', 
-                        icon: 'fas fa-clipboard-check', 
-                        description: [
-                            'Automated inspection systems',
-                            'Statistical process control',
-                            'Compliance with industry standards'
-                        ] 
-                    },
-                    { 
-                        name: 'Reverse Engineering', 
-                        icon: 'fas fa-sync-alt', 
-                        description: [
-                            'Analysis and reconstruction of existing products',
-                            'Enhancing design and functionality',
-                            'Improvement of manufacturing processes'
-                        ] 
-                    },
-                    { 
-                        name: 'Supply Chain Management', 
-                        icon: 'fas fa-link', 
-                        description: [
-                            'Vendor management',
-                            'Inventory optimization',
-                            'Just-in-time manufacturing support'
-                        ] 
-                    }
-                ]
-            },            
-            {
-                name: 'Software',
-                icon: 'fas fa-code',
-                color: 'bg-green-500',
-                services: [
-                    {name: 'Software Development', icon: 'fas fa-laptop-code', description: ['Custom application development', 'Agile methodologies', 'Cross-platform solutions']},
-                    {name: 'SAP Consulting', icon: 'fas fa-chart-line', description: ['SAP implementation strategies', 'Business process optimization', 'Integration with existing systems']},
-                    {name: 'Data Analytics', icon: 'fas fa-database', description: ['Big data processing', 'Predictive analytics', 'Data visualization tools']},
-                    {name: 'Cloud Infrastructure', icon: 'fas fa-cloud', description: ['Cloud migration services', 'Scalable architecture design', 'Multi-cloud strategies']},
-                    {name: 'Cybersecurity', icon: 'fas fa-shield-alt', description: ['Threat detection and prevention', 'Compliance and risk management', 'Security audits and penetration testing']}
-                ]
-            }
-        ]
-    }" class="container mx-auto px-4 py-16">
-        <div class="flex flex-col items-center" data-aos="fade-up" data-aos-delay="200" data-aos-duration="1500" data-aos-easing="ease-in-out">
-            <div class="bg-green-500 text-white text-sm font-semibold px-4 py-2 rounded-xl mb-6">
-                Empowering Success with Tech Ecosystems.
-            </div>
-            <h2 class="relative text-3xl font-bold text-gray-800 mb-2">
-                Our Technological Ecosystem
-            </h2>
-            <div class="w-24 h-1 bg-green-500 rounded-full mb-10"></div>
-        </div>
-        
-        <div class="flex justify-center mb-16" data-aos="fade-up">
-            <div class="flex space-x-4">
-                <template x-for="category in categories" :key="category.name">
-                    <button 
-                        @click="activeCategory = category.name"
-                        :class="[
-                            'category-button px-6 py-3 rounded-xl text-white shadow-lg flex items-center space-x-2',
-                            activeCategory === category.name ? category.color : 'bg-gray-400 hover:bg-gray-500'
-                        ]"
-                    >
-                        <i :class="category.icon"></i>
-                        <span x-text="category.name" class="font-semibold"></span>
-                    </button>
-                </template>
-            </div>
-        </div>
-        
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <template x-for="category in categories" :key="category.name">
-                <template x-if="category.name === activeCategory">
-                    <template x-for="(service, index) in category.services" :key="service.name">
-                        <div class="service-card bg-white rounded-lg shadow-lg overflow-hidden" :data-aos="index % 2 === 0 ? 'fade-right' : 'fade-left'" :data-aos-delay="index * 100">
-                            <div :class="[category.color, 'p-4 flex justify-between items-center']">
-                                <h3 x-text="service.name" class="text-xl font-semibold text-white"></h3>
-                                <div class="hexagon bg-white w-12 h-12 flex items-center justify-center">
-                                    <i :class="[service.icon, category.color.replace('bg-', 'text-'), 'text-2xl']"></i>
-                                </div>
-                            </div>
-                            <div class="p-6">
-                                <ul class="space-y-2">
-                                    <template x-for="point in service.description" :key="point">
-                                        <li class="flex items-start">
-                                            <span :class="[category.color.replace('bg-', 'text-'), 'mr-2 mt-1']"><i class="fas fa-check-circle"></i></span>
-                                            <span x-text="point" class="text-gray-700"></span>
-                                        </li>
-                                    </template>
-                                </ul>
-                                <button :class="['learn-more-btn mt-6 px-6 py-3 rounded-xl text-white inline-flex items-center overflow-hidden', category.color]">
-                                    <span class="btn-text">Learn More</span>
-                                    <span class="btn-arrow ml-2"><i class="fas fa-arrow-right"></i></span>
-                                </button>
-                            </div>
-                        </div>
-                    </template>
-                </template>
-            </template>
-        </div>
-    </div>
-
-    <!-- <div x-data="techEcosystem()" class="container mx-auto px-4">
-        <h1 class="text-5xl font-bold text-center text-gray-800 mb-12">Our Technological Ecosystem</h1>
-        
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <template x-for="category in categories" :key="category">
-                <div class="space-y-6">
-                    <h2 class="text-3xl font-semibold text-gray-700 border-b-2 border-blue-500 pb-2" x-text="category"></h2>
-                    <div class="space-y-4">
-                        <template x-for="tech in technologies[category]" :key="tech.title">
-                            <div 
-                                class="tech-card bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg"
-                                :class="{
-                                    'border-l-4 border-blue-500': category === 'Software',
-                                    'border-l-4 border-green-500': category === 'Manufacturing',
-                                    'border-l-4 border-purple-500': category === 'Hardware'
-                                }"
-                            >
-                                <div class="p-6">
-                                    <div class="flex items-center justify-between mb-4">
-                                        <span class="text-3xl" x-text="tech.emoji"></span>
-                                        <span 
-                                            class="text-xs font-semibold px-2 py-1 rounded-full"
-                                            :class="{
-                                                'bg-blue-100 text-blue-800': category === 'Software',
-                                                'bg-green-100 text-green-800': category === 'Manufacturing',
-                                                'bg-purple-100 text-purple-800': category === 'Hardware'
-                                            }"
-                                            x-text="category"
-                                        ></span>
-                                    </div>
-                                    <h3 class="text-xl font-semibold mb-2 text-gray-800" x-text="tech.title"></h3>
-                                    <p class="text-gray-600 text-sm mb-4" x-text="tech.description"></p>
-                                    <button 
-                                        class="text-sm font-semibold px-4 py-2 rounded-full transition-colors duration-300"
-                                        :class="{
-                                            'bg-blue-500 text-white hover:bg-blue-600': category === 'Software',
-                                            'bg-green-500 text-white hover:bg-green-600': category === 'Manufacturing',
-                                            'bg-purple-500 text-white hover:bg-purple-600': category === 'Hardware'
-                                        }"
-                                    >Learn More</button>
-                                </div>
-                            </div>
-                        </template>
-                    </div>
-                </div>
-            </template>
-        </div>
-    </div>      -->
-    
-
-    <!-- our projects -->
-    <section class="py-16 px-4 sm:px-6 lg:px-8 bg-gray-100" x-data="projectCarousel()" x-init="startAutoScroll">
-        <div class="container mx-auto">
-    
-            <div class="container mx-auto px-4 md:px-8">
-                <!-- Animated heading section -->
-                <div class="flex flex-col items-center" data-aos="fade-up" data-aos-delay="200" data-aos-duration="1500" data-aos-easing="ease-in-out">
-                    <div class="bg-green-500 text-white text-sm font-semibold px-4 py-2 rounded-xl mb-6">
-                        See How We've Helped Businesses Succeed Online
-                    </div>
-                    <h2 class="relative text-3xl font-bold text-gray-800 mb-2">
-                        Our Projects
-                    </h2>
-                    <div class="w-24 h-1 bg-green-500 rounded-full"></div>
-                </div>
-    
-                <!-- Animated paragraph section -->
-                <div class="max-w-4xl mx-auto text-center mb-10 mt-4" data-aos="fade-in" data-aos-delay="300" data-aos-duration="1500" data-aos-easing="ease-in-out">
-                    <p class="text-lg text-gray-600 mb-8 leading-relaxed">
-                        At <span class="font-bold">NXGEN INVENTORS</span>, we take pride in the websites and development projects we've crafted for our clients. From sleek e-commerce platforms to bespoke CMS solutions, our team combines expertise and creativity to deliver unique digital experiences that drive success.
-                    </p>
-                </div>
-            </div>
-    
-            <!-- Animated Filter Buttons -->
-            <div class="flex flex-wrap justify-center gap-4 mb-16" data-aos="fade-right" data-aos-delay="200" data-aos-duration="1500" data-aos-easing="ease-in-out">
-                <template x-for="category in ['Engineering', 'Software', 'Manufacturing']" :key="category">
-                    <button @click="filterByCategory(category)" 
-                            :class="{ 'bg-green-600 text-white': currentFilter === category, 'bg-white text-green-600': currentFilter !== category }" 
-                            class="px-8 py-3 rounded-xl shadow-lg hover:shadow-xl transition duration-300 ease-in-out border-2 border-green-600 font-bold text-sm uppercase tracking-wider">
-                        <span x-text="category"></span>
-                    </button>
-                </template>
-            </div>
-    
-            <!-- Carousel Section with AOS -->
-            <div class="relative overflow-hidden" @mouseenter="handleMouseEnter" @mouseleave="handleMouseLeave">
-                <div class="flex transition-transform duration-500 ease-in-out" :style="{ transform: `translateX(-${currentIndex * (100 / cardsPerPage)}%)` }">
-                    <template x-for="(project, index) in filteredProjects" :key="project.id">
-                        <div class="w-full sm:w-1/2 lg:w-1/3 flex-shrink-0 px-4 mb-8" data-aos="fade-up" data-aos-delay="300" data-aos-duration="1500" data-aos-easing="ease-in-out">
-                            <div class="project-card bg-white rounded-2xl shadow-xl overflow-hidden transition duration-300 hover:shadow-2xl transform hover:scale-105 flex flex-col h-full">
-                                <div class="relative h-72">
-                                    <img :src="project.image" :alt="project.title" class="w-full h-full object-cover" data-aos="zoom-in">
-                                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
-                                    <div class="absolute top-3 right-5">
-                                        <span class="bg-green-600 text-white rounded-xl px-4 py-1 text-xs font-bold uppercase tracking-wider mb-2 inline-block">
-                                            <span x-text="project.category"></span>
-                                        </span>
-                                    </div>
-                                </div>
-                                <div class="p-6 flex flex-col flex-grow items-center text-center">
-                                    <h3 class="text-2xl font-bold mb-2 text-black" x-text="project.title"></h3>
-                                    <p class="text-gray-600 mb-6 text-lg leading-relaxed flex-grow overflow-hidden" x-text="project.description"></p>
-                                    <div class="flex flex-col items-center mt-auto">
-                                        <a href="#" class="inline-flex items-center relative px-6 py-3 rounded-lg font-bold text-sm uppercase tracking-wider bg-gradient-to-r from-green-500 via-green-600 to-green-700 text-white overflow-hidden transition-transform transform hover:scale-105 hover:shadow-lg">
-                                            <span class="relative z-10">View More</span>
-                                            <i class="fas fa-arrow-right ml-2 relative z-10 transition-transform duration-300 ease-in-out hover:translate-x-2"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </template>
-                </div>
-    
-                <!-- Navigation Arrows -->
-                <button @click="prev" class="absolute top-1/2 -left-4 transform -translate-y-1/2 bg-white text-green-600 rounded-full w-12 h-12 shadow-lg hover:shadow-xl transition duration-300 ease-in-out flex items-center justify-center">
-                    <i class="fas fa-chevron-left text-xl"></i>
-                </button>
-                <button @click="next" class="absolute top-1/2 -right-4 transform -translate-y-1/2 bg-white text-green-600 rounded-full w-12 h-12 shadow-lg hover:shadow-xl transition duration-300 ease-in-out flex items-center justify-center">
-                    <i class="fas fa-chevron-right text-xl"></i>
-                </button>
-            </div>
-    
-            <!-- Carousel Indicators -->
-            <div class="flex justify-center mt-8" data-aos="zoom-in" data-aos-delay="400">
-                <template x-for="(_, index) in Array(Math.ceil(filteredProjects.length / cardsPerPage))" :key="index">
-                    <button @click="goToSlide(index * cardsPerPage)" class="mx-1 w-4 h-4 rounded-full transition-all duration-300 ease-in-out" :class="Math.floor(currentIndex / cardsPerPage) === index ? 'bg-green-600 w-8' : 'bg-gray-300'"></button>
-                </template>
-            </div>
-        </div>
-    </section>
-
-    <div class="mx-auto bg-white py-10">
+    <div class="mx-auto bg-gray-100 py-10">
         <div class="flex justify-center">
             <h2 class="relative pb-2 mb-12 text-3xl font-bold text-gray-800">
                 Our Partners
@@ -952,37 +1217,39 @@
         </div> 
         <div class="logos-container p-4" data-aos="fade-up">
             <div class="logos-scroll">
-                <div class="logo-item" data-aos="fade-right"><img src="/src/images/clients-logo/genius-logo.svg" alt="Company 1"></div>
-                <div class="logo-item" data-aos="fade-right" data-aos-delay="100"><img src="/src/images/clients-logo/mst.svg" alt="Company 2"></div>
-                <div class="logo-item" data-aos="fade-right" data-aos-delay="100"><img src="/src/images/clients-logo/parav-electronics.svg" alt="Company 3"></div>
-                <div class="logo-item" data-aos="fade-right" data-aos-delay="100"><img src="/src/images/clients-logo/realty.svg" alt="Company 4"></div>
-                <div class="logo-item" data-aos="fade-right" data-aos-delay="100"><img src="/src/images/clients-logo/SPI.png" alt="Company 5"></div>
-                <div class="logo-item" data-aos="fade-right" data-aos-delay="100"><img src="/src/images/clients-logo/sunplower.png" alt="Company 6"></div>
+                <div class="logo-item" data-aos="fade-right"><img src="/src/images/clients-logo/centuary matresses.jpeg" alt="Company 1"></div>
+                <div class="logo-item" data-aos="fade-left" data-aos-delay="100"><img src="/src/images/clients-logo/dtech.jpeg" alt="Company 2"></div>
+                <div class="logo-item" data-aos="fade-right" data-aos-delay="100"><img src="/src/images/clients-logo/edzya.png" alt="Company 3"></div>
+                <div class="logo-item" data-aos="fade-left" data-aos-delay="100"><img src="/src/images/clients-logo/genius-logo.svg" alt="Company 4"></div>
+                <div class="logo-item" data-aos="fade-right" data-aos-delay="100"><img src="/src/images/clients-logo/microchip.png" alt="Company 5"></div>
+                <div class="logo-item" data-aos="fade-left" data-aos-delay="100"><img src="/src/images/clients-logo/mst.svg" alt="Company 6"></div>
                 <div class="logo-item" data-aos="fade-right" data-aos-delay="100"><img src="/src/images/clients-logo/vinyard.png" alt="Company 7"></div>
-                <div class="logo-item" data-aos="fade-right" data-aos-delay="100"><img src="/src/images/clients-logo/yantra-1.jpg" alt="Company 8"></div>
-                <div class="logo-item" data-aos="fade-right" data-aos-delay="100"><img src="/src/images/clients-logo/" alt="Company 9"></div>
-                <div class="logo-item" data-aos="fade-right" data-aos-delay="100"><img src="/src/images/clients-logo/" alt="Company 10"></div>
-                <div class="logo-item" data-aos="fade-right" data-aos-delay="100"><img src="/src/images/clients-logo/" alt="Company 11"></div>
-                <div class="logo-item" data-aos="fade-right" data-aos-delay="100"><img src="/src/images/clients-logo/" alt="Company 12"></div>
-                <div class="logo-item" data-aos="fade-right" data-aos-delay="100"><img src="/src/images/clients-logo/" alt="Company 13"></div>
-                <div class="logo-item" data-aos="fade-right" data-aos-delay="100"><img src="/src/images/clients-logo/" alt="Company 14"></div>
-                <div class="logo-item" data-aos="fade-right" data-aos-delay="100"><img src="/src/images/clients-logo/" alt="Company 15"></div>
+                <div class="logo-item" data-aos="fade-left" data-aos-delay="100"><img src="/src/images/clients-logo/open charge alliance.jpeg" alt="Company 8"></div>
+                <div class="logo-item" data-aos="fade-right" data-aos-delay="100"><img src="/src/images/clients-logo/parav-electronics.svg" alt="Company 9"></div>
+                <div class="logo-item" data-aos="fade-left" data-aos-delay="100"><img src="/src/images/clients-logo/realty.svg" alt="Company 10"></div>
+                <div class="logo-item" data-aos="fade-right" data-aos-delay="100"><img src="/src/images/clients-logo/Roobuck.png" alt="Company 11"></div>
+                <div class="logo-item" data-aos="fade-left" data-aos-delay="100"><img src="/src/images/clients-logo/SPI.png" alt="Company 12"></div>
+                <div class="logo-item" data-aos="fade-right" data-aos-delay="100"><img src="/src/images/clients-logo/sunmobility.png" alt="Company 13"></div>
+                <div class="logo-item" data-aos="fade-left" data-aos-delay="100"><img src="/src/images/clients-logo/sunplower.png" alt="Company 14"></div>
+                <div class="logo-item" data-aos="fade-right" data-aos-delay="100"><img src="/src/images/clients-logo/sunstream_global_technologies_638251863008159256_300.png" alt="Company 15"></div>
+                <div class="logo-item" data-aos="fade-left" data-aos-delay="100"><img src="/src/images/clients-logo/yantra-1.jpg" alt="Company 16"></div>
                 <!-- Duplicate logos for seamless loop -->
-                <div class="logo-item" data-aos="fade-right"><img src="/src/images/clients-logo/genius-logo.svg" alt="Company 1"></div>
-                <div class="logo-item" data-aos="fade-right" data-aos-delay="100"><img src="/src/images/clients-logo/mst.svg" alt="Company 2"></div>
-                <div class="logo-item" data-aos="fade-right" data-aos-delay="100"><img src="/src/images/clients-logo/parav-electronics.svg" alt="Company 3"></div>
-                <div class="logo-item" data-aos="fade-right" data-aos-delay="100"><img src="/src/images/clients-logo/realty.svg" alt="Company 4"></div>
-                <div class="logo-item" data-aos="fade-right" data-aos-delay="100"><img src="/src/images/clients-logo/SPI.png" alt="Company 5"></div>
-                <div class="logo-item" data-aos="fade-right" data-aos-delay="100"><img src="/src/images/clients-logo/sunplower.png" alt="Company 6"></div>
+                <div class="logo-item" data-aos="fade-right"><img src="/src/images/clients-logo/centuary matresses.jpeg" alt="Company 1"></div>
+                <div class="logo-item" data-aos="fade-left" data-aos-delay="100"><img src="/src/images/clients-logo/dtech.jpeg" alt="Company 2"></div>
+                <div class="logo-item" data-aos="fade-right" data-aos-delay="100"><img src="/src/images/clients-logo/edzya.png" alt="Company 3"></div>
+                <div class="logo-item" data-aos="fade-left" data-aos-delay="100"><img src="/src/images/clients-logo/genius-logo.svg" alt="Company 4"></div>
+                <div class="logo-item" data-aos="fade-right" data-aos-delay="100"><img src="/src/images/clients-logo/microchip.png" alt="Company 5"></div>
+                <div class="logo-item" data-aos="fade-left" data-aos-delay="100"><img src="/src/images/clients-logo/mst.svg" alt="Company 6"></div>
                 <div class="logo-item" data-aos="fade-right" data-aos-delay="100"><img src="/src/images/clients-logo/vinyard.png" alt="Company 7"></div>
-                <div class="logo-item" data-aos="fade-right" data-aos-delay="100"><img src="/src/images/clients-logo/yantra-1.jpg" alt="Company 8"></div>
-                <div class="logo-item" data-aos="fade-right" data-aos-delay="100"><img src="/src/images/clients-logo/" alt="Company 9"></div>
-                <div class="logo-item" data-aos="fade-right" data-aos-delay="100"><img src="/src/images/clients-logo/" alt="Company 10"></div>
-                <div class="logo-item" data-aos="fade-right" data-aos-delay="100"><img src="/src/images/clients-logo/" alt="Company 11"></div>
-                <div class="logo-item" data-aos="fade-right" data-aos-delay="100"><img src="/src/images/clients-logo/" alt="Company 12"></div>
-                <div class="logo-item" data-aos="fade-right" data-aos-delay="100"><img src="/src/images/clients-logo/" alt="Company 13"></div>
-                <div class="logo-item" data-aos="fade-right" data-aos-delay="100"><img src="/src/images/clients-logo/" alt="Company 14"></div>
-                <div class="logo-item" data-aos="fade-right" data-aos-delay="100"><img src="/src/images/clients-logo/" alt="Company 15"></div>
+                <div class="logo-item" data-aos="fade-left" data-aos-delay="100"><img src="/src/images/clients-logo/open charge alliance.jpeg" alt="Company 8"></div>
+                <div class="logo-item" data-aos="fade-right" data-aos-delay="100"><img src="/src/images/clients-logo/parav-electronics.svg" alt="Company 9"></div>
+                <div class="logo-item" data-aos="fade-left" data-aos-delay="100"><img src="/src/images/clients-logo/realty.svg" alt="Company 10"></div>
+                <div class="logo-item" data-aos="fade-right" data-aos-delay="100"><img src="/src/images/clients-logo/Roobuck.png" alt="Company 11"></div>
+                <div class="logo-item" data-aos="fade-left" data-aos-delay="100"><img src="/src/images/clients-logo/SPI.png" alt="Company 12"></div>
+                <div class="logo-item" data-aos="fade-right" data-aos-delay="100"><img src="/src/images/clients-logo/sunmobility.png" alt="Company 13"></div>
+                <div class="logo-item" data-aos="fade-left" data-aos-delay="100"><img src="/src/images/clients-logo/sunplower.png" alt="Company 14"></div>
+                <div class="logo-item" data-aos="fade-right" data-aos-delay="100"><img src="/src/images/clients-logo/sunstream_global_technologies_638251863008159256_300.png" alt="Company 15"></div>
+                <div class="logo-item" data-aos="fade-left" data-aos-delay="100"><img src="/src/images/clients-logo/yantra-1.jpg" alt="Company 16"></div>
             </div>
         </div>
     </div>

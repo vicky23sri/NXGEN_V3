@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NX GEN INVENTORS</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    screens: {
+                        'custom': '1440px',
+                    },
+                    fontFamily: {
+                        'glimser': ['Glimser', 'sans-serif'],
+                    },
+                },
+            },
+        }
+    </script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.2/min/tiny-slider.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.2/tiny-slider.css">
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="/src/css/index.css">
+    <style>
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+    </style>
+<body class="font-glimser">
+    <nav x-data="{ 
+        isMenuOpen: false,
+        activeSubmenu: null,
+        isSearchOpen: false,
+        toggleMenu() { this.isMenuOpen = !this.isMenuOpen; },
+        toggleSubmenu(index) { this.activeSubmenu = this.activeSubmenu === index ? null : index; },
+        toggleSearch() { this.isSearchOpen = !this.isSearchOpen; }
+    }">
+        <div class="mx-auto bg-white shadow-xl py-3 px-4 sm:px-6 custom:px-20">
+            <div class="flex justify-between items-center">
+                <div class="logo">
+                    <a href="/index.html">
+                        <img class="w-[180px]" src="/src/images/logo-green-s.svg" alt="Logo">
+                    </a>
+                </div>
+                <button @click="toggleMenu" 
+                        class="custom:hidden z-50 relative focus:outline-none w-10 h-10 flex items-center justify-center"
+                        aria-label="Toggle menu">
+                    <span class="sr-only">Open main menu</span>
+                    <div class="w-5 h-5 flex items-center justify-center relative">
+                        <span class="block absolute h-0.5 w-5 bg-gray-600 transform transition duration-500 ease-in-out"
+                            :class="{'rotate-45': isMenuOpen, '-translate-y-1.5': !isMenuOpen }"></span>
+                        <span class="block absolute h-0.5 w-5 bg-gray-600 transform transition duration-500 ease-in-out"
+                            :class="{'opacity-0': isMenuOpen }"></span>
+                        <span class="block absolute h-0.5 w-5 bg-gray-600 transform transition duration-500 ease-in-out"
+                            :class="{'-rotate-45': isMenuOpen, 'translate-y-1.5': !isMenuOpen}"></span>
+                    </div>
+                </button>
+                <div class="hidden custom:flex items-center space-x-7"> 
+                    <nav class="flex space-x-7">
+                        <a href="/index.html" 
+                           class="text-gray-500 group-hover:text-gray-900 font-bold flex items-center h-16 px-4" 
+                           x-show="!window.location.pathname.includes('index.html')">
+                            Home
+                        </a>
+                    
+                        <template x-for="(item, index) in [
+                            { title: 'Company', link: '#', submenu: [
+                                { title: 'About Us', link: '/about-us.html', icon: 'fa-solid fa-info-circle' },
+                                { title: 'Careers', link: '/careers.html', icon: 'fa-solid fa-briefcase' },
+                                { title: 'Leadership', link: '/leadership.html', icon: 'fa-solid fa-user-tie' },
+                                { title: 'Clients', link: '/clients.html', icon: 'fa-solid fa-users' }
+                            ]},
+                            { title: 'Industry', link: '#', submenu: [
+                                { title: 'Automotive', link: '/industry/automotive.html', icon: 'fa-solid fa-car' },
+                                { title: 'Mining and Metals', link: '/industry/mining.html', icon: 'fa-solid fa-gem' },
+                                { title: 'Transportation', link: '/industry/transportation.html', icon: 'fa-solid fa-truck' },
+                                { title: 'Renewable Energy', link: '/industry/renewable-energy.html', icon: 'fa-solid fa-solar-panel' },
+                                { title: 'Medical', link: '/industry/medical.html', icon: 'fa-solid fa-stethoscope' },
+                                { title: 'Fintech', link: '/industry/fintech.html', icon: 'fa-solid fa-chart-line' },
+                                { title: 'Real Estate & Property Management', link: '/industry/real-estate.html', icon: 'fa-solid fa-building' }
+                            ]},
+                            { title: 'Engineering', link: '#', submenu: [
+                                { title: 'Electronics', link: '/engineering/electronics.html', icon: 'fa-solid fa-microchip' },
+                                { title: 'Mechanical', link: '/engineering/mechanical.html', icon: 'fa-solid fa-cogs' },
+                                { title: 'PCB & CAD', link: '/engineering/pcb-cad.html', icon: 'fa-solid fa-drafting-compass' },
+                                { title: 'IoT Products', link: '/engineering/iot-products.html', icon: 'fa-solid fa-network-wired' },
+                                { title: 'Manufacturing', link: '/engineering/manufacturing.html', icon: 'fa-solid fa-industry' }
+                            ]},
+                            {title: 'Software', 
+                                link: '#', 
+                                submenu: [
+                                    { title: 'Web Development', link: '/software/web-development.html', icon: 'fa-solid fa-code' },
+                                    { title: 'Mobile Apps', link: '/software/mobile-apps.html', icon: 'fa-solid fa-mobile-alt' },
+                                    { title: 'Cloud Solutions', link: '/software/cloud-solutions.html', icon: 'fa-solid fa-cloud' },
+                                    { title: 'AI & Machine Learning', link: '/software/ai-ml.html', icon: 'fa-solid fa-brain' },
+                                    { title: 'Data Analytics & Visualization', link: '/software/data-analytics.html', icon: 'fa-solid fa-chart-pie' },
+                                    { title: 'SAP Consulting Services', link: '/software/sap-consulting.html', icon: 'fa-solid fa-cogs' },
+                                    { title: 'Infrastructure', link: '/software/infrastructure.html', icon: 'fa-solid fa-server' },
+                                    { title: 'Maintenance & Support', link: '/software/maintenance-support.html', icon: 'fa-solid fa-wrench' }
+                                ] 
+                            },
+                            { title: 'Staffing', link: '/staffing.html', submenu: [] },
+                            { title: 'Training', link: '/training.html', submenu: [] }
+                        ]">
+                            <div class="relative group" 
+                                 @mouseenter="activeSubmenu = index" 
+                                 @mouseleave="activeSubmenu = null">
+                                <a :href="item.link" 
+                                   class="text-gray-500 group-hover:text-gray-900 font-bold flex items-center h-16 px-4">
+                                    <span x-text="item.title"></span>
+                                    <svg x-show="item.submenu.length > 0" 
+                                         class="w-2.5 h-2.5 ml-2.5" 
+                                         aria-hidden="true" 
+                                         xmlns="http://www.w3.org/2000/svg" 
+                                         fill="none" 
+                                         viewBox="0 0 10 6">
+                                        <path stroke="currentColor" 
+                                              stroke-linecap="round" 
+                                              stroke-linejoin="round" 
+                                              stroke-width="2" 
+                                              d="m1 1 4 4 4-4" />
+                                    </svg>
+                                </a>
+                                <div x-show="item.submenu.length > 0 && activeSubmenu === index" 
+                                     x-transition:enter="transition ease-out duration-200"
+                                     x-transition:enter-start="opacity-0 transform scale-95"
+                                     x-transition:enter-end="opacity-100 transform scale-100"
+                                     x-transition:leave="transition ease-in duration-150"
+                                     x-transition:leave-start="opacity-100 transform scale-100"
+                                     x-transition:leave-end="opacity-0 transform scale-95"
+                                     class="absolute left-0 mt-[10px] w-64 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none z-50"
+                                     role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
+                                    <div class="py-1" role="none">
+                                        <template x-for="subItem in item.submenu">
+                                            <a :href="subItem.link" 
+                                               class="flex items-center px-4 py-3 text-sm font-bold text-gray-700 hover:bg-green-600 hover:text-white transition-all duration-300 ease-in-out"
+                                               role="menuitem" 
+                                               tabindex="-1">
+                                                <i :class="subItem.icon" class="mr-2 text-lg"></i>
+                                                <span x-text="subItem.title"></span>
+                                            </a>
+                                        </template>
+                                    </div>
+                                </div>
+                            </div>
+                        </template>
+                    </nav>
+                    <button @click="toggleSearch" class="text-gray-500 hover:text-gray-900 focus:outline-none">
+                        <i class="fas fa-search text-xl"></i>
+                    </button>
+                    <!-- Search Bar -->
+                    <div class="flex flex-col space-y-2"> 
+                        <a href="/index.html" 
+                            class="text-gray-500 hover:text-gray-900 font-bold"
+                            x-show="isHomePage()">
+                            Home
+                        </a>
+                        <a href="tel:+918042183021" class="flex items-center text-gray-500 hover:text-gray-900 font-bold">
+                            <i class="fas fa-phone text-green-600 text-xl mr-3"></i>
+                            <span>+91-80 4218 3021</span>
+                        </a>
+                        <a href="mailto:support@nxgeninventors.com" class="flex items-center text-gray-500 hover:text-gray-900 font-bold">
+                            <i class="fas fa-envelope text-green-600 text-xl mr-3"></i>
+                            <span>support@nxgeninventors.com</span>
+                        </a>
+                    </div>                                       
+                </div>
+            </div>
+        </div>
+
+        <div x-show="isSearchOpen" 
+            x-transition:enter="transition ease-out duration-300"
+            x-transition:enter-start="opacity-0 transform -translate-y-2"
+            x-transition:enter-end="opacity-100 transform translate-y-0"
+            x-transition:leave="transition ease-in duration-300"
+            x-transition:leave-start="opacity-100 transform translate-y-0"
+            x-transition:leave-end="opacity-0 transform -translate-y-2"
+            class="absolute w-full z-50 bg-white shadow-md py-4 px-6">
+            <div class="container mx-auto relative">
+                <input type="text" placeholder="Search..." class="w-full px-4 py-2 rounded-full border-2 border-green-500 focus:outline-none focus:border-green-600">
+                <button class="absolute right-3 top-1/2 transform -translate-y-1/2 bg-green-500 text-white px-4 py-1 rounded-full hover:bg-green-600 transition duration-300">
+                    Search
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile side menu -->
+        <div class="custom:hidden">
+            <!-- Background Overlay -->
+            <div class="fixed inset-0 bg-gray-800 bg-opacity-75 z-40 transition-opacity duration-300 ease-in-out"
+                 :class="{'opacity-100': isMenuOpen, 'opacity-0 pointer-events-none': !isMenuOpen}"
+                 @click="isMenuOpen = false">
+            </div>
+            <!-- Mobile Menu -->
+            <div class="fixed inset-y-0 right-0 max-w-lg w-full bg-white shadow-xl z-50 overflow-y-auto transform transition-transform duration-300 ease-in-out"
+                 :class="{'translate-x-0': isMenuOpen, 'translate-x-full': !isMenuOpen}">
+                <!-- Close Button at the Top Right -->
+                <div class="flex justify-end mr-5 p-4">
+                    <button @click="isMenuOpen = false" class="text-gray-600 font-bold hover:text-gray-900 focus:outline-none">
+                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                    </button>
+                </div>
+                <div class="p-6">
+                    <div class="space-y-6">
+                        <template x-for="(item, index) in [
+                            { title: 'Company', icon: 'fa-building', submenu: [
+                                { title: 'About Us', icon: 'fa-info-circle' },
+                                { title: 'Careers', icon: 'fa-briefcase' },
+                                { title: 'Leadership', icon: 'fa-user-tie' },
+                                { title: 'Clients', icon: 'fa-users' }
+                            ]},
+                            { title: 'Industry', icon: 'fa-industry', submenu: [
+                                { title: 'Automotive', icon: 'fa-car' },
+                                { title: 'Mining and Metals', icon: 'fa-gem' },
+                                { title: 'Transportation', icon: 'fa-truck' },
+                                { title: 'Renewable Energy', icon: 'fa-solar-panel' },
+                                { title: 'Medical', icon: 'fa-stethoscope' },
+                                { title: 'Fintech', icon: 'fa-chart-line' },
+                                { title: 'Real Estate & Property Management', icon: 'fa-building' }
+                            ]},
+                            { title: 'Engineering', icon: 'fa-cogs', submenu: [
+                                { title: 'Electronics', icon: 'fa-microchip' },
+                                { title: 'Mechanical', icon: 'fa-cog' },
+                                { title: 'PCB & CAD', icon: 'fa-drafting-compass' },
+                                { title: 'IoT Products', icon: 'fa-network-wired' },
+                                { title: 'Manufacturing', icon: 'fa-industry' }
+                            ]},
+                            { title: 'Software', icon: 'fa-laptop-code', submenu: [
+                                { title: 'Web Development', icon: 'fa-code' },
+                                { title: 'Mobile Apps', icon: 'fa-mobile-alt' },
+                                { title: 'Cloud Solutions', icon: 'fa-cloud' },
+                                { title: 'AI & Machine Learning', icon: 'fa-brain' },
+                                { title: 'Data Analytics & Visualization', icon: 'fa-chart-pie' },
+                                { title: 'SAP Consulting Services', icon: 'fa-cogs' },
+                                { title: 'Infrastructure', icon: 'fa-server' },
+                                { title: 'Maintenance & Support', icon: 'fa-wrench' }
+                            ]},
+                            { title: 'Staffing', icon: 'fa-users', submenu: [] },
+                            { title: 'Training', icon: 'fa-chalkboard-teacher', submenu: [] }
+                        ]">
+                            <div>
+                                <button @click="toggleSubmenu(index)"
+                                        class="w-full text-left text-gray-900 font-bold flex justify-between items-center">
+                                    <span class="flex items-center">
+                                        <i :class="'fas ' + item.icon + ' mr-3 text-green-600'"></i>
+                                        <span x-text="item.title"></span>
+                                    </span>
+                                    <svg x-show="item.submenu.length > 0" class="w-6 h-6 mr-5 transform transition-transform duration-200" 
+                                         :class="{'rotate-180': activeSubmenu === index}"
+                                         xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                        <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                    </svg>
+                                </button>
+                                <div x-show="activeSubmenu === index" 
+                                     x-transition:enter="transition ease-out duration-100"
+                                     x-transition:enter-start="transform opacity-0 scale-95"
+                                     x-transition:enter-end="transform opacity-100 scale-100"
+                                     x-transition:leave="transition ease-in duration-75"
+                                     x-transition:leave-start="transform opacity-100 scale-100"
+                                     x-transition:leave-end="transform opacity-0 scale-95"
+                                     class="mt-2 space-y-2">
+                                    <template x-for="subItem in item.submenu">
+                                        <a href="#" class="flex items-center pl-4 mr-5 px-4 py-3 text-sm font-bold text-gray-700 rounded-xl hover:bg-green-600 hover:text-white transition-all duration-300 ease-in-out">
+                                            <i :class="'fas ' + subItem.icon + ' mr-3'"></i>
+                                            <span x-text="subItem.title"></span>
+                                        </a>
+                                    </template>
+                                </div>
+                            </div>
+                        </template>
+                    </div>
+                    <div class="mt-8 space-y-4">
+                        <a href="tel:+918042183021" class="flex items-center text-gray-600 hover:text-gray-900">
+                            <i class="fas fa-phone text-green-600 text-xl mr-3"></i>
+                            <span>+91-80 4218 3021</span>
+                        </a>
+                        <a href="mailto:support@nxgeninventors.com" class="flex items-center text-gray-600 hover:text-gray-900">
+                            <i class="fas fa-envelope text-green-600 text-xl mr-3"></i>
+                            <span>support@nxgeninventors.com</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <section class="bg-green-500 text-white py-20 px-4 relative overflow-hidden">
+        <div class="container mx-auto text-center relative z-10">
+            <h1 class="text-5xl font-bold mb-4 animate-pulse uppercase">testing & certifications</h1>
+            <p class="text-2xl mb-8">Turning Ideas into Innovative Realities</p>
+            <a href="#services" class="bg-white text-green-600 py-2 px-6 rounded-full font-semibold hover:bg-green-100 transition duration-300">Explore Services</a>
+        </div>
+        <div class="absolute top-0 left-0 w-full h-full opacity-10">
+            <i class="fas fa-microchip text-9xl absolute top-10 left-10 transform -rotate-12"></i>
+            <i class="fas fa-cogs text-9xl absolute bottom-10 right-10 transform rotate-12"></i>
+        </div>
+    </section>
+
+    <section class="mb-20 flex flex-col md:flex-row items-center container mx-auto py-16" data-aos="fade-up" data-aos-duration="1000">
+        <div class="md:w-1/2 mb-8 md:mb-0" data-aos="zoom-in" data-aos-duration="800">
+            <img src="https://img.freepik.com/free-photo/young-female-inventor-creating-her-workshop_23-2149067228.jpg?t=st=1727242056~exp=1727245656~hmac=1654a2c70dbf72cc14734348b8f5bdc2cb71b94fca993d29045c7137b579fd24&w=1380" alt="Electronic Design" class="rounded-lg shadow-lg hover:shadow-xl transition duration-300 ease-in-out">
+        </div>
+        <div class="md:w-1/2 md:pl-8" data-aos="fade-right" data-aos-duration="800">
+            <h2 class="text-4xl font-bold mb-6 text-gray-800">Electronic Design Excellence</h2>
+            <p class="text-gray-600 mb-4">At NX GEN INVENTORS, we specialize in cutting-edge electronic design solutions that push the boundaries of innovation. Our team of expert engineers combines years of experience with the latest technologies to deliver unparalleled results.</p>
+            <p class="text-gray-600 mb-4">We offer comprehensive electronic design services, including:</p>
+            <ul class="list-none text-gray-600 mb-4">
+                <li class="mb-4 flex items-center" data-aos="fade-up" data-aos-duration="600">
+                    <i class="fas fa-check-circle text-green-500 mr-4"></i>
+                    Circuit design and simulation
+                </li>
+                <li class="mb-4 flex items-center" data-aos="fade-up" data-aos-duration="700">
+                    <i class="fas fa-check-circle text-green-500 mr-4"></i>
+                    PCB layout and routing
+                </li>
+                <li class="mb-4 flex items-center" data-aos="fade-up" data-aos-duration="800">
+                    <i class="fas fa-check-circle text-green-500 mr-4"></i>
+                    FPGA and ASIC design
+                </li>
+                <li class="mb-4 flex items-center" data-aos="fade-up" data-aos-duration="900">
+                    <i class="fas fa-check-circle text-green-500 mr-4"></i>
+                    Embedded systems development
+                </li>
+                <li class="mb-4 flex items-center" data-aos="fade-up" data-aos-duration="1000">
+                    <i class="fas fa-check-circle text-green-500 mr-4"></i>
+                    Power management solutions
+                </li>
+                <li class="mb-4 flex items-center" data-aos="fade-up" >
+                    <i class="fas fa-check-circle text-green-500 mr-4"></i>
+                    Signal integrity analysis
+                </li>
+            </ul>
+            <p class="text-gray-600 mb-4">Our approach integrates advanced CAD tools, rapid prototyping, and rigorous testing to ensure that every design meets the highest standards of performance, reliability, and efficiency.</p>
+            <p class="text-gray-600">Whether you're developing a new product or optimizing an existing one, our electronic design expertise will help you achieve your goals and stay ahead in today's competitive market.</p>
+        </div>
+    </section>
+
+
+    <section class="bg-gray-100">
+        <div id="services" class="mb-20 container mx-auto py-16">
+            <div class="flex flex-col items-center mb-10" data-aos="fade-up" data-aos-delay="100">
+                <h2 class="relative text-3xl font-bold text-gray-800 mb-2">
+                    Our Cutting-Edge Services
+                </h2>
+                <div class="w-24 h-1 bg-green-500 rounded-full"></div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Service 1: Concept Development -->
+                <div class="bg-white rounded-lg shadow-lg p-6 card-hover transition duration-300 mb-8"  data-aos="fade-right" data-aos-delay="100">
+                    <div class="text-green-600 text-4xl mb-4"><i class="fas fa-lightbulb"></i></div>
+                    <h3 class="text-xl font-semibold mb-2">Concept Development</h3>
+                    <p class="text-gray-600 mb-4">Transforming ideas into tangible product concepts through innovative thinking.</p>
+                    <ul class="list-none mb-4">
+                        <li class="flex items-center mb-2">
+                        <i class="fas fa-check-circle text-green-600 mr-2"></i>
+                        <span>Transforming ideas into tangible product concepts</span>
+                        </li>
+                        <li class="flex items-center mb-2">
+                        <i class="fas fa-check-circle text-green-600 mr-2"></i>
+                        <span>Innovative thinking and problem-solving</span>
+                        </li>
+                    </ul>
+                </div>
+            
+                <!-- Service 2: IoT Connectivity Solution -->
+                <div class="bg-white rounded-lg shadow-lg p-6 card-hover transition duration-300 mb-8" data-aos="fade-left" data-aos-delay="200">
+                    <div class="text-green-600 text-4xl mb-4"><i class="fas fa-network-wired"></i></div>
+                    <h3 class="text-xl font-semibold mb-2">IoT Connectivity Solution</h3>
+                    <p class="text-gray-600 mb-4">Secure and reliable IoT connectivity solutions for your devices.</p>
+                    <ul class="list-none mb-4">
+                        <li class="flex items-center mb-2">
+                        <i class="fas fa-check-circle text-green-600 mr-2"></i>
+                        <span>Secure data transmission and encryption</span>
+                        </li>
+                        <li class="flex items-center mb-2">
+                        <i class="fas fa-check-circle text-green-600 mr-2"></i>
+                        <span>Reliable connectivity for IoT devices</span>
+                        </li>
+                    </ul>
+                </div>
+            
+                <!-- Service 3: Wireless Communication -->
+                <div class="bg-white rounded-lg shadow-lg p-6 card-hover transition duration-300 mb-8" data-aos="fade-right" data-aos-delay="300">
+                    <div class="text-green-600 text-4xl mb-4"><i class="fas fa-wifi"></i></div>
+                    <h3 class="text-xl font-semibold mb-2">Wireless Communication</h3>
+                    <p class="text-gray-600 mb-4">Designing and implementing efficient wireless communication systems.</p>
+                    <ul class="list-none mb-4">
+                        <li class="flex items-center mb-2">
+                        <i class="fas fa-check-circle text-green-600 mr-2"></i>
+                        <span>Efficient wireless communication systems</span>
+                        </li>
+                        <li class="flex items-center mb-2">
+                        <i class="fas fa-check-circle text-green-600 mr-2"></i>
+                        <span>Reliable data transmission and reception</span>
+                        </li>
+                    </ul>
+                </div>
+            
+                <!-- Service 4: Embedded Systems -->
+                <div class="bg-white rounded-lg shadow-lg p-6 card-hover transition duration-300 mb-8" data-aos="fade-left" data-aos-delay="100">
+                    <div class="text-green-600 text-4xl mb-4"><i class="fas fa-microchip"></i></div>
+                    <h3 class="text-xl font-semibold mb-2">Embedded Systems</h3>
+                    <p class="text-gray-600 mb-4">Designing and implementing efficient embedded systems for various applications.</p>
+                    <ul class="list-none mb-4">
+                        <li class="flex items-center mb-2">
+                        <i class="fas fa-check-circle text-green-600 mr-2"></i>
+                        <span>Efficient embedded systems design</span>
+                        </li>
+                        <li class="flex items-center mb-2">
+                        <i class="fas fa-check-circle text-green-600 mr-2"></i>
+                        <span>Reliable and secure embedded systems</span>
+                        </li>
+                    </ul>
+                </div>
+            
+                <!-- Service 5: Hardware Design -->
+                <div class="bg-white rounded-lg shadow-lg p-6 card-hover transition duration-300 mb-8" data-aos="fade-right" data-aos-delay="200">
+                    <div class="text-green-600 text-4xl mb-4"><i class="fa-solid fa-floppy-disk"></i></div>
+                    <h3 class="text-xl font-semibold mb-2">Hardware Design</h3>
+                    <p class="text-gray-600 mb-4">Designing and developing custom hardware solutions for various applications.</p>
+                    <ul class="list-none mb-4">
+                        <li class="flex items-center mb-2">
+                        <i class="fas fa-check-circle text-green-600 mr-2"></i>
+                        <span>Custom hardware design and development</span>
+                        </li>
+                        <li class="flex items-center mb-2">
+                        <i class="fas fa-check-circle text-green-600 mr-2"></i>
+                        <span>Efficient and reliable hardware solutions</span>
+                        </li>
+                    </ul>
+                </div>
+            
+                <!-- Service 6: Firmware Development -->
+                <div class="bg-white rounded-lg shadow-lg p-6 card-hover transition duration-300 mb-8"data-aos="fade-left" data-aos-delay="300">
+                    <div class="text-green-600 text-4xl mb-4"><i class="fas fa-code"></i></div>
+                    <h3 class="text-xl font-semibold mb-2">Firmware Development</h3>
+                    <p class="text-gray-600 mb-4">Developing custom firmware solutions for various applications.</p>
+                    <ul class="list-none mb-4">
+                        <li class="flex items-center mb-2">
+                        <i class="fas fa-check-circle text-green-600 mr-2"></i>
+                        <span>Custom firmware development</span>
+                        </li>
+                        <li class="flex items-center mb-2">
+                        <i class="fas fa-check-circle text-green-600 mr-2"></i>
+                        <span>Efficient and reliable firmware solutions</span>
+                        </li>
+                    </ul>
+                </div>
+            
+                <!-- Service 7: Firmware & Software Integration -->
+                <div class="bg-white rounded-lg shadow-lg p-6 card-hover transition duration-300 mb-8" data-aos="fade-right" data-aos-delay="100">
+                    <div class="text-green-600 text-4xl mb-4"><i class="fas fa-puzzle-piece"></i></div>
+                    <h3 class="text-xl font-semibold mb-2">Firmware & Software Integration</h3>
+                    <p class="text-gray-600 mb-4">Integrating firmware and software solutions for seamless functionality.</p>
+                    <ul class="list-none mb-4">
+                        <li class="flex items-center mb-2">
+                        <i class="fas fa-check-circle text-green-600 mr-2"></i>
+                        <span>Seamless firmware and software integration</span>
+                        </li>
+                        <li class="flex items-center mb-2">
+                        <i class="fas fa-check-circle text-green-600 mr-2"></i>
+                        <span>Efficient and reliable system integration</span>
+                        </li>
+                    </ul>
+                </div>
+            
+                <!-- Service 8: Sensing Technologies -->
+                <div class="bg-white rounded-lg shadow-lg p-6 card-hover transition duration-300 mb-8" data-aos="fade-left" data-aos-delay="200">
+                    <div class="text-green-600 text-4xl mb-4"><i class="fas fa-signal"></i></div>
+                    <h3 class="text-xl font-semibold mb-2">Sensing Technologies</h3>
+                    <p class="text-gray-600 mb-4">Designing and implementing sensing technologies for various applications.</p>
+                    <ul class="list-none mb-4">
+                        <li class="flex items-center mb-2">
+                        <i class="fas fa-check-circle text-green-600 mr-2"></i>
+                        <span>Custom sensing technologies design</span>
+                        </li>
+                        <li class="flex items-center mb-2">
+                        <i class="fas fa-check-circle text-green-600 mr-2"></i>
+                        <span>Accurate and reliable sensing solutions</span>
+                        </li>
+                    </ul>
+                </div>
+            
+                <!-- Service 9: Power Efficiency -->
+                <div class="bg-white rounded-lg shadow-lg p-6 card-hover transition duration-300 mb-8" data-aos="fade-right" data-aos-delay="300">
+                    <div class="text-green-600 text-4xl mb-4"><i class="fas fa-battery-full"></i></div>
+                    <h3 class="text-xl font-semibold mb-2">Power Efficiency</h3>
+                    <p class="text-gray-600 mb-4">Optimizing power consumption for efficient and sustainable solutions.</p>
+                    <ul class="list-none mb-4">
+                        <li class="flex items-center mb-2">
+                        <i class="fas fa-check-circle text-green-600 mr-2"></i>
+                        <span>Power consumption optimization</span>
+                        </li>
+                        <li class="flex items-center mb-2">
+                        <i class="fas fa-check-circle text-green- 600 mr-2"></i>
+                        <span>Efficient and sustainable power solutions</span>
+                        </li>
+                    </ul>
+                </div>
+            
+                <!-- Service 10: Communications Interfaces -->
+                <div class="bg-white rounded-lg shadow-lg p-6 card-hover transition duration-300 mb-8" data-aos="fade-left" data-aos-delay="100">
+                    <div class="text-green-600 text-4xl mb-4"><i class="fas fa-wifi"></i></div>
+                    <h3 class="text-xl font-semibold mb-2">Communications Interfaces</h3>
+                    <p class="text-gray-600 mb-4">Designing and implementing efficient communication interfaces.</p>
+                    <ul class="list-none mb-4">
+                        <li class="flex items-center mb-2">
+                        <i class="fas fa-check-circle text-green-600 mr-2"></i>
+                        <span>Efficient communication interfaces design</span>
+                        </li>
+                        <li class="flex items-center mb-2">
+                        <i class="fas fa-check-circle text-green-600 mr-2"></i>
+                        <span>Reliable and secure communication solutions</span>
+                        </li>
+                    </ul>
+                </div>
+            
+                <!-- Service 11: Compact Designs -->
+                <div class="bg-white rounded-lg shadow-lg p-6 card-hover transition duration-300 mb-8" data-aos="fade-right" data-aos-delay="200">
+                    <div class="text-green-600 text-4xl mb-4"><i class="fas fa-cube"></i></div>
+                    <h3 class="text-xl font-semibold mb-2">Compact Designs</h3>
+                    <p class="text-gray-600 mb-4">Designing and developing compact and efficient solutions.</p>
+                    <ul class="list-none mb-4">
+                        <li class="flex items-center mb-2">
+                        <i class="fas fa-check-circle text-green-600 mr-2"></i>
+                        <span>Compact and efficient design solutions</span>
+                        </li>
+                        <li class="flex items-center mb-2">
+                        <i class="fas fa-check-circle text-green-600 mr-2"></i>
+                        <span>Space-saving and reliable compact designs</span>
+                        </li>
+                    </ul>
+                </div>
+            
+                <!-- Service 12: AI & ML -->
+                <div class="bg-white rounded-lg shadow-lg p-6 card-hover transition duration-300 mb-8" data-aos="fade-left" data-aos-delay="300">
+                    <div class="text-green-600 text-4xl mb-4"><i class="fas fa-brain"></i></div>
+                    <h3 class="text-xl font-semibold mb-2">AI & ML</h3>
+                    <p class="text-gray-600 mb-4">Incorporating cutting-edge AI and Machine Learning capabilities.</p>
+                    <ul class="list-none mb-4">
+                        <li class="flex items-center mb-2">
+                        <i class="fas fa-check-circle text-green-600 mr-2"></i>
+                        <span>AI and Machine Learning integration</span>
+                        </li>
+                        <li class="flex items-center mb-2">
+                        <i class="fas fa-check-circle text-green-600 mr-2"></i>
+                        <span>Intelligent and autonomous system solutions</span>
+                        </li>
+                    </ul>
+                </div>
+            
+                <!-- Service 13: 3D Printing Solution -->
+                <div class="bg-white rounded-lg shadow-lg p-6 card-hover transition duration-300 mb-8" data-aos="fade-up" data-aos-delay="100">
+                    <div class="text-green-600 text-4xl mb-4"><i class="fas fa-print"></i></div>
+                    <h3 class="text-xl font-semibold mb-2">3D Printing Solution</h3>
+                    <p class="text-gray-600 mb-4">Rapid prototyping and production using advanced 3D printing technologies.</p>
+                    <ul class="list-none mb-4">
+                        <li class="flex items-center mb-2">
+                        <i class="fas fa-check-circle text-green-600 mr-2"></i>
+                        <span>Rapid prototyping and production</span>
+                        </li>
+                        <li class="flex items-center mb-2">
+                        <i class="fas fa-check-circle text-green-600 mr-2"></i>
+                        <span>Advanced 3D printing technologies</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="mb-20 container mx-auto">
+        <h2 class="text-4xl font-bold text-center mb-12 text-gray-800">Why Choose Us?</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div class="text-center" data-aos="fade-up" data-aos-delay="100">
+                <div class="text-green-600 text-5xl mb-4"><i class="fas fa-clock"></i></div>
+                <h3 class="text-xl font-semibold mb-2">Fast Turnaround</h3>
+                <p class="text-gray-600">Quick project completion without compromising quality.</p>
+            </div>
+            <div class="text-center" data-aos="fade-down" data-aos-delay="100">
+                <div class="text-green-600 text-5xl mb-4"><i class="fas fa-users"></i></div>
+                <h3 class="text-xl font-semibold mb-2">Expert Team</h3>
+                <p class="text-gray-600">Skilled professionals with years of industry experience.</p>
+            </div>
+            <div class="text-center" data-aos="fade-up" data-aos-delay="100">
+                <div class="text-green-600 text-5xl mb-4"><i class="fas fa-cog"></i></div>
+                <h3 class="text-xl font-semibold mb-2">Cutting-Edge Tech</h3>
+                <p class="text-gray-600">Utilizing the latest technologies and methodologies.</p>
+            </div>
+            <div class="text-center" data-aos="fade-down" data-aos-delay="100">
+                <div class="text-green-600 text-5xl mb-4"><i class="fas fa-handshake"></i></div>
+                <h3 class="text-xl font-semibold mb-2">Client-Centric</h3>
+                <p class="text-gray-600">Tailored solutions to meet your specific needs.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- <section class="mb-20">
+        <h2 class="text-4xl font-bold text-center mb-12 text-gray-800">Our Expertise</h2>
+        <div class="flex flex-wrap justify-center gap-4">
+            <span class="bg-green-100 text-green-800 px-6 py-3 rounded-full text-sm font-semibold hover:bg-green-200 transition duration-300 cursor-pointer">Wireless Communication</span>
+            <span class="bg-green-100 text-green-800 px-6 py-3 rounded-full text-sm font-semibold hover:bg-green-200 transition duration-300 cursor-pointer">Hardware Design</span>
+            <span class="bg-green-100 text-green-800 px-6 py-3 rounded-full text-sm font-semibold hover:bg-green-200 transition duration-300 cursor-pointer">Firmware Development</span>
+            <span class="bg-green-100 text-green-800 px-6 py-3 rounded-full text-sm font-semibold hover:bg-green-200 transition duration-300 cursor-pointer">Sensing Technologies</span>
+            <span class="bg-green-100 text-green-800 px-6 py-3 rounded-full text-sm font-semibold hover:bg-green-200 transition duration-300 cursor-pointer">Power Efficiency</span>
+            <span class="bg-green-100 text-green-800 px-6 py-3 rounded-full text-sm font-semibold hover:bg-green-200 transition duration-300 cursor-pointer">Compact Designs</span>
+            <span class="bg-green-100 text-green-800 px-6 py-3 rounded-full text-sm font-semibold hover:bg-green-200 transition duration-300 cursor-pointer">3D Printing Solutions</span>
+            <span class="bg-green-100 text-green-800 px-6 py-3 rounded-full text-sm font-semibold hover:bg-green-200 transition duration-300 cursor-pointer">CAM Solutions</span>
+            <span class="bg-green-100 text-green-800 px-6 py-3 rounded-full text-sm font-semibold hover:bg-green-200 transition duration-300 cursor-pointer">Mechanical Design</span>
+            <span class="bg-green-100 text-green-800 px-6 py-3 rounded-full text-sm font-semibold hover:bg-green-200 transition duration-300 cursor-pointer">VLSI Design</span>
+        </div>
+    </section> -->
+
+    <!-- CTA Section -->
+    <section class="py-20 bg-green-600 text-white">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-4xl font-bold mb-8" data-aos="fade-up">Unlock the Power of Electronics Design</h2>
+            <p class="text-xl mb-12 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="100">Take your electronics design skills to the next level with our comprehensive training programs, covering topics from circuit design to PCB manufacturing.</p>
+            <a href="/training.html" class="bg-white text-green-600 px-8 py-3 rounded-full text-lg font-semibold hover:bg-green-100 transition duration-300 inline-flex items-center" data-aos="fade-up" data-aos-delay="200">
+                Get Started Today
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                </svg>
+            </a>
+        </div>
+    </section>
+
+
+    <!-- footer -->
+    <footer class="bg-[#00353E] text-white pt-16">
+        <div class="container mx-auto px-4" data-aos="fade-up">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+                <div class="space-y-8" data-aos="fade-right">
+                    <h2 class="text-2xl font-semibold border-b-2 border-teal-400 pb-2 inline-block">Browse</h2>
+                    <ul class="space-y-3">
+                        <li><a href="/about-us.html" class="hover:text-teal-400 transition duration-300">About us</a></li>
+                        <li><a href="/careers.html" class="hover:text-teal-400 transition duration-300">Careers</a></li>
+                        <li><a href="/our-people.html" class="hover:text-teal-400 transition duration-300">Our
+                                People</a></li>
+                        <li><a href="/products/iot-platform.html"
+                                class="hover:text-teal-400 transition duration-300">IoT Platform</a></li>
+                        <li><a href="/products/realty-app.html"
+                                class="hover:text-teal-400 transition duration-300">Realty App</a></li>
+                    </ul>
+                </div>
+                <div class="space-y-8" data-aos="fade-right">
+                    <h2 class="text-2xl font-semibold border-b-2 border-teal-400 pb-2 inline-block">Our Services</h2>
+                    <ul class="space-y-3">
+                        <li><a href="/" class="hover:text-teal-400 transition duration-300">Software Solutions</a></li>
+                        <li><a href="/services/engineering/"
+                                class="hover:text-teal-400 transition duration-300">Engineering Services</a></li>
+                        <li><a href="/services/manufacturing/"
+                                class="hover:text-teal-400 transition duration-300">Manufacturing Services</a></li>
+                        <li><a href="/services/staffing-solutions/"
+                                class="hover:text-teal-400 transition duration-300">Staffing Solutions</a></li>
+                        <li><a href="/services/staffing-solutions/"
+                                class="hover:text-teal-400 transition duration-300">Training</a></li>
+                    </ul>
+                </div>
+                <div class="space-y-8" data-aos="fade-right">
+                    <h2 class="text-2xl font-semibold border-b-2 border-teal-400 inline-block">Locate Us</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-1 gap-6">
+                        <div class="space-y-4">
+                            <img src="/src/images/footer-logo/temple.svg" alt="Temple" class="h-12">
+                            <div class="flex items-center space-x-2">
+                                <img src="/src/images/footer-logo/india-flag.svg" alt="India Flag" class="w-6">
+                                <h3 class="text-xl font-semibold">INDIA</h3>
+                            </div>
+                            <div class="text-sm space-y-1">
+                                <!-- Address Section -->
+                                <div class="space-y-1">
+                                    <p>P-69, Brindavana Layout,</p>
+                                    <p>Basavanapura, K.R.Puram,</p>
+                                    <p>Bangalore-560049, KA.</p>
+                                </div>
+
+                                <!-- Phone Section -->
+                                <div class="font-semibold">
+                                    <p>PH:</p>
+                                    <div class="ml-4 space-y-1">
+                                        <p>+91-89258 58615</p>
+                                        <p>+91 080 4218 3021</p>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="flex items-center">
+                                <div class="flex-grow border-t border-gray-400"></div>
+                                <div class="mx-4 text-gray-400">•</div>
+                                <div class="flex-grow border-t border-gray-400"></div>
+                            </div>
+                            <div class="space-y-2 text-sm">
+                                <p>MIG-171, New housing board,</p>
+                                <p>Krishnagiri - 635 001, TN</p>
+                                <p class="font-semibold">PH: +91 89258 58614</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="space-y-3">
+                    <h2 class="text-2xl text-white font-bold uppercase">NX GEN Inventors</h2>
+                    <!-- <div class="flex flex-wrap justify-left gap-4">
+                        <a href="#" class="flex items-center justify-center text-white hover:text-green-600 transition-colors duration-300">
+                            <div class="bg-white rounded-full p-3 sm:p-4 hover:bg-green-600 flex items-center justify-center w-12 h-12 sm:w-10 sm:h-10 md:w-10 md:h-10 transform hover:scale-110 transition-transform duration-300">
+                                <i class="fab fa-facebook-f text-xl text-black hover:text-white"></i>
+                            </div>
+                        </a>
+                        <a href="#" class="flex items-center justify-center text-black hover:text-green-400 transition-colors duration-300">
+                            <div class="bg-white rounded-full p-3 sm:p-4 hover:bg-green-600 flex items-center justify-center w-12 h-12 sm:w-10 sm:h-10 md:w-10 md:h-10 transform hover:scale-110 transition-transform duration-300">
+                                <i class="fab fa-twitter text-xl text-black hover:text-white"></i>
+                            </div>
+                        </a>
+                        <a href="#" class="flex items-center justify-center text-black hover:text-pink-500 transition-colors duration-300">
+                            <div class="bg-white rounded-full p-3 sm:p-4 hover:bg-red-600 flex items-center justify-center w-12 h-12 sm:w-10 sm:h-10 md:w-10 md:h-10 transform hover:scale-110 transition-transform duration-300">
+                                <i class="fab fa-instagram text-xl text-black hover:text-white"></i>
+                            </div>
+                        </a>
+                        <a href="#" class="flex items-center justify-center text-black hover:text-pink-500 transition-colors duration-300">
+                            <div class="bg-white rounded-full p-3 sm:p-4 hover:bg-gray-900 flex items-center justify-center w-12 h-12 sm:w-10 sm:h-10 md:w-10 md:h-10 transform hover:scale-110 transition-transform duration-300">
+                                <i class="fab fa-github text-xl text-black hover:text-white"></i>
+                            </div>
+                        </a>
+                        <a href="#" class="flex items-center justify-center text-black hover:text-green-600 transition-colors duration-300">
+                            <div class="bg-white rounded-full p-3 sm:p-4 hover:bg-green-600 flex items-center justify-center w-12 h-12 sm:w-10 sm:h-10 md:w-10 md:h-10 transform hover:scale-110 transition-transform duration-300">
+                                <i class="fab fa-linkedin-in text-xl text-black hover:text-white"></i>
+                            </div>
+                        </a>
+                    </div> -->
+                    <div class="w-full md:w-auto">
+                        <div class="flex space-x-4">
+                            <a href="#"
+                                class="w-12 h-12 bg-gray-800 rounded-full flex items-center justify-center hover:bg-green-500 transition duration-300">
+                                <svg class="h-6 w-6 text-white" fill="currentColor" viewBox="0 0 24 24"
+                                    aria-hidden="true">
+                                    <path fill-rule="evenodd"
+                                        d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"
+                                        clip-rule="evenodd" />
+                                </svg>
+                            </a>
+                            <a href="#"
+                                class="w-12 h-12 bg-gray-800 rounded-full flex items-center justify-center hover:bg-green-500 transition duration-300">
+                                <svg class="h-6 w-6 text-white" fill="currentColor" viewBox="0 0 24 24"
+                                    aria-hidden="true">
+                                    <path
+                                        d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" />
+                                </svg>
+                            </a>
+                            <a href="#"
+                                class="w-12 h-12 bg-gray-800 rounded-full flex items-center justify-center hover:bg-pink-500 transition duration-300">
+                                <i class="fa-brands fa-instagram text-white text-2xl"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-teal-700 pt-8 mt-8 pb-2">
+                <div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+                    <div class="text-sm text-gray-300">
+                        © 2022 <a href="https://nxgeninventors.com/"
+                            class="hover:text-white transition-colors duration-300">Nx Gen Inventors™</a>. All Rights
+                        Reserved.
+                    </div>
+                    <div class="flex space-x-4 text-sm text-gray-300">
+                        <a href="#" class="hover:text-white transition-colors duration-300">Terms & Conditions</a>
+                        <a href="#" class="hover:text-white transition-colors duration-300">Privacy Policy</a>
+                        <a href="#" class="hover:text-white transition-colors duration-300">Cookie Policy</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script src="/src/js/aos-init.js"></script>
+
+    <script>
+        function setupSearch() {
+            return {
+                isSearchOpen: false,
+                toggleSearch() {
+                    this.isSearchOpen = !this.isSearchOpen;
+                }
+            }
+        }
+    </script>
+</body>
+</html>
