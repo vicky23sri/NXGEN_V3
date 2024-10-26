@@ -96,22 +96,22 @@
 </head>
 <body class="font-glimser">
     <header x-data="{ 
-        isMenuOpen: false,
-        activeSubmenu: null,
-        isSearchOpen: false,
-        toggleMenu() { this.isMenuOpen = !this.isMenuOpen; },
-        toggleSubmenu(index) { this.activeSubmenu = this.activeSubmenu === index ? null : index; },
-        toggleSearch() { this.isSearchOpen = !this.isSearchOpen; },
-        searchQuery: '',
-        isHomePage() {
-            return window.location.pathname === '/' || window.location.pathname === '/index.html';
-        }
-    }">
+            isMenuOpen: false,
+            activeSubmenu: null,
+            isSearchOpen: false,
+            toggleMenu() { this.isMenuOpen = !this.isMenuOpen; },
+            toggleSubmenu(index) { this.activeSubmenu = this.activeSubmenu === index ? null : index; },
+            toggleSearch() { this.isSearchOpen = !this.isSearchOpen; },
+            searchQuery: '',
+            isHomePage() {
+                return window.location.pathname === '/' || window.location.pathname === '/index.html';
+            }
+        }" class="fixed top-0 left-0 right-0 z-50">
         <div class="mx-auto bg-white shadow-xl py-3 px-4 sm:px-6 custom:px-20">
             <div class="flex justify-between items-center">
                 <div class="logo">
                     <a href="/index.html">
-                        <img class="w-[180px]" src="/src/images/logo-green-s.svg" alt="Logo">
+                        <img class="w-[180px]" src="./src/images/logo-green-s.svg" alt="Logo">
                     </a>
                 </div>
                 <button @click="toggleMenu" 
@@ -140,7 +140,6 @@
                                 { title: 'About Us', link: '/about-us.html', icon: 'fa-solid fa-info-circle' },
                                 { title: 'Careers', link: '/careers.html', icon: 'fa-solid fa-briefcase' },
                                 { title: 'Leadership', link: '/leadership.html', icon: 'fa-solid fa-user-tie' },
-                                { title: 'Clients', link: '/clients.html', icon: 'fa-solid fa-users' }
                             ]},
                             { title: 'Industry', link: '#', submenu: [
                                 { title: 'Automotive', link: '/industry/automotive.html', icon: 'fa-solid fa-car' },
