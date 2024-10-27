@@ -111,7 +111,7 @@
             <div class="flex justify-between items-center">
                 <div class="logo">
                     <a href="/index.html">
-                        <img class="w-[180px]" src="./src/images/logo-green-s.svg" alt="Logo">
+                        <img class="w-[180px]" src="/src/images/logo-green-s.svg" alt="Logo">
                     </a>
                 </div>
                 <button @click="toggleMenu" 
@@ -139,17 +139,19 @@
                             { title: 'Company', link: '#', submenu: [
                                 { title: 'About Us', link: '/about-us.html', icon: 'fa-solid fa-info-circle' },
                                 { title: 'Careers', link: '/careers.html', icon: 'fa-solid fa-briefcase' },
-                                { title: 'Leadership', link: '/leadership.html', icon: 'fa-solid fa-user-tie' },
+                                
                             ]},
                             { title: 'Industry', link: '#', submenu: [
-                                { title: 'Automotive', link: '/industry/automotive.html', icon: 'fa-solid fa-car' },
-                                { title: 'Transportation', link: '/industry/transportation.html', icon: 'fa-solid fa-truck' },
-                                { title: 'Mining and Metals', link: '/industry/mining.html', icon: 'fa-solid fa-gem' },
-                                { title: 'Renewable Energy', link: '/industry/renewable-energy.html', icon: 'fa-solid fa-solar-panel' },
-                                { title: 'Medical', link: '/industry/medical.html', icon: 'fa-solid fa-stethoscope' },
-                                { title: 'Fintech', link: '/industry/fintech.html', icon: 'fa-solid fa-chart-line' },
-                                { title: 'Real Estate & Property Management', link: '/industry/real-estate.html', icon: 'fa-solid fa-building' }
-                            ]},
+                                { title: 'Automotive', link: '/industry/index.html#auto', icon: 'fa-solid fa-car' },
+                                { title: 'Transportation', link: '/industry/index.html#transport', icon: 'fa-solid fa-truck' },
+                                { title: 'Mining and Metals', link: '/industry/index.html#mining', icon: 'fa-solid fa-gem' },
+                                { title: 'Renewable Energy', link: '/industry/index.html#renewable', icon: 'fa-solid fa-solar-panel' },
+                                { title: 'Medical', link: '/industry/index.html#medical', icon: 'fa-solid fa-stethoscope' },
+                                { title: 'Fintech', link: '/industry/index.html#fintech', icon: 'fa-solid fa-chart-line' },
+                                { title: 'TechEdu', link: '/industry/index.html#edutech', icon: 'fa-solid fa-chart-line' },
+                                { title: 'Real Estate & Property Management', link: '/industry/index.html#real-estate', icon: 'fa-solid fa-building' }
+                            ]
+                            },
                             {
                                 title: 'Engineering',
                                 icon: 'fa-solid fa-gears',
@@ -168,14 +170,11 @@
                             {title: 'Software', 
                                 link: '#', 
                                 submenu: [
-                                    { title: 'Web Development', link: '/software/web-development.html', icon: 'fa-solid fa-code' },
-                                    { title: 'Mobile Apps', link: '/software/mobile-apps.html', icon: 'fa-solid fa-mobile-alt' },
-                                    { title: 'Cloud Solutions', link: '/software/cloud-solutions.html', icon: 'fa-solid fa-cloud' },
-                                    { title: 'AI & Machine Learning', link: '/software/ai-ml.html', icon: 'fa-solid fa-brain' },
-                                    { title: 'Data Analytics & Visualization', link: '/software/data-analytics.html', icon: 'fa-solid fa-chart-pie' },
-                                    { title: 'SAP Consulting Services', link: '/software/sap-consulting.html', icon: 'fa-solid fa-cogs' },
-                                    { title: 'Infrastructure', link: '/software/infrastructure.html', icon: 'fa-solid fa-server' },
-                                    { title: 'Maintenance & Support', link: '/software/maintenance-support.html', icon: 'fa-solid fa-wrench' }
+                                    { title: 'Web Development', link: '/software/index.html#webapp', icon: 'fa-solid fa-code' },
+                                    { title: 'IoT Application Development', link: '/software/index.html#iot-application-development', icon: 'fa-solid fa-cloud' },
+                                    { title: 'AI & Machine Learning', link: '/software/index.html#ai-ml', icon: 'fa-solid fa-brain' },
+                                    { title: 'Cloud Computing Solutions', link: '/software/index.html#cloud-computing', icon: 'fa-solid fa-chart-pie' },
+                                    { title: 'UI/UX Design Services', link: '/software/index.html#ui-ux-design', icon: 'fa-solid fa-server' },
                                 ] 
                             },
                             { title: 'Staffing', link: '/staffing.html', submenu: [] },
@@ -298,18 +297,20 @@
                             { title: 'Company', link: '#', submenu: [
                                 { title: 'About Us', link: '/about-us.html', icon: 'fa-solid fa-info-circle' },
                                 { title: 'Careers', link: '/careers.html', icon: 'fa-solid fa-briefcase' },
-                                { title: 'Leadership', link: '/leadership.html', icon: 'fa-solid fa-user-tie' },
+                                
                                 { title: 'Clients', link: '/clients.html', icon: 'fa-solid fa-users' }
                             ]},
                             { title: 'Industry', link: '#', submenu: [
-                                { title: 'Automotive', link: '/industry/automotive.html', icon: 'fa-solid fa-car' },
-                                { title: 'Transportation', link: '/industry/transportation.html', icon: 'fa-solid fa-truck' },
-                                { title: 'Mining and Metals', link: '/industry/mining.html', icon: 'fa-solid fa-gem' },
-                                { title: 'Renewable Energy', link: '/industry/renewable-energy.html', icon: 'fa-solid fa-solar-panel' },
-                                { title: 'Medical', link: '/industry/medical.html', icon: 'fa-solid fa-stethoscope' },
-                                { title: 'Fintech', link: '/industry/fintech.html', icon: 'fa-solid fa-chart-line' },
-                                { title: 'Real Estate & Property Management', link: '/industry/real-estate.html', icon: 'fa-solid fa-building' }
-                            ]},
+                                { title: 'Automotive', link: '/industry/index.html#auto', icon: 'fa-solid fa-car' },
+                                { title: 'Transportation', link: '/industry/index.html#transport', icon: 'fa-solid fa-truck' },
+                                { title: 'Mining and Metals', link: '/industry/index.html#mining', icon: 'fa-solid fa-gem' },
+                                { title: 'Renewable Energy', link: '/industry/index.html#renewable', icon: 'fa-solid fa-solar-panel' },
+                                { title: 'Medical', link: '/industry/index.html#medical', icon: 'fa-solid fa-stethoscope' },
+                                { title: 'Fintech', link: '/industry/index.html#fintech', icon: 'fa-solid fa-chart-line' },
+                                { title: 'TechEdu', link: '/industry/index.html#edutech', icon: 'fa-solid fa-chart-line' },
+                                { title: 'Real Estate & Property Management', link: '/industry/index.html#real-estate', icon: 'fa-solid fa-building' }
+                            ]
+                            },
                             {
                                 title: 'Engineering',
                                 submenu: [
@@ -327,14 +328,11 @@
                             {title: 'Software', 
                                 link: '#', 
                                 submenu: [
-                                    { title: 'Web Development', link: '/software/web-development.html', icon: 'fa-solid fa-code' },
-                                    { title: 'Mobile Apps', link: '/software/mobile-apps.html', icon: 'fa-solid fa-mobile-alt' },
-                                    { title: 'Cloud Solutions', link: '/software/cloud-solutions.html', icon: 'fa-solid fa-cloud' },
-                                    { title: 'AI & Machine Learning', link: '/software/ai-ml.html', icon: 'fa-solid fa-brain' },
-                                    { title: 'Data Analytics & Visualization', link: '/software/data-analytics.html', icon: 'fa-solid fa-chart-pie' },
-                                    { title: 'SAP Consulting Services', link: '/software/sap-consulting.html', icon: 'fa-solid fa-cogs' },
-                                    { title: 'Infrastructure', link: '/software/infrastructure.html', icon: 'fa-solid fa-server' },
-                                    { title: 'Maintenance & Support', link: '/software/maintenance-support.html', icon: 'fa-solid fa-wrench' }
+                                    { title: 'Web Development', link: '/software/index.html#webapp', icon: 'fa-solid fa-code' },
+                                    { title: 'IoT Application Development', link: '/software/index.html#iot-application-development', icon: 'fa-solid fa-cloud' },
+                                    { title: 'AI & Machine Learning', link: '/software/index.html#ai-ml', icon: 'fa-solid fa-brain' },
+                                    { title: 'Cloud Computing Solutions', link: '/software/index.html#cloud-computing', icon: 'fa-solid fa-chart-pie' },
+                                    { title: 'UI/UX Design Services', link: '/software/index.html#ui-ux-design', icon: 'fa-solid fa-server' },
                                 ] 
                             },
                             { title: 'Staffing', link: '/staffing.html', submenu: [] },
@@ -395,7 +393,7 @@
                         <div class="w-full text-white z-10">
                             <h1 class="mb-4 font-bold text-4xl md:text-5xl lg:text-6xl leading-tight">Cutting-Edge Technology</h1>
                             <p class="text-xl lg:text-2xl leading-relaxed mb-8">Empowering businesses with the latest technological advancements.</p>
-                            <a href="/contact.html" class="group relative inline-flex items-center overflow-hidden rounded-full bg-slate-900 px-8 py-3 text-white focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2">
+                            <a href="#" class="group relative inline-flex items-center overflow-hidden rounded-full bg-slate-900 px-8 py-3 text-white focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2">
                                 <span class="absolute left-0 top-1/2 h-32 w-32 -translate-y-1/2 transform rounded-full bg-white transition-all duration-300 ease-out group-hover:scale-150 group-hover:opacity-50"></span>
                                 <span class="relative mr-4 text-lg font-semibold text-black">Learn More</span>
                                 <svg xmlns="http://www.w3.org/2000/svg" class="relative h-5 w-5 transition-transform duration-300 ease-in-out group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -414,7 +412,7 @@
                         <div class="w-full text-white z-10">
                             <h1 class="mb-4 font-bold text-4xl md:text-5xl lg:text-6xl leading-tight">Engineering Excellence</h1>
                             <p class="text-xl lg:text-2xl leading-relaxed mb-8">Transforming ideas into reality through expert engineering.</p>
-                            <a href="/contact.html" class="group relative inline-flex items-center overflow-hidden rounded-full bg-slate-900 px-8 py-3 text-white focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2">
+                            <a href="#" class="group relative inline-flex items-center overflow-hidden rounded-full bg-slate-900 px-8 py-3 text-white focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2">
                                 <span class="absolute left-0 top-1/2 h-32 w-32 -translate-y-1/2 transform rounded-full bg-white transition-all duration-300 ease-out group-hover:scale-150 group-hover:opacity-50"></span>
                                 <span class="relative mr-4 text-lg font-semibold text-black">Learn More</span>
                                 <svg xmlns="http://www.w3.org/2000/svg" class="relative h-5 w-5 transition-transform duration-300 ease-in-out group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -433,7 +431,7 @@
                         <div class="w-full text-white z-10">
                             <h1 class="mb-4 font-bold text-4xl md:text-5xl lg:text-6xl leading-tight">Innovative Software Solutions</h1>
                             <p class="text-xl lg:text-2xl leading-relaxed mb-8">Elevate your business with our cutting-edge software development expertise.</p>
-                            <a href="/contact.html" class="group relative inline-flex items-center overflow-hidden rounded-full bg-slate-900 px-8 py-3 text-white focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2">
+                            <a href="#" class="group relative inline-flex items-center overflow-hidden rounded-full bg-slate-900 px-8 py-3 text-white focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2">
                                 <span class="absolute left-0 top-1/2 h-32 w-32 -translate-y-1/2 transform rounded-full bg-white transition-all duration-300 ease-out group-hover:scale-150 group-hover:opacity-50"></span>
                                 <span class="relative mr-4 text-lg font-semibold text-black">Learn More</span>
                                 <svg xmlns="http://www.w3.org/2000/svg" class="relative h-5 w-5 transition-transform duration-300 ease-in-out group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -452,7 +450,7 @@
                         <div class="w-full text-white z-10">
                             <h1 class="mb-4 font-bold text-4xl md:text-5xl lg:text-6xl leading-tight">Precision Manufacturing</h1>
                             <p class="text-xl lg:text-2xl leading-relaxed mb-8">Delivering quality products with cutting-edge manufacturing processes.</p>
-                            <a href="/contact.html" class="group relative inline-flex items-center overflow-hidden rounded-full bg-slate-900 px-8 py-3 text-white focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2">
+                            <a href="#" class="group relative inline-flex items-center overflow-hidden rounded-full bg-slate-900 px-8 py-3 text-white focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2">
                                 <span class="absolute left-0 top-1/2 h-32 w-32 -translate-y-1/2 transform rounded-full bg-white transition-all duration-300 ease-out group-hover:scale-150 group-hover:opacity-50"></span>
                                 <span class="relative mr-4 text-lg font-semibold text-black">Learn More</span>
                                 <svg xmlns="http://www.w3.org/2000/svg" class="relative h-5 w-5 transition-transform duration-300 ease-in-out group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -1249,17 +1247,8 @@
                             <div class="flex-none w-48 h-24 bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg" data-aos="fade-left" data-aos-duration="500" data-aos-delay="300">
                                 <img src="/src/images/clients-logo/edzya.png" alt="Edzya" class="w-full h-full object-contain p-4">
                             </div>
-                            <div class="flex-none w-48 h-24 bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg" data-aos="fade-left" data-aos-duration="500" data-aos-delay="400">
-                                <img src="/src/images/clients-logo/genius-logo.svg" alt="Genius" class="w-full h-full object-contain p-4">
-                            </div>
-                            <div class="flex-none w-48 h-24 bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg" data-aos="fade-left" data-aos-duration="500" data-aos-delay="500">
-                                <img src="/src/images/clients-logo/microchip.png" alt="Microchip" class="w-full h-full object-contain p-4">
-                            </div>
                             <div class="flex-none w-48 h-24 bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg" data-aos="fade-left" data-aos-duration="500" data-aos-delay="600">
                                 <img src="/src/images/clients-logo/mst.svg" alt="MST" class="w-full h-full object-contain p-4">
-                            </div>
-                            <div class="flex-none w-48 h-24 bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg" data-aos="fade-left" data-aos-duration="500" data-aos-delay="700">
-                                <img src="/src/images/clients-logo/open charge alliance.jpeg" alt="Open Charge Alliance" class="w-full h-full object-contain p-4">
                             </div>
                             <div class="flex-none w-48 h-24 bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg" data-aos="fade-left" data-aos-duration="500" data-aos-delay="800">
                                 <img src="/src/images/clients-logo/parav-electronics.svg" alt="Parav Electronics" class="w-full h-full object-contain p-4">
@@ -1276,17 +1265,8 @@
                             <div class="flex-none w-48 h-24 bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg" data-aos="fade-left" data-aos-duration="500" data-aos-delay="300">
                                 <img src="/src/images/clients-logo/edzya.png" alt="Edzya" class="w-full h-full object-contain p-4">
                             </div>
-                            <div class="flex-none w-48 h-24 bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg" data-aos="fade-left" data-aos-duration="500" data-aos-delay="400">
-                                <img src="/src/images/clients-logo/genius-logo.svg" alt="Genius" class="w-full h-full object-contain p-4">
-                            </div>
-                            <div class="flex-none w-48 h-24 bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg" data-aos="fade-left" data-aos-duration="500" data-aos-delay="500">
-                                <img src="/src/images/clients-logo/microchip.png" alt="Microchip" class="w-full h-full object-contain p-4">
-                            </div>
                             <div class="flex-none w-48 h-24 bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg" data-aos="fade-left" data-aos-duration="500" data-aos-delay="600">
                                 <img src="/src/images/clients-logo/mst.svg" alt="MST" class="w-full h-full object-contain p-4">
-                            </div>
-                            <div class="flex-none w-48 h-24 bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg" data-aos="fade-left" data-aos-duration="500" data-aos-delay="700">
-                                <img src="/src/images/clients-logo/open charge alliance.jpeg" alt="Open Charge Alliance" class="w-full h-full object-contain p-4">
                             </div>
                             <div class="flex-none w-48 h-24 bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg" data-aos="fade-left" data-aos-duration="500" data-aos-delay="800">
                                 <img src="/src/images/clients-logo/parav-electronics.svg" alt="Parav Electronics" class="w-full h-full object-contain p-4">
@@ -1298,14 +1278,8 @@
                             <div class="flex-none w-48 h-24 bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg" data-aos="fade-up" data-aos-duration="500" data-aos-delay="100">
                                 <img src="/src/images/clients-logo/realty.svg" alt="Realty" class="w-full h-full object-contain p-4">
                             </div>
-                            <div class="flex-none w-48 h-24 bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg" data-aos="fade-up" data-aos-duration="500" data-aos-delay="200">
-                                <img src="/src/images/clients-logo/Roobuck.png" alt="Roobuck" class="w-full h-full object-contain p-4">
-                            </div>
                             <div class="flex-none w-48 h-24 bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg" data-aos="fade-up" data-aos-duration="500" data-aos-delay="300">
                                 <img src="/src/images/clients-logo/SPI.png" alt="SPI" class="w-full h-full object-contain p-4">
-                            </div>
-                            <div class="flex-none w-48 h-24 bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg" data-aos="fade-up" data-aos-duration="500" data-aos-delay="400">
-                                <img src="/src/images/clients-logo/sunmobility.png" alt="SunMobility" class="w-full h-full object-contain p-4">
                             </div>
                             <div class="flex-none w-48 h-24 bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg" data-aos="fade-up" data-aos-duration="500" data-aos-delay="500">
                                 <img src="/src/images/clients-logo/sunplower.png" alt="Sunplower" class="w-full h-full object-contain p-4">
@@ -1324,14 +1298,8 @@
                             <div class="flex-none w-48 h-24 bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg" data-aos="fade-up" data-aos-duration="500" data-aos-delay="100">
                                 <img src="/src/images/clients-logo/realty.svg" alt="Realty" class="w-full h-full object-contain p-4">
                             </div>
-                            <div class="flex-none w-48 h-24 bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg" data-aos="fade-up" data-aos-duration="500" data-aos-delay="200">
-                                <img src="/src/images/clients-logo/Roobuck.png" alt="Roobuck" class="w-full h-full object-contain p-4">
-                            </div>
                             <div class="flex-none w-48 h-24 bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg" data-aos="fade-up" data-aos-duration="500" data-aos-delay="300">
                                 <img src="/src/images/clients-logo/SPI.png" alt="SPI" class="w-full h-full object-contain p-4">
-                            </div>
-                            <div class="flex-none w-48 h-24 bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg" data-aos="fade-up" data-aos-duration="500" data-aos-delay="400">
-                                <img src="/src/images/clients-logo/sunmobility.png" alt="SunMobility" class="w-full h-full object-contain p-4">
                             </div>
                             <div class="flex-none w-48 h-24 bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg" data-aos="fade-up" data-aos-duration="500" data-aos-delay="500">
                                 <img src="/src/images/clients-logo/sunplower.png" alt="Sunplower" class="w-full h-full object-contain p-4">

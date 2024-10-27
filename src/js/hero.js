@@ -5,32 +5,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const nextBtn = document.getElementById('nextBtn');
     let currentSlide = 0;
     let slideInterval;
-    let bgInterval;
 
     const backgroundImages = [
-        [
-            '/src/images/hero-section/tech/tech1.jpg',
-            '/src/images/hero-section/tech/tech2.jpg',
-            '/src/images/hero-section/tech/tech3.jpg'
-        ],
-        [
-            '/src/images/hero-section/engineering/engi1.jpg',
-            '/src/images/hero-section/engineering/engi2.jpg',
-            '/src/images/hero-section/engineering/engi3.jpg'
-        ],
-        [
-            '/src/images/hero-section/software/soft1.jpg',
-            '/src/images/hero-section/software/soft2.jpg',
-            '/src/images/hero-section/software/soft3.jpg'
-        ],
-        [
-            '/src/images/hero-section/manufacturing/man1.jpg',
-            '/src/images/hero-section/manufacturing/man2.jpg',
-            '/src/images/hero-section/manufacturing/man3.jpg'
-        ]
+        '/src/images/hero/dark-blue-color-light-abstract-technology-min.jpg',
+        '/src/images/hero/closeup-image-computer-microchip-min.jpg',
+        '/src/images/hero/application-programming-interface-software-min.jpg',
+        '/src/images/hero/detailed-image-computer-microchip-min.jpg'
     ];
 
-    
     function showSlide(index) {
         slides.forEach((slide, i) => {
             if (i === index) {
@@ -48,7 +30,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
         updateIndicators(index);
-        startBackgroundCycle(index);
     }
 
     function updateIndicators(index) {
@@ -96,55 +77,6 @@ document.addEventListener('DOMContentLoaded', () => {
         clearInterval(slideInterval);
     }
 
-    function startBackgroundCycle(slideIndex) {
-        let bgIndex = 0;
-        const bgImages = backgroundImages[slideIndex];
-        let currentBg = slides[slideIndex].querySelector('.bg-cover');
-        let nextBg = slides[slideIndex].querySelector('.bg-cover:nth-child(2)') || document.createElement('div');
-        let thirdBg = slides[slideIndex].querySelector('.bg-cover:nth-child(3)') || document.createElement('div');
-        
-        if (!slides[slideIndex].querySelector('.bg-cover:nth-child(2)')) {
-            nextBg.className = 'bg-cover bg-center w-full h-full absolute top-0 left-0 transition-opacity duration-1000 opacity-0';
-            slides[slideIndex].insertBefore(nextBg, currentBg);
-        }
-
-        if (!slides[slideIndex].querySelector('.bg-cover:nth-child(3)')) {
-            thirdBg.className = 'bg-cover bg-center w-full h-full absolute top-0 left-0 transition-opacity duration-1000 opacity-0';
-            slides[slideIndex].insertBefore(thirdBg, nextBg);
-        }
-
-        clearInterval(bgInterval);
-
-        function cycleBackground() {
-            const nextIndex = (bgIndex + 1) % bgImages.length;
-            const upcomingIndex = (bgIndex + 2) % bgImages.length;
-
-            // Preload the upcoming image
-            thirdBg.style.backgroundImage = `url('${bgImages[upcomingIndex]}')`;
-
-            // Fade in the next image
-            nextBg.style.backgroundImage = `url('${bgImages[nextIndex]}')`;
-            nextBg.style.opacity = '1';
-            currentBg.style.opacity = '0';
-            
-            // After transition, update current and prepare next
-            setTimeout(() => {
-                currentBg.style.backgroundImage = nextBg.style.backgroundImage;
-                currentBg.style.opacity = '1';
-                nextBg.style.opacity = '0';
-
-                // Swap references
-                [currentBg, nextBg, thirdBg] = [nextBg, thirdBg, currentBg];
-            }, 1000);
-
-            bgIndex = nextIndex;
-        }
-
-        currentBg.style.backgroundImage = `url('${bgImages[0]}')`;
-        nextBg.style.backgroundImage = `url('${bgImages[1]}')`;
-        bgInterval = setInterval(cycleBackground, 3000);
-    }
-
     nextBtn.addEventListener('click', () => {
         stopAutoSlide();
         nextSlide();
@@ -168,11 +100,11 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Initialize all slides
+    // Initialize all slides with single static background
     slides.forEach((slide, index) => {
-        let currentBg = slide.querySelector('.bg-cover');
-        if (currentBg) {
-            currentBg.style.backgroundImage = `url('${backgroundImages[index][0]}')`;
+        const bgElement = slide.querySelector('.bg-cover');
+        if (bgElement) {
+            bgElement.style.backgroundImage = `url('${backgroundImages[index]}')`;
         }
         if (index === 0) {
             slide.style.display = 'block';

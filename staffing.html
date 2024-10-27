@@ -96,7 +96,7 @@
             <div class="flex justify-between items-center">
                 <div class="logo">
                     <a href="/index.html">
-                        <img class="w-[180px]" src="./src/images/logo-green-s.svg" alt="Logo">
+                        <img class="w-[180px]" src="/src/images/logo-green-s.svg" alt="Logo">
                     </a>
                 </div>
                 <button @click="toggleMenu" 
@@ -124,17 +124,19 @@
                             { title: 'Company', link: '#', submenu: [
                                 { title: 'About Us', link: '/about-us.html', icon: 'fa-solid fa-info-circle' },
                                 { title: 'Careers', link: '/careers.html', icon: 'fa-solid fa-briefcase' },
-                                { title: 'Leadership', link: '/leadership.html', icon: 'fa-solid fa-user-tie' },
+                                
                             ]},
                             { title: 'Industry', link: '#', submenu: [
-                                { title: 'Automotive', link: '/industry/automotive.html', icon: 'fa-solid fa-car' },
-                                { title: 'Transportation', link: '/industry/transportation.html', icon: 'fa-solid fa-truck' },
-                                { title: 'Mining and Metals', link: '/industry/mining.html', icon: 'fa-solid fa-gem' },
-                                { title: 'Renewable Energy', link: '/industry/renewable-energy.html', icon: 'fa-solid fa-solar-panel' },
-                                { title: 'Medical', link: '/industry/medical.html', icon: 'fa-solid fa-stethoscope' },
-                                { title: 'Fintech', link: '/industry/fintech.html', icon: 'fa-solid fa-chart-line' },
-                                { title: 'Real Estate & Property Management', link: '/industry/real-estate.html', icon: 'fa-solid fa-building' }
-                            ]},
+                                { title: 'Automotive', link: '/industry/index.html#auto', icon: 'fa-solid fa-car' },
+                                { title: 'Transportation', link: '/industry/index.html#transport', icon: 'fa-solid fa-truck' },
+                                { title: 'Mining and Metals', link: '/industry/index.html#mining', icon: 'fa-solid fa-gem' },
+                                { title: 'Renewable Energy', link: '/industry/index.html#renewable', icon: 'fa-solid fa-solar-panel' },
+                                { title: 'Medical', link: '/industry/index.html#medical', icon: 'fa-solid fa-stethoscope' },
+                                { title: 'Fintech', link: '/industry/index.html#fintech', icon: 'fa-solid fa-chart-line' },
+                                { title: 'TechEdu', link: '/industry/index.html#edutech', icon: 'fa-solid fa-chart-line' },
+                                { title: 'Real Estate & Property Management', link: '/industry/index.html#real-estate', icon: 'fa-solid fa-building' }
+                            ]
+                            },
                             {
                                 title: 'Engineering',
                                 icon: 'fa-solid fa-gears',
@@ -153,14 +155,11 @@
                             {title: 'Software', 
                                 link: '#', 
                                 submenu: [
-                                    { title: 'Web Development', link: '/software/web-development.html', icon: 'fa-solid fa-code' },
-                                    { title: 'Mobile Apps', link: '/software/mobile-apps.html', icon: 'fa-solid fa-mobile-alt' },
-                                    { title: 'Cloud Solutions', link: '/software/cloud-solutions.html', icon: 'fa-solid fa-cloud' },
-                                    { title: 'AI & Machine Learning', link: '/software/ai-ml.html', icon: 'fa-solid fa-brain' },
-                                    { title: 'Data Analytics & Visualization', link: '/software/data-analytics.html', icon: 'fa-solid fa-chart-pie' },
-                                    { title: 'SAP Consulting Services', link: '/software/sap-consulting.html', icon: 'fa-solid fa-cogs' },
-                                    { title: 'Infrastructure', link: '/software/infrastructure.html', icon: 'fa-solid fa-server' },
-                                    { title: 'Maintenance & Support', link: '/software/maintenance-support.html', icon: 'fa-solid fa-wrench' }
+                                    { title: 'Web Development', link: '/software/index.html#webapp', icon: 'fa-solid fa-code' },
+                                    { title: 'IoT Application Development', link: '/software/index.html#iot-application-development', icon: 'fa-solid fa-cloud' },
+                                    { title: 'AI & Machine Learning', link: '/software/index.html#ai-ml', icon: 'fa-solid fa-brain' },
+                                    { title: 'Cloud Computing Solutions', link: '/software/index.html#cloud-computing', icon: 'fa-solid fa-chart-pie' },
+                                    { title: 'UI/UX Design Services', link: '/software/index.html#ui-ux-design', icon: 'fa-solid fa-server' },
                                 ] 
                             },
                             { title: 'Staffing', link: '/staffing.html', submenu: [] },
@@ -283,18 +282,20 @@
                             { title: 'Company', link: '#', submenu: [
                                 { title: 'About Us', link: '/about-us.html', icon: 'fa-solid fa-info-circle' },
                                 { title: 'Careers', link: '/careers.html', icon: 'fa-solid fa-briefcase' },
-                                { title: 'Leadership', link: '/leadership.html', icon: 'fa-solid fa-user-tie' },
+                                
                                 { title: 'Clients', link: '/clients.html', icon: 'fa-solid fa-users' }
                             ]},
                             { title: 'Industry', link: '#', submenu: [
-                                { title: 'Automotive', link: '/industry/automotive.html', icon: 'fa-solid fa-car' },
-                                { title: 'Transportation', link: '/industry/transportation.html', icon: 'fa-solid fa-truck' },
-                                { title: 'Mining and Metals', link: '/industry/mining.html', icon: 'fa-solid fa-gem' },
-                                { title: 'Renewable Energy', link: '/industry/renewable-energy.html', icon: 'fa-solid fa-solar-panel' },
-                                { title: 'Medical', link: '/industry/medical.html', icon: 'fa-solid fa-stethoscope' },
-                                { title: 'Fintech', link: '/industry/fintech.html', icon: 'fa-solid fa-chart-line' },
-                                { title: 'Real Estate & Property Management', link: '/industry/real-estate.html', icon: 'fa-solid fa-building' }
-                            ]},
+                                { title: 'Automotive', link: '/industry/index.html#auto', icon: 'fa-solid fa-car' },
+                                { title: 'Transportation', link: '/industry/index.html#transport', icon: 'fa-solid fa-truck' },
+                                { title: 'Mining and Metals', link: '/industry/index.html#mining', icon: 'fa-solid fa-gem' },
+                                { title: 'Renewable Energy', link: '/industry/index.html#renewable', icon: 'fa-solid fa-solar-panel' },
+                                { title: 'Medical', link: '/industry/index.html#medical', icon: 'fa-solid fa-stethoscope' },
+                                { title: 'Fintech', link: '/industry/index.html#fintech', icon: 'fa-solid fa-chart-line' },
+                                { title: 'TechEdu', link: '/industry/index.html#edutech', icon: 'fa-solid fa-chart-line' },
+                                { title: 'Real Estate & Property Management', link: '/industry/index.html#real-estate', icon: 'fa-solid fa-building' }
+                            ]
+                            },
                             {
                                 title: 'Engineering',
                                 submenu: [
@@ -312,14 +313,11 @@
                             {title: 'Software', 
                                 link: '#', 
                                 submenu: [
-                                    { title: 'Web Development', link: '/software/web-development.html', icon: 'fa-solid fa-code' },
-                                    { title: 'Mobile Apps', link: '/software/mobile-apps.html', icon: 'fa-solid fa-mobile-alt' },
-                                    { title: 'Cloud Solutions', link: '/software/cloud-solutions.html', icon: 'fa-solid fa-cloud' },
-                                    { title: 'AI & Machine Learning', link: '/software/ai-ml.html', icon: 'fa-solid fa-brain' },
-                                    { title: 'Data Analytics & Visualization', link: '/software/data-analytics.html', icon: 'fa-solid fa-chart-pie' },
-                                    { title: 'SAP Consulting Services', link: '/software/sap-consulting.html', icon: 'fa-solid fa-cogs' },
-                                    { title: 'Infrastructure', link: '/software/infrastructure.html', icon: 'fa-solid fa-server' },
-                                    { title: 'Maintenance & Support', link: '/software/maintenance-support.html', icon: 'fa-solid fa-wrench' }
+                                    { title: 'Web Development', link: '/software/index.html#webapp', icon: 'fa-solid fa-code' },
+                                    { title: 'IoT Application Development', link: '/software/index.html#iot-application-development', icon: 'fa-solid fa-cloud' },
+                                    { title: 'AI & Machine Learning', link: '/software/index.html#ai-ml', icon: 'fa-solid fa-brain' },
+                                    { title: 'Cloud Computing Solutions', link: '/software/index.html#cloud-computing', icon: 'fa-solid fa-chart-pie' },
+                                    { title: 'UI/UX Design Services', link: '/software/index.html#ui-ux-design', icon: 'fa-solid fa-server' },
                                 ] 
                             },
                             { title: 'Staffing', link: '/staffing.html', submenu: [] },
@@ -371,143 +369,321 @@
         </div>
     </header>
 
-    <main class="container mx-auto px-4 py-12">
-        <div class="container mx-auto p-8">
-            <div class="bg-white shadow-2xl rounded-lg overflow-hidden">
-                <div class="p-8">
-                    <div class="flex mb-8">
-                        <button id="companyBtn" class="flex-1 py-3 px-6 bg-green-600 text-white font-semibold rounded-tl-lg rounded-bl-lg transition duration-300 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50">
-                            <i class="fas fa-building mr-2"></i>For Companies
-                        </button>
-                        <button id="candidateBtn" class="flex-1 py-3 px-6 bg-gray-200 text-gray-700 font-semibold rounded-tr-lg rounded-br-lg transition duration-300 hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-300 focus:ring-opacity-50">
-                            <i class="fas fa-user mr-2"></i>For Candidates
-                        </button>
+    <!-- Banner -->
+    <section class="relative h-[70vh] flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <video class="object-cover w-full h-full" autoplay loop muted>
+                <source src="https://assets.mixkit.co/videos/preview/mixkit-set-of-plateaus-seen-from-the-heights-in-a-sunset-26070-large.mp4" type="video/mp4">
+            </video>
+            <div class="absolute inset-0 bg-green-900 opacity-60"></div>
+        </div>
+        <div class="relative z-10 text-center text-white px-4" data-aos="fade-up">
+            <h1 class="text-5xl md:text-7xl font-bold mb-6">Building Teams for Success</h1>
+            <p class="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">Unlock Your Potential with Software, Engineering, Manufacturing Solutions Experts.</p>
+            <a href="#courses" class="bg-white text-green-700 px-8 py-3 rounded-full text-lg font-semibold hover:bg-green-100 transition duration-300 inline-flex items-center">
+                Explore Courses
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                </svg>
+            </a>
+        </div>
+    </section>
+
+    <section class="max-w-7xl mx-auto px-4 py-16">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-16">
+            <!-- Left Content -->
+            <div class="space-y-8">
+                <div class="inline-block">
+                    <h2 class="text-4xl font-bold text-green-800 relative">
+                        Tech & Engineering Staffing
+                        <span class="absolute -bottom-2 left-0 w-1/2 h-1 bg-green-500"></span>
+                    </h2>
+                </div>
+                <p class="text-lg text-gray-600">
+                    Revolutionize your technical workforce with our specialized staffing solutions. We bridge the gap between 
+                    cutting-edge technology companies and exceptional engineering talent, from software development to hardware design.
+                </p>
+        
+                <!-- Expertise Areas Grid -->
+                <div class="grid grid-cols-1 gap-6">
+                    <div class="bg-white p-6 rounded-lg border-l-4 border-green-500 shadow-sm hover:shadow-md transition-shadow">
+                        <h3 class="font-semibold text-gray-800 mb-2">Software Development</h3>
+                        <ul class="text-gray-600 space-y-2">
+                            <li class="flex items-center">
+                                <span class="w-2 h-2 bg-green-500 rounded-full mr-2"></span>
+                                Full-stack Development
+                            </li>
+                            <li class="flex items-center">
+                                <span class="w-2 h-2 bg-green-500 rounded-full mr-2"></span>
+                                Cloud Architecture
+                            </li>
+                            <li class="flex items-center">
+                                <span class="w-2 h-2 bg-green-500 rounded-full mr-2"></span>
+                                DevOps & SRE
+                            </li>
+                        </ul>
                     </div>
-                    
-                    <div id="companyForm">
-                        <h3 class="text-2xl font-bold mb-6 text-green-800">Company Information</h3>
-                        <form id="companyFormElement" class="space-y-6">
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                <div>
-                                    <label for="companyName" class="block text-sm font-medium text-gray-700 mb-1">Company Name</label>
-                                    <input type="text" id="companyName" name="companyName" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-green-500 focus:border-green-500 transition duration-300" required>
-                                </div>
-                                <div>
-                                    <label for="industry" class="block text-sm font-medium text-gray-700 mb-1">Industry</label>
-                                    <select id="industry" name="industry" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-green-500 focus:border-green-500 transition duration-300" required>
-                                        <option value="">Select an industry</option>
-                                        <option value="technology">Technology</option>
-                                        <option value="finance">Finance</option>
-                                        <option value="healthcare">Healthcare</option>
-                                        <option value="education">Education</option>
-                                        <option value="manufacturing">Manufacturing</option>
-                                        <option value="retail">Retail</option>
-                                        <option value="other">Other</option>
-                                    </select>
-                                </div>
-                                <div>
-                                    <label for="companySize" class="block text-sm font-medium text-gray-700 mb-1">Company Size</label>
-                                    <select id="companySize" name="companySize" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-green-500 focus:border-green-500 transition duration-300" required>
-                                        <option value="">Select company size</option>
-                                        <option value="1-10">1-10 employees</option>
-                                        <option value="11-50">11-50 employees</option>
-                                        <option value="51-200">51-200 employees</option>
-                                        <option value="201-500">201-500 employees</option>
-                                        <option value="501+">501+ employees</option>
-                                    </select>
-                                </div>
-                                <div>
-                                    <label for="location" class="block text-sm font-medium text-gray-700 mb-1">Location</label>
-                                    <input type="text" id="location" name="location" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-green-500 focus:border-green-500 transition duration-300" required>
-                                </div>
-                                <div>
-                                    <label for="contactPerson" class="block text-sm font-medium text-gray-700 mb-1">Contact Person</label>
-                                    <input type="text" id="contactPerson" name="contactPerson" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-green-500 focus:border-green-500 transition duration-300" required>
-                                </div>
-                                <div>
-                                    <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
-                                    <input type="email" id="email" name="email" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-green-500 focus:border-green-500 transition duration-300" required>
-                                </div>
-                                <div>
-                                    <label for="phone" class="block text-sm font-medium text-gray-700 mb-1">Phone</label>
-                                    <input type="tel" id="phone" name="phone" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-green-500 focus:border-green-500 transition duration-300" required>
-                                </div>
-                                <div class="md:col-span-2">
-                                    <label for="jobDescription" class="block text-sm font-medium text-gray-700 mb-1">Job Description</label>
-                                    <textarea id="jobDescription" name="jobDescription" rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-green-500 focus:border-green-500 transition duration-300" required></textarea>
-                                </div>
-                            </div>
-                            <button type="submit" class="w-full bg-green-600 text-white px-6 py-3 rounded-md hover:bg-green-700 transition duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50">
-                                <i class="fas fa-paper-plane mr-2"></i>Submit Company Form
-                            </button>
-                        </form>
+        
+                    <div class="bg-white p-6 rounded-lg border-l-4 border-green-500 shadow-sm hover:shadow-md transition-shadow">
+                        <h3 class="font-semibold text-gray-800 mb-2">Hardware Engineering</h3>
+                        <ul class="text-gray-600 space-y-2">
+                            <li class="flex items-center">
+                                <span class="w-2 h-2 bg-green-500 rounded-full mr-2"></span>
+                                PCB Design & Layout
+                            </li>
+                            <li class="flex items-center">
+                                <span class="w-2 h-2 bg-green-500 rounded-full mr-2"></span>
+                                FPGA Development
+                            </li>
+                            <li class="flex items-center">
+                                <span class="w-2 h-2 bg-green-500 rounded-full mr-2"></span>
+                                Embedded Systems
+                            </li>
+                        </ul>
                     </div>
-    
-                    <div id="candidateForm" class="hidden">
-                        <h3 class="text-2xl font-bold mb-6 text-green-800">Candidate Information</h3>
-                        <form id="candidateFormElement" class="space-y-6">
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                <div>
-                                    <label for="firstName" class="block text-sm font-medium text-gray-700 mb-1">First Name</label>
-                                    <input type="text" id="firstName" name="firstName" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-green-500 focus:border-green-500 transition duration-300" required>
-                                </div>
-                                <div>
-                                    <label for="lastName" class="block text-sm font-medium text-gray-700 mb-1">Last Name</label>
-                                    <input type="text" id="lastName" name="lastName" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-green-500 focus:border-green-500 transition duration-300" required>
-                                </div>
-                                <div>
-                                    <label for="candidateEmail" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
-                                    <input type="email" id="candidateEmail" name="email" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-green-500 focus:border-green-500 transition duration-300" required>
-                                </div>
-                                <div>
-                                    <label for="candidatePhone" class="block text-sm font-medium text-gray-700 mb-1">Phone</label>
-                                    <input type="tel" id="candidatePhone" name="phone" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-green-500 focus:border-green-500 transition duration-300" required>
-                                </div>
-                                <div>
-                                    <label for="candidateLocation" class="block text-sm font-medium text-gray-700 mb-1">Location</label>
-                                    <input type="text" id="candidateLocation" name="location" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-green-500 focus:border-green-500 transition duration-300" required>
-                                </div>
-                                <div>
-                                    <label for="jobTitle" class="block text-sm font-medium text-gray-700 mb-1">Current/Desired Job Title</label>
-                                    <input type="text" id="jobTitle" name="jobTitle" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-green-500 focus:border-green-500 transition duration-300" required>
-                                </div>
-                                <div>
-                                    <label for="experience" class="block text-sm font-medium text-gray-700 mb-1">Years of Experience</label>
-                                    <input type="number" id="experience" name="experience" min="0" max="50" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-green-500 focus:border-green-500 transition duration-300" required>
-                                </div>
-                                <div>
-                                    <label for="education" class="block text-sm font-medium text-gray-700 mb-1">Highest Education Level</label>
-                                    <select id="education" name="education" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-green-500 focus:border-green-500 transition duration-300" required>
-                                        <option value="">Select education level</option>
-                                        <option value="high-school">High School</option>
-                                        <option value="associate">Associate's Degree</option>
-                                        <option value="bachelor">Bachelor's Degree</option>
-                                        <option value="master">Master's Degree</option>
-                                        <option value="doctorate">Doctorate</option>
-                                    </select>
-                                </div>
-                                <div class="md:col-span-2">
-                                    <label for="skills" class="block text-sm font-medium text-gray-700 mb-1">Key Skills (comma-separated)</label>
-                                    <input type="text" id="skills" name="skills" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-green-500 focus:border-green-500 transition duration-300" required>
-                                </div>
-                                <div class="md:col-span-2">
-                                    <label for="resume" class="block text-sm font-medium text-gray-700 mb-1">Upload Resume</label>
-                                    <input type="file" id="resume" name="resume" accept=".pdf,.doc,.docx" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-green-500 focus:border-green-500 transition duration-300" required>
-                                </div>
-                                <div class="md:col-span-2">
-                                    <label for="coverLetter" class="block text-sm font-medium text-gray-700 mb-1">Cover Letter (optional)</label>
-                                    <textarea id="coverLetter" name="coverLetter" rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-green-500 focus:border-green-500 transition duration-300"></textarea>
-                                </div>
-                            </div>
-                            <button type="submit" class="w-full bg-green-600 text-white px-6 py-3 rounded-md hover:bg-green-700 transition duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50">
-                                <i class="fas fa-paper-plane mr-2"></i>Submit Candidate Application
-                            </button>
-                        </form>
+        
+                    <div class="bg-white p-6 rounded-lg border-l-4 border-green-500 shadow-sm hover:shadow-md transition-shadow">
+                        <h3 class="font-semibold text-gray-800 mb-2">Manufacturing Excellence</h3>
+                        <ul class="text-gray-600 space-y-2">
+                            <li class="flex items-center">
+                                <span class="w-2 h-2 bg-green-500 rounded-full mr-2"></span>
+                                Manufacturing Process Design
+                            </li>
+                            <li class="flex items-center">
+                                <span class="w-2 h-2 bg-green-500 rounded-full mr-2"></span>
+                                Quality Control Systems
+                            </li>
+                            <li class="flex items-center">
+                                <span class="w-2 h-2 bg-green-500 rounded-full mr-2"></span>
+                                Automation & Robotics
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+        
+                <!-- Stats Section -->
+                <div class="grid grid-cols-3 gap-4 bg-white p-6 rounded-lg shadow-sm">
+                    <div class="text-center">
+                        <span class="block text-3xl font-bold text-green-600">500+</span>
+                        <span class="text-sm text-gray-600">Tech Partners</span>
+                    </div>
+                    <div class="text-center border-x border-gray-200">
+                        <span class="block text-3xl font-bold text-green-600">95%</span>
+                        <span class="text-sm text-gray-600">Placement Rate</span>
+                    </div>
+                    <div class="text-center">
+                        <span class="block text-3xl font-bold text-green-600">48hrs</span>
+                        <span class="text-sm text-gray-600">Average Response</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Right Image with Design Elements -->
+            <div class="relative">
+                <div class="absolute -top-4 -left-4 w-24 h-24 bg-green-100 rounded-lg z-0"></div>
+                <div class="absolute -bottom-4 -right-4 w-32 h-32 bg-green-50 rounded-lg z-0"></div>
+                <div class="relative z-10 rounded-lg overflow-hidden shadow-lg">
+                    <img src="/src/images/staffing/img1.png" alt="Tech & Engineering Staffing" class="w-full h-[600px] object-cover">
+                </div>
+                <!-- Floating Elements -->
+                <div class="absolute -right-4 top-1/4 bg-white p-4 rounded-lg shadow-lg z-20 transform rotate-3">
+                    <div class="flex items-center space-x-2">
+                        <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                        <span class="text-sm font-semibold">PCB Design</span>
+                    </div>
+                </div>
+                <div class="absolute -left-4 bottom-1/4 bg-white p-4 rounded-lg shadow-lg z-20 transform -rotate-3">
+                    <div class="flex items-center space-x-2">
+                        <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                        <span class="text-sm font-semibold">Software Dev</span>
                     </div>
                 </div>
             </div>
         </div>
-    </main>
+        
+        <!-- Industry Expertise -->
+        <div class="max-w-7xl mx-auto mb-16">
+            <h3 class="text-2xl font-bold text-green-800 mb-6">Our Industry Expertise</h3>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="bg-white p-4 rounded-lg text-center shadow-sm hover:shadow-md transition-shadow">
+                    <div class="text-4xl mb-2">🔧</div>
+                    <h4 class="font-semibold text-gray-800">Hardware Design</h4>
+                    <p class="text-sm text-gray-600">PCB & FPGA</p>
+                </div>
+                <div class="bg-white p-4 rounded-lg text-center shadow-sm hover:shadow-md transition-shadow">
+                    <div class="text-4xl mb-2">💻</div>
+                    <h4 class="font-semibold text-gray-800">Software Dev</h4>
+                    <p class="text-sm text-gray-600">Full-stack & Cloud</p>
+                </div>
+                <div class="bg-white p-4 rounded-lg text-center shadow-sm hover:shadow-md transition-shadow">
+                    <div class="text-4xl mb-2">🏭</div>
+                    <h4 class="font-semibold text-gray-800">Manufacturing</h4>
+                    <p class="text-sm text-gray-600">Process & Quality</p>
+                </div>
+                <div class="bg-white p-4 rounded-lg text-center shadow-sm hover:shadow-md transition-shadow">
+                    <div class="text-4xl mb-2">🤖</div>
+                    <h4 class="font-semibold text-gray-800">Automation</h4>
+                    <p class="text-sm text-gray-600">Robotics & IoT</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Action Buttons Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8 max-w-4xl mx-auto">
+            <button onclick="toggleForm('company')" 
+                    class="group relative bg-white border-2 border-green-600 rounded-lg p-8 text-left transition-all hover:shadow-lg">
+                <div class="flex items-center justify-between mb-4">
+                    <h3 class="text-xl font-bold text-green-800">For Companies</h3>
+                    <span class="transform transition-transform group-hover:rotate-180">
+                        ▼
+                    </span>
+                </div>
+                <p class="text-gray-600">Post jobs and find the perfect candidates for your organization</p>
+            </button>
+
+            <button onclick="toggleForm('candidate')" 
+                    class="group relative bg-white border-2 border-green-600 rounded-lg p-8 text-left transition-all hover:shadow-lg">
+                <div class="flex items-center justify-between mb-4">
+                    <h3 class="text-xl font-bold text-green-800">For Candidates</h3>
+                    <span class="transform transition-transform group-hover:rotate-180">
+                        ▼
+                    </span>
+                </div>
+                <p class="text-gray-600">Submit your profile and explore exciting job opportunities</p>
+            </button>
+        </div>
+
+        <!-- Forms Container -->
+        <div id="formsContainer" class="max-w-4xl mx-auto">
+            <!-- Company Form (Initially Hidden) -->
+            <div id="companyForm" class="hidden transform">
+                <div class="bg-white p-8 rounded-lg shadow-lg border-t-4 border-green-600">
+                    <h3 class="text-2xl font-bold mb-6 text-green-800">Company Information</h3>
+                    <form id="companyFormElement" class="space-y-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="companyName" class="block text-sm font-medium text-gray-700 mb-1">Company Name</label>
+                                <input type="text" id="companyName" name="companyName" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-green-500 focus:border-green-500 transition duration-300" required>
+                            </div>
+                            <div>
+                                <label for="industry" class="block text-sm font-medium text-gray-700 mb-1">Industry</label>
+                                <select id="industry" name="industry" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-green-500 focus:border-green-500 transition duration-300" required>
+                                    <option value="">Select an industry</option>
+                                    <option value="technology">Technology</option>
+                                    <option value="finance">Finance</option>
+                                    <option value="healthcare">Healthcare</option>
+                                    <option value="education">Education</option>
+                                    <option value="manufacturing">Manufacturing</option>
+                                    <option value="retail">Retail</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="companySize" class="block text-sm font-medium text-gray-700 mb-1">Company Size</label>
+                                <select id="companySize" name="companySize" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-green-500 focus:border-green-500 transition duration-300" required>
+                                    <option value="">Select company size</option>
+                                    <option value="1-10">1-10 employees</option>
+                                    <option value="11-50">11-50 employees</option>
+                                    <option value="51-200">51-200 employees</option>
+                                    <option value="201-500">201-500 employees</option>
+                                    <option value="501+">501+ employees</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="location" class="block text-sm font-medium text-gray-700 mb-1">Location</label>
+                                <input type="text" id="location" name="location" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-green-500 focus:border-green-500 transition duration-300" required>
+                            </div>
+                            <div>
+                                <label for="contactPerson" class="block text-sm font-medium text-gray-700 mb-1">Contact Person</label>
+                                <input type="text" id="contactPerson" name="contactPerson" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-green-500 focus:border-green-500 transition duration-300" required>
+                            </div>
+                            <div>
+                                <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                                <input type="email" id="email" name="email" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-green-500 focus:border-green-500 transition duration-300" required>
+                            </div>
+                            <div>
+                                <label for="phone" class="block text-sm font-medium text-gray-700 mb-1">Phone</label>
+                                <input type="tel" id="phone" name="phone" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-green-500 focus:border-green-500 transition duration-300" required>
+                            </div>
+                            <div class="md:col-span-2">
+                                <label for="jobDescription" class="block text-sm font-medium text-gray-700 mb-1">Job Description</label>
+                                <textarea id="jobDescription" name="jobDescription" rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-green-500 focus:border-green-500 transition duration-300" required></textarea>
+                            </div>
+                        </div>
+                        <button type="submit" class="w-fit bg-green-600 text-white px-6 py-3 rounded-md hover:bg-green-700 transition duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50">
+                            <i class="fas fa-paper-plane mr-2"></i>Submit
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Candidate Form (Initially Hidden) -->
+            <div id="candidateForm" class="hidden transform">
+                <div class="bg-white p-8 rounded-lg shadow-lg border-t-4 border-green-600">
+                    <h3 class="text-2xl font-bold mb-6 text-green-800">Candidate Information</h3>
+                    <form id="candidateFormElement" class="space-y-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="firstName" class="block text-sm font-medium text-gray-700 mb-1">First Name</label>
+                                <input type="text" id="firstName" name="firstName" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-green-500 focus:border-green-500 transition duration-300" required>
+                            </div>
+                            <div>
+                                <label for="lastName" class="block text-sm font-medium text-gray-700 mb-1">Last Name</label>
+                                <input type="text" id="lastName" name="lastName" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-green-500 focus:border-green-500 transition duration-300" required>
+                            </div>
+                            <div>
+                                <label for="candidateEmail" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                                <input type="email" id="candidateEmail" name="email" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-green-500 focus:border-green-500 transition duration-300" required>
+                            </div>
+                            <div>
+                                <label for="candidatePhone" class="block text-sm font-medium text-gray-700 mb-1">Phone</label>
+                                <input type="tel" id="candidatePhone" name="phone" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-green-500 focus:border-green-500 transition duration-300" required>
+                            </div>
+                            <div>
+                                <label for="candidateLocation" class="block text-sm font-medium text-gray-700 mb-1">Location</label>
+                                <input type="text" id="candidateLocation" name="location" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-green-500 focus:border-green-500 transition duration-300" required>
+                            </div>
+                            <div>
+                                <label for="jobTitle" class="block text-sm font-medium text-gray-700 mb-1">Current/Desired Job Title</label>
+                                <input type="text" id="jobTitle" name="jobTitle" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-green-500 focus:border-green-500 transition duration-300" required>
+                            </div>
+                            <div>
+                                <label for="experience" class="block text-sm font-medium text-gray-700 mb-1">Years of Experience</label>
+                                <input type="number" id="experience" name="experience" min="0" max="50" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-green-500 focus:border-green-500 transition duration-300" required>
+                            </div>
+                            <div>
+                                <label for="education" class="block text-sm font-medium text-gray-700 mb-1">Highest Education Level</label>
+                                <select id="education" name="education" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-green-500 focus:border-green-500 transition duration-300" required>
+                                    <option value="">Select education level</option>
+                                    <option value="high-school">High School</option>
+                                    <option value="associate">Associate's Degree</option>
+                                    <option value="bachelor">Bachelor's Degree</option>
+                                    <option value="master">Master's Degree</option>
+                                    <option value="doctorate">Doctorate</option>
+                                </select>
+                            </div>
+                            <div class="md:col-span-2">
+                                <label for="skills" class="block text-sm font-medium text-gray-700 mb-1">Key Skills (comma-separated)</label>
+                                <input type="text" id="skills" name="skills" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-green-500 focus:border-green-500 transition duration-300" required>
+                            </div>
+                            <div class="md:col-span-2">
+                                <label for="resume" class="block text-sm font-medium text-gray-700 mb-1">Upload Resume</label>
+                                <input type="file" id="resume" name="resume" accept=".pdf,.doc,.docx" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-green-500 focus:border-green-500 transition duration-300" required>
+                            </div>
+                            <div class="md:col-span-2">
+                                <label for="coverLetter" class="block text-sm font-medium text-gray-700 mb-1">Cover Letter (optional)</label>
+                                <textarea id="coverLetter" name="coverLetter" rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-green-500 focus:border-green-500 transition duration-300"></textarea>
+                            </div>
+                        </div>
+                        <button type="submit" class="w-fit bg-green-600 text-white px-6 py-3 rounded-md hover:bg-green-700 transition duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50">
+                            <i class="fas fa-paper-plane mr-2"></i>Submit
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
 
 
     <!-- footer -->
@@ -660,50 +836,78 @@
     <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
     <script src="/src/js/aos-init.js"></script>
     <script>
-        const companyBtn = document.getElementById('companyBtn');
-        const candidateBtn = document.getElementById('candidateBtn');
-        const companyForm = document.getElementById('companyForm');
-        const candidateForm = document.getElementById('candidateForm');
-        const companyFormElement = document.getElementById('companyFormElement');
-        const candidateFormElement = document.getElementById('candidateFormElement');
-    
-        companyBtn.addEventListener('click', () => {
-            companyForm.classList.remove('hidden');
-            candidateForm.classList.add('hidden');
-            companyBtn.classList.remove('bg-gray-200', 'text-gray-700');
-            companyBtn.classList.add('bg-green-600', 'text-white');
-            candidateBtn.classList.remove('bg-green-600', 'text-white');
-            candidateBtn.classList.add('bg-gray-200', 'text-gray-700');
-        });
-    
-        candidateBtn.addEventListener('click', () => {
-            candidateForm.classList.remove('hidden');
-            companyForm.classList.add('hidden');
-            candidateBtn.classList.remove('bg-gray-200', 'text-gray-700');
-            candidateBtn.classList.add('bg-green-600', 'text-white');
-            companyBtn.classList.remove('bg-green-600', 'text-white');
-            companyBtn.classList.add('bg-gray-200', 'text-gray-700');
-        });
-    
-        companyFormElement.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const formData = new FormData(companyFormElement);
-            const formValues = Object.fromEntries(formData.entries());
-            console.log('Company Form Values:', formValues);
-        });
-    
-        candidateFormElement.addEventListener('submit', (e) => {
-            e.preventDefault();
-            const formData = new FormData(candidateFormElement);
-            const formValues = Object.fromEntries(formData.entries());
+        let activeForm = null;
+
+        function toggleForm(formType) {
+            const companyForm = document.getElementById('companyForm');
+            const candidateForm = document.getElementById('candidateForm');
             
-            // Handle file separately
-            const resumeFile = formData.get('resume');
-            delete formValues.resume;
-    
-            console.log('Candidate Form Values:', formValues);
-            console.log('Resume File:', resumeFile);
+            if (activeForm === formType) {
+                companyForm.classList.add('hidden');
+                candidateForm.classList.add('hidden');
+                activeForm = null;
+            } else {
+                if (formType === 'company') {
+                    companyForm.classList.remove('hidden');
+                    candidateForm.classList.add('hidden');
+                } else {
+                    companyForm.classList.add('hidden');
+                    candidateForm.classList.remove('hidden');
+                }
+                activeForm = formType;
+            }
+        }
+
+        // Add form submission handlers
+        document.getElementById('companyFormElement').addEventListener('submit', function(e) {
+            e.preventDefault();
+            console.log('Company form submitted');
         });
+
+        document.getElementById('candidateFormElement').addEventListener('submit', function(e) {
+            e.preventDefault();
+            console.log('Candidate form submitted');
+        });
+    </script>
+
+    <script>
+        async function submitForm(formElement, endpointUrl) {
+        const formData = new FormData(formElement);
+
+        try {
+            const response = await fetch(endpointUrl, {
+                method: "POST",
+                body: formData,
+                headers: {
+                    // Avoid manually setting Content-Type
+                    "Accept": "application/json", // Expect JSON response
+                },
+            });
+
+            if (!response.ok) {
+                throw new Error(`Error: ${response.statusText}`);
+            }
+
+            const result = await response.json();
+            console.log("Form submission successful:", result);
+            alert("Form submitted successfully!");
+        } catch (error) {
+            console.error("Form submission error:", error);
+            alert("There was an issue submitting the form.");
+        }
+    }
+
+    // Event listeners for form submissions
+    document.getElementById("companyFormElement").addEventListener("submit", function (event) {
+        event.preventDefault();
+        submitForm(event.target, "/company"); 
+    });
+
+    document.getElementById("candidateFormElement").addEventListener("submit", function (event) {
+        event.preventDefault();
+        submitForm(event.target, "/candidate"); 
+    });
+
     </script>
 </body>
 </html>

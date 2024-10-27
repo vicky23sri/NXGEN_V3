@@ -73,7 +73,7 @@
             <div class="flex justify-between items-center">
                 <div class="logo">
                     <a href="/index.html">
-                        <img class="w-[180px]" src="./src/images/logo-green-s.svg" alt="Logo">
+                        <img class="w-[180px]" src="/src/images/logo-green-s.svg" alt="Logo">
                     </a>
                 </div>
                 <button @click="toggleMenu" 
@@ -101,17 +101,19 @@
                             { title: 'Company', link: '#', submenu: [
                                 { title: 'About Us', link: '/about-us.html', icon: 'fa-solid fa-info-circle' },
                                 { title: 'Careers', link: '/careers.html', icon: 'fa-solid fa-briefcase' },
-                                { title: 'Leadership', link: '/leadership.html', icon: 'fa-solid fa-user-tie' },
+                                
                             ]},
                             { title: 'Industry', link: '#', submenu: [
-                                { title: 'Automotive', link: '/industry/automotive.html', icon: 'fa-solid fa-car' },
-                                { title: 'Transportation', link: '/industry/transportation.html', icon: 'fa-solid fa-truck' },
-                                { title: 'Mining and Metals', link: '/industry/mining.html', icon: 'fa-solid fa-gem' },
-                                { title: 'Renewable Energy', link: '/industry/renewable-energy.html', icon: 'fa-solid fa-solar-panel' },
-                                { title: 'Medical', link: '/industry/medical.html', icon: 'fa-solid fa-stethoscope' },
-                                { title: 'Fintech', link: '/industry/fintech.html', icon: 'fa-solid fa-chart-line' },
-                                { title: 'Real Estate & Property Management', link: '/industry/real-estate.html', icon: 'fa-solid fa-building' }
-                            ]},
+                                { title: 'Automotive', link: '/industry/index.html#auto', icon: 'fa-solid fa-car' },
+                                { title: 'Transportation', link: '/industry/index.html#transport', icon: 'fa-solid fa-truck' },
+                                { title: 'Mining and Metals', link: '/industry/index.html#mining', icon: 'fa-solid fa-gem' },
+                                { title: 'Renewable Energy', link: '/industry/index.html#renewable', icon: 'fa-solid fa-solar-panel' },
+                                { title: 'Medical', link: '/industry/index.html#medical', icon: 'fa-solid fa-stethoscope' },
+                                { title: 'Fintech', link: '/industry/index.html#fintech', icon: 'fa-solid fa-chart-line' },
+                                { title: 'TechEdu', link: '/industry/index.html#edutech', icon: 'fa-solid fa-chart-line' },
+                                { title: 'Real Estate & Property Management', link: '/industry/index.html#real-estate', icon: 'fa-solid fa-building' }
+                            ]
+                            },
                             {
                                 title: 'Engineering',
                                 icon: 'fa-solid fa-gears',
@@ -130,14 +132,11 @@
                             {title: 'Software', 
                                 link: '#', 
                                 submenu: [
-                                    { title: 'Web Development', link: '/software/web-development.html', icon: 'fa-solid fa-code' },
-                                    { title: 'Mobile Apps', link: '/software/mobile-apps.html', icon: 'fa-solid fa-mobile-alt' },
-                                    { title: 'Cloud Solutions', link: '/software/cloud-solutions.html', icon: 'fa-solid fa-cloud' },
-                                    { title: 'AI & Machine Learning', link: '/software/ai-ml.html', icon: 'fa-solid fa-brain' },
-                                    { title: 'Data Analytics & Visualization', link: '/software/data-analytics.html', icon: 'fa-solid fa-chart-pie' },
-                                    { title: 'SAP Consulting Services', link: '/software/sap-consulting.html', icon: 'fa-solid fa-cogs' },
-                                    { title: 'Infrastructure', link: '/software/infrastructure.html', icon: 'fa-solid fa-server' },
-                                    { title: 'Maintenance & Support', link: '/software/maintenance-support.html', icon: 'fa-solid fa-wrench' }
+                                    { title: 'Web Development', link: '/software/index.html#webapp', icon: 'fa-solid fa-code' },
+                                    { title: 'IoT Application Development', link: '/software/index.html#iot-application-development', icon: 'fa-solid fa-cloud' },
+                                    { title: 'AI & Machine Learning', link: '/software/index.html#ai-ml', icon: 'fa-solid fa-brain' },
+                                    { title: 'Cloud Computing Solutions', link: '/software/index.html#cloud-computing', icon: 'fa-solid fa-chart-pie' },
+                                    { title: 'UI/UX Design Services', link: '/software/index.html#ui-ux-design', icon: 'fa-solid fa-server' },
                                 ] 
                             },
                             { title: 'Staffing', link: '/staffing.html', submenu: [] },
@@ -260,18 +259,20 @@
                             { title: 'Company', link: '#', submenu: [
                                 { title: 'About Us', link: '/about-us.html', icon: 'fa-solid fa-info-circle' },
                                 { title: 'Careers', link: '/careers.html', icon: 'fa-solid fa-briefcase' },
-                                { title: 'Leadership', link: '/leadership.html', icon: 'fa-solid fa-user-tie' },
+                                
                                 { title: 'Clients', link: '/clients.html', icon: 'fa-solid fa-users' }
                             ]},
                             { title: 'Industry', link: '#', submenu: [
-                                { title: 'Automotive', link: '/industry/automotive.html', icon: 'fa-solid fa-car' },
-                                { title: 'Transportation', link: '/industry/transportation.html', icon: 'fa-solid fa-truck' },
-                                { title: 'Mining and Metals', link: '/industry/mining.html', icon: 'fa-solid fa-gem' },
-                                { title: 'Renewable Energy', link: '/industry/renewable-energy.html', icon: 'fa-solid fa-solar-panel' },
-                                { title: 'Medical', link: '/industry/medical.html', icon: 'fa-solid fa-stethoscope' },
-                                { title: 'Fintech', link: '/industry/fintech.html', icon: 'fa-solid fa-chart-line' },
-                                { title: 'Real Estate & Property Management', link: '/industry/real-estate.html', icon: 'fa-solid fa-building' }
-                            ]},
+                                { title: 'Automotive', link: '/industry/index.html#auto', icon: 'fa-solid fa-car' },
+                                { title: 'Transportation', link: '/industry/index.html#transport', icon: 'fa-solid fa-truck' },
+                                { title: 'Mining and Metals', link: '/industry/index.html#mining', icon: 'fa-solid fa-gem' },
+                                { title: 'Renewable Energy', link: '/industry/index.html#renewable', icon: 'fa-solid fa-solar-panel' },
+                                { title: 'Medical', link: '/industry/index.html#medical', icon: 'fa-solid fa-stethoscope' },
+                                { title: 'Fintech', link: '/industry/index.html#fintech', icon: 'fa-solid fa-chart-line' },
+                                { title: 'TechEdu', link: '/industry/index.html#edutech', icon: 'fa-solid fa-chart-line' },
+                                { title: 'Real Estate & Property Management', link: '/industry/index.html#real-estate', icon: 'fa-solid fa-building' }
+                            ]
+                            },
                             {
                                 title: 'Engineering',
                                 submenu: [
@@ -289,14 +290,11 @@
                             {title: 'Software', 
                                 link: '#', 
                                 submenu: [
-                                    { title: 'Web Development', link: '/software/web-development.html', icon: 'fa-solid fa-code' },
-                                    { title: 'Mobile Apps', link: '/software/mobile-apps.html', icon: 'fa-solid fa-mobile-alt' },
-                                    { title: 'Cloud Solutions', link: '/software/cloud-solutions.html', icon: 'fa-solid fa-cloud' },
-                                    { title: 'AI & Machine Learning', link: '/software/ai-ml.html', icon: 'fa-solid fa-brain' },
-                                    { title: 'Data Analytics & Visualization', link: '/software/data-analytics.html', icon: 'fa-solid fa-chart-pie' },
-                                    { title: 'SAP Consulting Services', link: '/software/sap-consulting.html', icon: 'fa-solid fa-cogs' },
-                                    { title: 'Infrastructure', link: '/software/infrastructure.html', icon: 'fa-solid fa-server' },
-                                    { title: 'Maintenance & Support', link: '/software/maintenance-support.html', icon: 'fa-solid fa-wrench' }
+                                    { title: 'Web Development', link: '/software/index.html#webapp', icon: 'fa-solid fa-code' },
+                                    { title: 'IoT Application Development', link: '/software/index.html#iot-application-development', icon: 'fa-solid fa-cloud' },
+                                    { title: 'AI & Machine Learning', link: '/software/index.html#ai-ml', icon: 'fa-solid fa-brain' },
+                                    { title: 'Cloud Computing Solutions', link: '/software/index.html#cloud-computing', icon: 'fa-solid fa-chart-pie' },
+                                    { title: 'UI/UX Design Services', link: '/software/index.html#ui-ux-design', icon: 'fa-solid fa-server' },
                                 ] 
                             },
                             { title: 'Staffing', link: '/staffing.html', submenu: [] },

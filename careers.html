@@ -42,6 +42,59 @@
     .float { animation: float 3s ease-in-out infinite; }
 </style>
 
+<style>
+    .tab-content {
+        display: none;
+        height: 700px;
+        overflow-y: auto;
+    }
+
+    .tab-content.active {
+        display: block;
+        background-color: #f1f5f9;
+    }
+
+    .tab-link.active {
+        border-left-color: #3b82f6;
+        background-color: #22c55e;
+    }
+
+    .tab-link {
+        width: 100%;
+        height: 200px;
+        padding: 16px;
+        border-radius: 8px;
+        transition: background-color 0.3s ease;
+    }
+
+    .tab-link:hover {
+        color: #fff;
+        background-color: #339f6e;
+    }
+
+    .tab-link.active h1 {
+        color: white;
+    }
+
+    .tab-link.active p {
+        color: white;
+    }
+
+    th {
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    th:hover {
+        background-color: #f0f0f0;
+    }
+
+    .modal-content {
+        height: 800px;
+        overflow-y: auto;
+    }
+</style>
+
     <style>
         .hexagon {
             clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
@@ -139,17 +192,19 @@
                             { title: 'Company', link: '#', submenu: [
                                 { title: 'About Us', link: '/about-us.html', icon: 'fa-solid fa-info-circle' },
                                 { title: 'Careers', link: '/careers.html', icon: 'fa-solid fa-briefcase' },
-                                { title: 'Leadership', link: '/leadership.html', icon: 'fa-solid fa-user-tie' },
+                                
                             ]},
                             { title: 'Industry', link: '#', submenu: [
-                                { title: 'Automotive', link: '/industry/automotive.html', icon: 'fa-solid fa-car' },
-                                { title: 'Transportation', link: '/industry/transportation.html', icon: 'fa-solid fa-truck' },
-                                { title: 'Mining and Metals', link: '/industry/mining.html', icon: 'fa-solid fa-gem' },
-                                { title: 'Renewable Energy', link: '/industry/renewable-energy.html', icon: 'fa-solid fa-solar-panel' },
-                                { title: 'Medical', link: '/industry/medical.html', icon: 'fa-solid fa-stethoscope' },
-                                { title: 'Fintech', link: '/industry/fintech.html', icon: 'fa-solid fa-chart-line' },
-                                { title: 'Real Estate & Property Management', link: '/industry/real-estate.html', icon: 'fa-solid fa-building' }
-                            ]},
+                                { title: 'Automotive', link: '/industry/index.html#auto', icon: 'fa-solid fa-car' },
+                                { title: 'Transportation', link: '/industry/index.html#transport', icon: 'fa-solid fa-truck' },
+                                { title: 'Mining and Metals', link: '/industry/index.html#mining', icon: 'fa-solid fa-gem' },
+                                { title: 'Renewable Energy', link: '/industry/index.html#renewable', icon: 'fa-solid fa-solar-panel' },
+                                { title: 'Medical', link: '/industry/index.html#medical', icon: 'fa-solid fa-stethoscope' },
+                                { title: 'Fintech', link: '/industry/index.html#fintech', icon: 'fa-solid fa-chart-line' },
+                                { title: 'TechEdu', link: '/industry/index.html#edutech', icon: 'fa-solid fa-chart-line' },
+                                { title: 'Real Estate & Property Management', link: '/industry/index.html#real-estate', icon: 'fa-solid fa-building' }
+                            ]
+                            },
                             {
                                 title: 'Engineering',
                                 icon: 'fa-solid fa-gears',
@@ -298,18 +353,20 @@
                             { title: 'Company', link: '#', submenu: [
                                 { title: 'About Us', link: '/about-us.html', icon: 'fa-solid fa-info-circle' },
                                 { title: 'Careers', link: '/careers.html', icon: 'fa-solid fa-briefcase' },
-                                { title: 'Leadership', link: '/leadership.html', icon: 'fa-solid fa-user-tie' },
+                                
                                 { title: 'Clients', link: '/clients.html', icon: 'fa-solid fa-users' }
                             ]},
                             { title: 'Industry', link: '#', submenu: [
-                                { title: 'Automotive', link: '/industry/automotive.html', icon: 'fa-solid fa-car' },
-                                { title: 'Transportation', link: '/industry/transportation.html', icon: 'fa-solid fa-truck' },
-                                { title: 'Mining and Metals', link: '/industry/mining.html', icon: 'fa-solid fa-gem' },
-                                { title: 'Renewable Energy', link: '/industry/renewable-energy.html', icon: 'fa-solid fa-solar-panel' },
-                                { title: 'Medical', link: '/industry/medical.html', icon: 'fa-solid fa-stethoscope' },
-                                { title: 'Fintech', link: '/industry/fintech.html', icon: 'fa-solid fa-chart-line' },
-                                { title: 'Real Estate & Property Management', link: '/industry/real-estate.html', icon: 'fa-solid fa-building' }
-                            ]},
+                                { title: 'Automotive', link: '/industry/index.html#auto', icon: 'fa-solid fa-car' },
+                                { title: 'Transportation', link: '/industry/index.html#transport', icon: 'fa-solid fa-truck' },
+                                { title: 'Mining and Metals', link: '/industry/index.html#mining', icon: 'fa-solid fa-gem' },
+                                { title: 'Renewable Energy', link: '/industry/index.html#renewable', icon: 'fa-solid fa-solar-panel' },
+                                { title: 'Medical', link: '/industry/index.html#medical', icon: 'fa-solid fa-stethoscope' },
+                                { title: 'Fintech', link: '/industry/index.html#fintech', icon: 'fa-solid fa-chart-line' },
+                                { title: 'TechEdu', link: '/industry/index.html#edutech', icon: 'fa-solid fa-chart-line' },
+                                { title: 'Real Estate & Property Management', link: '/industry/index.html#real-estate', icon: 'fa-solid fa-building' }
+                            ]
+                            },
                             {
                                 title: 'Engineering',
                                 submenu: [
@@ -386,7 +443,836 @@
         </div>
     </header>
 
+    <main class="bg-career"></main>
+
+        <section class="relative h-[70vh] flex items-center justify-center overflow-hidden bg-cover bg-center" style="background-image: url('https://your-image-url.jpg');">
+            <div class="absolute inset-0 bg-green-900 opacity-60"></div>
+            <div class="relative z-10 text-center text-white px-4" data-aos="fade-up">
+                <h1 class="text-5xl md:text-7xl font-bold mb-6">Join Our Team</h1>
+                <p class="text-xl md:text-2xl mb-8 max-w-5xl mx-auto">
+                    Discover exciting career opportunities with us. We're committed to innovation, excellence, and fostering a collaborative work environment where your skills can shine and grow.
+                </p>
+                <a href="#open-positions" class="bg-white text-green-700 px-8 py-3 rounded-full text-lg font-semibold hover:bg-green-100 transition duration-300 inline-flex items-center">
+                    Explore Open Positions
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                    </svg>
+                </a>
+            </div>
+        </section>
     
+
+        <div id="softwareEngineerModal" class="modal fixed inset-0 z-50 hidden overflow-auto bg-gray-900 bg-opacity-50 flex items-center justify-center">
+            <div class="modal-content bg-white rounded-lg p-6 relative w-full max-w-2xl mx-auto my-4 h-[700px]">
+                <span class="close absolute top-4 right-4 text-gray-500 hover:text-gray-900 text-2xl cursor-pointer">&times;</span>
+                <h2 class="text-xl md:text-2xl font-semibold mb-4">Software Developer</h2>
+                <h3 class="text-lg md:text-xl font-semibold mt-4 mb-2">Position Overview:</h3>
+                <p>We are seeking a talented Full-Stack Developer with at least 2 years of experience to join our dynamic team. The ideal candidate should excel in web development principles and be proficient across the technology stack.</p>
+                <h3 class="text-xl font-semibold mt-4 mb-2">Key Responsibilities:</h3>
+                <h4 class="text-lg font-semibold mt-2 mb-1">Design and Development:</h4>
+                <ul class="list-disc pl-5 px-10">
+                    <li class="flex items-center space-x-3 mb-5">
+                        <svg class="flex-shrink-0 w-3.5 h-3.5 text-green-500 dark:text-green-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5"/>
+                        </svg>
+                        <span class="inherit">Design, develop, and maintain robust and scalable web applications using PHP and its frameworks, such as Laravel.</span>
+                    </li>
+                    <li class="flex items-center space-x-3 mb-5">
+                        <svg class="flex-shrink-0 w-3.5 h-3.5 text-green-500 dark:text-green-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5"/>
+                        </svg>
+                        <span class="inherit">Build and integrate RESTful APIs using PHP and its frameworks, such as Laravel.</span>
+                    </li>
+                    <li class="flex items-center space-x-3 mb-5">
+                        <svg class="flex-shrink-0 w-3.5 h-3.5 text-green-500 dark:text-green-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5"/>
+                        </svg>
+                        <span class="inherit">Develop and enhance user interfaces using JavaScript frameworks like ReactJS, Angular, or Vue.js.</span>
+                    </li>
+                    <li class="flex items-center space-x-3 mb-5">
+                        <svg class="flex-shrink-0 w-3.5 h-3.5 text-green-500 dark:text-green-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5"/>
+                        </svg>
+                        <span class="inherit">Create responsive and visually appealing web designs using HTML, CSS, and CSS frameworks like Bootstrap or Tailwind CSS.</span>
+                    </li>
+                    <li class="flex items-center space-x-3 mb-5">
+                        <svg class="flex-shrink-0 w-3.5 h-3.5 text-green-500 dark:text-green-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5"/>
+                        </svg>
+                        <span class="inherit">Write clean, well-documented, and maintainable code following best practices and coding standards.</span>
+                    </li>
+                    <li class="flex items-center space-x-3 mb-5">
+                        <svg class="flex-shrink-0 w-3.5 h-3.5 text-green-500 dark:text-green-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5"/>
+                        </svg>
+                        <span class="inherit">Perform code reviews and ensure adherence to coding standards and best practices.</span>
+                    </li>
+                    <li class="flex items-center space-x-3 mb-5">
+                        <svg class="flex-shrink-0 w-3.5 h-3.5 text-green-500 dark:text-green-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5"/>
+                        </svg>
+                        <span class="inherit">Stay up-to-date with the latest technologies, trends, and best practices in web development.</span>
+                    </li>
+                </ul>
+                
+                <h4 class="text-lg font-semibold mt-2 mb-1">Required Skills and Qualifications:</h4>
+                <ul class="list-disc pl-5 px-10">
+                    <li class="flex items-center space-x-3 mb-5">
+                        <svg class="flex-shrink-0 w-3.5 h-3.5 text-green-500 dark:text-green-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5"/>
+                        </svg>
+                        <span class="inherit">Strong proficiency in PHP and at least one PHP framework (e.g., Laravel).</span>
+                    </li>
+                    <li class="flex items-center space-x-3 mb-5">
+                        <svg class="flex-shrink-0 w-3.5 h-3.5 text-green-500 dark:text-green-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5"/>
+                        </svg>
+                        <span class="inherit">Extensive experience with JavaScript and at least one modern front-end framework (ReactJS, Angular, or Vue.js).</span>
+                    </li>
+                    <li class="flex items-center space-x-3 mb-5">
+                        <svg class="flex-shrink-0 w-3.5 h-3.5 text-green-500 dark:text-green-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5"/>
+                        </svg>
+                        <span class="inherit">Proficient in HTML, CSS, and CSS frameworks like Bootstrap or Tailwind CSS.</span>
+                    </li>
+                    <li class="flex items-center space-x-3 mb-5">
+                        <svg class="flex-shrink-0 w-3.5 h-3.5 text-green-500 dark:text-green-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5"/>
+                        </svg>
+                        <span class="inherit">Experience with version control systems (e.g., Git).</span>
+                    </li>
+                    <li class="flex items-center space-x-3 mb-5">
+                        <svg class="flex-shrink-0 w-3.5 h-3.5 text-green-500 dark:text-green-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5"/>
+                        </svg>
+                        <span class="inherit">Strong problem-solving and analytical skills.</span>
+                    </li>
+                    <li class="flex items-center space-x-3 mb-5">
+                        <svg class="flex-shrink-0 w-3.5 h-3.5 text-green-500 dark:text-green-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5"/>
+                        </svg>
+                        <span class="inherit">Excellent communication and collaboration abilities.</span>
+                    </li>
+                    <li class="flex items-center space-x-3 mb-5">
+                        <svg class="flex-shrink-0 w-3.5 h-3.5 text-green-500 dark:text-green-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5"/>
+                        </svg>
+                        <span class="inherit">Ability to work in an Agile development environment.</span>
+                    </li>
+                    <li class="flex items-center space-x-3 mb-5">
+                        <svg class="flex-shrink-0 w-3.5 h-3.5 text-green-500 dark:text-green-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5"/>
+                        </svg>
+                        <span class="inherit">Experience with cloud technologies like AWS, Azure, or Google Cloud Platform.</span>
+                    </li>
+                </ul>
+
+                <h4 class="text-lg font-semibold mt-2 mb-1">Preferred Skills::</h4>
+                <ul class="list-disc pl-2 px-10">
+                    <li class="flex items-center space-x-3 mb-5">
+                        <svg class="flex-shrink-0 w-3.5 h-3.5 text-green-500 dark:text-green-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5"/>
+                        </svg>
+                        <span class="inherit">Experience with cloud technologies like AWS, Azure, or Google Cloud Platform.</span>
+                    </li>
+                    <li class="flex items-center space-x-2 mb-5">
+                        <svg class="flex-shrink-0 w-3.5 h-3.5 text-green-500 dark:text-green-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5"/>
+                        </svg>
+                        <span class="inherit">Understanding of software architecture patterns and principles (e.g., MVC, SOLID).</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    
+        <!-- Manufacture Engineering Modal -->
+        <div id="manufactureEngineeringModal" class="modal fixed inset-0 z-50 hidden overflow-auto bg-gray-900 bg-opacity-50 flex items-center justify-center">
+            <div class="modal-content bg-white rounded-lg p-6 relative w-full max-w-2xl mx-auto my-4">
+                <span class="close absolute top-4 right-4 text-gray-500 hover:text-gray-900 text-2xl cursor-pointer">&times;</span>
+                <h2 class="text-xl md:text-2xl font-semibold mb-4">Electronics - Manufacturing</h2>
+                <h3 class="text-lg md:text-xl font-semibold mt-4 mb-2">Position Overview:</h3>
+                <p>
+                    We are hiring a Supply Chain Management Engineer with 2-3 years of experience
+                    for our Bangalore & Krishnagari locations. The role focuses on optimizing 
+                    supply chain processes, enhancing efficiency, and reducing costs. Candidates 
+                    should have a strong grasp of SCM principles, hands-on experience with SCM 
+                    systems, and excellent cross-functional collaboration skills.
+                </p>
+                <h3 class="text-xl font-semibold mt-4 mb-2">Key Responsibilities:</h3>
+                <h4 class="text-lg font-semibold mt-2 mb-1">ROLES AND RESPONSIBILITIES:</h4>
+                <ul class="list-disc pl-5 px-10">
+                    <li class="flex items-center space-x-3 mb-5">
+                        <svg class="flex-shrink-0 w-3.5 h-3.5 text-green-500 dark:text-green-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5"/>
+                        </svg>
+                        <span class="inherit"> Ensure smooth transition of new products from design to full-scale production. </span>
+                    </li>
+                    <li class="flex items-center space-x-3 mb-5">
+                        <svg class="flex-shrink-0 w-3.5 h-3.5 text-green-500 dark:text-green-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5"/>
+                        </svg>
+                        <span class="inherit"> Manage Manufacturing Engineering in PLM. </span>
+                    </li>
+                    <li class="flex items-center space-x-3 mb-5">
+                        <svg class="flex-shrink-0 w-3.5 h-3.5 text-green-500 dark:text-green-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5"/>
+                        </svg>
+                        <span class="inherit"> Carry out DFM, DFA. </span>
+                    </li>
+                    <li class="flex items-center space-x-3 mb-5">
+                        <svg class="flex-shrink-0 w-3.5 h-3.5 text-green-500 dark:text-green-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5"/>
+                        </svg>
+                        <span class="inherit"> Plan, budget, and organize industrialization activities. </span>
+                    </li>
+                    <li class="flex items-center space-x-3 mb-5">
+                        <svg class="flex-shrink-0 w-3.5 h-3.5 text-green-500 dark:text-green-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5"/>
+                        </svg>
+                        <span class="inherit"> Monitor proto, pilot, and early production builds. Record bugs and deviations and implement appropriate containment, corrective and preventive actions to assure the targeted quality & yields. </span>
+                    </li>
+                    <li class="flex items-center space-x-3 mb-5">
+                        <svg class="flex-shrink-0 w-3.5 h-3.5 text-green-500 dark:text-green-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5"/>
+                        </svg>
+                        <span class="inherit"> Drive build documentation reviews internally and with external stakeholders - BOM Analysis, Assembly CTQs. </span>
+                    </li>
+                    <li class="flex items-center space-x-3 mb-5">
+                        <svg class="flex-shrink-0 w-3.5 h-3.5 text-green-500 dark:text-green-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5"/>
+                        </svg>
+                        <span class="inherit"> Collaborate with engineering teams early on to ensure product designs are optimized for manufacturability, lowest cost and best in class quality. </span>
+                    </li>
+                    <li class="flex items-center space-x-3 mb-5">
+                        <svg class="flex-shrink-0 w-3.5 h-3.5 text-green-500 dark:text-green-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5"/>
+                        </svg>
+                        <span class="inherit"> Evaluate, select, and manage suppliers for components and sub-assemblies! </span>
+                    </li>
+                    <li class="flex items-center space-x-3 mb-5">
+                        <svg class="flex-shrink-0 w-3.5 h-3.5 text-green-500 dark:text-green-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5"/>
+                        </svg>
+                        <span class="inherit"> Design and qualify our industrial process and flow. </span>
+                    </li>
+                    <li class="flex items-center space-x-3 mb-5">
+                        <svg class="flex-shrink-0 w-3.5 h-3.5 text-green-500 dark:text-green-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5"/>
+                        </svg>
+                        <span class="inherit"> Process expert responsible for facilitating the continuous improvement of functional and cross-functional business processes, leading the evaluation of activities in terms of value to the customer and the company. Assumes ownership of the design-development implementation, change management, compliance, and success measure. </span>
+                    </li>
+                    <li class="flex items-center space-x-3 mb-5">
+                        <svg class="flex-shrink-0 w-3.5 h-3.5 text-green-500 dark:text-green-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5"/>
+                        </svg>
+                        <span class="inherit"> Manage the project schedule periodically with the core project team to address the actual situation compared to the baseline. Alert in case of schedule drift, identify, and put in place with the project team any necessary corrective actions to maintain alignment with the baseline. </span>
+                    </li>
+                    <li class="flex items-center space-x-3 mb-5">
+                        <svg class="flex-shrink-0 w-3.5 h-3.5 text-green-500 dark:text-green-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5"/>
+                        </svg>
+                        <span class="inherit"> Analyze production data, identify bottlenecks, drive actions to increase efficiency and reduce cost. </span>
+                    </li>
+                    <li class="flex items-center space-x-3 mb-5">
+                        <svg class="flex-shrink-0 w-3.5 h-3.5 text-green-500 dark:text-green-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5"/>
+                        </svg>
+                        <span class="inherit"> Communicate proactively providing the dashboard to the management team and to the project team, to have the team aware about what is at stake, and what are the deadlines and milestones. </span>
+                    </li>
+                    <li class="flex items-center space-x-3 mb-5">
+                        <svg class="flex-shrink-0 w-3.5 h-3.5 text-green-500 dark:text-green-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5"/>
+                        </svg>
+                        <span class="inherit"> Lead activities with in-house and third-party factories. </span>
+                    </li>
+                    <li class="flex items-center space-x-3 mb-5">
+                        <svg class="flex-shrink-0 w-3.5 h-3.5 text-green-500 dark:text-green-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5"/>
+                        </svg>
+                        <span class="inherit"> Participates in various technical reviews throughout the product development cycle, preparing technical presentations to various collaborators. </span>
+                    </li>
+                    <li class="flex items-center space-x-3 mb-5">
+                        <svg class="flex-shrink-0 w-3.5 h-3.5 text-green-500 dark:text-green-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5"/>
+                        </svg>
+                        <span class="inherit"> Develops Should Costing of New/existing products. Support achieves product realization within acceptable limit of the should cost. </span>
+                    </li>
+                    <li class="flex items-center space-x-3 mb-5">
+                        <svg class="flex-shrink-0 w-3.5 h-3.5 text-green-500 dark:text-green-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5"/>
+                        </svg>
+                        <span class="inherit"> Manufacturing feasibility study of the new product with the detailed analysis of DFA (Design for assembly) methodology collaborating with product design team. </span>
+                    </li>
+                    <li class="flex items-center space-x-3 mb-5">
+                        <svg class="flex-shrink-0 w-3.5 h-3.5 text-green-500 dark:text-green-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5"/>
+                        </svg>
+                        <span class="inherit"> Strong analytical, problem-solving skills </span>
+                    </li>
+                    <li class="flex items-center space-x-3 mb-5">
+                        <svg class="flex-shrink-0 w-3.5 h-3.5 text-green-500 dark:text-green-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5"/>
+                        </svg>
+                        <span class="inherit"> Ability to lead and work independently </span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    
+        <!-- Electronics and Hardware Engineer Modal -->
+        <div id="electronicsHardwareModal" class="modal fixed inset-0 z-50 hidden overflow-auto bg-gray-900 bg-opacity-50 flex items-center justify-center">
+            <div class="modal-content bg-white rounded-lg p-6 relative w-full max-w-3xl mx-auto my-4">
+                <span class="close absolute top-4 right-4 text-gray-500 hover:text-gray-900 text-2xl cursor-pointer">&times;</span>
+                <h2 class="text-xl md:text-2xl font-semibold mb-4">Electronics -  Hardware Design & Development</h2>
+                                <h3 class="text-lg md:text-xl font-semibold mt-4 mb-2">Position Overview:<h3>
+                                <p>We are seeking a skilled and experienced Electronics Hardware Engineer with 4-5 years of professional experience to join our dynamic engineering team based in Bangalore & Krishnagari. The ideal candidate will be responsible for designing, developing, and testing electronic hardware components and systems, with a strong focus on IoT technologies, including BLE, Wi-Fi, and other wireless communication protocols. This role requires a solid foundation in electronic engineering principles, hands-on experience with hardware design and testing, and the ability to collaborate effectively with cross-functional teams.</p>
+                                <h3 class="text-xl font-semibold mt-4 mb-2">Key Responsibilities:</h3>
+                                <h4 class="text-lg font-semibold mt-2 mb-1">Design and Development:</h4>
+                                <ul class="list-disc pl-5 px-10">
+                                    <li class="flex items-center space-x-3 mb-5">
+                                        <svg class="flex-shrink-0 w-3.5 h-3.5 text-green-500 dark:text-green-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
+                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5"/>
+                                        </svg>
+                                        <span class="inherit"> Develop detailed design specifications and schematics for electronic circuits and IoT systems. </span>
+                                    </li>
+                                    <li class="flex items-center space-x-3 mb-5">
+                                        <svg class="flex-shrink-0 w-3.5 h-3.5 text-green-500 dark:text-green-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
+                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5"/>
+                                        </svg>
+                                        <span class="inherit">Design and implement IoT solutions using BLE, Wi-Fi, and other wireless communication technologies.</span>
+                                    </li>
+                                    <li class="flex items-center space-x-3 mb-5">
+                                        <svg class="flex-shrink-0 w-3.5 h-3.5 text-green-500 dark:text-green-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
+                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5"/>
+                                        </svg>
+                                        <span class="inherit"> Integrate sensors, actuators, and other peripherals with microcontrollers and embedded systems. </span>
+                                    </li>
+                                    <li class="flex items-center space-x-3 mb-5">
+                                        <svg class="flex-shrink-0 w-3.5 h-3.5 text-green-500 dark:text-green-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
+                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5"/>
+                                        </svg>
+                                        <span class="inherit"> Perform simulations and analyses to validate design concepts and ensure reliability. </span>
+                                    </li>
+                                    <li class="flex items-center space-x-3 mb-5">
+                                        <svg class="flex-shrink-0 w-3.5 h-3.5 text-green-500 dark:text-green-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
+                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5"/>
+                                        </svg>
+                                        <span class="inherit"> Work closely with firmware/software engineers to ensure seamless integration of hardware and software components. </span>
+                                    </li>
+                                    <li class="flex items-center space-x-3 mb-5">
+                                        <svg class="flex-shrink-0 w-3.5 h-3.5 text-green-500 dark:text-green-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
+                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5"/>
+                                        </svg>
+                                        <span class="inherit"> Interface with manufacturing teams to support the transition from prototype to production. </span>
+                                    </li>
+                                    <li class="flex items-center space-x-3 mb-5">
+                                        <svg class="flex-shrink-0 w-3.5 h-3.5 text-green-500 dark:text-green-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
+                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5"/>
+                                        </svg>
+                                        <span class="inherit"> Collaborate with quality assurance teams to ensure compliance with industry standards and regulations. </span>
+                                    </li>
+                                </ul>
+        
+                                <h4 class="text-lg font-semibold mt-2 mb-1">Testing and Validation:</h4>
+                                <ul class="list-disc pl-5 px-10">
+                                    <li class="flex items-center space-x-3 mb-5">
+                                        <svg class="flex-shrink-0 w-3.5 h-3.5 text-green-500 dark:text-green-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
+                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5"/>
+                                        </svg>
+                                        <span class="inherit"> Create and execute test plans to evaluate hardware performance and functionality. </span>
+                                    </li>
+                                    <li class="flex items-center space-x-3 mb-5">
+                                        <svg class="flex-shrink-0 w-3.5 h-3.5 text-green-500 dark:text-green-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
+                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5"/>
+                                        </svg>
+                                        <span class="inherit"> Conduct debugging and troubleshooting of hardware and communication issues. </span>
+                                    </li>
+                                    <li class="flex items-center space-x-3 mb-5">
+                                        <svg class="flex-shrink-0 w-3.5 h-3.5 text-green-500 dark:text-green-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
+                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5"/>
+                                        </svg>
+                                        <span class="inherit"> Utilize laboratory equipment (oscilloscopes, multimeters, VNA, Spectrum analysers, signal generators, etc.) to perform testing and measurements. </span>
+                                    </li>
+                                    <li class="flex items-center space-x-3 mb-5">
+                                        <svg class="flex-shrink-0 w-3.5 h-3.5 text-green-500 dark:text-green-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
+                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5"/>
+                                        </svg>
+                                        <span class="inherit"> Document test results and prepare technical reports. </span>
+                                    </li>
+                                </ul>
+        
+                                <h3 class="text-xl font-semibold mt-4 mb-2">Technical Skills:</h3>
+                                <ul class="list-disc pl-5 px-10">
+                                    <li class="flex items-center space-x-3 mb-5">
+                                        <svg class="flex-shrink-0 w-3.5 h-3.5 text-green-500 dark:text-green-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
+                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5"/>
+                                        </svg>
+                                        <span class="inherit"> Strong understanding of microcontrollers, analog and digital circuit design. </span>
+                                    </li>
+                                    <li class="flex items-center space-x-3 mb-5">
+                                        <svg class="flex-shrink-0 w-3.5 h-3.5 text-green-500 dark:text-green-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
+                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5"/>
+                                        </svg>
+                                        <span class="inherit"> Experience with IoT technologies, including BLE, Wi-Fi,FPGAs, embedded systems. and other wireless communication protocols. </span>
+                                    </li>
+                                    <li class="flex items-center space-x-3 mb-5">
+                                        <svg class="flex-shrink-0 w-3.5 h-3.5 text-green-500 dark:text-green-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
+                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5"/>
+                                        </svg>
+                                        <span class="inherit"> Handson Experience on the Altium latest tools. </span>
+                                    </li>
+                                    <li class="flex items-center space-x-3 mb-5">
+                                        <svg class="flex-shrink-0 w-3.5 h-3.5 text-green-500 dark:text-green-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
+                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5"/>
+                                        </svg>
+                                        <span class="inherit"> Familiarity with communication protocols (e.g., I2C, SPI, UART, CAN). </span>
+                                    </li>
+                                    <li class="flex items-center space-x-3 mb-5">
+                                        <svg class="flex-shrink-0 w-3.5 h-3.5 text-green-500 dark:text-green-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
+                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5"/>
+                                        </svg>
+                                        <span class="inherit"> Hands-on experience with hardware testing and debugging tools. </span>
+                                    </li>
+                                </ul>
+        
+                                <h3 class="text-xl font-semibold mt-4 mb-2">Other Skills:</h3>
+                                <ul class="list-disc pl-5 px-10">
+                                    <li class="flex items-center space-x-3 mb-5">
+                                        <svg class="flex-shrink-0 w-3.5 h-3.5 text-green-500 dark:text-green-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
+                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5"/>
+                                        </svg>
+                                        <span class="inherit"> Collaborate with project managers and other engineers to define project timelines and deliverables.</span>
+                                    </li>
+                                    <li class="flex items-center space-x-3 mb-5">
+                                        <svg class="flex-shrink-0 w-3.5 h-3.5 text-green-500 dark:text-green-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
+                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5"/>
+                                        </svg>
+                                        <spa class="inherit"> Stay updated with the latest advancements in electronics, IoT, and hardware design technologies. </span>
+                                    </li>
+                                    <li class="flex items-center space-x-3 mb-5">
+                                        <svg class="flex-shrink-0 w-3.5 h-3.5 text-green-500 dark:text-green-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
+                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5"/>
+                                        </svg>
+                                        <span class="inherit">Implement best practices for hardware design and testing processes.  </span>
+                                    </li>
+                                    <li class="flex items-center space-x-3 mb-5">
+                                        <svg class="flex-shrink-0 w-3.5 h-3.5 text-green-500 dark:text-green-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
+                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5"/>
+                                        </svg>
+                                        <span class="inherit"> Contribute to process improvement initiatives to enhance product quality and development efficiency. </span>
+                                    </li>
+                                    <li class="flex items-center space-x-3 mb-5">
+                                        <svg class="flex-shrink-0 w-3.5 h-3.5 text-green-500 dark:text-green-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
+                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5"/>
+                                        </svg>
+                                        <span class="inherit"> Excellent problem-solving and analytical skills. </span>
+                                    </li>
+                                    <li class="flex items-center space-x-3 mb-5">
+                                        <svg class="flex-shrink-0 w-3.5 h-3.5 text-green-500 dark:text-green-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
+                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5"/>
+                                        </svg>
+                                        <span class="inherit"> Strong written and verbal communication abilities. </span>
+                                    </li>
+                                    <li class="flex items-center space-x-3 mb-5">
+                                        <svg class="flex-shrink-0 w-3.5 h-3.5 text-green-500 dark:text-green-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
+                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5"/>
+                                        </svg>
+                                        <span class="inherit"> Ability to work both independently and as part of a team. </span>
+                                    </li>
+                                    <li class="flex items-center space-x-3 mb-5">
+                                        <svg class="flex-shrink-0 w-3.5 h-3.5 text-green-500 dark:text-green-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
+                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5"/>
+                                        </svg>
+                                        <span class="inherit"> Detail-oriented with a commitment to producing high-quality work. </span>
+                                    </li>
+                                    <li class="flex items-center space-x-3 mb-5">
+                                        <svg class="flex-shrink-0 w-3.5 h-3.5 text-green-500 dark:text-green-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
+                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5"/>
+                                        </svg>
+                                        <span class="inherit"> Knowledge of industry standards and regulatory requirements (e.g., ISO, CE, FCC). </span>
+                                    </li>
+                                </ul>
+        
+                                <h3 class="text-xl font-semibold mt-4 mb-2">Qualifications:</h3>
+                                <ul class="list-disc pl-5 px-10">
+                                    <li class="flex items-center space-x-3 mb-5">
+                                        <svg class="flex-shrink-0 w-3.5 h-3.5 text-green-500 dark:text-green-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
+                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5"/>
+                                        </svg>
+                                        <span class="inherit"> Bachelor’s degree in Electronics Engineering, Electrical Engineering, or a related field. </span>
+                                    </li>
+                                    <li class="flex items-center space-x-3 mb-5">
+                                        <svg class="flex-shrink-0 w-3.5 h-3.5 text-green-500 dark:text-green-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
+                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5"/>
+                                        </svg>
+                                        <span class="inherit"> 4-5 years of experience in electronics hardware design and development. </span>
+                                    </li>
+                                    <li class="flex items-center space-x-3 mb-5">
+                                        <svg class="flex-shrink-0 w-3.5 h-3.5 text-green-500 dark:text-green-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
+                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5"/>
+                                        </svg>
+                                        <span class="inherit"> Experience with RF design and wireless communication systems added an advantage. </span>
+                                    </li>
+                                </ul>
+            </div>
+        </div>
+
+        <!-- Electronics PCB Modal -->
+        <div id="electronicspcbModal" class="modal fixed inset-0 z-50 hidden overflow-auto bg-gray-900 bg-opacity-50 flex items-center justify-center">
+            <div class="modal-content bg-white rounded-lg p-6 relative w-full max-w-3xl mx-auto my-4">
+                <span class="close absolute top-4 right-4 text-gray-500 hover:text-gray-900 text-2xl cursor-pointer">&times;</span>
+                <h2 class="text-xl md:text-2xl font-semibold mb-4">Electronics - PCB Design</h2>
+                <h3 class="text-lg md:text-xl font-semibold mt-4 mb-2">Position Overview:</h3>
+                <p>We are seeking a talented Full-Stack Developer with at least 2 years of experience to join our dynamic team. The ideal candidate should excel in web development principles and be proficient across the technology stack.</p>
+                <h3 class="text-xl font-semibold mt-4 mb-2">Key Responsibilities:</h3>
+                <h4 class="text-lg font-semibold mt-2 mb-1">Design and Development:</h4>
+                <ul class="list-disc pl-5 px-10">
+                    <li class="flex items-center space-x-3 mb-5">
+                        <svg class="flex-shrink-0 w-3.5 h-3.5 text-green-500 dark:text-green-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5"/>
+                        </svg>
+                        <span class="inherit">Design, develop, and maintain robust and scalable web applications using PHP and its frameworks, such as Laravel.</span>
+                    </li>
+                    <li class="flex items-center space-x-3 mb-5">
+                        <svg class="flex-shrink-0 w-3.5 h-3.5 text-green-500 dark:text-green-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5"/>
+                        </svg>
+                        <span class="inherit">Build and integrate RESTful APIs using PHP and its frameworks, such as Laravel.</span>
+                    </li>
+                    <li class="flex items-center space-x-3 mb-5">
+                        <svg class="flex-shrink-0 w-3.5 h-3.5 text-green-500 dark:text-green-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5"/>
+                        </svg>
+                        <span class="inherit">Develop and enhance user interfaces using JavaScript frameworks like ReactJS, Angular, or Vue.js.</span>
+                    </li>
+                    <li class="flex items-center space-x-3 mb-5">
+                        <svg class="flex-shrink-0 w-3.5 h-3.5 text-green-500 dark:text-green-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5"/>
+                        </svg>
+                        <span class="inherit">Create responsive and visually appealing web designs using HTML, CSS, and CSS frameworks like Bootstrap or Tailwind CSS.</span>
+                    </li>
+                    <li class="flex items-center space-x-3 mb-5">
+                        <svg class="flex-shrink-0 w-3.5 h-3.5 text-green-500 dark:text-green-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5"/>
+                        </svg>
+                        <span class="inherit">Write clean, well-documented, and maintainable code following best practices and coding standards.</span>
+                    </li>
+                    <li class="flex items-center space-x-3 mb-5">
+                        <svg class="flex-shrink-0 w-3.5 h-3.5 text-green-500 dark:text-green-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5"/>
+                        </svg>
+                        <span class="inherit">Perform code reviews and ensure adherence to coding standards and best practices.</span>
+                    </li>
+                    <li class="flex items-center space-x-3 mb-5">
+                        <svg class="flex-shrink-0 w-3.5 h-3.5 text-green-500 dark:text-green-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5"/>
+                        </svg>
+                        <span class="inherit">Stay up-to-date with the latest technologies, trends, and best practices in web development.</span>
+                    </li>
+                </ul>
+                
+                <h4 class="text-lg font-semibold mt-2 mb-1">Required Skills and Qualifications:</h4>
+                <ul class="list-disc pl-5 px-10">
+                    <li class="flex items-center space-x-3 mb-5">
+                        <svg class="flex-shrink-0 w-3.5 h-3.5 text-green-500 dark:text-green-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5"/>
+                        </svg>
+                        <span class="inherit">Strong proficiency in PHP and at least one PHP framework (e.g., Laravel).</span>
+                    </li>
+                    <li class="flex items-center space-x-3 mb-5">
+                        <svg class="flex-shrink-0 w-3.5 h-3.5 text-green-500 dark:text-green-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5"/>
+                        </svg>
+                        <span class="inherit">Extensive experience with JavaScript and at least one modern front-end framework (ReactJS, Angular, or Vue.js).</span>
+                    </li>
+                    <li class="flex items-center space-x-3 mb-5">
+                        <svg class="flex-shrink-0 w-3.5 h-3.5 text-green-500 dark:text-green-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5"/>
+                        </svg>
+                        <span class="inherit">Proficient in HTML, CSS, and CSS frameworks like Bootstrap or Tailwind CSS.</span>
+                    </li>
+                    <li class="flex items-center space-x-3 mb-5">
+                        <svg class="flex-shrink-0 w-3.5 h-3.5 text-green-500 dark:text-green-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5"/>
+                        </svg>
+                        <span class="inherit">Experience with version control systems (e.g., Git).</span>
+                    </li>
+                    <li class="flex items-center space-x-3 mb-5">
+                        <svg class="flex-shrink-0 w-3.5 h-3.5 text-green-500 dark:text-green-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5"/>
+                        </svg>
+                        <span class="inherit">Strong problem-solving and analytical skills.</span>
+                    </li>
+                    <li class="flex items-center space-x-3 mb-5">
+                        <svg class="flex-shrink-0 w-3.5 h-3.5 text-green-500 dark:text-green-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5"/>
+                        </svg>
+                        <span class="inherit">Excellent communication and collaboration abilities.</span>
+                    </li>
+                    <li class="flex items-center space-x-3 mb-5">
+                        <svg class="flex-shrink-0 w-3.5 h-3.5 text-green-500 dark:text-green-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5"/>
+                        </svg>
+                        <span class="inherit">Ability to work in an Agile development environment.</span>
+                    </li>
+                    <li class="flex items-center space-x-3 mb-5">
+                        <svg class="flex-shrink-0 w-3.5 h-3.5 text-green-500 dark:text-green-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5"/>
+                        </svg>
+                        <span class="inherit">Experience with cloud technologies like AWS, Azure, or Google Cloud Platform.</span>
+                    </li>
+                </ul>
+
+                <h4 class="text-lg font-semibold mt-2 mb-1">Required Skills and Qualifications:</h4>
+                <ul class="list-disc pl-2 px-10">
+                    <li class="flex items-center space-x-3 mb-5">
+                        <svg class="flex-shrink-0 w-3.5 h-3.5 text-green-500 dark:text-green-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5"/>
+                        </svg>
+                        <span class="inherit">Experience with cloud technologies like AWS, Azure, or Google Cloud Platform.</span>
+                    </li>
+                    <li class="flex items-center space-x-2 mb-5">
+                        <svg class="flex-shrink-0 w-3.5 h-3.5 text-green-500 dark:text-green-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5.917 5.724 10.5 15 1.5"/>
+                        </svg>
+                        <span class="inherit">Understanding of software architecture patterns and principles (e.g., MVC, SOLID).</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="container mx-auto">
+            <div class="flex flex-col md:flex-row gap-6 w-full my-20 items-center   px-4 md:px-0 ">
+                <div class="w-full max-w-[600px]">
+                    <img class="w-full" src="/src/images/carriers/freepik__retouch__49546.png" alt="">
+                </div>
+                <div class="container">
+                    <div class="flex-grow flex flex-col text-2">
+                        <div class="max-w-full flex flex-col gap-8">
+                            <h2 class="title-font-family font-semibold text-3xl"><span class="text-5xl">W</span>hy Work for Us?</h2>
+                            <p class="text-xl font-medium leading-7 line-clamp-2">
+                                The Why Work for Us section is where you can sell candidates on the benefits of working for your company. What makes your company culture special? What kind of perks and benefits do you offer? What opportunities for growth and development are available?
+                            </p>
+                            <!-- <div>
+                                <a class="inline-block rounded-1.5 primary-bg text-white font-bold text-lg py-5 px-12"
+                                    style="border-radius: 0.375rem; background: #339f6e; color: white;"
+                                    href="#job-openings">
+                                    VIEW ALL OPEN POSITIONS
+                                </a>
+                            </div> -->
+                
+                            <section class="bg-gray-50 dark:bg-gray-900 p-3 sm:p-5">
+                                <div class="mx-auto max-w-screen-xl">
+                                    <div class="bg-white dark:bg-gray-800 relative shadow-md sm:rounded-lg overflow-hidden">
+                                        <!-- Top Section with Search and Buttons -->
+                                        <div class="flex flex-col md:flex-row items-center justify-between space-y-3 md:space-y-0 md:space-x-4 p-4">
+                                            <div class="w-full md:w-1/2">
+                                                <form class="flex items-center">
+                                                    <label for="simple-search" class="sr-only">Search</label>
+                                                    <div class="relative w-full">
+                                                        <input type="text" id="simple-search" class="bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Search" required="">
+                                                        <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                                                            <svg aria-hidden="true" class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                                                <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path>
+                                                            </svg>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                            <div class="w-full md:w-auto flex flex-col md:flex-row space-y-2 md:space-y-0 items-stretch md:items-center justify-end md:space-x-3 flex-shrink-0">
+                                                <div class="relative">
+                                                    <button id="filterDropdownButton" class="w-full mr-10 md:w-auto flex items-center justify-center py-2 px-4 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700" type="button">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="h-4 w-4 mr-2 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
+                                                            <path fill-rule="evenodd" d="M3 3a1 1 0 011-1h12a1 1 0 011 1v3a1 1 0 01-.293.707L12 11.414V15a1 1 0 01-.293.707l-2 2A1 1 0 018 17v-5.586L3.293 6.707A1 1 0 013 6V3z" clip-rule="evenodd"></path>
+                                                        </svg>
+                                                        Filter
+                                                        <svg class="-mr-1 ml-1.5 w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                                                            <path clip-rule="evenodd" fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"></path>
+                                                        </svg>
+                                                    </button>
+                                                    <div id="filterDropdown" class="z-10 hidden w-48 p-4 bg-white rounded-lg shadow-lg dark:bg-gray-700 absolute mt-1 right-0">
+                                                        <h6 class="mb-3 text-sm font-medium text-gray-900 dark:text-white">State</h6>
+                                                        <ul class="space-y-2 text-sm" aria-labelledby="filterDropdownButton">
+                                                            <li class="flex items-center">
+                                                                <input id="tamilnadu" type="checkbox" value="" class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                                                                <label for="tamilnadu" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-100">Tamilnadu</label>
+                                                            </li>
+                                                            <li class="flex items-center">
+                                                                <input id="karnataka" type="checkbox" value="" class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                                                                <label for="karnataka" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-100">Karnataka</label>
+                                                            </li>
+                                                        </ul>
+                                                        <h6 class="mb-3 mt-4 text-sm font-medium text-gray-900 dark:text-white">Location</h6>
+                                                        <ul class="space-y-2 text-sm" aria-labelledby="filterDropdownButton">
+                                                            <li class="flex items-center">
+                                                                <input id="krishnagiri" type="checkbox" value="" class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                                                                <label for="krishnagiri" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-100">Krishnagiri</label>
+                                                            </li>
+                                                            <li class="flex items-center">
+                                                                <input id="bangalore" type="checkbox" value="" class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600 dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                                                                <label for="bangalore" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-100">Bangalore</label>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Table Section -->
+                                        <div class="overflow-x-auto">
+                                            <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                                                <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                                                    <tr>
+                                                        <th scope="col" class="px-4 py-3">Job Title</th>
+                                                        <th scope="col" class="px-4 py-3">Job Location</th>
+                                                        <th scope="col" class="px-4 py-3">Hiring Manager</th>
+                                                        <th scope="col" class="px-4 py-3">Click for Referrals</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr class="border-b dark:border-gray-700">
+                                                        <th id="softwareEngineerHeading" class="px-4 py-3" title="Click For More Details">Software Developer</th>
+                                                        <td class="px-4 py-3">Krishnagiri & Banglore</td>
+                                                        <td class="px-4 py-3">Divya</td>
+                                                        <td class="px-4 py-3">
+                                                            <div class="flex space-x-4">
+                                                                <!-- Email Icon -->
+                                                                <a href="mailto:admin@nxgeninventors.com" target="_blank" class="text-blue-500 hover:text-blue-700">
+                                                                    <button>
+                                                                        <i class="fas fa-envelope fa-2x"></i>
+                                                                    </button>
+                                                                </a>
+                                                                <!-- LinkedIn Icon -->
+                                                                <a href="https://www.linkedin.com/company/nxgeninventors/" target="_blank" class="text-blue-700 hover:text-blue-900">
+                                                                    <button>
+                                                                        <i class="fab fa-linkedin fa-2x"></i>
+                                                                    </button>
+                                                                </a>
+                                                                <!-- WhatsApp Icon -->
+                                                                <a href="https://wa.me/918925858614?text=Hi" target="_blank" class="text-green-500 hover:text-green-700">
+                                                                    <button>
+                                                                        <i class="fab fa-whatsapp fa-2x"></i>
+                                                                    </button>
+                                                                </a>
+                                                                <!-- Instagram Icon -->
+                                                                <a href="/" target="_blank" class="text-pink-500 hover:text-pink-700">
+                                                                    <button>
+                                                                        <i class="fab fa-instagram fa-2x"></i>
+                                                                    </button>
+                                                                </a>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr class="border-b dark:border-gray-700">
+                                                        <th id="manufactureEngineeringHeading" class="px-4 py-3" title="Click For More Details">Electronics - Manufacturing</th>
+                                                        <td class="px-4 py-3">Krishnagiri</td>
+                                                        <td class="px-4 py-3">Divya</td>
+                                                        <td class="px-4 py-3">
+                                                            <div class="flex space-x-4">
+                                                                <!-- Email Icon -->
+                                                                <a href="mailto:admin@nxgeninventors.com" target="_blank" class="text-blue-500 hover:text-blue-700">
+                                                                    <button>
+                                                                        <i class="fas fa-envelope fa-2x"></i>
+                                                                    </button>
+                                                                </a>
+                                                                <!-- LinkedIn Icon -->
+                                                                <a href="https://www.linkedin.com/company/nxgeninventors/" target="_blank" class="text-blue-700 hover:text-blue-900">
+                                                                    <button>
+                                                                        <i class="fab fa-linkedin fa-2x"></i>
+                                                                    </button>
+                                                                </a>
+                                                                <!-- WhatsApp Icon -->
+                                                                <a href="#" target="_blank" class="text-green-500 hover:text-green-700">
+                                                                    <button>
+                                                                        <i class="fab fa-whatsapp fa-2x"></i>
+                                                                    </button>
+                                                                </a>
+                                                                <!-- Instagram Icon -->
+                                                                <a href="#" target="_blank" class="text-pink-500 hover:text-pink-700">
+                                                                    <button>
+                                                                        <i class="fab fa-instagram fa-2x"></i>
+                                                                    </button>
+                                                                </a>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr class="border-b dark:border-gray-700">
+                                                        <th id="electronicsHardwareHeading" class="px-4 py-3" title="Click For More Details">Electronics -  Hardware Design & Development</th>
+                                                        <td class="px-4 py-3">Krishnagiri & Banglore</td>
+                                                        <td class="px-4 py-3">Divya</td>
+                                                        <td class="px-4 py-3">
+                                                            <div class="flex space-x-4">
+                                                                <!-- Email Icon -->
+                                                                <a href="mailto:admin@nxgeninventors.com" target="_blank" class="text-blue-500 hover:text-blue-700">
+                                                                    <button>
+                                                                        <i class="fas fa-envelope fa-2x"></i>
+                                                                    </button>
+                                                                </a>
+                                                                <!-- LinkedIn Icon -->
+                                                                <a href="https://www.linkedin.com/company/nxgeninventors/" target="_blank" class="text-blue-700 hover:text-blue-900">
+                                                                    <button>
+                                                                        <i class="fab fa-linkedin fa-2x"></i>
+                                                                    </button>
+                                                                </a>
+                                                                <!-- WhatsApp Icon -->
+                                                                <a href="#" target="_blank" class="text-green-500 hover:text-green-700">
+                                                                    <button>
+                                                                        <i class="fab fa-whatsapp fa-2x"></i>
+                                                                    </button>
+                                                                </a>
+                                                                <!-- Instagram Icon -->
+                                                                <a href="#" target="_blank" class="text-pink-500 hover:text-pink-700">
+                                                                    <button>
+                                                                        <i class="fab fa-instagram fa-2x"></i>
+                                                                    </button>
+                                                                </a>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                    <tr class="border-b dark:border-gray-700">
+                                                        <th id="electronicspcbHeading" class="px-4 py-3" title="Click For More Details">Electronics - PCB Design</th>
+                                                        <td class="px-4 py-3">Krishnagiri & Banglore</td>
+                                                        <td class="px-4 py-3">Divya</td>
+                                                        <td class="px-4 py-3">
+                                                            <div class="flex space-x-4">
+                                                                <!-- Email Icon -->
+                                                                <a href="mailto:admin@nxgeninventors.com" target="_blank" class="text-blue-500 hover:text-blue-700">
+                                                                    <button>
+                                                                        <i class="fas fa-envelope fa-2x"></i>
+                                                                    </button>
+                                                                </a>
+                                                                <!-- LinkedIn Icon -->
+                                                                <a href="https://www.linkedin.com/company/nxgeninventors/" target="_blank" class="text-blue-700 hover:text-blue-900">
+                                                                    <button>
+                                                                        <i class="fab fa-linkedin fa-2x"></i>
+                                                                    </button>
+                                                                </a>
+                                                                <!-- WhatsApp Icon -->
+                                                                <a href="#" target="_blank" class="text-green-500 hover:text-green-700">
+                                                                    <button>
+                                                                        <i class="fab fa-whatsapp fa-2x"></i>
+                                                                    </button>
+                                                                </a>
+                                                                <!-- Instagram Icon -->
+                                                                <a href="#" target="_blank" class="text-pink-500 hover:text-pink-700">
+                                                                    <button>
+                                                                        <i class="fab fa-instagram fa-2x"></i>
+                                                                    </button>
+                                                                </a>
+                                                            </div>
+                                                        </td>
+                                                    <tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
 
     <!-- footer -->
     <footer class="bg-[#00353E] text-white pt-16">
@@ -421,9 +1307,10 @@
                 </div>
                 <div class="space-y-8" data-aos="fade-right">
                     <h2 class="text-2xl font-semibold border-b-2 border-teal-400 inline-block">Locate Us</h2>
-                    <div class="grid grid-cols-1 md:grid-cols-1 gap-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        
+                        <!-- Left Column -->
                         <div class="space-y-4">
-                            <img src="/src/images/footer-logo/temple.svg" alt="Temple" class="h-12">
                             <div class="flex items-center space-x-2">
                                 <img src="/src/images/footer-logo/india-flag.svg" alt="India Flag" class="w-6">
                                 <h3 class="text-xl font-semibold">INDIA</h3>
@@ -435,7 +1322,6 @@
                                     <p>Basavanapura, K.R.Puram,</p>
                                     <p>Bangalore-560049, KA.</p>
                                 </div>
-
                                 <!-- Phone Section -->
                                 <div class="font-semibold">
                                     <p>PH:</p>
@@ -445,21 +1331,17 @@
                                     </div>
                                 </div>
                             </div>
-
-
-                            <div class="flex items-center">
-                                <div class="flex-grow border-t border-gray-400"></div>
-                                <div class="mx-4 text-gray-400">•</div>
-                                <div class="flex-grow border-t border-gray-400"></div>
-                            </div>
-                            <div class="space-y-2 text-sm">
-                                <p>MIG-171, New housing board,</p>
-                                <p>Krishnagiri - 635 001, TN</p>
-                                <p class="font-semibold">PH: +91 89258 58614</p>
-                            </div>
+                        </div>
+                
+                        <!-- Right Column -->
+                        <div class="space-y-2 text-sm pt-10">
+                            <p>MIG-171, New housing board,</p>
+                            <p>Krishnagiri - 635 001, TN</p>
+                            <p class="font-semibold">PH: +91 89258 58614</p>
                         </div>
                     </div>
                 </div>
+                
                 <div class="space-y-3">
                     <h2 class="text-2xl text-white font-bold uppercase">NX GEN Inventors</h2>
                     <!-- <div class="flex flex-wrap justify-left gap-4">
@@ -582,6 +1464,70 @@
     <script src="/src/js/patners.js"></script>
     <script src="/src/js/services.js"></script>
     <script src="/src/js/projects.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabLinks = document.querySelectorAll('.tab-link');
+            const tabContents = document.querySelectorAll('.tab-content');
+    
+            tabLinks.forEach(tabLink => {
+                tabLink.addEventListener('click', function() {
+                    const target = this.getAttribute('data-tab');
+    
+                    // Remove active class from all tabs and contents
+                    tabLinks.forEach(link => {
+                        link.classList.remove('active', 'border-blue-500');
+                        link.querySelector('h1').style.color = ''; // Reset h1 color
+                    });
+                    tabContents.forEach(content => content.classList.remove('active'));
+    
+                    // Add active class to the clicked tab and corresponding content
+                    this.classList.add('active', 'border-blue-500');
+                    this.querySelector('h1').style.color = 'white'; // Set h1 color to white
+                    document.getElementById(target).classList.add('active');
+                });
+            });
+        });
+    </script>
+
+    <script>
+        document.getElementById('filterDropdownButton').addEventListener('click', function() {
+            const filterDropdown = document.getElementById('filterDropdown');
+            filterDropdown.classList.toggle('hidden');
+        });
+        document.addEventListener('DOMContentLoaded', function () {
+            const modals = {
+                softwareEngineerModal: document.getElementById('softwareEngineerModal'),
+                manufactureEngineeringModal: document.getElementById('manufactureEngineeringModal'),
+                electronicsHardwareModal: document.getElementById('electronicsHardwareModal'),
+                electronicspcbModal: document.getElementById('electronicspcbModal')
+            };
+
+            const headings = {
+                softwareEngineerHeading: document.getElementById('softwareEngineerHeading'),
+                manufactureEngineeringHeading: document.getElementById('manufactureEngineeringHeading'),
+                electronicsHardwareHeading: document.getElementById('electronicsHardwareHeading'),
+                electronicspcbHeading: document.getElementById('electronicspcbHeading')
+            };
+
+            Object.keys(headings).forEach(key => {
+                headings[key].addEventListener('click', () => {
+                    modals[key.replace('Heading', 'Modal')].classList.remove('hidden');
+                });
+            });
+
+            document.querySelectorAll('.close').forEach(button => {
+                button.addEventListener('click', (event) => {
+                    event.target.closest('.modal').classList.add('hidden');
+                });
+            });
+
+            window.addEventListener('click', (event) => {
+                if (event.target.classList.contains('modal')) {
+                    event.target.classList.add('hidden');
+                }
+            });
+        });
+    </script>
     <script>
         function techEcosystem() {
             return {
