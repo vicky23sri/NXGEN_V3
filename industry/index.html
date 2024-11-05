@@ -111,118 +111,111 @@
             <div class="flex justify-between items-center">
                 <div class="logo">
                     <a href="/index.html">
-                        <img class="w-[180px]" src="/src/images/logo-green-s.svg" alt="Logo">
+                        <img class="h-12 w-auto" src="/src/images/logo-green-s.svg" alt="Logo">
                     </a>
                 </div>
-                <button @click="toggleMenu" 
-                        class="custom:hidden z-50 relative focus:outline-none w-10 h-10 flex items-center justify-center"
-                        aria-label="Toggle menu">
-                    <span class="sr-only">Open main menu</span>
-                    <div class="w-5 h-5 flex items-center justify-center relative">
-                        <span class="block absolute h-0.5 w-5 bg-gray-600 transform transition duration-500 ease-in-out"
-                            :class="{'rotate-45': isMenuOpen, '-translate-y-1.5': !isMenuOpen }"></span>
-                        <span class="block absolute h-0.5 w-5 bg-gray-600 transform transition duration-500 ease-in-out"
-                            :class="{'opacity-0': isMenuOpen }"></span>
-                        <span class="block absolute h-0.5 w-5 bg-gray-600 transform transition duration-500 ease-in-out"
-                            :class="{'-rotate-45': isMenuOpen, 'translate-y-1.5': !isMenuOpen}"></span>
-                    </div>
-                </button>
-                <div class="hidden custom:flex items-center space-x-7"> 
-                    <nav class="flex space-x-7">
-                        <a href="/index.html" 
-                            class="text-gray-500 hover:text-gray-900 font-bold flex items-center h-16 px-4" 
-                            x-show="!isHomePage()">
+
+                <!-- Menu and search buttons (showing at 1024px and below) -->
+                <div class="lg:hidden flex items-center space-x-2">
+                    <button @click="toggleSearch" class="p-2 rounded-md text-gray-700 hover:text-gray-900 hover:bg-gray-100 focus:outline-none">
+                        <i class="fas fa-search text-xl"></i>
+                    </button>
+                    <button @click="toggleMenu" class="p-2 rounded-md text-gray-700 hover:text-gray-900 hover:bg-gray-100 focus:outline-none">
+                        <svg x-show="!isMenuOpen" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                        <svg x-show="isMenuOpen" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- Desktop Navigation (hidden at 1024px and below) -->
+                <nav class="hidden lg:flex lg:items-center lg:space-x-4">
+                    <template x-if="!isHomePage()">
+                        <a href="/index.html" class="text-gray-500 hover:text-gray-900 font-bold flex items-center h-16 px-4">
                             Home
                         </a>
-                    
-                        <template x-for="(item, index) in [
-                            { title: 'Company', link: '#', submenu: [
-                                { title: 'About Us', link: '/about-us.html', icon: 'fa-solid fa-info-circle' },
-                                { title: 'Careers', link: '/careers.html', icon: 'fa-solid fa-briefcase' },
-                                
-                            ]},
-                            { title: 'Industry', link: '#', submenu: [
-                                { title: 'Automotive', link: '/industry/index.html#auto', icon: 'fa-solid fa-car' },
-                                { title: 'Transportation', link: '/industry/index.html#transport', icon: 'fa-solid fa-truck' },
-                                { title: 'Mining and Metals', link: '/industry/index.html#mining', icon: 'fa-solid fa-gem' },
-                                { title: 'Renewable Energy', link: '/industry/index.html#renewable', icon: 'fa-solid fa-solar-panel' },
-                                { title: 'Medical', link: '/industry/index.html#medical', icon: 'fa-solid fa-stethoscope' },
-                                { title: 'Fintech', link: '/industry/index.html#fintech', icon: 'fa-solid fa-chart-line' },
-                                { title: 'TechEdu', link: '/industry/index.html#edutech', icon: 'fa-solid fa-chart-line' },
+                    </template>
+                    <template x-for="(item, index) in [
+                        { title: 'Company', link: '#', submenu: [
+                            { title: 'About Us', link: '/about-us.html', icon: 'fa-solid fa-info-circle' },
+                            { title: 'Careers', link: '/careers.html', icon: 'fa-solid fa-briefcase' }
+                        ]},
+                        { title: 'Industry', link: '#', submenu: [
+                            { title: 'Automotive', link: '/industry/index.html#auto', icon: 'fa-solid fa-car' },
+                            { title: 'Transportation', link: '/industry/index.html#transport', icon: 'fa-solid fa-truck' },
+                            { title: 'Mining and Metals', link: '/industry/index.html#mining', icon: 'fa-solid fa-gem' },
+                            { title: 'Renewable Energy', link: '/industry/index.html#renewable', icon: 'fa-solid fa-solar-panel' },
+                            { title: 'Medical', link: '/industry/index.html#medical', icon: 'fa-solid fa-stethoscope' },
+                            { title: 'Fintech', link: '/industry/index.html#fintech', icon: 'fa-solid fa-chart-line' },
+                            { title: 'TechEdu', link: '/industry/index.html#edutech', icon: 'fa-solid fa-chart-line' },
                                 { title: 'Real Estate & Property Management', link: '/industry/index.html#real-estate', icon: 'fa-solid fa-building' }
+                        ]},
+                        {
+                            title: 'Engineering',
+                            icon: 'fa-solid fa-gears',
+                            submenu: [
+                                { title: 'Electronics Design', link: '/engineering/electronics-design.html', icon: 'fa-solid fa-diagram-project' },
+                                { title: 'Custom IoT Solutions', link: '/engineering/custom-iot-solutions.html', icon: 'fa-solid fa-network-wired' },
+                                { title: 'Prototyping & Production', link: '/engineering/prototyping-production.html', icon: 'fa-solid fa-industry' },
+                                { title: 'Testing & Certifications', link: '/engineering/testing-certifications.html', icon: 'fa-solid fa-circle-check' },
+                                { title: 'Mechanical Design', link: '/engineering/mechanical-design.html', icon: 'fa-solid fa-cog' },
                             ]
-                            },
-                            {
-                                title: 'Engineering',
-                                icon: 'fa-solid fa-gears',
-                                submenu: [
-                                    { title: 'Electronics Design', link: '/engineering/electronics-design.html', icon: 'fa-solid fa-diagram-project' },
-                                    { title: 'Custom IoT Solutions', link: '/engineering/custom-iot-solutions.html', icon: 'fa-solid fa-network-wired' },
-                                    { title: 'Prototyping & Production', link: '/engineering/prototyping-production.html', icon: 'fa-solid fa-industry' },
-                                    { title: 'Testing & Certifications', link: '/engineering/testing-certifications.html', icon: 'fa-solid fa-circle-check' },
-                                    { title: 'PCB Design & EDA Tools', link: '/engineering/pcb-design-eda-tools.html', icon: 'fa-solid fa-drafting-compass' },
-                                    { title: 'CAM Solutions', link: '/engineering/cam-solutions.html', icon: 'fa-solid fa-cog' },
-                                    { title: 'Mechanical Design', link: '/engineering/mechanical-design.html', icon: 'fa-solid fa-cog' },
-                                    { title: 'VLSI Design', link: '/engineering/vlsi-design.html', icon: 'fa-solid fa-diagram-project' },
-                                    { title: 'Product LifeCycle Management', link: '/engineering/product-lifecycle-management.html', icon: 'fa-solid fa-chart-line' }
-                                ]
-                            },
-                            {title: 'Software', 
-                                link: '#', 
-                                submenu: [
-                                    { title: 'Web Development', link: '/software/index.html#webapp', icon: 'fa-solid fa-code' },
-                                    { title: 'IoT Application Development', link: '/software/index.html#iot-application-development', icon: 'fa-solid fa-cloud' },
-                                    { title: 'AI & Machine Learning', link: '/software/index.html#ai-ml', icon: 'fa-solid fa-brain' },
-                                    { title: 'Cloud Computing Solutions', link: '/software/index.html#cloud-computing', icon: 'fa-solid fa-chart-pie' },
-                                    { title: 'UI/UX Design Services', link: '/software/index.html#ui-ux-design', icon: 'fa-solid fa-server' },
-                                ] 
-                            },
-                            { title: 'Staffing', link: '/staffing.html', submenu: [] },
-                            { title: 'Training', link: '/training.html', submenu: [] }
-                        ]">
-                            <div class="relative group" 
-                                    @mouseenter="activeSubmenu = index" 
-                                    @mouseleave="activeSubmenu = null">
-                                <a :href="item.link" 
-                                    class="text-gray-500 group-hover:text-gray-900 font-bold flex items-center h-16 px-4">
-                                    <span x-text="item.title"></span>
-                                    <svg x-show="item.submenu.length > 0" 
-                                        class="w-2.5 h-2.5 ml-2.5" 
-                                        aria-hidden="true" 
-                                        xmlns="http://www.w3.org/2000/svg" 
-                                        fill="none" 
-                                        viewBox="0 0 10 6">
-                                        <path stroke="currentColor" 
-                                            stroke-linecap="round" 
-                                            stroke-linejoin="round" 
-                                            stroke-width="2" 
-                                            d="m1 1 4 4 4-4" />
-                                    </svg>
-                                </a>
-                                <div x-show="item.submenu.length > 0 && activeSubmenu === index"
-                                    x-transition:enter="transition ease-out duration-200"
-                                    x-transition:enter-start="opacity-0 transform scale-95"
-                                    x-transition:enter-end="opacity-100 transform scale-100"
-                                    x-transition:leave="transition ease-in duration-150"
-                                    x-transition:leave-start="opacity-100 transform scale-100"
-                                    x-transition:leave-end="opacity-0 transform scale-95"
-                                    class="absolute left-0 mt-[10px] w-64 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none z-50"
+                        },
+                        { title: 'Software', link: '#', submenu: [
+                            { title: 'Web Development', link: '/software/index.html#webapp', icon: 'fa-solid fa-code' },
+                            { title: 'IoT Applications', link: '/software/index.html#iot-application-development', icon: 'fa-solid fa-cloud' },
+                            { title: 'AI & Machine Learning', link: '/software/index.html#ai-ml', icon: 'fa-solid fa-brain' },
+                            { title: 'Cloud Computing Solutions', link: '/software/index.html#cloud-computing', icon: 'fa-solid fa-chart-pie' },
+                            { title: 'UI/UX Design Services', link: '/software/index.html#ui-ux-design', icon: 'fa-solid fa-server' },
+                        ]},
+                        { title: 'Staffing', link: '/staffing.html', submenu: [] },
+                        { title: 'Training', link: '/training.html', submenu: [] }
+                    ]">
+                        <div class="relative group" 
+                             @mouseenter="activeSubmenu = index" 
+                             @mouseleave="activeSubmenu = null">
+                            <a :href="item.link" 
+                               class="text-gray-500 group-hover:text-gray-900 font-bold flex items-center h-16 px-4">
+                                <span x-text="item.title"></span>
+                                <svg x-show="item.submenu.length > 0" 
+                                     class="w-2.5 h-2.5 ml-2.5" 
+                                     fill="none" 
+                                     viewBox="0 0 10 6">
+                                    <path stroke="currentColor" 
+                                          stroke-linecap="round" 
+                                          stroke-linejoin="round" 
+                                          stroke-width="2" 
+                                          d="m1 1 4 4 4-4" />
+                                </svg>
+                            </a>
+                            
+                            <!-- Dropdown Menu -->
+                            <div x-show="item.submenu.length > 0 && activeSubmenu === index"
+                                 class="absolute left-0 mt-2 w-64 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none z-50"
+                                 x-transition:enter="transition ease-out duration-200"
+                                 x-transition:enter-start="opacity-0 transform scale-95"
+                                 x-transition:enter-end="opacity-100 transform scale-100"
+                                 x-transition:leave="transition ease-in duration-150"
+                                 x-transition:leave-start="opacity-100 transform scale-100"
+                                 x-transition:leave-end="opacity-0 transform scale-95"
+                                 class="absolute left-0 mt-[10px] w-64 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none z-50"
                                     role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
-                                        <div class="py-1" role="none">
-                                            <template x-for="subItem in item.submenu">
-                                                <a :href="subItem.link"
-                                                class="flex items-center px-4 py-3 text-sm font-bold text-gray-700 hover:bg-green-500 hover:text-white group transition-all duration-300 ease-in-out"
-                                                role="menuitem"
-                                                tabindex="-1">
-                                                    <i :class="[subItem.icon, 'submenu-icon mr-2 text-lg transition-colors duration-300']"></i>
-                                                    <span x-text="subItem.title"></span>
-                                                </a>
-                                            </template>
-                                        </div>
-                                    </div>
+                                <div class="py-1">
+                                    <template x-for="subItem in item.submenu">
+                                        <a :href="subItem.link"
+                                           class="flex items-center px-4 py-3 text-sm font-bold text-gray-700 hover:bg-green-500 hover:text-white group transition-all duration-300 ease-in-out">
+                                            <i :class="[subItem.icon, 'mr-2 text-lg transition-colors duration-300']"></i>
+                                            <span x-text="subItem.title"></span>
+                                        </a>
+                                    </template>
                                 </div>
-                        </template>
-                    </nav>
+                            </div>
+                        </div>
+                    </template>
+                    
+                    <!-- Search Icon -->
                     <div class="relative group ml-3 mr-4">
                         <div class="flex items-center bg-gray-100 rounded-full overflow-hidden transition-all duration-300 focus-within:ring-2 focus-within:ring-green-500"
                             :class="{ 'w-64': isSearchOpen, 'w-10': !isSearchOpen }">
@@ -248,7 +241,6 @@
                             </button>
                         </div>
                     </div>
-        
                     <!-- Search Bar -->
                     <div class="flex flex-col space-y-2"> 
                         <a href="tel:+918042183021" class="flex items-center text-gray-500 text-bold hover:text-gray-900 font-bold">
@@ -259,126 +251,92 @@
                             <i class="fas fa-envelope text-green-600 text-xl mr-3"></i>
                             <span>support@nxgeninventors.com</span>
                         </a>
-                    </div>                                       
-                </div>
+                    </div>  
+                </nav>
             </div>
         </div>
-
-        <!-- Mobile side menu -->
-        <div class="custom:hidden">
-            <!-- Background Overlay -->
-            <div class="fixed inset-0 bg-gray-800 bg-opacity-75 z-40 transition-opacity duration-300 ease-in-out"
-                    :class="{'opacity-100': isMenuOpen, 'opacity-0 pointer-events-none': !isMenuOpen}"
-                    @click="isMenuOpen = false">
-            </div>
-            <!-- Mobile Menu -->
-                <div class="fixed inset-y-0 right-0 max-w-lg w-full bg-white shadow-xl z-50 overflow-y-auto transform transition-transform duration-300 ease-in-out"
-                    :class="{'translate-x-0': isMenuOpen, 'translate-x-full': !isMenuOpen}">
-                <!-- Close Button at the Top Right -->
-                <div class="flex justify-end mr-5 p-4">
-                    <button @click="isMenuOpen = false" class="text-gray-600 font-bold hover:text-gray-900 focus:outline-none">
-                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-                        </svg>
-                    </button>
-                </div>
-                <div class="p-6">
-                    <div class="mb-2">
-                        <input type="text" x-model="searchQuery" placeholder="Search..."
-                            class="w-full px-4 py-2 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent">
-                    </div>
-                    <div class="flex flex-col space-y-10">
-                        <a href="/index.html" 
-                            class="text-gray-500 hover:text-gray-900 font-bold"
-                            x-show="!isHomePage()">
+        <!-- Mobile/Tablet Menu (showing at 1024px and below) -->
+        <div x-show="isMenuOpen" 
+             class="lg:hidden fixed inset-0 z-40"
+             x-transition:enter="transition ease-out duration-200"
+             x-transition:enter-start="opacity-0"
+             x-transition:enter-end="opacity-100"
+             x-transition:leave="transition ease-in duration-150"
+             x-transition:leave-start="opacity-100"
+             x-transition:leave-end="opacity-0">
+            <!-- Backdrop -->
+            <div class="absolute inset-0 bg-black bg-opacity-50" @click="isMenuOpen = false"></div>
+            
+            <!-- Menu Content -->
+            <div class="relative bg-white w-full max-w-sm h-screen overflow-y-auto">
+                <div class="px-4 py-10 space-y-6">  
+                    <template x-if="!isHomePage()">
+                        <a href="/index.html" class="text-gray-500 hover:text-gray-900 font-bold flex items-center h-16 px-4">
                             Home
                         </a>
-                        <template x-for="(item, index) in [
-                            { title: 'Company', link: '#', submenu: [
-                                { title: 'About Us', link: '/about-us.html', icon: 'fa-solid fa-info-circle' },
-                                { title: 'Careers', link: '/careers.html', icon: 'fa-solid fa-briefcase' },
-                                
-                                { title: 'Clients', link: '/clients.html', icon: 'fa-solid fa-users' }
-                            ]},
-                            { title: 'Industry', link: '#', submenu: [
-                                { title: 'Automotive', link: '/industry/index.html#auto', icon: 'fa-solid fa-car' },
-                                { title: 'Transportation', link: '/industry/index.html#transport', icon: 'fa-solid fa-truck' },
-                                { title: 'Mining and Metals', link: '/industry/index.html#mining', icon: 'fa-solid fa-gem' },
-                                { title: 'Renewable Energy', link: '/industry/index.html#renewable', icon: 'fa-solid fa-solar-panel' },
-                                { title: 'Medical', link: '/industry/index.html#medical', icon: 'fa-solid fa-stethoscope' },
-                                { title: 'Fintech', link: '/industry/index.html#fintech', icon: 'fa-solid fa-chart-line' },
-                                { title: 'TechEdu', link: '/industry/index.html#edutech', icon: 'fa-solid fa-chart-line' },
-                                { title: 'Real Estate & Property Management', link: '/industry/index.html#real-estate', icon: 'fa-solid fa-building' }
-                            ]
-                            },
-                            {
-                                title: 'Engineering',
-                                submenu: [
-                                    { title: 'Electronics Design', link: '/engineering/electronics-design.html', icon: 'fa-solid fa-diagram-project' },
-                                    { title: 'Custom IoT Solutions', link: '/engineering/custom-iot-solutions.html', icon: 'fa-solid fa-network-wired' },
-                                    { title: 'Prototyping & Production', link: '/engineering/prototyping-production.html', icon: 'fa-solid fa-industry' },
-                                    { title: 'Testing & Certifications', link: '/engineering/testing-certifications.html', icon: 'fa-solid fa-circle-check' },
-                                    { title: 'PCB Design & EDA Tools', link: '/engineering/pcb-design-eda-tools.html', icon: 'fa-solid fa-drafting-compass' },
-                                    { title: 'CAM Solutions', link: '/engineering/cam-solutions.html', icon: 'fa-solid fa-cog' },
-                                    { title: 'Mechanical Design', link: '/engineering/mechanical-design.html', icon: 'fa-solid fa-cog' },
-                                    { title: 'VLSI Design', link: '/engineering/vlsi-design.html', icon: 'fa-solid fa-diagram-project' },
-                                    { title: 'Product LifeCycle Management', link: '/engineering/product-lifecycle-management.html', icon: 'fa-solid fa-chart-line' }
-                                ]
-                            },
-                            {title: 'Software', 
-                                link: '#', 
-                                submenu: [
-                                    { title: 'Web Development', link: '/software/index.html#webapp', icon: 'fa-solid fa-code' },
-                                    { title: 'IoT Application Development', link: '/software/index.html#iot-application-development', icon: 'fa-solid fa-cloud' },
-                                    { title: 'AI & Machine Learning', link: '/software/index.html#ai-ml', icon: 'fa-solid fa-brain' },
-                                    { title: 'Cloud Computing Solutions', link: '/software/index.html#cloud-computing', icon: 'fa-solid fa-chart-pie' },
-                                    { title: 'UI/UX Design Services', link: '/software/index.html#ui-ux-design', icon: 'fa-solid fa-server' },
-                                ] 
-                            },
-                            { title: 'Staffing', link: '/staffing.html', submenu: [] },
-                            { title: 'Training', link: '/training.html', submenu: [] }
-                        ]">
-                            <div>
-                                <button @click="toggleSubmenu(index)"
-                                        class="w-full text-left text-gray-900 font-bold flex justify-between items-center">
-                                    <span class="flex items-center">
-                                        <i :class="'fas ' + item.icon + ' mr-3 text-green-600'"></i>
-                                        <span x-text="item.title"></span>
-                                    </span>
-                                    <svg x-show="item.submenu.length > 0" class="w-6 h-6 transform transition-transform duration-200" 
-                                        :class="{'rotate-180': activeSubmenu === index}"
-                                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                                        <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-                                    </svg>
-                                </button>
-                                <div x-show="activeSubmenu === index" 
-                                        x-transition:enter="transition ease-out duration-100"
-                                        x-transition:enter-start="transform opacity-0 scale-95"
-                                        x-transition:enter-end="transform opacity-100 scale-100"
-                                        x-transition:leave="transition ease-in duration-75"
-                                        x-transition:leave-start="transform opacity-100 scale-100"
-                                        x-transition:leave-end="transform opacity-0 scale-95"
-                                        class="mt-2 space-y-2 bg-gray-50 rounded-lg p-3">
-                                    <template x-for="subItem in item.submenu">
-                                        <a href="#" class="flex items-center pl-4 mr-5 px-4 py-3 text-sm font-bold text-gray-700 rounded-xl hover:bg-green-600 hover:text-white group-hover:text-white transition-all duration-300 ease-in-out">
-                                            <i :class="'fas ' + subItem.icon + ' mr-3 text-green-500 hover:text-white'"></i>
-                                            <span x-text="subItem.title"></span>
-                                        </a>
-                                    </template>
-                                </div>
+                    </template>
+                    <template x-for="(item, index) in [
+                    { title: 'Company', link: '#', submenu: [
+                        { title: 'About Us', link: '/about-us.html', icon: 'fa-solid fa-info-circle' },
+                        { title: 'Careers', link: '/careers.html', icon: 'fa-solid fa-briefcase' }
+                    ]},
+                    { title: 'Industry', link: '#', submenu: [
+                        { title: 'Automotive', link: '/industry/index.html#auto', icon: 'fa-solid fa-car' },
+                        { title: 'Transportation', link: '/industry/index.html#transport', icon: 'fa-solid fa-truck' },
+                        { title: 'Mining and Metals', link: '/industry/index.html#mining', icon: 'fa-solid fa-gem' },
+                        { title: 'Renewable Energy', link: '/industry/index.html#renewable', icon: 'fa-solid fa-solar-panel' },
+                        { title: 'Medical', link: '/industry/index.html#medical', icon: 'fa-solid fa-stethoscope' },
+                        { title: 'Fintech', link: '/industry/index.html#fintech', icon: 'fa-solid fa-chart-line' },
+                        { title: 'TechEdu', link: '/industry/index.html#edutech', icon: 'fa-solid fa-chart-line' },
+                            { title: 'Real Estate & Property Management', link: '/industry/index.html#real-estate', icon: 'fa-solid fa-building' }
+                    ]},
+                    {
+                        title: 'Engineering',
+                        icon: 'fa-solid fa-gears',
+                        submenu: [
+                            { title: 'Electronics Design', link: '/engineering/electronics-design.html', icon: 'fa-solid fa-diagram-project' },
+                            { title: 'Custom IoT Solutions', link: '/engineering/custom-iot-solutions.html', icon: 'fa-solid fa-network-wired' },
+                            { title: 'Prototyping & Production', link: '/engineering/prototyping-production.html', icon: 'fa-solid fa-industry' },
+                            { title: 'Testing & Certifications', link: '/engineering/testing-certifications.html', icon: 'fa-solid fa-circle-check' },
+                            { title: 'PCB Design & EDA Tools', link: '/engineering/pcb-design-eda-tools.html', icon: 'fa-solid fa-drafting-compass' },
+                            { title: 'CAM Solutions', link: '/engineering/cam-solutions.html', icon: 'fa-solid fa-cog' },
+                            { title: 'Mechanical Design', link: '/engineering/mechanical-design.html', icon: 'fa-solid fa-cog' },
+                            { title: 'VLSI Design', link: '/engineering/vlsi-design.html', icon: 'fa-solid fa-diagram-project' },
+                            { title: 'Product LifeCycle Management', link: '/engineering/product-lifecycle-management.html', icon: 'fa-solid fa-chart-line' }
+                        ]
+                    },
+                    { title: 'Software', link: '#', submenu: [
+                        { title: 'Web Development', link: '/software/index.html#webapp', icon: 'fa-solid fa-code' },
+                        { title: 'IoT Applications', link: '/software/index.html#iot-application-development', icon: 'fa-solid fa-cloud' },
+                        { title: 'AI & Machine Learning', link: '/software/index.html#ai-ml', icon: 'fa-solid fa-brain' },
+                        { title: 'Cloud Computing Solutions', link: '/software/index.html#cloud-computing', icon: 'fa-solid fa-chart-pie' },
+                        { title: 'UI/UX Design Services', link: '/software/index.html#ui-ux-design', icon: 'fa-solid fa-server' },
+                    ]},
+                    { title: 'Staffing', link: '/staffing.html', submenu: [] },
+                    { title: 'Training', link: '/training.html', submenu: [] }
+                ]">
+                        <div class="space-y-4">
+                            <button @click="toggleSubmenu(index)"
+                                    class="w-full flex items-center justify-between px-4 py-2 text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-lg">
+                                <span x-text="item.title"></span>
+                                <svg x-show="item.submenu.length > 0" class="ml-2 h-4 w-4" viewBox="0 0 20 20" fill="currentColor"
+                                    :class="{'rotate-180': activeSubmenu === index}">
+                                    <path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" />
+                                </svg>
+                            </button>
+                            
+                            <div x-show="activeSubmenu === index"
+                                class="space-y-1 px-4">
+                                <template x-for="subItem in item.submenu">
+                                    <a :href="subItem.link"
+                                        class="flex items-center py-4 px-4 text-sm font-medium text-gray-600 hover:text-gray-900 hover:bg-green-300 rounded-lg">
+                                        <i :class="[subItem.icon, 'mr-2 text-lg']"></i>
+                                        <span x-text="subItem.title"></span>
+                                    </a>
+                                </template>
                             </div>
-                        </template>
-                    </div>
-                    <div class="mt-8 space-y-8">
-                        <a href="tel:+918042183021" class="flex items-center text-gray-600 hover:text-gray-900 font-bold">
-                            <i class="fas fa-phone text-green-600 text-xl mr-3"></i>
-                            <span>+91-80 4218 3021</span>
-                        </a>
-                        <a href="mailto:support@nxgeninventors.com" class="flex items-center text-gray-600 hover:text-gray-900 font-bold">
-                            <i class="fas fa-envelope text-green-600 text-xl mr-3"></i>
-                            <span>support@nxgeninventors.com</span>
-                        </a>
-                    </div>
+                        </div>
+                    </template>
                 </div>
             </div>
         </div>
@@ -420,13 +378,9 @@
                 <!-- Left Column - Text Content -->
                 <div class="flex flex-col justify-between lg:w-1/2">
                     <div>
-                        <div class="inline-flex items-center space-x-4 mb-8 px-4 py-2 bg-blue-50 rounded-full" data-aos="zoom-in" data-aos-duration="800" data-aos-delay="400">
-                            <span class="w-2 h-2 bg-blue-600 rounded-full animate-pulse"></span>
-                            <span class="text-blue-600 uppercase tracking-wider font-semibold text-sm">Industry Leaders</span>
-                        </div>
             
                         <h1 class="text-5xl font-bold text-gray-900 mb-8 leading-tight" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="500">
-                            At NX GEN Inventors
+                            At NGI
                             <span class="block text-xl font-normal text-gray-500 mt-4">Driving Innovation in Technology Solutions</span>
                         </h1>
             
@@ -503,7 +457,6 @@
                     </div>
                 </div>
                 <div class="lg:w-1/2" data-aos="fade-left" data-aos-delay="200">
-                    <span class="text-blue-600 uppercase tracking-wider font-semibold">01 — Automotive</span>
                     <h2 class="mt-4 text-3xl font-bold text-gray-900 sm:text-4xl">Electric Vehicles: The Road to a Cleaner Future</h2>
                     <p class="mt-4 text-lg text-gray-600 leading-relaxed">
                         Electric vehicles (EVs) are revolutionizing transportation, offering a sustainable alternative to traditional gasoline cars. With advancements in battery technology and expanding charging networks, EVs are becoming increasingly practical for everyday use. Automakers worldwide are investing heavily in EV models, pushing towards a zero-emission future. Challenges remain, such as battery disposal and range anxiety, but innovation continues to address these. As EVs become more accessible, they’re paving the way for a greener world..
@@ -547,7 +500,6 @@
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="flex flex-col-reverse lg:flex-row items-center gap-16">
                     <div class="lg:w-1/2" data-aos="fade-right" data-aos-delay="200">
-                        <span class="text-green-600 uppercase tracking-wider font-semibold">02 — Transportation</span>
                         <h2 class="mt-4 text-3xl font-bold text-gray-900 sm:text-4xl">Innovations Transforming Modern Transportation</h2>
                         <p class="mt-4 text-lg text-gray-600 leading-relaxed">
                             Electric public transit, smart infrastructure, and micromobility options like e-scooters are reshaping urban travel, reducing emissions and congestion. High-speed rail offers sustainable, efficient long-distance alternatives, while autonomous delivery vehicles streamline last-mile logistics. Together, these innovations are paving the way for cleaner, smarter, and more accessible transportation networks.
@@ -609,7 +561,6 @@
                         </div>
                     </div>
                     <div class="lg:w-1/2" data-aos="fade-left" data-aos-delay="200">
-                        <span class="text-indigo-600 uppercase tracking-wider font-semibold">03 — Mining and Metals</span>
                         <h2 class="mt-4 text-3xl font-bold text-gray-900 sm:text-4xl">Powering Global Industries</h2>
                         <p class="mt-4 text-lg text-gray-600 leading-relaxed">
                             Mining provides essential raw materials like iron, copper, and aluminum that fuel construction, technology, and manufacturing. Innovations in sustainable mining practices and recycling are helping reduce environmental impact. As demand grows, especially for metals used in green technologies, the industry focuses on efficiency and eco-friendly methods. These advancements support cleaner, more sustainable resource extraction.
@@ -652,7 +603,6 @@
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="flex flex-col-reverse lg:flex-row items-center gap-16">
                     <div class="lg:w-1/2" data-aos="fade-right" data-aos-delay="200">
-                        <span class="text-blue-600 uppercase tracking-wider font-semibold">05 — Renewable Energy</span>
                         <h2 class="mt-4 text-3xl font-bold text-gray-900 sm:text-4xl">A Sustainable Future</h2>
                         <p class="mt-4 text-lg text-gray-600 leading-relaxed">
                             Renewable energy refers to energy derived from natural sources that are replenished constantly. Unlike fossil fuels, which are finite and contribute to environmental degradation, renewable energy harnesses the power of resources such as sunlight, wind, water, and geothermal heat. The transition to renewable energy is crucial for mitigating climate change, reducing greenhouse gas emissions, and promoting energy security. 
@@ -699,7 +649,6 @@
                         </div>
                     </div>
                     <div class="lg:w-1/2" data-aos="fade-left" data-aos-delay="200">
-                        <span class="text-indigo-600 uppercase tracking-wider font-semibold">06 — Medical</span>
                         <h2 class="mt-4 text-3xl font-bold text-gray-900 sm:text-4xl">The Importance of PCB Manufacturing in Medical Equipment</h2>
                         <p class="mt-4 text-lg text-gray-600 leading-relaxed">
                             Printed Circuit Boards (PCBs) are vital components in the medical equipment industry, serving as the backbone of various diagnostic and therapeutic devices. With the growing demand for advanced medical technology, PCB manufacturers are tasked with producing high-quality, reliable boards that meet strict regulatory standards. These PCBs are integral to devices such as imaging equipment, patient monitoring systems, and surgical instruments, ensuring their functionality and safety. 
@@ -742,7 +691,6 @@
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="flex flex-col-reverse lg:flex-row items-center gap-16">
                     <div class="lg:w-1/2" data-aos="fade-right" data-aos-delay="200">
-                        <span class="text-green-600 uppercase tracking-wider font-semibold">07 — Fintech</span>
                         <h2 class="mt-4 text-3xl font-bold text-gray-900 sm:text-4xl">Transforming Financial Services</h2>
                         <p class="mt-4 text-lg text-gray-600 leading-relaxed">
                             Fintech is revolutionizing the financial sector by leveraging technology to deliver innovative solutions. From digital payment systems to automated investment platforms, fintech enhances the efficiency and accessibility of financial services. This technological advancement fosters greater financial inclusion, enabling users to manage their finances with ease and security. The rise of fintech represents a significant shift towards a more digital and interconnected financial ecosystem.
@@ -784,7 +732,6 @@
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="flex lg:flex-row-reverse items-center gap-16"> <!-- Change made here -->
                     <div class="lg:w-1/2" data-aos="fade-right" data-aos-delay="200">
-                        <span class="text-yellow-600 uppercase tracking-wider font-semibold">08 — Edutech</span>
                         <h2 class="mt-4 text-3xl font-bold text-gray-900 sm:text-4xl">Revolutionizing Education Through Technology</h2>
                         <p class="mt-4 text-lg text-gray-600 leading-relaxed">
                             Edutech is transforming the educational landscape by integrating technology into learning environments. It encompasses a wide range of tools, such as e-learning platforms, virtual classrooms, and interactive resources, which enhance the educational experience for students and educators alike. This innovative approach promotes personalized learning and expands access to quality education worldwide. Edutech is key to bridging the educational gap and preparing students for future challenges.
@@ -826,7 +773,6 @@
             <div class="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="flex flex-col-reverse lg:flex-row items-center gap-16">
                     <div class="lg:w-1/2" data-aos="fade-right" data-aos-delay="200">
-                        <span class="text-red-600 uppercase tracking-wider font-semibold">09 — Real Estate & Property Management</span>
                         <h2 class="mt-4 text-3xl font-bold text-gray-900 sm:text-4xl">Streamlining Property Management Processes</h2>
                         <p class="mt-4 text-lg text-gray-600 leading-relaxed">
                             Real estate and property management have evolved significantly through technological advancements. From online property listings to advanced property management software, these innovations facilitate smoother transactions and improved communication between landlords and tenants. Efficient property management is essential for maximizing investment returns and ensuring tenant satisfaction. By embracing technology, property managers can enhance operational efficiency and streamline their workflows.
@@ -857,41 +803,81 @@
     </section>
 
     <!-- footer -->
-    <footer class="bg-[#00353E] text-white pt-16">
-        <div class="container mx-auto px-4" data-aos="fade-up">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
-                <div class="space-y-8" data-aos="fade-right">
-                    <h2 class="text-2xl font-semibold border-b-2 border-teal-400 pb-2 inline-block">Browse</h2>
-                    <ul class="space-y-3" data-aos="fade-up">
-                        <li><a href="/about-us.html" class="hover:text-teal-400 transition duration-300">About us</a></li>
-                        <li><a href="/careers.html" class="hover:text-teal-400 transition duration-300">Careers</a></li>
-                        <li><a href="/our-people.html" class="hover:text-teal-400 transition duration-300">Our
-                                People</a></li>
-                        <li><a href="/products/iot-platform.html"
-                                class="hover:text-teal-400 transition duration-300">IoT Platform</a></li>
-                        <li><a href="/products/realty-app.html"
-                                class="hover:text-teal-400 transition duration-300">Realty App</a></li>
-                    </ul>
-                </div>
-                <div class="space-y-8" data-aos="fade-right">
-                    <h2 class="text-2xl font-semibold border-b-2 border-teal-400 pb-2 inline-block">Our Services</h2>
-                    <ul class="space-y-3">
-                        <li><a href="/" class="hover:text-teal-400 transition duration-300">Software Solutions</a></li>
-                        <li><a href="/services/engineering/"
-                                class="hover:text-teal-400 transition duration-300">Engineering Services</a></li>
-                        <li><a href="/services/manufacturing/"
-                                class="hover:text-teal-400 transition duration-300">Manufacturing Services</a></li>
-                        <li><a href="/services/staffing-solutions/"
-                                class="hover:text-teal-400 transition duration-300">Staffing Solutions</a></li>
-                        <li><a href="/services/staffing-solutions/"
-                                class="hover:text-teal-400 transition duration-300">Training</a></li>
-                    </ul>
-                </div>
-                <div class="space-y-8" data-aos="fade-right">
-                    <h2 class="text-2xl font-semibold border-b-2 border-teal-400 inline-block">Locate Us</h2>
-                    <div class="grid grid-cols-1 md:grid-cols-1 gap-6">
+    <footer class="bg-green-600 text-white pt-16 pb-8 overflow-hidden">
+        <div class="container mx-auto px-custom-padding">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="space-y-8">
+                        <h2 class="text-2xl font-semibold border-b-2 border-primary pb-2 inline-block">Browse</h2>
+                        <ul class="space-y-3" data-aos="fade-up">
+                            <li><a href="/about-us.html" class="hover:text-teal-400 transition duration-300">About us</a></li>
+                            <li><a href="/careers.html" class="hover:text-teal-400 transition duration-300">Careers</a></li>
+                            <li><a href="/our-people.html" class="hover:text-teal-400 transition duration-300">Our
+                                    People</a></li>
+                            <li><a href="/products/iot-platform.html"
+                                    class="hover:text-teal-400 transition duration-300">IoT Platform</a></li>
+                            <li><a href="/products/realty-app.html"
+                                    class="hover:text-teal-400 transition duration-300">Realty App</a></li>
+                        </ul>
+
                         <div class="space-y-4">
-                            <img src="/src/images/footer-logo/temple.svg" alt="Temple" class="h-12">
+                            <h2 class="text-2xl text-white font-bold uppercase mb-4">Follow Us On</h2>
+                            <div class="w-full md:w-auto" data-aos="fade-right">
+                                <div class="flex space-x-4">
+                                    <a href="#"
+                                        class="w-10 h-10 bg-primary rounded-full flex items-center justify-center hover:bg-blue-500 transition duration-300">
+                                        <svg class="h-6 w-6 text-white" fill="currentColor" viewBox="0 0 24 24"
+                                            aria-hidden="true">
+                                            <path fill-rule="evenodd"
+                                                d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"
+                                                clip-rule="evenodd" />
+                                        </svg>
+                                    </a>
+                                    <a href="#"
+                                        class="w-10 h-10 bg-primary rounded-full flex items-center justify-center hover:bg-blue-500 transition duration-300">
+                                        <svg class="h-6 w-6 text-white" fill="currentColor" viewBox="0 0 24 24"
+                                            aria-hidden="true">
+                                            <path
+                                                d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" />
+                                        </svg>
+                                    </a>
+                                    <a href="#"
+                                        class="w-10 h-10 bg-primary rounded-full flex items-center justify-center hover:bg-pink-500 transition duration-300">
+                                        <i class="fa-brands fa-instagram text-white text-2xl"></i>
+                                    </a>
+                                    <a href="#"
+                                        class="w-10 h-10 bg-primary rounded-full flex items-center justify-center hover:bg-red-500 transition duration-300">
+                                        <i class="fa-brands fa-youtube text-white text-2xl"></i>
+                                    </a>
+                                    <a href="#"
+                                        class="w-10 h-10 bg-primary rounded-full flex items-center justify-center hover:bg-blue-500 transition duration-300">
+                                        <i class="fa-brands fa-linkedin text-white text-2xl"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="space-y-8">
+                        <h2 class="text-2xl font-semibold border-b-2 border-primary pb-2 inline-block">Our Services</h2>
+                        <ul class="space-y-3">
+                            <li><a href="/" class="hover:text-teal-400 transition duration-300">Software Solutions</a></li>
+                            <li><a href="/services/engineering/"
+                                    class="hover:text-teal-400 transition duration-300">Engineering Services</a></li>
+                            <li><a href="/services/manufacturing/"
+                                    class="hover:text-teal-400 transition duration-300">Manufacturing Services</a></li>
+                            <li><a href="/services/staffing-solutions/"
+                                    class="hover:text-teal-400 transition duration-300">Staffing Solutions</a></li>
+                            <li><a href="/services/staffing-solutions/"
+                                    class="hover:text-teal-400 transition duration-300">Training</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="space-y-8">
+                    <h2 class="text-2xl font-semibold border-b-2 border-primary pb-2 inline-block">Locate Us</h2>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6" data-aos="fade-right">
+                        <!-- India Address -->
+                        <div class="space-y-4">  
                             <div class="flex items-center space-x-2">
                                 <img src="/src/images/footer-logo/india-flag.svg" alt="India Flag" class="w-6">
                                 <h3 class="text-xl font-semibold">INDIA</h3>
@@ -913,12 +899,13 @@
                                     </div>
                                 </div>
                             </div>
-
-
-                            <div class="flex items-center">
-                                <div class="flex-grow border-t border-gray-400"></div>
-                                <div class="mx-4 text-gray-400">•</div>
-                                <div class="flex-grow border-t border-gray-400"></div>
+                        </div>
+                
+                        <!-- USA Address -->
+                        <div class="space-y-4">
+                            <div class="flex items-center space-x-2">
+                                <img src="/src/images/footer-logo/india-flag.svg" alt="India Flag" class="w-6">
+                                <h3 class="text-xl font-semibold">INDIA</h3>
                             </div>
                             <div class="space-y-2 text-sm">
                                 <p>MIG-171, New housing board,</p>
@@ -928,79 +915,29 @@
                         </div>
                     </div>
                 </div>
-                <div class="space-y-3">
-                    <h2 class="text-2xl text-white font-bold uppercase">NX GEN Inventors</h2>
-                    <!-- <div class="flex flex-wrap justify-left gap-4">
-                        <a href="#" class="flex items-center justify-center text-white hover:text-green-600 transition-colors duration-300">
-                            <div class="bg-white rounded-full p-3 sm:p-4 hover:bg-green-600 flex items-center justify-center w-12 h-12 sm:w-10 sm:h-10 md:w-10 md:h-10 transform hover:scale-110 transition-transform duration-300">
-                                <i class="fab fa-facebook-f text-xl text-black hover:text-white"></i>
-                            </div>
-                        </a>
-                        <a href="#" class="flex items-center justify-center text-black hover:text-green-400 transition-colors duration-300">
-                            <div class="bg-white rounded-full p-3 sm:p-4 hover:bg-green-600 flex items-center justify-center w-12 h-12 sm:w-10 sm:h-10 md:w-10 md:h-10 transform hover:scale-110 transition-transform duration-300">
-                                <i class="fab fa-twitter text-xl text-black hover:text-white"></i>
-                            </div>
-                        </a>
-                        <a href="#" class="flex items-center justify-center text-black hover:text-pink-500 transition-colors duration-300">
-                            <div class="bg-white rounded-full p-3 sm:p-4 hover:bg-red-600 flex items-center justify-center w-12 h-12 sm:w-10 sm:h-10 md:w-10 md:h-10 transform hover:scale-110 transition-transform duration-300">
-                                <i class="fab fa-instagram text-xl text-black hover:text-white"></i>
-                            </div>
-                        </a>
-                        <a href="#" class="flex items-center justify-center text-black hover:text-pink-500 transition-colors duration-300">
-                            <div class="bg-white rounded-full p-3 sm:p-4 hover:bg-gray-900 flex items-center justify-center w-12 h-12 sm:w-10 sm:h-10 md:w-10 md:h-10 transform hover:scale-110 transition-transform duration-300">
-                                <i class="fab fa-github text-xl text-black hover:text-white"></i>
-                            </div>
-                        </a>
-                        <a href="#" class="flex items-center justify-center text-black hover:text-green-600 transition-colors duration-300">
-                            <div class="bg-white rounded-full p-3 sm:p-4 hover:bg-green-600 flex items-center justify-center w-12 h-12 sm:w-10 sm:h-10 md:w-10 md:h-10 transform hover:scale-110 transition-transform duration-300">
-                                <i class="fab fa-linkedin-in text-xl text-black hover:text-white"></i>
-                            </div>
-                        </a>
-                    </div> -->
-                    <div class="w-full md:w-auto">
-                        <div class="flex space-x-4">
-                            <a href="#"
-                                class="w-12 h-12 bg-gray-800 rounded-full flex items-center justify-center hover:bg-green-500 transition duration-300">
-                                <svg class="h-6 w-6 text-white" fill="currentColor" viewBox="0 0 24 24"
-                                    aria-hidden="true">
-                                    <path fill-rule="evenodd"
-                                        d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"
-                                        clip-rule="evenodd" />
-                                </svg>
-                            </a>
-                            <a href="#"
-                                class="w-12 h-12 bg-gray-800 rounded-full flex items-center justify-center hover:bg-green-500 transition duration-300">
-                                <svg class="h-6 w-6 text-white" fill="currentColor" viewBox="0 0 24 24"
-                                    aria-hidden="true">
-                                    <path
-                                        d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" />
-                                </svg>
-                            </a>
-                            <a href="#"
-                                class="w-12 h-12 bg-gray-800 rounded-full flex items-center justify-center hover:bg-pink-500 transition duration-300">
-                                <i class="fa-brands fa-instagram text-white text-2xl"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
             </div>
 
-            <div class="border-t border-teal-700 pt-8 mt-8 pb-2">
-                <div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+            <div class="border-t border-white pt-8 mt-4">
+                <div class="flex flex-col lg:flex-row justify-between items-center gap-4">
                     <div class="text-sm text-gray-300">
                         © 2022 <a href="https://nxgeninventors.com/"
                             class="hover:text-white transition-colors duration-300">Nx Gen Inventors™</a>. All Rights
                         Reserved.
                     </div>
-                    <div class="flex space-x-4 text-sm text-gray-300">
-                        <a href="#" class="hover:text-white transition-colors duration-300">Terms & Conditions</a>
-                        <a href="#" class="hover:text-white transition-colors duration-300">Privacy Policy</a>
-                        <a href="#" class="hover:text-white transition-colors duration-300">Cookie Policy</a>
+                    <div class="flex flex-col lg:flex-row justify-between items-center gap-4">
+                        <div class="flex gap-4 text-sm text-gray-300">
+                            <a href="#" class="hover:text-white transition-colors duration-300">Terms of Use</a>
+                            <a href="#" class="hover:text-white transition-colors duration-300">Privacy Policy</a>
+                            <a href="#" class="hover:text-white transition-colors duration-300">Sale & Refunds</a>
+                        </div>
+                        <div class="flex gap-4 text-sm text-gray-300">
+                            <a href="#" class="hover:text-white transition-colors duration-300">Legal</a>
+                            <a href="#" class="hover:text-white transition-colors duration-300">Site Map</a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-
     </footer>
 
     <!-- aichatbot -->
