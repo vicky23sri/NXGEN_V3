@@ -5,8 +5,14 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: '#FC7632',
+        primary: '#8ac649',
         secondary: '#3f444b',
+        'green': 
+        {
+            400: '#4ade80',
+            500: '#22c55e',
+            700: '#15803d'
+        }
       },
       screens: {
         'custom': '1440px',

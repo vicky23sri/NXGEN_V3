@@ -81,296 +81,254 @@
 </head>
 <body class="font-glimser">
     <header x-data="{ 
-            isMenuOpen: false,
-            activeSubmenu: null,
-            isSearchOpen: false,
-            toggleMenu() { this.isMenuOpen = !this.isMenuOpen; },
-            toggleSubmenu(index) { this.activeSubmenu = this.activeSubmenu === index ? null : index; },
-            toggleSearch() { this.isSearchOpen = !this.isSearchOpen; },
-            searchQuery: '',
-            isHomePage() {
-                return window.location.pathname === '/' || window.location.pathname === '/index.html';
-            }
-        }" class="fixed top-0 left-0 right-0 z-50">
-        <div class="mx-auto bg-white shadow-xl py-3 px-4 sm:px-6 custom:px-20">
-            <div class="flex justify-between items-center">
-                <div class="logo">
-                    <a href="/index.html">
-                        <img class="w-[180px]" src="/src/images/logo-green-s.svg" alt="Logo">
-                    </a>
-                </div>
-                <button @click="toggleMenu" 
-                        class="custom:hidden z-50 relative focus:outline-none w-10 h-10 flex items-center justify-center"
-                        aria-label="Toggle menu">
-                    <span class="sr-only">Open main menu</span>
-                    <div class="w-5 h-5 flex items-center justify-center relative">
-                        <span class="block absolute h-0.5 w-5 bg-gray-600 transform transition duration-500 ease-in-out"
-                            :class="{'rotate-45': isMenuOpen, '-translate-y-1.5': !isMenuOpen }"></span>
-                        <span class="block absolute h-0.5 w-5 bg-gray-600 transform transition duration-500 ease-in-out"
-                            :class="{'opacity-0': isMenuOpen }"></span>
-                        <span class="block absolute h-0.5 w-5 bg-gray-600 transform transition duration-500 ease-in-out"
-                            :class="{'-rotate-45': isMenuOpen, 'translate-y-1.5': !isMenuOpen}"></span>
-                    </div>
+        isMenuOpen: false,
+        activeSubmenu: null,
+        isSearchOpen: false,
+        toggleMenu() { this.isMenuOpen = !this.isMenuOpen; },
+        toggleSubmenu(index) { this.activeSubmenu = this.activeSubmenu === index ? null : index; },
+        toggleSearch() { this.isSearchOpen = !this.isSearchOpen; },
+        searchQuery: '',
+        isHomePage() {
+            return window.location.pathname === '/' || window.location.pathname === '/index.html';
+        }
+    }" class="fixed top-0 left-0 right-0 z-50">
+    <div class="mx-auto bg-white shadow-xl py-3 px-4 sm:px-6 custom:px-20">
+        <div class="flex justify-between items-center">
+            <div class="logo">
+                <a href="/index.html">
+                    <img class="h-12 w-auto" src="/src/images/logo-green-s.svg" alt="Logo">
+                </a>
+            </div>
+
+            <!-- Menu and search buttons (showing at 1024px and below) -->
+            <div class="lg:hidden flex items-center space-x-2">
+                <button @click="toggleSearch" class="p-2 rounded-md text-gray-700 hover:text-gray-900 hover:bg-gray-100 focus:outline-none">
+                    <i class="fas fa-search text-xl"></i>
                 </button>
-                <div class="hidden custom:flex items-center space-x-7"> 
-                    <nav class="flex space-x-7">
-                        <a href="/index.html" 
-                            class="text-gray-500 hover:text-gray-900 font-bold flex items-center h-16 px-4" 
-                            x-show="!isHomePage()">
-                            Home
+                <button @click="toggleMenu" class="p-2 rounded-md text-gray-700 hover:text-gray-900 hover:bg-gray-100 focus:outline-none">
+                    <svg x-show="!isMenuOpen" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                    <svg x-show="isMenuOpen" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Desktop Navigation (hidden at 1024px and below) -->
+            <nav class="hidden lg:flex lg:items-center lg:space-x-4">
+                <a href="/index.html" 
+                    class="text-gray-500 hover:text-gray-900 font-bold flex items-center h-16 px-4" 
+                    x-show="!isHomePage()">
+                    Home
+                </a>
+                <template x-for="(item, index) in [
+                    { title: 'Company', link: '#', submenu: [
+                        { title: 'About Us', link: '/about-us.html', icon: 'fa-solid fa-info-circle' },
+                        { title: 'Careers', link: '/careers.html', icon: 'fa-solid fa-briefcase' }
+                    ]},
+                    { title: 'Industry', link: '#', submenu: [
+                        { title: 'Automotive', link: '/industry/index.html#auto', icon: 'fa-solid fa-car' },
+                        { title: 'Transportation', link: '/industry/index.html#transport', icon: 'fa-solid fa-truck' },
+                        { title: 'Mining and Metals', link: '/industry/index.html#mining', icon: 'fa-solid fa-gem' },
+                        { title: 'Renewable Energy', link: '/industry/index.html#renewable', icon: 'fa-solid fa-solar-panel' },
+                        { title: 'Medical', link: '/industry/index.html#medical', icon: 'fa-solid fa-stethoscope' },
+                        { title: 'Fintech', link: '/industry/index.html#fintech', icon: 'fa-solid fa-chart-line' },
+                        { title: 'TechEdu', link: '/industry/index.html#edutech', icon: 'fa-solid fa-chart-line' },
+                            { title: 'Real Estate & Property Management', link: '/industry/index.html#real-estate', icon: 'fa-solid fa-building' }
+                    ]},
+                    {
+                        title: 'Engineering',
+                        icon: 'fa-solid fa-gears',
+                        submenu: [
+                            { title: 'Electronics Design', link: '/engineering/electronics-design.html', icon: 'fa-solid fa-diagram-project' },
+                            { title: 'Custom IoT Solutions', link: '/engineering/custom-iot-solutions.html', icon: 'fa-solid fa-network-wired' },
+                            { title: 'Prototyping & Production', link: '/engineering/prototyping-production.html', icon: 'fa-solid fa-industry' },
+                            { title: 'Testing & Certifications', link: '/engineering/testing-certifications.html', icon: 'fa-solid fa-circle-check' },
+                            { title: 'Mechanical Design', link: '/engineering/mechanical-design.html', icon: 'fa-solid fa-cog' },
+                        ]
+                    },
+                    { title: 'Software', link: '#', submenu: [
+                        { title: 'Web Development', link: '/software/index.html#webapp', icon: 'fa-solid fa-code' },
+                        { title: 'IoT Applications', link: '/software/index.html#iot-application-development', icon: 'fa-solid fa-cloud' },
+                        { title: 'AI & Machine Learning', link: '/software/index.html#ai-ml', icon: 'fa-solid fa-brain' },
+                        { title: 'Cloud Computing Solutions', link: '/software/index.html#cloud-computing', icon: 'fa-solid fa-chart-pie' },
+                        { title: 'UI/UX Design Services', link: '/software/index.html#ui-ux-design', icon: 'fa-solid fa-server' },
+                    ]},
+                    { title: 'Staffing', link: '/staffing.html', submenu: [] },
+                    { title: 'Training', link: '/training.html', submenu: [] }
+                ]">
+                    <div class="relative group" 
+                         @mouseenter="activeSubmenu = index" 
+                         @mouseleave="activeSubmenu = null">
+                        <a :href="item.link" 
+                           class="text-gray-500 group-hover:text-gray-900 font-bold flex items-center h-16 px-4">
+                            <span x-text="item.title"></span>
+                            <svg x-show="item.submenu.length > 0" 
+                                 class="w-2.5 h-2.5 ml-2.5" 
+                                 fill="none" 
+                                 viewBox="0 0 10 6">
+                                <path stroke="currentColor" 
+                                      stroke-linecap="round" 
+                                      stroke-linejoin="round" 
+                                      stroke-width="2" 
+                                      d="m1 1 4 4 4-4" />
+                            </svg>
                         </a>
-                    
-                        <template x-for="(item, index) in [
-                            { title: 'Company', link: '#', submenu: [
-                                { title: 'About Us', link: '/about-us.html', icon: 'fa-solid fa-info-circle' },
-                                { title: 'Careers', link: '/careers.html', icon: 'fa-solid fa-briefcase' },
-                                
-                            ]},
-                            { title: 'Industry', link: '#', submenu: [
-                                { title: 'Automotive', link: '/industry/index.html#auto', icon: 'fa-solid fa-car' },
-                                { title: 'Transportation', link: '/industry/index.html#transport', icon: 'fa-solid fa-truck' },
-                                { title: 'Mining and Metals', link: '/industry/index.html#mining', icon: 'fa-solid fa-gem' },
-                                { title: 'Renewable Energy', link: '/industry/index.html#renewable', icon: 'fa-solid fa-solar-panel' },
-                                { title: 'Medical', link: '/industry/index.html#medical', icon: 'fa-solid fa-stethoscope' },
-                                { title: 'Fintech', link: '/industry/index.html#fintech', icon: 'fa-solid fa-chart-line' },
-                                { title: 'TechEdu', link: '/industry/index.html#edutech', icon: 'fa-solid fa-chart-line' },
-                                { title: 'Real Estate & Property Management', link: '/industry/index.html#real-estate', icon: 'fa-solid fa-building' }
-                            ]
-                            },
-                            {
-                                title: 'Engineering',
-                                icon: 'fa-solid fa-gears',
-                                submenu: [
-                                    { title: 'Electronics Design', link: '/engineering/electronics-design.html', icon: 'fa-solid fa-diagram-project' },
-                                    { title: 'Custom IoT Solutions', link: '/engineering/custom-iot-solutions.html', icon: 'fa-solid fa-network-wired' },
-                                    { title: 'Prototyping & Production', link: '/engineering/prototyping-production.html', icon: 'fa-solid fa-industry' },
-                                    { title: 'Testing & Certifications', link: '/engineering/testing-certifications.html', icon: 'fa-solid fa-circle-check' },
-                                    { title: 'PCB Design & EDA Tools', link: '/engineering/pcb-design-eda-tools.html', icon: 'fa-solid fa-drafting-compass' },
-                                    { title: 'CAM Solutions', link: '/engineering/cam-solutions.html', icon: 'fa-solid fa-cog' },
-                                    { title: 'Mechanical Design', link: '/engineering/mechanical-design.html', icon: 'fa-solid fa-cog' },
-                                    { title: 'VLSI Design', link: '/engineering/vlsi-design.html', icon: 'fa-solid fa-diagram-project' },
-                                    { title: 'Product LifeCycle Management', link: '/engineering/product-lifecycle-management.html', icon: 'fa-solid fa-chart-line' }
-                                ]
-                            },
-                            {title: 'Software', 
-                                link: '#', 
-                                submenu: [
-                                    { title: 'Web Development', link: '/software/index.html#webapp', icon: 'fa-solid fa-code' },
-                                    { title: 'IoT Application Development', link: '/software/index.html#iot-application-development', icon: 'fa-solid fa-cloud' },
-                                    { title: 'AI & Machine Learning', link: '/software/index.html#ai-ml', icon: 'fa-solid fa-brain' },
-                                    { title: 'Cloud Computing Solutions', link: '/software/index.html#cloud-computing', icon: 'fa-solid fa-chart-pie' },
-                                    { title: 'UI/UX Design Services', link: '/software/index.html#ui-ux-design', icon: 'fa-solid fa-server' },
-                                ] 
-                            },
-                            { title: 'Staffing', link: '/staffing.html', submenu: [] },
-                            { title: 'Training', link: '/training.html', submenu: [] }
-                        ]">
-                            <div class="relative group" 
-                                    @mouseenter="activeSubmenu = index" 
-                                    @mouseleave="activeSubmenu = null">
-                                <a :href="item.link" 
-                                    class="text-gray-500 group-hover:text-gray-900 font-bold flex items-center h-16 px-4">
-                                    <span x-text="item.title"></span>
-                                    <svg x-show="item.submenu.length > 0" 
-                                        class="w-2.5 h-2.5 ml-2.5" 
-                                        aria-hidden="true" 
-                                        xmlns="http://www.w3.org/2000/svg" 
-                                        fill="none" 
-                                        viewBox="0 0 10 6">
-                                        <path stroke="currentColor" 
-                                            stroke-linecap="round" 
-                                            stroke-linejoin="round" 
-                                            stroke-width="2" 
-                                            d="m1 1 4 4 4-4" />
-                                    </svg>
-                                </a>
-                                <div x-show="item.submenu.length > 0 && activeSubmenu === index"
-                                    x-transition:enter="transition ease-out duration-200"
-                                    x-transition:enter-start="opacity-0 transform scale-95"
-                                    x-transition:enter-end="opacity-100 transform scale-100"
-                                    x-transition:leave="transition ease-in duration-150"
-                                    x-transition:leave-start="opacity-100 transform scale-100"
-                                    x-transition:leave-end="opacity-0 transform scale-95"
-                                    class="absolute left-0 mt-[10px] w-64 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none z-50"
-                                    role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
-                                        <div class="py-1" role="none">
-                                            <template x-for="subItem in item.submenu">
-                                                <a :href="subItem.link"
-                                                class="flex items-center px-4 py-3 text-sm font-bold text-gray-700 hover:bg-green-500 hover:text-white group transition-all duration-300 ease-in-out"
-                                                role="menuitem"
-                                                tabindex="-1">
-                                                    <i :class="[subItem.icon, 'submenu-icon mr-2 text-lg transition-colors duration-300']"></i>
-                                                    <span x-text="subItem.title"></span>
-                                                </a>
-                                            </template>
-                                        </div>
-                                    </div>
-                                </div>
-                        </template>
-                    </nav>
-                    <div class="relative group ml-3 mr-4">
-                        <div class="flex items-center bg-gray-100 rounded-full overflow-hidden transition-all duration-300 focus-within:ring-2 focus-within:ring-green-500"
-                            :class="{ 'w-64': isSearchOpen, 'w-10': !isSearchOpen }">
-                            <input 
-                                type="text" 
-                                placeholder="Search..." 
-                                class="bg-transparent px-4 py-2 w-full focus:outline-none"
-                                x-show="isSearchOpen"
-                                @focus="isSearchOpen = true"
-                                @blur="setTimeout(() => { isSearchOpen = false }, 200)"
-                                x-transition:enter="transition ease-out duration-300"
-                                x-transition:enter-start="opacity-0 scale-90"
-                                x-transition:enter-end="opacity-100 scale-100"
-                                x-transition:leave="transition ease-in duration-300"
-                                x-transition:leave-start="opacity-100 scale-100"
-                                x-transition:leave-end="opacity-0 scale-90"
-                            >
-                            <button 
-                                @click="isSearchOpen = !isSearchOpen" 
-                                class="flex-shrink-0 w-10 h-10 flex items-center justify-center text-gray-500 hover:text-green-600 focus:outline-none transition-colors duration-300"
-                            >
-                                <i class="fas fa-search text-lg"></i>
-                            </button>
+                        
+                        <!-- Dropdown Menu -->
+                        <div x-show="item.submenu.length > 0 && activeSubmenu === index"
+                             class="absolute left-0 mt-2 w-64 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none z-50"
+                             x-transition:enter="transition ease-out duration-200"
+                             x-transition:enter-start="opacity-0 transform scale-95"
+                             x-transition:enter-end="opacity-100 transform scale-100"
+                             x-transition:leave="transition ease-in duration-150"
+                             x-transition:leave-start="opacity-100 transform scale-100"
+                             x-transition:leave-end="opacity-0 transform scale-95"
+                             class="absolute left-0 mt-[10px] w-64 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none z-50"
+                                role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
+                            <div class="py-1">
+                                <template x-for="subItem in item.submenu">
+                                    <a :href="subItem.link"
+                                       class="flex items-center px-4 py-3 text-sm font-bold text-gray-700 hover:bg-green-500 hover:text-white group transition-all duration-300 ease-in-out">
+                                        <i :class="[subItem.icon, 'mr-2 text-lg transition-colors duration-300']"></i>
+                                        <span x-text="subItem.title"></span>
+                                    </a>
+                                </template>
+                            </div>
                         </div>
                     </div>
+                </template>
+                
+                <!-- Search Icon -->
+                <div class="relative group ml-3 mr-4">
+                    <div class="flex items-center bg-gray-100 rounded-full overflow-hidden transition-all duration-300 focus-within:ring-2 focus-within:ring-green-500"
+                        :class="{ 'w-64': isSearchOpen, 'w-10': !isSearchOpen }">
+                        <input 
+                            type="text" 
+                            placeholder="Search..." 
+                            class="bg-transparent px-4 py-2 w-full focus:outline-none"
+                            x-show="isSearchOpen"
+                            @focus="isSearchOpen = true"
+                            @blur="setTimeout(() => { isSearchOpen = false }, 200)"
+                            x-transition:enter="transition ease-out duration-300"
+                            x-transition:enter-start="opacity-0 scale-90"
+                            x-transition:enter-end="opacity-100 scale-100"
+                            x-transition:leave="transition ease-in duration-300"
+                            x-transition:leave-start="opacity-100 scale-100"
+                            x-transition:leave-end="opacity-0 scale-90"
+                        >
+                        <button 
+                            @click="isSearchOpen = !isSearchOpen" 
+                            class="flex-shrink-0 w-10 h-10 flex items-center justify-center text-gray-500 hover:text-green-600 focus:outline-none transition-colors duration-300"
+                        >
+                            <i class="fas fa-search text-lg"></i>
+                        </button>
+                    </div>
+                </div>
+                <!-- Search Bar -->
+                <div class="flex flex-col space-y-2"> 
+                    <a href="tel:+918042183021" class="flex items-center text-gray-500 text-bold hover:text-gray-900 font-bold">
+                        <i class="fas fa-phone text-green-600 text-xl mr-3"></i>
+                        <span>+91-80 4218 3021</span>
+                    </a>
+                    <a href="mailto:support@nxgeninventors.com" class="flex items-center text-bold text-gray-500 hover:text-gray-900 font-bold">
+                        <i class="fas fa-envelope text-green-600 text-xl mr-3"></i>
+                        <span>support@nxgeninventors.com</span>
+                    </a>
+                </div>  
+            </nav>
+        </div>
+    </div>
+    <!-- Mobile/Tablet Menu (showing at 1024px and below) -->
+    <div x-show="isMenuOpen" 
+         class="lg:hidden fixed inset-0 z-40"
+         x-transition:enter="transition ease-out duration-200"
+         x-transition:enter-start="opacity-0"
+         x-transition:enter-end="opacity-100"
+         x-transition:leave="transition ease-in duration-150"
+         x-transition:leave-start="opacity-100"
+         x-transition:leave-end="opacity-0">
+        <!-- Backdrop -->
+        <div class="absolute inset-0 bg-black bg-opacity-50" @click="isMenuOpen = false"></div>
         
-                    <!-- Search Bar -->
-                    <div class="flex flex-col space-y-2"> 
-                        <a href="tel:+918042183021" class="flex items-center text-gray-500 text-bold hover:text-gray-900 font-bold">
-                            <i class="fas fa-phone text-green-600 text-xl mr-3"></i>
-                            <span>+91-80 4218 3021</span>
-                        </a>
-                        <a href="mailto:support@nxgeninventors.com" class="flex items-center text-bold text-gray-500 hover:text-gray-900 font-bold">
-                            <i class="fas fa-envelope text-green-600 text-xl mr-3"></i>
-                            <span>support@nxgeninventors.com</span>
-                        </a>
-                    </div>                                       
-                </div>
+        <!-- Menu Content -->
+        <div class="relative bg-white w-full max-w-sm h-screen overflow-y-auto">
+            <div class="px-4 py-10 space-y-6">  
+            <a href="/index.html" 
+                class="text-gray-500 hover:text-gray-900 font-bold"
+                x-show="!isHomePage()">
+                Home
+            </a>
+                <template x-for="(item, index) in [
+                { title: 'Company', link: '#', submenu: [
+                    { title: 'About Us', link: '/about-us.html', icon: 'fa-solid fa-info-circle' },
+                    { title: 'Careers', link: '/careers.html', icon: 'fa-solid fa-briefcase' }
+                ]},
+                { title: 'Industry', link: '#', submenu: [
+                    { title: 'Automotive', link: '/industry/index.html#auto', icon: 'fa-solid fa-car' },
+                    { title: 'Transportation', link: '/industry/index.html#transport', icon: 'fa-solid fa-truck' },
+                    { title: 'Mining and Metals', link: '/industry/index.html#mining', icon: 'fa-solid fa-gem' },
+                    { title: 'Renewable Energy', link: '/industry/index.html#renewable', icon: 'fa-solid fa-solar-panel' },
+                    { title: 'Medical', link: '/industry/index.html#medical', icon: 'fa-solid fa-stethoscope' },
+                    { title: 'Fintech', link: '/industry/index.html#fintech', icon: 'fa-solid fa-chart-line' },
+                    { title: 'TechEdu', link: '/industry/index.html#edutech', icon: 'fa-solid fa-chart-line' },
+                        { title: 'Real Estate & Property Management', link: '/industry/index.html#real-estate', icon: 'fa-solid fa-building' }
+                ]},
+                {
+                    title: 'Engineering',
+                    icon: 'fa-solid fa-gears',
+                    submenu: [
+                        { title: 'Electronics Design', link: '/engineering/electronics-design.html', icon: 'fa-solid fa-diagram-project' },
+                        { title: 'Custom IoT Solutions', link: '/engineering/custom-iot-solutions.html', icon: 'fa-solid fa-network-wired' },
+                        { title: 'Prototyping & Production', link: '/engineering/prototyping-production.html', icon: 'fa-solid fa-industry' },
+                        { title: 'Testing & Certifications', link: '/engineering/testing-certifications.html', icon: 'fa-solid fa-circle-check' },
+                        { title: 'PCB Design & EDA Tools', link: '/engineering/pcb-design-eda-tools.html', icon: 'fa-solid fa-drafting-compass' },
+                        { title: 'CAM Solutions', link: '/engineering/cam-solutions.html', icon: 'fa-solid fa-cog' },
+                        { title: 'Mechanical Design', link: '/engineering/mechanical-design.html', icon: 'fa-solid fa-cog' },
+                        { title: 'VLSI Design', link: '/engineering/vlsi-design.html', icon: 'fa-solid fa-diagram-project' },
+                        { title: 'Product LifeCycle Management', link: '/engineering/product-lifecycle-management.html', icon: 'fa-solid fa-chart-line' }
+                    ]
+                },
+                { title: 'Software', link: '#', submenu: [
+                    { title: 'Web Development', link: '/software/index.html#webapp', icon: 'fa-solid fa-code' },
+                    { title: 'IoT Applications', link: '/software/index.html#iot-application-development', icon: 'fa-solid fa-cloud' },
+                    { title: 'AI & Machine Learning', link: '/software/index.html#ai-ml', icon: 'fa-solid fa-brain' },
+                    { title: 'Cloud Computing Solutions', link: '/software/index.html#cloud-computing', icon: 'fa-solid fa-chart-pie' },
+                    { title: 'UI/UX Design Services', link: '/software/index.html#ui-ux-design', icon: 'fa-solid fa-server' },
+                ]},
+                { title: 'Staffing', link: '/staffing.html', submenu: [] },
+                { title: 'Training', link: '/training.html', submenu: [] }
+            ]">
+                    <div class="space-y-4">
+                        <button @click="toggleSubmenu(index)"
+                                class="w-full flex items-center justify-between px-4 py-2 text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-lg">
+                            <span x-text="item.title"></span>
+                            <svg x-show="item.submenu.length > 0" class="ml-2 h-4 w-4" viewBox="0 0 20 20" fill="currentColor"
+                                :class="{'rotate-180': activeSubmenu === index}">
+                                <path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" />
+                            </svg>
+                        </button>
+                        
+                        <div x-show="activeSubmenu === index"
+                            class="space-y-1 px-4">
+                            <template x-for="subItem in item.submenu">
+                                <a :href="subItem.link"
+                                    class="flex items-center py-4 px-4 text-sm font-medium text-gray-600 hover:text-gray-900 hover:bg-green-300 rounded-lg">
+                                    <i :class="[subItem.icon, 'mr-2 text-lg']"></i>
+                                    <span x-text="subItem.title"></span>
+                                </a>
+                            </template>
+                        </div>
+                    </div>
+                </template>
             </div>
         </div>
-
-        <!-- Mobile side menu -->
-        <div class="custom:hidden">
-            <!-- Background Overlay -->
-            <div class="fixed inset-0 bg-gray-800 bg-opacity-75 z-40 transition-opacity duration-300 ease-in-out"
-                    :class="{'opacity-100': isMenuOpen, 'opacity-0 pointer-events-none': !isMenuOpen}"
-                    @click="isMenuOpen = false">
-            </div>
-            <!-- Mobile Menu -->
-                <div class="fixed inset-y-0 right-0 max-w-lg w-full bg-white shadow-xl z-50 overflow-y-auto transform transition-transform duration-300 ease-in-out"
-                    :class="{'translate-x-0': isMenuOpen, 'translate-x-full': !isMenuOpen}">
-                <!-- Close Button at the Top Right -->
-                <div class="flex justify-end mr-5 p-4">
-                    <button @click="isMenuOpen = false" class="text-gray-600 font-bold hover:text-gray-900 focus:outline-none">
-                        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-                        </svg>
-                    </button>
-                </div>
-                <div class="p-6">
-                    <div class="mb-2">
-                        <input type="text" x-model="searchQuery" placeholder="Search..."
-                            class="w-full px-4 py-2 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent">
-                    </div>
-                    <div class="flex flex-col space-y-10">
-                        <a href="/index.html" 
-                            class="text-gray-500 hover:text-gray-900 font-bold"
-                            x-show="!isHomePage()">
-                            Home
-                        </a>
-                        <template x-for="(item, index) in [
-                            { title: 'Company', link: '#', submenu: [
-                                { title: 'About Us', link: '/about-us.html', icon: 'fa-solid fa-info-circle' },
-                                { title: 'Careers', link: '/careers.html', icon: 'fa-solid fa-briefcase' },
-                                
-                                { title: 'Clients', link: '/clients.html', icon: 'fa-solid fa-users' }
-                            ]},
-                            { title: 'Industry', link: '#', submenu: [
-                                { title: 'Automotive', link: '/industry/index.html#auto', icon: 'fa-solid fa-car' },
-                                { title: 'Transportation', link: '/industry/index.html#transport', icon: 'fa-solid fa-truck' },
-                                { title: 'Mining and Metals', link: '/industry/index.html#mining', icon: 'fa-solid fa-gem' },
-                                { title: 'Renewable Energy', link: '/industry/index.html#renewable', icon: 'fa-solid fa-solar-panel' },
-                                { title: 'Medical', link: '/industry/index.html#medical', icon: 'fa-solid fa-stethoscope' },
-                                { title: 'Fintech', link: '/industry/index.html#fintech', icon: 'fa-solid fa-chart-line' },
-                                { title: 'TechEdu', link: '/industry/index.html#edutech', icon: 'fa-solid fa-chart-line' },
-                                { title: 'Real Estate & Property Management', link: '/industry/index.html#real-estate', icon: 'fa-solid fa-building' }
-                            ]
-                            },
-                            {
-                                title: 'Engineering',
-                                submenu: [
-                                    { title: 'Electronics Design', link: '/engineering/electronics-design.html', icon: 'fa-solid fa-diagram-project' },
-                                    { title: 'Custom IoT Solutions', link: '/engineering/custom-iot-solutions.html', icon: 'fa-solid fa-network-wired' },
-                                    { title: 'Prototyping & Production', link: '/engineering/prototyping-production.html', icon: 'fa-solid fa-industry' },
-                                    { title: 'Testing & Certifications', link: '/engineering/testing-certifications.html', icon: 'fa-solid fa-circle-check' },
-                                    { title: 'PCB Design & EDA Tools', link: '/engineering/pcb-design-eda-tools.html', icon: 'fa-solid fa-drafting-compass' },
-                                    { title: 'CAM Solutions', link: '/engineering/cam-solutions.html', icon: 'fa-solid fa-cog' },
-                                    { title: 'Mechanical Design', link: '/engineering/mechanical-design.html', icon: 'fa-solid fa-cog' },
-                                    { title: 'VLSI Design', link: '/engineering/vlsi-design.html', icon: 'fa-solid fa-diagram-project' },
-                                    { title: 'Product LifeCycle Management', link: '/engineering/product-lifecycle-management.html', icon: 'fa-solid fa-chart-line' }
-                                ]
-                            },
-                            {title: 'Software', 
-                                link: '#', 
-                                submenu: [
-                                    { title: 'Web Development', link: '/software/index.html#webapp', icon: 'fa-solid fa-code' },
-                                    { title: 'IoT Application Development', link: '/software/index.html#iot-application-development', icon: 'fa-solid fa-cloud' },
-                                    { title: 'AI & Machine Learning', link: '/software/index.html#ai-ml', icon: 'fa-solid fa-brain' },
-                                    { title: 'Cloud Computing Solutions', link: '/software/index.html#cloud-computing', icon: 'fa-solid fa-chart-pie' },
-                                    { title: 'UI/UX Design Services', link: '/software/index.html#ui-ux-design', icon: 'fa-solid fa-server' },
-                                ] 
-                            },
-                            { title: 'Staffing', link: '/staffing.html', submenu: [] },
-                            { title: 'Training', link: '/training.html', submenu: [] }
-                        ]">
-                            <div>
-                                <button @click="toggleSubmenu(index)"
-                                        class="w-full text-left text-gray-900 font-bold flex justify-between items-center">
-                                    <span class="flex items-center">
-                                        <i :class="'fas ' + item.icon + ' mr-3 text-green-600'"></i>
-                                        <span x-text="item.title"></span>
-                                    </span>
-                                    <svg x-show="item.submenu.length > 0" class="w-6 h-6 transform transition-transform duration-200" 
-                                        :class="{'rotate-180': activeSubmenu === index}"
-                                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
-                                        <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-                                    </svg>
-                                </button>
-                                <div x-show="activeSubmenu === index" 
-                                        x-transition:enter="transition ease-out duration-100"
-                                        x-transition:enter-start="transform opacity-0 scale-95"
-                                        x-transition:enter-end="transform opacity-100 scale-100"
-                                        x-transition:leave="transition ease-in duration-75"
-                                        x-transition:leave-start="transform opacity-100 scale-100"
-                                        x-transition:leave-end="transform opacity-0 scale-95"
-                                        class="mt-2 space-y-2 bg-gray-50 rounded-lg p-3">
-                                    <template x-for="subItem in item.submenu">
-                                        <a href="#" class="flex items-center pl-4 mr-5 px-4 py-3 text-sm font-bold text-gray-700 rounded-xl hover:bg-green-600 hover:text-white group-hover:text-white transition-all duration-300 ease-in-out">
-                                            <i :class="'fas ' + subItem.icon + ' mr-3 text-green-500 hover:text-white'"></i>
-                                            <span x-text="subItem.title"></span>
-                                        </a>
-                                    </template>
-                                </div>
-                            </div>
-                        </template>
-                    </div>
-                    <div class="mt-8 space-y-8">
-                        <a href="tel:+918042183021" class="flex items-center text-gray-600 hover:text-gray-900 font-bold">
-                            <i class="fas fa-phone text-green-600 text-xl mr-3"></i>
-                            <span>+91-80 4218 3021</span>
-                        </a>
-                        <a href="mailto:support@nxgeninventors.com" class="flex items-center text-gray-600 hover:text-gray-900 font-bold">
-                            <i class="fas fa-envelope text-green-600 text-xl mr-3"></i>
-                            <span>support@nxgeninventors.com</span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </header>
+    </div>
+</header>
 
     <!-- Banner -->
-    <section class="relative h-[70vh] flex items-center justify-center overflow-hidden">
+    <section class="relative h-[90vh] flex flex-col items-center justify-center py-48 bg-gray-100">
         <div class="absolute inset-0 z-0">
             <video class="object-cover w-full h-full" autoplay loop muted>
                 <source src="https://assets.mixkit.co/videos/preview/mixkit-set-of-plateaus-seen-from-the-heights-in-a-sunset-26070-large.mp4" type="video/mp4">
@@ -485,6 +443,7 @@
                 <div class="relative z-10 rounded-lg overflow-hidden shadow-lg">
                     <img src="/src/images/staffing/img1.png" alt="Tech & Engineering Staffing" class="w-full h-[600px] object-cover">
                 </div>
+            
                 <!-- Floating Elements -->
                 <div class="absolute -right-4 top-1/4 bg-white p-4 rounded-lg shadow-lg z-20 transform rotate-3">
                     <div class="flex items-center space-x-2">
@@ -496,6 +455,12 @@
                     <div class="flex items-center space-x-2">
                         <div class="w-3 h-3 rounded-full bg-green-500"></div>
                         <span class="text-sm font-semibold">Software Dev</span>
+                    </div>
+                </div>
+                <div class="absolute right-16 bottom-0 bg-white p-4 rounded-lg shadow-lg z-20 transform rotate-3">
+                    <div class="flex items-center space-x-2">
+                        <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                        <span class="text-sm font-semibold">Hardware Engineering</span>
                     </div>
                 </div>
             </div>
@@ -530,26 +495,22 @@
 
         <!-- Action Buttons Grid -->
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-8 max-w-4xl mx-auto">
-            <button onclick="toggleForm('company')" 
-                    class="group relative bg-white border-2 border-green-600 rounded-lg p-8 text-left transition-all hover:shadow-lg">
+            <button onclick="toggleForm('company')" class="group relative bg-white border-2 border-green-600 rounded-lg p-4 text-left transition-all hover:shadow-lg hover:bg-green-50">
                 <div class="flex items-center justify-between mb-4">
                     <h3 class="text-xl font-bold text-green-800">For Companies</h3>
-                    <span class="transform transition-transform group-hover:rotate-180">
-                        ▼
+                    <span class="bg-green-600 text-white font-bold px-4 py-2 rounded-xl transition-colors hover:bg-green-700">
+                        Register
                     </span>
                 </div>
-                <p class="text-gray-600">Post jobs and find the perfect candidates for your organization</p>
             </button>
 
-            <button onclick="toggleForm('candidate')" 
-                    class="group relative bg-white border-2 border-green-600 rounded-lg p-8 text-left transition-all hover:shadow-lg">
+            <button onclick="toggleForm('candidate')" class="group relative bg-white border-2 border-green-600 rounded-lg p-4 text-left transition-all hover:shadow-lg hover:bg-green-50">
                 <div class="flex items-center justify-between mb-4">
                     <h3 class="text-xl font-bold text-green-800">For Candidates</h3>
-                    <span class="transform transition-transform group-hover:rotate-180">
-                        ▼
+                    <span class="bg-green-600 text-white font-bold px-4 py-2 rounded-xl transition-colors hover:bg-green-700">
+                        Apply
                     </span>
                 </div>
-                <p class="text-gray-600">Submit your profile and explore exciting job opportunities</p>
             </button>
         </div>
 
