@@ -232,16 +232,6 @@
                             <a :href="item.link" 
                                class="text-gray-500 group-hover:text-gray-900 font-bold flex items-center h-16 px-4">
                                 <span x-text="item.title"></span>
-                                <svg x-show="item.submenu.length > 0" 
-                                     class="w-2.5 h-2.5 ml-2.5" 
-                                     fill="none" 
-                                     viewBox="0 0 10 6">
-                                    <path stroke="currentColor" 
-                                          stroke-linecap="round" 
-                                          stroke-linejoin="round" 
-                                          stroke-width="2" 
-                                          d="m1 1 4 4 4-4" />
-                                </svg>
                             </a>
                             
                             <!-- Dropdown Menu -->
@@ -368,10 +358,6 @@
                             <button @click="toggleSubmenu(index)"
                                     class="w-full flex items-center justify-between px-4 py-2 text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-lg">
                                 <span x-text="item.title"></span>
-                                <svg x-show="item.submenu.length > 0" class="ml-2 h-4 w-4" viewBox="0 0 20 20" fill="currentColor"
-                                    :class="{'rotate-180': activeSubmenu === index}">
-                                    <path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" />
-                                </svg>
                             </button>
                             
                             <div x-show="activeSubmenu === index"
