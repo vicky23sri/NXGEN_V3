@@ -206,7 +206,7 @@
                                     <template x-for="subItem in item.submenu">
                                         <a :href="subItem.link"
                                            class="flex items-center px-4 py-3 text-sm font-bold text-gray-700 hover:bg-green-500 hover:text-white group transition-all duration-300 ease-in-out">
-                                            <i :class="[subItem.icon, 'mr-2 text-lg transition-colors duration-300']"></i>
+                                            
                                             <span x-text="subItem.title"></span>
                                         </a>
                                     </template>
@@ -326,7 +326,7 @@
                                 <template x-for="subItem in item.submenu">
                                     <a :href="subItem.link"
                                         class="flex items-center py-4 px-4 text-sm font-medium text-gray-600 hover:text-gray-900 hover:bg-green-300 rounded-lg">
-                                        <i :class="[subItem.icon, 'mr-2 text-lg']"></i>
+                                        
                                         <span x-text="subItem.title"></span>
                                     </a>
                                 </template>
@@ -338,24 +338,18 @@
         </div>
     </header>
 
-    <section class="relative h-[70vh] flex items-center justify-center overflow-hidden">
+    <section class="relative h-[50vh] flex items-center justify-center overflow-hidden">
         <div class="absolute inset-0 z-0">
             <video class="object-cover w-full h-full" autoplay loop muted>
                 <source src="https://assets.mixkit.co/videos/preview/mixkit-set-of-plateaus-seen-from-the-heights-in-a-sunset-26070-large.mp4" type="video/mp4">
             </video>
             <div class="absolute inset-0 bg-green-900 opacity-60"></div>
         </div>
-        <div class="relative z-10 text-center text-white px-4" data-aos="fade-up">
+        <div class="relative z-10 text-center text-white px-4 pt-20" data-aos="fade-up">
             <h1 class="text-5xl md:text-7xl font-bold mb-6">Software Services</h1>
             <p class="text-xl md:text-2xl mb-8 max-w-5xl mx-auto">
                 We offer top-notch software services, from development to deployment, tailored for various industries. Our cutting-edge solutions ensure accuracy and dependability for every client.
             </p>
-            <a href="#vision" class="bg-white text-green-700 px-8 py-3 rounded-full text-lg font-semibold hover:bg-green-100 transition duration-300 inline-flex items-center">
-                Discover Our Innovations
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
-                    <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
-                </svg>
-            </a>
         </div>
     </section>  
 
@@ -728,8 +722,8 @@
                         </div>
                     </div>
                     <div class="space-y-8">
-                        <h2 class="text-2xl font-semibold border-b-2 border-primary pb-2 inline-block">Our Services</h2>
-                        <ul class="space-y-3">
+                       <h2 class="text-2xl font-semibold border-b-2 border-primary pb-2 inline-block">Our Services</h2>
+                        <ul class="space-y-3" data-aos="fade-right">
                             <li><a href="/" class="hover:text-teal-400 transition duration-300">Software Solutions</a></li>
                             <li><a href="/services/engineering/"
                                     class="hover:text-teal-400 transition duration-300">Engineering Services</a></li>

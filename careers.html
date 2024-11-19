@@ -259,7 +259,7 @@
                                     <template x-for="subItem in item.submenu">
                                         <a :href="subItem.link"
                                            class="flex items-center px-4 py-3 text-sm font-bold text-gray-700 hover:bg-green-500 hover:text-white group transition-all duration-300 ease-in-out">
-                                            <i :class="[subItem.icon, 'mr-2 text-lg transition-colors duration-300']"></i>
+                                            
                                             <span x-text="subItem.title"></span>
                                         </a>
                                     </template>
@@ -379,7 +379,7 @@
                                 <template x-for="subItem in item.submenu">
                                     <a :href="subItem.link"
                                         class="flex items-center py-4 px-4 text-sm font-medium text-gray-600 hover:text-gray-900 hover:bg-green-300 rounded-lg">
-                                        <i :class="[subItem.icon, 'mr-2 text-lg']"></i>
+                                        
                                         <span x-text="subItem.title"></span>
                                     </a>
                                 </template>
@@ -392,20 +392,19 @@
     </header>
 
     <main class="bg-career"></main>
-
-        <section class="relative h-[70vh] flex items-center justify-center overflow-hidden bg-cover bg-center" style="background-image: url('https://your-image-url.jpg');">
+        <section class="relative h-[50vh] flex items-center justify-center overflow-hidden bg-cover bg-center" style="background-image: url('https://your-image-url.jpg');">
             <div class="absolute inset-0 bg-green-900 opacity-60"></div>
-            <div class="relative z-10 text-center text-white px-4" data-aos="fade-up">
-                <h1 class="text-5xl md:text-7xl font-bold mb-6">Join Our Team</h1>
+            <div class="relative z-10 text-center text-white px-4 pt-20" data-aos="fade-up">
+                <h1 class="text-5xl md:text-7xl font-bold mb-6 uppercase">Join Us in Shaping</h1> <h1 class="text-5xl md:text-7xl font-bold mb-6 uppercase">The Future of Technology</h1>       
                 <p class="text-xl md:text-2xl mb-8 max-w-5xl mx-auto">
-                    Discover exciting career opportunities with us. We're committed to innovation, excellence, and fostering a collaborative work environment where your skills can shine and grow.
+                    Empower innovation, build the future, and thrive with us.
                 </p>
-                <a href="#open-positions" class="bg-white text-green-700 px-8 py-3 rounded-full text-lg font-semibold hover:bg-green-100 transition duration-300 inline-flex items-center">
+                <!-- <a href="#open-positions" class="bg-white text-green-700 px-8 py-3 rounded-full text-lg font-semibold hover:bg-green-100 transition duration-300 inline-flex items-center">
                     Explore Open Positions
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
                         <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
                     </svg>
-                </a>
+                </a> -->
             </div>
         </section>
     
@@ -415,7 +414,7 @@
                 <span class="close absolute top-4 right-4 text-gray-500 hover:text-gray-900 text-2xl cursor-pointer">&times;</span>
                 <h2 class="text-xl md:text-2xl font-semibold mb-4">Software Developer</h2>
                 <h3 class="text-lg md:text-xl font-semibold mt-4 mb-2">Position Overview:</h3>
-                <p>We are seeking a talented Full-Stack Developer with at least 2 years of experience to join our dynamic team. The ideal candidate should excel in web development principles and be proficient across the technology stack.</p>
+                <p>We are seeking a talented Full-Stack Developer with at least 2 years of experience to join <span> our dynamic team. The ideal candidate should excel in web development principles and be proficient across the technology stack.</span></p>
                 <h3 class="text-xl font-semibold mt-4 mb-2">Key Responsibilities:</h3>
                 <h4 class="text-lg font-semibold mt-2 mb-1">Design and Development:</h4>
                 <ul class="list-disc pl-5 px-10">
@@ -996,8 +995,42 @@
                     <p class="text-xl font-medium leading-7 line-clamp-2">
                         The Why Work for Us section is where you can sell candidates on the benefits of working for your company. What makes your company culture special? What kind of perks and benefits do you offer? What opportunities for growth and development are available?
                     </p>
+
+                    <div class="rounded-lg">
+                        <h3 class="text-lg font-semibold mb-4 text-gray-800">Our Culture</h3>
+                        <p class="text-gray-700 mb-6">
+                            At Nx Gen Inventors, we foster a culture of inclusivity, collaboration, and respect. Our team thrives in an environment where creativity and innovation flourish, and everyone is empowered to make an impact.
+                        </p>
+                        
+                        <div class="grid gap-6 md:grid-cols-2">
+                            <!-- Employee Growth -->
+                            <div class="bg-gray-100 p-5 rounded-lg shadow-sm">
+                                <h4 class="text-lg font-semibold text-blue-600 mb-2">Employee Growth</h4>
+                                <p class="text-gray-700">Continuous learning opportunities and career advancement pathways designed to help you reach your full potential.</p>
+                            </div>
+            
+                            <!-- Innovation Hub -->
+                            <div class="bg-gray-100 p-5 rounded-lg shadow-sm">
+                                <h4 class="text-lg font-semibold text-blue-600 mb-2">Innovation Hub</h4>
+                                <p class="text-gray-700">Access to cutting-edge technologies and projects that push the boundaries of what's possible.</p>
+                            </div>
+            
+                            <!-- Work-Life Harmony -->
+                            <div class="bg-gray-100 p-5 rounded-lg shadow-sm">
+                                <h4 class="text-lg font-semibold text-blue-600 mb-2">Work-Life Harmony</h4>
+                                <p class="text-gray-700">Flexible schedules, remote work options, and comprehensive wellness programs to support your lifestyle.</p>
+                            </div>
+            
+                            <!-- Collaborative Culture -->
+                            <div class="bg-gray-100 p-5 rounded-lg shadow-sm">
+                                <h4 class="text-lg font-semibold text-blue-600 mb-2">Collaborative Culture</h4>
+                                <p class="text-gray-700">Join diverse teams where every voice matters and innovation thrives through collective creativity.</p>
+                            </div>
+                        </div>
+                    </div>
         
-                    <section class=" dark:bg-gray-900 p-3 sm:p-5 pb-5">
+                    <section class=" dark:bg-gray-900 py-10 pb-5">
+                        <h3 class="text-2xl font-bold mb-4 text-gray-800">Current Opening</h3>
                         <div class="mx-auto max-w-screen-3xl">
                             <div class="bg-white dark:bg-gray-800 relative shadow-md sm:rounded-lg overflow-hidden">
                                 <!-- Top Section with Search and Buttons -->
@@ -1219,87 +1252,43 @@
     </main>
 
     <!-- footer -->
-    <footer class="bg-green-600 text-white pt-16 pb-8 overflow-hidden">
-        <div class="container mx-auto px-custom-padding">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div class="space-y-8">
-                        <h2 class="text-2xl font-semibold border-b-2 border-primary pb-2 inline-block">Browse</h2>
-                        <ul class="space-y-3" data-aos="fade-up">
-                            <li><a href="/about-us.html" class="hover:text-teal-400 transition duration-300">About us</a></li>
-                            <li><a href="/careers.html" class="hover:text-teal-400 transition duration-300">Careers</a></li>
-                            <li><a href="/our-people.html" class="hover:text-teal-400 transition duration-300">Our
-                                    People</a></li>
-                            <li><a href="/products/iot-platform.html"
-                                    class="hover:text-teal-400 transition duration-300">IoT Platform</a></li>
-                            <li><a href="/products/realty-app.html"
-                                    class="hover:text-teal-400 transition duration-300">Realty App</a></li>
-                        </ul>
-
-                        <div class="space-y-4">
-                            <h2 class="text-2xl text-white font-bold uppercase mb-4">Follow Us On</h2>
-                            <div class="w-full md:w-auto" data-aos="fade-right">
-                                <div class="flex space-x-4">
-                                    <a href="#"
-                                        class="w-10 h-10 bg-primary rounded-full flex items-center justify-center hover:bg-blue-500 transition duration-300">
-                                        <svg class="h-6 w-6 text-white" fill="currentColor" viewBox="0 0 24 24"
-                                            aria-hidden="true">
-                                            <path fill-rule="evenodd"
-                                                d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"
-                                                clip-rule="evenodd" />
-                                        </svg>
-                                    </a>
-                                    <a href="#"
-                                        class="w-10 h-10 bg-primary rounded-full flex items-center justify-center hover:bg-blue-500 transition duration-300">
-                                        <svg class="h-6 w-6 text-white" fill="currentColor" viewBox="0 0 24 24"
-                                            aria-hidden="true">
-                                            <path
-                                                d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" />
-                                        </svg>
-                                    </a>
-                                    <a href="#"
-                                        class="w-10 h-10 bg-primary rounded-full flex items-center justify-center hover:bg-pink-500 transition duration-300">
-                                        <i class="fa-brands fa-instagram text-white text-2xl"></i>
-                                    </a>
-                                    <a href="#"
-                                        class="w-10 h-10 bg-primary rounded-full flex items-center justify-center hover:bg-red-500 transition duration-300">
-                                        <i class="fa-brands fa-youtube text-white text-2xl"></i>
-                                    </a>
-                                    <a href="#"
-                                        class="w-10 h-10 bg-primary rounded-full flex items-center justify-center hover:bg-blue-500 transition duration-300">
-                                        <i class="fa-brands fa-linkedin text-white text-2xl"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="space-y-8">
-                        <h2 class="text-2xl font-semibold border-b-2 border-primary pb-2 inline-block">Our Services</h2>
-                        <ul class="space-y-3">
-                            <li><a href="/" class="hover:text-teal-400 transition duration-300">Software Solutions</a></li>
-                            <li><a href="/services/engineering/"
-                                    class="hover:text-teal-400 transition duration-300">Engineering Services</a></li>
-                            <li><a href="/services/manufacturing/"
-                                    class="hover:text-teal-400 transition duration-300">Manufacturing Services</a></li>
-                            <li><a href="/services/staffing-solutions/"
-                                    class="hover:text-teal-400 transition duration-300">Staffing Solutions</a></li>
-                            <li><a href="/services/staffing-solutions/"
-                                    class="hover:text-teal-400 transition duration-300">Training</a></li>
-                        </ul>
-                    </div>
+    <footer class="bg-green-600 text-white pt-16">
+        <div class="container mx-auto px-4" data-aos="fade-up">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+                <div class="space-y-8" data-aos="fade-right">
+                    <h2 class="text-2xl font-semibold border-b-2 border-white pb-2 inline-block">Browse</h2>
+                    <ul class="space-y-3" data-aos="fade-up">
+                        <li><a href="/about-us.html" class="hover:text-teal-400 transition duration-300">About us</a></li>
+                        <li><a href="/careers.html" class="hover:text-teal-400 transition duration-300">Careers</a></li>
+                        <li><a href="/our-people.html" class="hover:text-teal-400 transition duration-300">Our
+                                People</a></li>
+                        <li><a href="/products/iot-platform.html"
+                                class="hover:text-teal-400 transition duration-300">IoT Platform</a></li>
+                        <li><a href="/products/realty-app.html"
+                                class="hover:text-teal-400 transition duration-300">Realty App</a></li>
+                    </ul>
                 </div>
-                <div class="space-y-8">
-                    <h2 class="text-2xl font-semibold border-b-2 border-primary pb-2 inline-block">Locate Us</h2>
-                    
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6" data-aos="fade-right">
-                        <!-- India Address -->
-                        <div class="space-y-4">  
-                            <div class="flex items-center space-x-2">
-                                <img src="/src/images/footer-logo/india-flag.svg" alt="India Flag" class="w-6">
-                                <h3 class="text-xl font-semibold">INDIA</h3>
-                            </div>
+                <div class="space-y-8" data-aos="fade-right">
+                    <h2 class="text-2xl font-semibold border-b-2 border-white pb-2 inline-block">Our Services</h2>
+                    <ul class="space-y-3">
+                        <li><a href="/" class="hover:text-teal-400 transition duration-300">Software Solutions</a></li>
+                        <li><a href="/services/engineering/"
+                                class="hover:text-teal-400 transition duration-300">Engineering Services</a></li>
+                        <li><a href="/services/manufacturing/"
+                                class="hover:text-teal-400 transition duration-300">Manufacturing Services</a></li>
+                        <li><a href="/services/staffing-solutions/"
+                                class="hover:text-teal-400 transition duration-300">Staffing Solutions</a></li>
+                        <li><a href="/services/staffing-solutions/"
+                                class="hover:text-teal-400 transition duration-300">Training</a></li>
+                    </ul>
+                </div>
+                <div class="space-y-8" data-aos="fade-right">
+                    <h2 class="text-2xl font-semibold border-b-2 border-white inline-block">Locate Us</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-1 gap-6">
+                        <div class="space-y-2">
                             <div class="text-sm space-y-1">
                                 <!-- Address Section -->
+                                <h3 class="text-xl font-semibold">INDIA - Bangalore</h3>
                                 <div class="space-y-1">
                                     <p>P-69, Brindavana Layout,</p>
                                     <p>Basavanapura, K.R.Puram,</p>
@@ -1308,22 +1297,19 @@
 
                                 <!-- Phone Section -->
                                 <div class="font-semibold">
-                                    <p>PH:</p>
+                                    <p>PH: +91-89258 58615</p>
                                     <div class="ml-4 space-y-1">
-                                        <p>+91-89258 58615</p>
                                         <p>+91 080 4218 3021</p>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                
-                        <!-- USA Address -->
-                        <div class="space-y-4">
-                            <div class="flex items-center space-x-2">
-                                <img src="/src/images/footer-logo/india-flag.svg" alt="India Flag" class="w-6">
-                                <h3 class="text-xl font-semibold">INDIA</h3>
+                            <div class="flex items-center">
+                                <div class="flex-grow border-t border-white"></div>
+                                <div class="mx-4 text-white">•</div>
+                                <div class="flex-grow border-t border-white"></div>
                             </div>
                             <div class="space-y-2 text-sm">
+                                <h3 class="text-xl font-semibold">INDIA - Krishnagiri</h3>
                                 <p>MIG-171, New housing board,</p>
                                 <p>Krishnagiri - 635 001, TN</p>
                                 <p class="font-semibold">PH: +91 89258 58614</p>
@@ -1331,31 +1317,62 @@
                         </div>
                     </div>
                 </div>
+                <div class="space-y-3">
+                    <h2 class="text-2xl text-white font-bold uppercase">NX GEN Inventors</h2>
+                    <div class="w-full md:w-auto">
+                        <div class="w-full md:w-auto" data-aos="fade-right">
+                            <div class="flex space-x-4">
+                                <a href="#"
+                                    class="w-10 h-10 bg-primary rounded-full flex items-center justify-center hover:bg-blue-500 transition duration-300">
+                                    <svg class="h-6 w-6 text-white" fill="currentColor" viewBox="0 0 24 24"
+                                        aria-hidden="true">
+                                        <path fill-rule="evenodd"
+                                            d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"
+                                            clip-rule="evenodd" />
+                                    </svg>
+                                </a>
+                                <a href="#"
+                                    class="w-10 h-10 bg-primary rounded-full flex items-center justify-center hover:bg-blue-500 transition duration-300">
+                                    <svg class="h-6 w-6 text-white" fill="currentColor" viewBox="0 0 24 24"
+                                        aria-hidden="true">
+                                        <path
+                                            d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" />
+                                    </svg>
+                                </a>
+                                <a href="#"
+                                    class="w-10 h-10 bg-primary rounded-full flex items-center justify-center hover:bg-pink-500 transition duration-300">
+                                    <i class="fa-brands fa-instagram text-white text-2xl"></i>
+                                </a>
+                                <a href="#"
+                                    class="w-10 h-10 bg-primary rounded-full flex items-center justify-center hover:bg-red-500 transition duration-300">
+                                    <i class="fa-brands fa-youtube text-white text-2xl"></i>
+                                </a>
+                                <a href="#"
+                                    class="w-10 h-10 bg-primary rounded-full flex items-center justify-center hover:bg-blue-500 transition duration-300">
+                                    <i class="fa-brands fa-linkedin text-white text-2xl"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
-            <div class="border-t border-white pt-8 mt-4">
-                <div class="flex flex-col lg:flex-row justify-between items-center gap-4">
+            <div class="border-t border-white pt-8 mt-8 pb-2">
+                <div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
                     <div class="text-sm text-gray-300">
                         © 2022 <a href="https://nxgeninventors.com/"
                             class="hover:text-white transition-colors duration-300">Nx Gen Inventors™</a>. All Rights
                         Reserved.
                     </div>
-                    <div class="flex flex-col lg:flex-row justify-between items-center gap-4">
-                        <div class="flex gap-4 text-sm text-gray-300">
-                            <a href="#" class="hover:text-white transition-colors duration-300">Terms of Use</a>
-                            <a href="#" class="hover:text-white transition-colors duration-300">Privacy Policy</a>
-                            <a href="#" class="hover:text-white transition-colors duration-300">Sale & Refunds</a>
-                        </div>
-                        <div class="flex gap-4 text-sm text-gray-300">
-                            <a href="#" class="hover:text-white transition-colors duration-300">Legal</a>
-                            <a href="#" class="hover:text-white transition-colors duration-300">Site Map</a>
-                        </div>
+                    <div class="flex space-x-4 text-sm text-gray-300">
+                        <a href="#" class="hover:text-white transition-colors duration-300">Terms & Conditions</a>
+                        <a href="#" class="hover:text-white transition-colors duration-300">Privacy Policy</a>
+                        <a href="#" class="hover:text-white transition-colors duration-300">Cookie Policy</a>
                     </div>
                 </div>
             </div>
         </div>
     </footer>
-
     <!-- aichatbot -->
     <div id="chatbot" class="fixed bottom-8 right-8 z-50">
         <div class="flex items-center">

@@ -33,7 +33,7 @@
         .float { animation: float 3s ease-in-out infinite; }
         
         .banner-height {
-            height: 80vh;
+            height: 60vh;
             margin-top: 64px; 
         }
         
@@ -180,7 +180,7 @@
                             <a :href="item.link" 
                                class="text-gray-500 group-hover:text-gray-900 font-bold flex items-center h-16 px-4">
                                 <span x-text="item.title"></span>
-                                <svg x-show="item.submenu.length > 0" 
+                                <!-- <svg x-show="item.submenu.length > 0" 
                                      class="w-2.5 h-2.5 ml-2.5" 
                                      fill="none" 
                                      viewBox="0 0 10 6">
@@ -189,7 +189,7 @@
                                           stroke-linejoin="round" 
                                           stroke-width="2" 
                                           d="m1 1 4 4 4-4" />
-                                </svg>
+                                </svg> -->
                             </a>
                             
                             <!-- Dropdown Menu -->
@@ -207,7 +207,7 @@
                                     <template x-for="subItem in item.submenu">
                                         <a :href="subItem.link"
                                            class="flex items-center px-4 py-3 text-sm font-bold text-gray-700 hover:bg-green-500 hover:text-white group transition-all duration-300 ease-in-out">
-                                            <i :class="[subItem.icon, 'mr-2 text-lg transition-colors duration-300']"></i>
+                                            
                                             <span x-text="subItem.title"></span>
                                         </a>
                                     </template>
@@ -316,10 +316,10 @@
                             <button @click="toggleSubmenu(index)"
                                     class="w-full flex items-center justify-between px-4 py-2 text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50 rounded-lg">
                                 <span x-text="item.title"></span>
-                                <svg x-show="item.submenu.length > 0" class="ml-2 h-4 w-4" viewBox="0 0 20 20" fill="currentColor"
+                                <!-- <svg x-show="item.submenu.length > 0" class="ml-2 h-4 w-4" viewBox="0 0 20 20" fill="currentColor"
                                     :class="{'rotate-180': activeSubmenu === index}">
                                     <path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" />
-                                </svg>
+                                </svg> -->
                             </button>
                             
                             <div x-show="activeSubmenu === index"
@@ -327,7 +327,7 @@
                                 <template x-for="subItem in item.submenu">
                                     <a :href="subItem.link"
                                         class="flex items-center py-4 px-4 text-sm font-medium text-gray-600 hover:text-gray-900 hover:bg-green-300 rounded-lg">
-                                        <i :class="[subItem.icon, 'mr-2 text-lg']"></i>
+                                        
                                         <span x-text="subItem.title"></span>
                                     </a>
                                 </template>
@@ -1336,8 +1336,8 @@
                         </div>
                     </div>
                     <div class="space-y-8">
-                        <h2 class="text-2xl font-semibold border-b-2 border-primary pb-2 inline-block">Our Services</h2>
-                        <ul class="space-y-3">
+                       <h2 class="text-2xl font-semibold border-b-2 border-primary pb-2 inline-block">Our Services</h2>
+                        <ul class="space-y-3" data-aos="fade-right">
                             <li><a href="/" class="hover:text-teal-400 transition duration-300">Software Solutions</a></li>
                             <li><a href="/services/engineering/"
                                     class="hover:text-teal-400 transition duration-300">Engineering Services</a></li>

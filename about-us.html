@@ -168,7 +168,7 @@
                                     <template x-for="subItem in item.submenu">
                                         <a :href="subItem.link"
                                            class="flex items-center px-4 py-3 text-sm font-bold text-gray-700 hover:bg-green-500 hover:text-white group transition-all duration-300 ease-in-out">
-                                            <i :class="[subItem.icon, 'mr-2 text-lg transition-colors duration-300']"></i>
+                                            
                                             <span x-text="subItem.title"></span>
                                         </a>
                                     </template>
@@ -288,7 +288,7 @@
                                 <template x-for="subItem in item.submenu">
                                     <a :href="subItem.link"
                                         class="flex items-center py-4 px-4 text-sm font-medium text-gray-600 hover:text-gray-900 hover:bg-green-300 rounded-lg">
-                                        <i :class="[subItem.icon, 'mr-2 text-lg']"></i>
+                                        
                                         <span x-text="subItem.title"></span>
                                     </a>
                                 </template>
@@ -301,24 +301,24 @@
     </header>
 
     <!-- Banner -->
-    <section class="relative h-[70vh] flex items-center justify-center overflow-hidden">
+    <section class="relative h-[50vh] flex items-center justify-center overflow-hidden">
         <div class="absolute inset-0 z-0">
             <video class="object-cover w-full h-full" autoplay loop muted>
                 <source src="https://assets.mixkit.co/videos/preview/mixkit-set-of-plateaus-seen-from-the-heights-in-a-sunset-26070-large.mp4" type="video/mp4">
             </video>
             <div class="absolute inset-0 bg-green-900 opacity-60"></div>
         </div>
-        <div class="relative z-10 text-center text-white px-4" data-aos="fade-up">
+        <div class="relative z-10 text-center text-white px-4 pt-20" data-aos="fade-up">
             <h1 class="text-5xl md:text-7xl font-bold mb-6">About NGI</h1>
             <p class="text-xl md:text-2xl mb-8 max-w-5xl mx-auto">
                 NGI is at the forefront of software manufacturing and engineering excellence. We craft cutting-edge solutions that power the future, blending innovation with precision to drive technological advancement. Our mission is to engineer possibilities that transform industries and elevate your success.
             </p>
-            <a href="#vision" class="bg-white text-green-700 px-8 py-3 rounded-full text-lg font-semibold hover:bg-green-100 transition duration-300 inline-flex items-center">
+            <!-- <a href="#vision" class="bg-white text-green-700 px-8 py-3 rounded-full text-lg font-semibold hover:bg-green-100 transition duration-300 inline-flex items-center">
                 Discover Our Innovations
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
                     <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
                 </svg>
-            </a>
+            </a> -->
         </div>
     </section>    
 
@@ -332,112 +332,91 @@
                 </h2>
                 <div class="w-32 h-1 bg-green-500 rounded-full"></div>
             </div>
-            
+    
             <div class="p-8">
-                <!-- Tab buttons -->
-                <div class="flex justify-center mb-16">
-                    <div class="inline-flex rounded-xl p-1 w-full max-w-3xl bg-green-50 shadow-md">
-                        <button class="tab-button active relative flex-1 px-8 py-4 rounded-xl text-green-900 font-semibold text-lg transition-all duration-300 hover:bg-green-300 hover:text-green-900 focus:outline-none focus:ring-2 focus:ring-green-500" data-tab="vision">
-                            Vision
-                        </button>
-                        <button class="tab-button relative flex-1 px-8 py-4 rounded-xl text-green-900 font-semibold text-lg transition-all duration-300 hover:bg-green-300 hover:text-green-900 focus:outline-none focus:ring-2 focus:ring-green-500" data-tab="mission">
-                            Mission
-                        </button>
-                        <button class="tab-button relative flex-1 px-8 py-4 rounded-xl text-green-900 font-semibold text-lg transition-all duration-300 hover:bg-green-300 hover:text-green-900 focus:outline-none focus:ring-2 focus:ring-green-500" data-tab="values">
-                            Values
-                        </button>
+    
+                <!-- Vision Section -->
+                <div class="flex flex-col md:flex-row items-center gap-8 bg-white rounded-lg shadow-lg overflow-hidden mb-10">
+                    <div class="md:w-1/2">
+                        <img src="/src/images/about-us/vision.jpg" alt="Futuristic Tech Vision" class="w-full h-full object-cover">
+                    </div>
+                    <div class="md:w-1/2 p-8">
+                        <h2 class="text-3xl font-bold text-green-700 mb-6">Our Vision</h2>
+                        <p class="text-gray-700 mb-6 leading-relaxed">Our vision is to lead the way in Engineering, Software, and Manufacturing by delivering advanced technologies and innovative solutions, setting new standards of excellence, and empowering our customers to achieve greater success.</p>
                     </div>
                 </div>
-                
     
-                <!-- Content sections -->
-                <div id="content-container" class="relative">
-                    <div id="vision" class="content-section active">
-                        <div class="flex flex-col md:flex-row items-center gap-8 bg-white rounded-lg shadow-lg overflow-hidden">
-                            <div class="md:w-1/2">
-                                <img src="/src/images/about-us/vision.jpg" alt="Futuristic Tech Vision" class="w-full h-full object-cover">
-                            </div>
-                            <div class="md:w-1/2 p-8">
-                                <h2 class="text-3xl font-bold text-green-700 mb-6">Our Vision</h2>
-                                <p class="text-gray-700 mb-6 leading-relaxed">Our vision is to be a globally recognized leader in Software Solutions, Engineering, and Manufacturing, known for our commitment to excellence, innovation, and customer satisfaction.</p>
-                            </div>
-                        </div>
+                <!-- Mission Section -->
+                <div class="flex flex-col md:flex-row-reverse items-center gap-8 bg-white rounded-lg shadow-lg overflow-hidden mb-10">
+                    <div class="md:w-1/2">
+                        <img src="/src/images/about-us/wordsearch-game-word-corporation-business-min.jpg" alt="Tech Mission" class="w-full h-full object-cover">
                     </div>
-            
-                    <div id="mission" class="content-section hidden">
-                        <div class="flex flex-col md:flex-row-reverse items-center gap-8 bg-white rounded-lg shadow-lg overflow-hidden">
-                            <div class="md:w-1/2">
-                                <img src="/src/images/about-us/mission.jpg" alt="Tech Mission" class="w-full h-full object-cover">
-                            </div>
-                            <div class="md:w-1/2 p-8">
-                                <h2 class="text-3xl font-bold text-green-700 mb-6">Our Mission</h2>
-                                <p class="text-gray-700 mb-6 leading-relaxed">To empower businesses and organizations with innovative software solutions and precision engineering services, while offering world-class manufacturing capabilities. We aim to be the preferred partner for our clients, helping them achieve their goals and stay competitive in a rapidly evolving market.</p>
-                            </div>
-                        </div>
+                    <div class="md:w-1/2 p-8">
+                        <h2 class="text-3xl font-bold text-green-700 mb-6">Our Mission</h2>
+                        <p class="text-gray-700 mb-6 leading-relaxed">Our mission is to provide cutting-edge technology and exceptional services in Engineering, Software, and Manufacturing, while consistently delivering high-quality solutions that meet the evolving needs of our customers. We are committed to innovation, sustainability, and continuous improvement, fostering long-term partnerships built on trust and customer satisfaction.</p>
                     </div>
+                </div>
     
-                    <div id="values" class="content-section hidden">
-                        <div class="flex flex-col md:flex-row items-stretch gap-8 bg-white rounded-lg shadow-lg overflow-hidden">
-                            <div class="md:w-1/2">
-                                <img src="/src/images/about-us/core.jpg" alt="Our Core Values - IoT Illustration" class="w-full h-full object-cover">
+                <!-- Core Values Section -->
+                <div class="flex flex-col md:flex-row items-stretch gap-8 bg-white rounded-lg shadow-lg overflow-hidden">
+                    <div class="md:w-1/2">
+                        <img src="/src/images/about-us/corevalues.jpg" alt="Our Core Values - IoT Illustration" class="w-full h-full object-cover">
+                    </div>
+                    <div class="md:w-1/2 p-8 flex flex-col justify-center">
+                        <h2 class="text-3xl font-bold text-green-700 mb-6">Our Core Values</h2>
+                        <div class="space-y-6">
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0 w-8 h-8 bg-green-500 rounded-full flex items-center justify-center mr-4 mt-1">
+                                    <i class="fas fa-check text-white"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-xl font-semibold text-green-700 mb-2">Innovation</h3>
+                                    <p class="text-gray-700">We embrace innovation and continuously strive for creative solutions that drive progress.</p>
+                                </div>
                             </div>
-                            <div class="md:w-1/2 p-8 flex flex-col justify-center">
-                                <h2 class="text-3xl font-bold text-green-700 mb-6">Our Core Values</h2>
-                                <div class="space-y-6">
-                                    <div class="flex items-start">
-                                        <div class="flex-shrink-0 w-8 h-8 bg-green-500 rounded-full flex items-center justify-center mr-4 mt-1">
-                                            <i class="fas fa-check text-white"></i>
-                                        </div>
-                                        <div>
-                                            <h3 class="text-xl font-semibold text-green-700 mb-2">Innovation</h3>
-                                            <p class="text-gray-700">We embrace innovation and continuously strive for creative solutions that drive progress.</p>
-                                        </div>
-                                    </div>
-                                    <div class="flex items-start">
-                                        <div class="flex-shrink-0 w-8 h-8 bg-green-500 rounded-full flex items-center justify-center mr-4 mt-1">
-                                            <i class="fas fa-check text-white"></i>
-                                        </div>
-                                        <div>
-                                            <h3 class="text-xl font-semibold text-green-700 mb-2">Quality</h3>
-                                            <p class="text-gray-700">We are committed to delivering the highest quality in our software, engineering, and manufacturing services.</p>
-                                        </div>
-                                    </div>
-                                    <div class="flex items-start">
-                                        <div class="flex-shrink-0 w-8 h-8 bg-green-500 rounded-full flex items-center justify-center mr-4 mt-1">
-                                            <i class="fas fa-check text-white"></i>
-                                        </div>
-                                        <div>
-                                            <h3 class="text-xl font-semibold text-green-700 mb-2">Client-Centric</h3>
-                                            <p class="text-gray-700">Our clients' success is our success, and we put their needs at the forefront of everything we do.</p>
-                                        </div>
-                                    </div>
-                                    <div class="flex items-start">
-                                        <div class="flex-shrink-0 w-8 h-8 bg-green-500 rounded-full flex items-center justify-center mr-4 mt-1">
-                                            <i class="fas fa-check text-white"></i>
-                                        </div>
-                                        <div>
-                                            <h3 class="text-xl font-semibold text-green-700 mb-2">Integrity</h3>
-                                            <p class="text-gray-700">We operate with integrity, transparency, and ethical conduct in all our interactions.</p>
-                                        </div>
-                                    </div>
-                                    <div class="flex items-start">
-                                        <div class="flex-shrink-0 w-8 h-8 bg-green-500 rounded-full flex items-center justify-center mr-4 mt-1">
-                                            <i class="fas fa-check text-white"></i>
-                                        </div>
-                                        <div>
-                                            <h3 class="text-xl font-semibold text-green-700 mb-2">Professionalism</h3>
-                                            <p class="text-gray-700">In providing professional services we are dedicated to competence, dependability, and excellence. We believe that our projects reflect who we are as a company.</p>
-                                        </div>
-                                    </div>
-                                    <div class="flex items-start">
-                                        <div class="flex-shrink-0 w-8 h-8 bg-green-500 rounded-full flex items-center justify-center mr-4 mt-1">
-                                            <i class="fas fa-check text-white"></i>
-                                        </div>
-                                        <div>
-                                            <h3 class="text-xl font-semibold text-green-700 mb-2">Teamwork</h3>
-                                            <p class="text-gray-700">At our company, we cultivate an inclusive culture rooted in respect, collaboration, and shared goals, where each team member’s unique expertise and perspective enriches every project.</p>
-                                        </div>
-                                    </div>
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0 w-8 h-8 bg-green-500 rounded-full flex items-center justify-center mr-4 mt-1">
+                                    <i class="fas fa-check text-white"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-xl font-semibold text-green-700 mb-2">Quality</h3>
+                                    <p class="text-gray-700">We are committed to delivering the highest quality in our software, engineering, and manufacturing services.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0 w-8 h-8 bg-green-500 rounded-full flex items-center justify-center mr-4 mt-1">
+                                    <i class="fas fa-check text-white"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-xl font-semibold text-green-700 mb-2">Client-Centric</h3>
+                                    <p class="text-gray-700">Our clients' success is our success, and we put their needs at the forefront of everything we do.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0 w-8 h-8 bg-green-500 rounded-full flex items-center justify-center mr-4 mt-1">
+                                    <i class="fas fa-check text-white"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-xl font-semibold text-green-700 mb-2">Integrity</h3>
+                                    <p class="text-gray-700">We operate with integrity, transparency, and ethical conduct in all our interactions.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0 w-8 h-8 bg-green-500 rounded-full flex items-center justify-center mr-4 mt-1">
+                                    <i class="fas fa-check text-white"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-xl font-semibold text-green-700 mb-2">Professionalism</h3>
+                                    <p class="text-gray-700">In providing professional services we are dedicated to competence, dependability, and excellence. We believe that our projects reflect who we are as a company.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0 w-8 h-8 bg-green-500 rounded-full flex items-center justify-center mr-4 mt-1">
+                                    <i class="fas fa-check text-white"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-xl font-semibold text-green-700 mb-2">Teamwork</h3>
+                                    <p class="text-gray-700">At our company, we cultivate an inclusive culture rooted in respect, collaboration, and shared goals, where each team member’s unique expertise and perspective enriches every project.</p>
                                 </div>
                             </div>
                         </div>
@@ -503,8 +482,8 @@
                         </div>
                     </div>
                     <div class="space-y-8">
-                        <h2 class="text-2xl font-semibold border-b-2 border-primary pb-2 inline-block">Our Services</h2>
-                        <ul class="space-y-3">
+                       <h2 class="text-2xl font-semibold border-b-2 border-primary pb-2 inline-block">Our Services</h2>
+                        <ul class="space-y-3" data-aos="fade-right">
                             <li><a href="/" class="hover:text-teal-400 transition duration-300">Software Solutions</a></li>
                             <li><a href="/services/engineering/"
                                     class="hover:text-teal-400 transition duration-300">Engineering Services</a></li>
