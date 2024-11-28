@@ -470,17 +470,50 @@
             
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16">
                 <!-- Card 1 -->
-                <div class="group relative h-72 w-full max-w-125 mx-auto rounded-lg cursor-pointer overflow-hidden shadow-lg transition-transform duration-300 ease-in-out hover:-translate-y-2" data-aos="fade-left" data-aos-delay="100">
-                    <img src="/src/images/electronic-design/img1.jpg" alt="Precision Manufacturing" class="w-full h-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-110">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent flex flex-col justify-between p-6">
-                        <h3 class="text-white text-xl bg-opacity-80 w-fit px-3 py-1 rounded-full font-semibold transition-all duration-300  group-hover:bg-opacity-100 group-hover:w-fit group-hover:text-white transform group-hover:translate-x-2 group-hover:scale-105">
-                            Electronics Design
-                        </h3>
-                        <a href="/engineering/electronics-design.html" class="self-end bg-white group-hover:bg-green-500 group-hover:bg-opacity-100 hover:text-white text-black px-4 py-2 rounded-full transition duration-300 ease-in-out transform hover:scale-110 hover:bg-opacity-80 animate-pulse-glow">
-                            Read More
-                        </a>
+                <div class="relative w-full max-w-md mx-auto bg-white rounded-2xl shadow-xl overflow-hidden transform transition-all duration-300 hover:shadow-2xl hover:-translate-y-3 group">
+                    <!-- Image Container with Enhanced Overlay -->
+                    <div class="relative h-60 w-full">
+                        <img 
+                            src="/src/images/electronic-design/img1.jpg" 
+                            alt="Electronics Design" 
+                            class="absolute inset-0 w-full h-full object-cover filter brightness-50"
+                        />
+                        <div class="absolute inset-0 bg-black/50"></div>
+                        
+                        <div class="absolute inset-0 flex flex-col justify-end p-4">
+                            <h3 class="text-white text-3xl font-bold bg-black/30 rounded-lg backdrop-blur-sm">
+                                Electronics Design
+                            </h3>
+                        </div>
+                    </div>
+                    
+                    <!-- Content Container -->
+                    <div class="p-4 space-y-4">
+                        <p class="text-gray-700 text-base leading-relaxed">
+                            Transform innovative electronic concepts into precision-engineered solutions. Our expert team specializes in cutting-edge design, from prototype to production.
+                        </p>
+                        
+                        <div class="flex items-center justify-between mt-4">
+                            <div class="flex items-center space-x-3">
+                                <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                </svg>
+                                <span class="text-gray-700 font-medium">Expert Engineering</span>
+                            </div>
+                            
+                            <a 
+                                href="/engineering/electronics-design.html" 
+                                class="px-4 py-2 bg-green-500 text-white rounded-full hover:bg-green-600 transition-colors duration-300 transform hover:scale-105 flex items-center space-x-2"
+                            >
+                                <span>Read More</span>
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 5l7 7-7 7M5 5l7 7-7 7"></path>
+                                </svg>
+                            </a>
+                        </div>
                     </div>
                 </div>
+                
 
                 <div class="group relative h-72 w-full max-w-125 mx-auto rounded-lg cursor-pointer overflow-hidden shadow-lg transition-transform duration-300 ease-in-out hover:-translate-y-2" data-aos="fade-right" data-aos-delay="100">
                     <img src="/src/images/electronic-design/img2.jpg" alt="Precision Manufacturing" class="w-full h-full object-cover transition-transform duration-500 ease-in-out group-hover:scale-110">
